@@ -1,0 +1,322 @@
+== First Steps
+
+== Printing Things
+
+
++*In[2]:*+
+[source, clojure]
+----
+(println "Hello World!")
+----
+
+
++*Out[2]:*+
+----
+Hello World!
+nil
+----
+
+
++*In[3]:*+
+[source, clojure]
+----
+(println "Hello World!") ; Says Hello to this world
+----
+
+
++*Out[3]:*+
+----
+Hello World!
+nil
+----
+
+
++*In[4]:*+
+[source, clojure]
+----
+;; This program says helo to this world
+(println "Hello World!")
+----
+
+
++*Out[4]:*+
+----
+Hello World!
+nil
+----
+
+
++*In[6]:*+
+[source, clojure]
+----
+(println "Hello World!" "Try staying cool.")
+----
+
+
++*Out[6]:*+
+----
+Hello World! Try staying cool.
+nil
+----
+
+
++*In[8]:*+
+[source, clojure]
+----
+(str "Hello" " " "World")
+----
+
+
++*Out[8]:*+
+----
+"Hello World"
+----
+
+== Arithmetic
+
+
++*In[10]:*+
+[source, clojure]
+----
+(+ 40 2)
+----
+
+
++*Out[10]:*+
+----
+42
+----
+
+
++*In[11]:*+
+[source, clojure]
+----
+(- 44 2)
+----
+
+
++*Out[11]:*+
+----
+42
+----
+
+
++*In[12]:*+
+[source, clojure]
+----
+(* 6 7)
+----
+
+
++*Out[12]:*+
+----
+42
+----
+
+
++*In[16]:*+
+[source, clojure]
+----
+(/ 210 5)
+----
+
+
++*Out[16]:*+
+----
+42
+----
+
+
++*In[17]:*+
+[source, clojure]
+----
+(+ 1 2 3 4 5)
+----
+
+
++*Out[17]:*+
+----
+15
+----
+
+
++*In[18]:*+
+[source, clojure]
+----
+(/ (+ 1 2 3 4 5) 5)
+----
+
+
++*Out[18]:*+
+----
+3
+----
+
+
++*In[19]:*+
+[source, clojure]
+----
+(/ 1 2 3) ; this gives out a ratio, a clojure data type
+----
+
+
++*Out[19]:*+
+----
+1/6
+----
+
+
++*In[24]:*+
+[source, clojure]
+----
+(/ 1 6.0)
+----
+
+
++*Out[24]:*+
+----
+0.16666666666666666
+----
+
+
++*In[25]:*+
+[source, clojure]
+----
+(/ 1 2.0 3)
+----
+
+
++*Out[25]:*+
+----
+0.16666666666666666
+----
+
+
++*In[26]:*+
+[source, clojure]
+----
+(/ 1 2 3.0)
+----
+
+
++*Out[26]:*+
+----
+0.16666666666666666
+----
+
+
++*In[21]:*+
+[source, clojure]
+----
+(quot 14 5)
+----
+
+
++*Out[21]:*+
+----2----
+
+
++*In[22]:*+
+[source, clojure]
+----
+(rem 14 5)
+----
+
+
++*Out[22]:*+
+----4----
+
+=== Variables
+
+
++*In[28]:*+
+[source, clojure]
+----
+(def my-name "Karthik")
+----
+
+
++*Out[28]:*+
+----#'user/my-name----
+
+
++*In[30]:*+
+[source, clojure]
+----
+(println my-name)
+----
+
+
++*Out[30]:*+
+----
+Karthik
+nil----
+
+
++*In[32]:*+
+[source, clojure]
+----
+(println "Hello" my-name)
+----
+
+
++*Out[32]:*+
+----
+Hello Karthik
+nil----
+
+
++*In[33]:*+
+[source, clojure]
+----
+(def greeting (str "Hello " my-name "!"))
+(println greeting)
+----
+
+
++*Out[33]:*+
+----
+Hello Karthik!
+nil----
+
+== Strings
+
+
++*In[34]:*+
+[source, clojure]
+----
+(str "1 + 2 is " (+ 1 2))
+----
+
+
++*Out[34]:*+
+----"1 + 2 is 3"----
+
+
++*In[35]:*+
+[source, clojure]
+----
+(count "Hello")
+----
+
+
++*Out[35]:*+
+----5----
+
+
++*In[36]:*+
+[source, clojure]
+----
+(str 1 2 3 4 5 " and so on...")
+----
+
+
++*Out[36]:*+
+----"12345 and so on..."----
+
+
++*In[ ]:*+
+[source, clojure]
+----
+
+----
