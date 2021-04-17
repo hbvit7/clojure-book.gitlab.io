@@ -5,6 +5,8 @@
 
 image::images/front_cover_4.png[]
 
+include::sponsors.adoc[]
+
 include::cover.adoc[]
 
 include::copyright.adoc[]

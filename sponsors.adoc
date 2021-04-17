@@ -1,0 +1,5 @@
+== Sponsors
+
+Thanks to our sponsors, we are able to keep this book gratis.
+
+image::https://datamaking.in/assets/images/DataMaking_Logo.png[,200,,link="https://datamaking.in/"]
