@@ -21,9 +21,13 @@ include::where_to_get_help.adoc[]
 
 include::getting_this_book.adoc[]
 
+:sectnums:
+
 include::installing_clojure.adoc[]
 
 include::first_steps.adoc[]
+
+include::data_Structures.adoc[]
 
 == Functions
 
