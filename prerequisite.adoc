@@ -1,0 +1,6 @@
+== Prerequisite
+
+Unlike many books I do not want to target people who  are already familiar with programming. this book I hope will turn out to e a good one for non programmers who want to learn coding.
+
+there is one thing though, you must be familiar with using computers. I would suggest one to be familiar with Ubuntu GNU/Linux, you can get it here https://ubuntu.com. Install it on a computer, learn to use it, and get familiar with GNU/Linux. To get familiar with GNU/Linux one may visit and learn from http://linuxjourney.com.
+
