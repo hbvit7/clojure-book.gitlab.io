@@ -31,17 +31,6 @@ include::data_Structures.adoc[]
 
 == Functions
 
-== Data Structures
-
-=== Vectors
-
-=== Lists
-
-=== Maps
-
-=== Sets
-
-=== Keywords
 
 == Logic and comparison
 
