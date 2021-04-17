@@ -44,6 +44,14 @@ One negative I find is JVM. Java is controlled by Oracle and its an evil enterpr
 
 == Where to get help
 
+=== Local communities
+
+=== Clojure forum
+
+=== Clojureverse
+
+=== Reddit
+
 
 == Getting this book
 
