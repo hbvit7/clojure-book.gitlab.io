@@ -6,4 +6,4 @@ image::https://datamaking.in/assets/images/DataMaking_Logo.png[,200,,link="https
 
 image::http://134.209.159.113/trumatics/img/Trumatics-border.png[,200,,link="http://trumatics.com/"]
 
-image::images/sponsors/RIGPA_logo.png[,200,,link="https://rigpa.in/"]
+image::images/sponsors/RIGPA_logo.png[,60,,link="https://rigpa.in/"]
