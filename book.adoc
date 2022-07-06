@@ -17,11 +17,11 @@ include::getting_this_book.adoc[]
 
 :sectnums:
 
-include::installing_clojure.adoc[]
+include::installing_stuff.adoc[]
 
 include::first_steps.adoc[]
 
-include::data_Structures.adoc[]
+include::data_structures.adoc[]
 
 == Functions
 

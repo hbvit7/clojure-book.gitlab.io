@@ -1,4 +1,4 @@
-== Installing Clojure
+== Installing Stuff
 
 https://www.clojure.org/guides/getting_started
 
