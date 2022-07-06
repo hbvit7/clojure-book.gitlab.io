@@ -553,8 +553,9 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_installing_clojure">1. Installing Clojure</a>
 <ul class="sectlevel2">
 <li><a href="#_clj">1.1. clj</a></li>
-<li><a href="#_clojure_in_file">1.2. Clojure in file</a></li>
-<li><a href="#_clojure_in_jupyter">1.3. Clojure in jupyter</a></li>
+<li><a href="#_leningen">1.2. Leningen</a></li>
+<li><a href="#_clojure_in_file">1.3. Clojure in file</a></li>
+<li><a href="#_configuring_ide">1.4. Configuring IDE</a></li>
 </ul>
 </li>
 <li><a href="#_first_steps">2. First Steps</a>
@@ -589,32 +590,11 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="images/front_cover_4.png" alt="front cover 4">
-</div>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in book.adoc - include::sponsors.adoc[]</p>
-</div>
-<div class="paragraph">
-<p>Unresolved directive in book.adoc - include::cover.adoc[]</p>
-</div>
-</div>
-</div>
 <div class="sect1">
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You should not copy this book, because I invented the English language, I invented Cloujre, I type this book with my own generated knowledge which is independent of any other knowledge in this universe.</p>
-</div>
-<div class="paragraph">
-<p>If you copy I will drag you to court, charge you million dollars and make your life miserable, because humanity&#8217;s progress is based on copyright and not free flowing information.</p>
-</div>
-<div class="paragraph">
-<p>Lol. This book is under GFDL, do what you want with it.</p>
+<p>This book is released under GFDL.</p>
 </div>
 </div>
 </div>
@@ -636,7 +616,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <p>Unlike many books I do not want to target people who  are already familiar with programming. this book I hope will turn out to e a good one for non programmers who want to learn coding.</p>
 </div>
 <div class="paragraph">
-<p>there is one thing though, you must be familiar with using computers. I would suggest one to be familiar with Ubuntu GNU/Linux, you can get it here <a href="https://ubuntu.com" class="bare">https://ubuntu.com</a>. Install it on a computer, learn to use it, and get familiar with GNU/Linux. To get familiar with GNU/Linux one may visit and learn from <a href="http://linuxjourney.com" class="bare">http://linuxjourney.com</a>.</p>
+<p>There is one thing though, you must be familiar with using computers. I would suggest one to be familiar with Ubuntu GNU/Linux, you can get it here <a href="https://ubuntu.com" class="bare">https://ubuntu.com</a>. Install it on a computer, learn to use it, and get familiar with GNU/Linux. To get familiar with GNU/Linux one may visit and learn from <a href="http://linuxjourney.com" class="bare">http://linuxjourney.com</a>.</p>
 </div>
 </div>
 </div>
@@ -752,55 +732,25 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clojure_in_file">1.2. Clojure in file</h3>
+<h3 id="_leningen">1.2. Leningen</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_clojure_in_file">1.3. Clojure in file</h3>
 <div class="listingblock">
 <div class="title">hello_world.clj</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure"><table class="CodeRay"><tr>
   <td class="line-numbers"><pre>1
 </pre></td>
-  <td class="code"><pre>Unresolved directive in installing_clojure.adoc <span class="keyword">-</span> include<span class="symbol">::code/hello_world.clj</span>[]</pre></td>
+  <td class="code"><pre>(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)</pre></td>
 </tr></table></code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clojure_in_jupyter">1.3. Clojure in jupyter</h3>
-<div class="paragraph">
-<p><a href="https://anaconda.org/simplect/clojupyter" class="bare">https://anaconda.org/simplect/clojupyter</a></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>$ jupyter lab
-[I 11:52:44.061 LabApp] JupyterLab extension loaded from /Users/mindaslab/miniconda3/lib/python3.8/site-packages/jupyterlab
-[I 11:52:44.061 LabApp] JupyterLab application directory is /Users/mindaslab/miniconda3/share/jupyter/lab
-[I 11:52:44.065 LabApp] Serving notebooks from local directory: /Users/mindaslab/author/clojure/code
-[I 11:52:44.065 LabApp] Jupyter Notebook 6.2.0 is running at:
-[I 11:52:44.065 LabApp] http://localhost:8888/?token=ea48b1df457bf2b5961654e54872b2f43013d1e2eb02d3e0
-[I 11:52:44.065 LabApp]  or http://127.0.0.1:8888/?token=ea48b1df457bf2b5961654e54872b2f43013d1e2eb02d3e0
-[I 11:52:44.065 LabApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
-[C 11:52:44.072 LabApp]
+<h3 id="_configuring_ide">1.4. Configuring IDE</h3>
 
-    To access the notebook, open this file in a browser:
-        file:///Users/mindaslab/Library/Jupyter/runtime/nbserver-55223-open.html
-    Or copy and paste one of these URLs:
-        http://localhost:8888/?token=ea48b1df457bf2b5961654e54872b2f43013d1e2eb02d3e0
-     or http://127.0.0.1:8888/?token=ea48b1df457bf2b5961654e54872b2f43013d1e2eb02d3e0</pre>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/jupyter-lab.png" alt="jupyter lab">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/running-clojure-in-jupyter-lab.png" alt="running clojure in jupyter lab">
-</div>
-</div>
-<div class="paragraph">
-<p><span class="keyseq"><kbd>CTRL</kbd>+<kbd>C</kbd></span></p>
-</div>
 </div>
 </div>
 </div>
@@ -2288,7 +2238,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-04-17 23:45:28 +0530
+Last updated 2022-07-07 00:47:02 +0530
 </div>
 </div>
 </body>
