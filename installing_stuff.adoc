@@ -1,9 +1,24 @@
 == Installing Stuff
 
-https://www.clojure.org/guides/getting_started
+=== Clojure
 
+Clojure works on all OS platforms, you can install Clojure following the the link here. Once done its time for ius to check the Clojure REPL. To know what is REPL, checkout https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop. Type `clj` your terminal and you must get something like this:
 
-=== clj
+----
+$ clj
+Clojure 1.10.2
+user=> 
+----
+
+That's the Clojure REPL. Now type `(println "Hello World")` in it as shown below and press kbd:[ENTER]
+
+----
+$ clj
+Clojure 1.10.2
+user=> (println "Hello World")
+----
+
+You will see `Hello World` printed out as shown:
 
 ----
 $ clj
@@ -14,18 +29,20 @@ nil
 user=>
 ----
 
-kbd:[CTRL + D]
+There is also a `nil` after the `Hello World`, don't worry much about that, we will see what is that later. After the nil you see once again `user=>` which means Cloure is waiting for your type another command for it to execute.
+
+If you want to come out of this clojure REPL, type kbd:[CTRL + D]. You will get back to normal GNU/Linux prompt.
 
 === Leningen
 
+https://leiningen.org/
 
-=== Clojure in file
-
-.hello_world.clj
-[source,clojure,linenums]
-----
-(println "Hello World")
-----
 
 === Configuring IDE
+
+==== Installing VSCodium
+
+==== Calva
+
+==== Joyride
 

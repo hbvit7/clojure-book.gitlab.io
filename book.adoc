@@ -2,6 +2,7 @@
 :toc: left
 :experimental:
 :source-highlighter: coderay
+:code-url: https://gitlab.com/clojure-book/code/-/raw/master
 
 include::copyright.adoc[]
 
@@ -21,7 +22,7 @@ include::installing_stuff.adoc[]
 
 include::first_steps.adoc[]
 
-include::data_structures.adoc[]
+include::data_Structures.adoc[]
 
 == Functions
 

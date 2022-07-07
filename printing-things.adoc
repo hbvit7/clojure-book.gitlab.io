@@ -1,0 +1,54 @@
+=== Printing Things
+
+https://gitlab.com/clojure-book/code/-/blob/master/printing-things.clj 
+
+[source, clojure]
+----
+(println "Hello World!")
+----
+
+----
+Hello World!
+nil
+----
+
+[source, clojure]
+----
+(println "Hello World!") ; Says Hello to this world
+----
+
+
+----
+Hello World!
+nil
+----
+
+[source, clojure]
+----
+;; This program says helo to this world
+(println "Hello World!")
+----
+
+----
+Hello World!
+nil
+----
+
+[source, clojure]
+----
+(println "Hello World!" "Try staying cool.")
+----
+
+----
+Hello World! Try staying cool.
+nil
+----
+
+[source, clojure]
+----
+(str "Hello" " " "World")
+----
+
+----
+"Hello World"
+----

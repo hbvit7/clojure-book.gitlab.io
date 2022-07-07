@@ -546,18 +546,19 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_getting_this_book">Getting this book</a></li>
 <li><a href="#_installing_stuff">1. Installing Stuff</a>
 <ul class="sectlevel2">
-<li><a href="#_clj">1.1. clj</a></li>
+<li><a href="#_clojure">1.1. Clojure</a></li>
 <li><a href="#_leningen">1.2. Leningen</a></li>
-<li><a href="#_clojure_in_file">1.3. Clojure in file</a></li>
-<li><a href="#_configuring_ide">1.4. Configuring IDE</a></li>
+<li><a href="#_configuring_ide">1.3. Configuring IDE</a></li>
 </ul>
 </li>
 <li><a href="#_first_steps">2. First Steps</a>
 <ul class="sectlevel2">
-<li><a href="#_printing_things">2.1. Printing Things</a></li>
-<li><a href="#_arithmetic">2.2. Arithmetic</a></li>
-<li><a href="#_variables">2.3. Variables</a></li>
-<li><a href="#_strings">2.4. Strings</a></li>
+<li><a href="#_repl">2.1. REPL</a></li>
+<li><a href="#_printing_things">2.2. Printing Things</a></li>
+<li><a href="#_arithmetic">2.3. Arithmetic</a></li>
+<li><a href="#_variables">2.4. Variables</a></li>
+<li><a href="#_strings">2.5. Strings</a></li>
+<li><a href="#_clojure_in_file">2.6. Clojure in file</a></li>
 </ul>
 </li>
 <li><a href="#_data_structures">3. Data Structures</a>
@@ -677,11 +678,31 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div class="sect1">
 <h2 id="_installing_stuff">1. Installing Stuff</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://www.clojure.org/guides/getting_started" class="bare">https://www.clojure.org/guides/getting_started</a></p>
-</div>
 <div class="sect2">
-<h3 id="_clj">1.1. clj</h3>
+<h3 id="_clojure">1.1. Clojure</h3>
+<div class="paragraph">
+<p>Clojure works on all OS platforms, you can install Clojure following the the link here. Once done its time for ius to check the Clojure REPL. To know what is REPL, checkout <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop" class="bare">https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop</a>. Type <code>clj</code> your terminal and you must get something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj
+Clojure 1.10.2
+user=&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s the Clojure REPL. Now type <code>(println "Hello World")</code> in it as shown below and press <kbd>ENTER</kbd></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj
+Clojure 1.10.2
+user=&gt; (println "Hello World")</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You will see <code>Hello World</code> printed out as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>$ clj
@@ -693,29 +714,32 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span></p>
+<p>There is also a <code>nil</code> after the <code>Hello World</code>, don&#8217;t worry much about that, we will see what is that later. After the nil you see once again <code>user&#8658;</code> which means Cloure is waiting for your type another command for it to execute.</p>
+</div>
+<div class="paragraph">
+<p>If you want to come out of this clojure REPL, type <span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span>. You will get back to normal GNU/Linux prompt.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_leningen">1.2. Leningen</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_clojure_in_file">1.3. Clojure in file</h3>
-<div class="listingblock">
-<div class="title">hello_world.clj</div>
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre>(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)</pre></td>
-</tr></table></code></pre>
-</div>
+<div class="paragraph">
+<p><a href="https://leiningen.org/" class="bare">https://leiningen.org/</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_configuring_ide">1.4. Configuring IDE</h3>
+<h3 id="_configuring_ide">1.3. Configuring IDE</h3>
+<div class="sect3">
+<h4 id="_installing_vscodium">1.3.1. Installing VSCodium</h4>
 
+</div>
+<div class="sect3">
+<h4 id="_calva">1.3.2. Calva</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_joyride">1.3.3. Joyride</h4>
+
+</div>
 </div>
 </div>
 </div>
@@ -723,43 +747,40 @@ user=&gt;</pre>
 <h2 id="_first_steps">2. First Steps</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_printing_things">2.1. Printing Things</h3>
+<h3 id="_repl">2.1. REPL</h3>
 <div class="paragraph">
-<p>*In[2]:*</p>
+<p>REPL in Terminal</p>
+</div>
+<div class="paragraph">
+<p>REPL in VSCode</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_printing_things">2.2. Printing Things</h3>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/blob/master/printing-things.clj" class="bare">https://gitlab.com/clojure-book/code/-/blob/master/printing-things.clj</a></p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[2]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Hello World!
 nil</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[3]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>) <span class="comment">; Says Hello to this world</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[3]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Hello World!
 nil</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[4]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -767,25 +788,16 @@ nil</pre>
 (<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[4]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Hello World!
 nil</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*In[6]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Try staying cool.</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[6]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -793,16 +805,10 @@ nil</pre>
 nil</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*In[8]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">str</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[8]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -811,189 +817,121 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_arithmetic">2.2. Arithmetic</h3>
-<div class="paragraph">
-<p>*In[10]:*</p>
-</div>
+<h3 id="_arithmetic">2.3. Arithmetic</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">+</span> <span class="integer">40</span> <span class="integer">2</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[10]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>42</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[11]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">-</span> <span class="integer">44</span> <span class="integer">2</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[11]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>42</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[12]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">*</span> <span class="integer">6</span> <span class="integer">7</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[12]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>42</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[16]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">210</span> <span class="integer">5</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[16]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>42</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[17]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span> <span class="integer">5</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[17]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>15</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[18]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> (<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span> <span class="integer">5</span>) <span class="integer">5</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[18]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>3</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[19]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>) <span class="comment">; this gives out a ratio, a clojure data type</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[19]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>1/6</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[24]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="float">6.0</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[24]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>0.16666666666666666</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[25]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="float">2.0</span> <span class="integer">3</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[25]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>0.16666666666666666</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[26]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="integer">2</span> <span class="float">3.0</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[26]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>0.16666666666666666</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*In[21]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">quot</span> <span class="integer">14</span> <span class="integer">5</span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[21]:*
-----2----</p>
+<div class="listingblock">
+<div class="content">
+<pre>2</pre>
 </div>
-<div class="paragraph">
-<p>*In[22]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">rem</span> <span class="integer">14</span> <span class="integer">5</span>)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[22]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1002,7 +940,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_variables">2.3. Variables</h3>
+<h3 id="_variables">2.4. Variables</h3>
 <div class="paragraph">
 <p>*In[28]:*</p>
 </div>
@@ -1069,7 +1007,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_strings">2.4. Strings</h3>
+<h3 id="_strings">2.5. Strings</h3>
 <div class="paragraph">
 <p>*In[34]:*</p>
 </div>
@@ -1116,6 +1054,19 @@ nil</pre>
 <div class="listingblock">
 <div class="content">
 <pre>"12345 and so on..."</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_clojure_in_file">2.6. Clojure in file</h3>
+<div class="listingblock">
+<div class="title"><a href="https://gitlab.com/clojure-book/code/-/raw/master/hello_world.clj">hello_world.clj</a></div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure"><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+</pre></td>
+  <td class="code"><pre>(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)</pre></td>
+</tr></table></code></pre>
 </div>
 </div>
 </div>
@@ -2203,7 +2154,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-07 01:08:13 +0530
+Last updated 2022-07-07 16:27:11 +0530
 </div>
 </div>
 </body>
