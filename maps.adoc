@@ -1,0 +1,234 @@
+=== Maps
+
+
+
+[source, clojure]
+----
+{ "name" "Bashir" "age" 12 }
+----
+
+
+Output
+----
+{"name" "Bashir", "age" 12}
+----
+
+
+
+[source, clojure]
+----
+(hash-map "name" "Bashir"
+          "age" 20)
+----
+
+
+Output
+----
+{"age" 20, "name" "Bashir"}
+----
+
+
+
+[source, clojure]
+----
+(def friend { "name" "Bashir" "age" 12 })
+----
+
+
+Output
+----
+#'user/friend
+----
+
+
+
+[source, clojure]
+----
+(get friend "name")
+----
+
+
+Output
+----
+"Bashir"
+----
+
+
+
+[source, clojure]
+----
+(friend "name")
+----
+
+
+Output
+----
+"Bashir"
+----
+
+
+
+[source, clojure]
+----
+(type "name")
+----
+
+
+Output
+----
+java.lang.String
+----
+
+
+
+[source, clojure]
+----
+(type :name)
+----
+
+
+Output
+----
+clojure.lang.Keyword
+----
+
+
+
+[source, clojure]
+----
+(def wise-friend {:name "Periyaar"
+                  :age 90})
+----
+
+
+Output
+----
+#'user/wise-friend
+----
+
+
+
+[source, clojure]
+----
+(wise-friend :name)
+----
+
+
+Output
+----
+"Periyaar"
+----
+
+
+
+[source, clojure]
+----
+(get wise-friend :age)
+----
+
+
+Output
+----
+90
+----
+
+
+
+[source, clojure]
+----
+(print (wise-friend :name)
+       "is very wise.")
+----
+
+
+Output
+----
+Periyaar is very wise.nil
+----
+
+
+
+[source, clojure]
+----
+(assoc wise-friend :belief "Rationalism")
+----
+
+
+Output
+----
+{:name "Periyaar", :age 90, :belief "Rationalism"}
+----
+
+
+
+[source, clojure]
+----
+(wise-friend :belief)
+----
+
+
+Output
+----nil----
+
+
+
+[source, clojure]
+----
+(wise-friend :age)
+----
+
+
+Output
+----90----
+
+
+
+[source, clojure]
+----
+(dissoc wise-friend :age)
+----
+
+
+Output
+----
+{:name "Periyaar"}
+----
+
+
+
+[source, clojure]
+----
+(keys wise-friend)
+----
+
+
+Output
+----
+(:name :age)
+----
+
+
+
+[source, clojure]
+----
+(vals wise-friend)
+----
+
+
+Output
+----
+("Periyaar" 90)
+----
+
+
+
+[source, clojure]
+----
+(assoc wise-friend "name" "Ramasamy")
+----
+
+
+Output
+----
+{:name "Periyaar", :age 90, "name" "Ramasamy"}
+----

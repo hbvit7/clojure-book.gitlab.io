@@ -1,0 +1,170 @@
+=== Vectors
+
+
+
+[source, clojure]
+----
+[1 2 3 4] ; a very simple vector
+----
+
+
+Output
+----
+[1 2 3 4]
+----
+
+
+
+[source, clojure]
+----
+(vector 1 2 3)
+----
+
+
+Output
+----
+[1 2 3]
+----
+
+
+
+[source, clojure]
+----
+[1 true "Bashir"] ; vector containing multiple data types
+----
+
+
+Output
+----
+[1 true "Bashir"]
+----
+
+
+
+[source, clojure]
+----
+(def friends
+    ["Ram" "Bashir" "Antony" "Buddha"])
+----
+
+
+Output
+----#'user/friends----
+
+
+
+[source, clojure]
+----
+(first friends)
+----
+
+
+Output
+----
+"Ram"
+----
+
+
+
+[source, clojure]
+----
+(rest friends)
+----
+
+
+Output
+----
+("Bashir" "Antony" "Buddha")
+----
+
+
+
+[source, clojure]
+----
+(type friends)
+----
+
+
+Output
+----
+clojure.lang.PersistentVector
+----
+
+
+
+[source, clojure]
+----
+(type (rest friends))
+----
+
+
+Output
+----
+clojure.lang.PersistentVector$ChunkedSeq
+----
+
+
+
+[source, clojure]
+----
+(nth friends 3)
+----
+
+
+Output
+----
+"Buddha"
+----
+
+
+
+[source, clojure]
+----
+(friends 3)
+----
+
+
+Output
+----
+"Buddha"
+----
+
+
+
+[source, clojure]
+----
+(conj friends "Periyaar")
+----
+
+
+Output
+----
+["Ram" "Bashir" "Antony" "Buddha" "Periyaar"]
+----
+
+
+
+[source, clojure]
+----
+(println friends)
+----
+
+
+Output
+----
+[Ram Bashir Antony Buddha]
+nil
+----
+
+
+
+[source, clojure]
+----
+(cons "Periyaar" friends)
+----
+
+
+Output
+----
+("Periyaar" "Ram" "Bashir" "Antony" "Buddha")
+----

@@ -1,0 +1,318 @@
+=== Sets
+
+
+
+[source, clojure]
+----
+#{1 2 3 4}
+----
+
+
+Output
+----
+#{1 4 3 2}
+----
+
+
+
+[source, clojure]
+----
+(type #{1 2 3 4})
+----
+
+
+Output
+----
+clojure.lang.PersistentHashSet
+----
+
+
+
+[source, clojure]
+----
+#{1 2 3 4 4}
+----
+
+
+Output
+----
+Syntax error reading source at (REPL:1:13).
+Duplicate key: 4
+
+
+    PersistentHashSet.java:    68 clojure.lang.PersistentHashSet/createWithCheck
+
+           LispReader.java:  1366 clojure.lang.LispReader$SetReader/invoke
+
+           LispReader.java:   853 clojure.lang.LispReader$DispatchReader/invoke
+
+           LispReader.java:   285 clojure.lang.LispReader/read
+
+                  core.clj:  3768 clojure.core$read/invokeStatic
+
+                  core.clj:  3741 clojure.core$read/invoke
+
+                  main.clj:   433 clojure.main$repl$read_eval_print__9086$fn__9087/invoke
+
+                  main.clj:   432 clojure.main$repl$read_eval_print__9086/invoke
+
+                  main.clj:   458 clojure.main$repl$fn__9095/invoke
+
+                  main.clj:   368 clojure.main$repl/doInvoke
+
+               RestFn.java:  1523 clojure.lang.RestFn/invoke
+
+                  AFn.java:    22 clojure.lang.AFn/run
+
+                  AFn.java:    22 clojure.lang.AFn/run
+
+               Thread.java:   745 java.lang.Thread/run
+
+----
+
+
+
+[source, clojure]
+----
+#{"Apple" "Orange" "Mango" "Banana"}
+----
+
+
+Output
+----
+#{"Mango" "Orange" "Apple" "Banana"}
+----
+
+
+
+[source, clojure]
+----
+#{"Apple" "Orange" "Mango" "Banana" "Apple"}
+----
+
+
+Output
+----
+Syntax error reading source at (REPL:1:45).
+Duplicate key: Apple
+
+
+    PersistentHashSet.java:    68 clojure.lang.PersistentHashSet/createWithCheck
+
+           LispReader.java:  1366 clojure.lang.LispReader$SetReader/invoke
+
+           LispReader.java:   853 clojure.lang.LispReader$DispatchReader/invoke
+
+           LispReader.java:   285 clojure.lang.LispReader/read
+
+                  core.clj:  3768 clojure.core$read/invokeStatic
+
+                  core.clj:  3741 clojure.core$read/invoke
+
+                  main.clj:   433 clojure.main$repl$read_eval_print__9086$fn__9087/invoke
+
+                  main.clj:   432 clojure.main$repl$read_eval_print__9086/invoke
+
+                  main.clj:   458 clojure.main$repl$fn__9095/invoke
+
+                  main.clj:   368 clojure.main$repl/doInvoke
+
+               RestFn.java:  1523 clojure.lang.RestFn/invoke
+
+                  AFn.java:    22 clojure.lang.AFn/run
+
+                  AFn.java:    22 clojure.lang.AFn/run
+
+               Thread.java:   745 java.lang.Thread/run
+
+----
+
+
+
+[source, clojure]
+----
+(def fruits #{"Apple" "Orange" "Mango" "Banana"})
+----
+
+
+Output
+----
+#'user/fruits
+----
+
+
+
+[source, clojure]
+----
+(contains? fruits "Banana")
+----
+
+
+Output
+----
+true
+----
+
+
+
+[source, clojure]
+----
+(contains? fruits "Jack Fruit")
+----
+
+
+Output
+----
+false
+----
+
+
+
+[source, clojure]
+----
+(fruits "Banana")
+----
+
+
+Output
+----
+"Banana"
+----
+
+
+
+[source, clojure]
+----
+(fruits "Jack Fruit")
+----
+
+
+Output
+----
+nil
+----
+
+
+
+[source, clojure]
+----
+("Banana" fruits)
+----
+
+
+Output
+----
+Execution error (ClassCastException) at user/eval5624 (REPL:1).
+java.lang.String cannot be cast to clojure.lang.IFn
+
+
+       core.clj:  3214 clojure.core$eval/invokeStatic
+
+       core.clj:  3210 clojure.core$eval/invoke
+
+       main.clj:   437 clojure.main$repl$read_eval_print__9086$fn__9089/invoke
+
+       main.clj:   458 clojure.main$repl$fn__9095/invoke
+
+       main.clj:   368 clojure.main$repl/doInvoke
+
+    RestFn.java:  1523 clojure.lang.RestFn/invoke
+
+       AFn.java:    22 clojure.lang.AFn/run
+
+       AFn.java:    22 clojure.lang.AFn/run
+
+    Thread.java:   745 java.lang.Thread/run
+
+----
+
+
+
+[source, clojure]
+----
+(def programming-languages #{:ruby :python :clojure})
+----
+
+
+Output
+----
+#'user/programming-languages
+----
+
+
+
+[source, clojure]
+----
+(contains? programming-languages :ruby)
+----
+
+
+Output
+----
+true
+----
+
+
+
+[source, clojure]
+----
+(contains? programming-languages :java)
+----
+
+
+Output
+----false----
+
+
+
+[source, clojure]
+----
+(programming-languages :ruby)
+----
+
+
+Output
+----
+:ruby
+----
+
+
+
+[source, clojure]
+----
+(:ruby programming-languages)
+----
+
+
+Output
+----
+:ruby
+----
+
+
+
+[source, clojure]
+----
+(conj programming-languages :perl)
+----
+
+
+Output
+----
+#{:clojure :python :perl :ruby}
+----
+
+
+
+[source, clojure]
+----
+(disj programming-languages :perl)
+----
+
+
+Output
+----
+#{:clojure :python :ruby}
+----
+
+

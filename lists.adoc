@@ -1,0 +1,154 @@
+=== Lists
+
+
+
+[source, clojure]
+----
+'(1 2 3 4)
+----
+
+
+Output
+----
+(1 2 3 4)
+----
+
+
+
+[source, clojure]
+----
+(list 1 2 3)
+----
+
+
+Output
+----
+(1 2 3)
+----
+
+
+
+[source, clojure]
+----
+(list 1 2 3)
+----
+
+
+Output
+----
+(1 2 3)
+----
+
+
+
+[source, clojure]
+----
+(def friends-list
+    '("Ram" "Bashir" "Antony" "Buddha"))
+----
+
+
+Output
+----
+#'user/friends-list
+----
+
+
+
+[source, clojure]
+----
+(count friends-list)
+----
+
+
+Output
+----
+4
+----
+
+
+
+[source, clojure]
+----
+(first friends-list)
+----
+
+
+Output
+----
+"Ram"
+----
+
+
+
+[source, clojure]
+----
+(rest friends-list)
+----
+
+
+Output
+----
+("Bashir" "Antony" "Buddha")
+----
+
+
+
+[source, clojure]
+----
+(nth friends-list 3)
+----
+
+
+Output
+----
+"Buddha"
+----
+
+
+
+[source, clojure]
+----
+(friends-list 3)
+----
+
+
+Output
+----
+Execution error (ClassCastException) at user/eval5554 (REPL:1).
+clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
+
+
+       core.clj:  3214 clojure.core$eval/invokeStatic
+
+       core.clj:  3210 clojure.core$eval/invoke
+
+       main.clj:   437 clojure.main$repl$read_eval_print__9086$fn__9089/invoke
+
+       main.clj:   458 clojure.main$repl$fn__9095/invoke
+
+       main.clj:   368 clojure.main$repl/doInvoke
+
+    RestFn.java:  1523 clojure.lang.RestFn/invoke
+
+       AFn.java:    22 clojure.lang.AFn/run
+
+       AFn.java:    22 clojure.lang.AFn/run
+
+    Thread.java:   745 java.lang.Thread/run
+
+----
+
+
+
+[source, clojure]
+----
+(conj friends-list "Periyaar")
+----
+
+
+Output
+----
+("Periyaar" "Ram" "Bashir" "Antony" "Buddha")
+----
+
