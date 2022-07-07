@@ -35,6 +35,8 @@ If you want to come out of this clojure REPL, type kbd:[CTRL + D]. You will get 
 
 === Leningen
 
+image::https://leiningen.org/img/leiningen.jpg[]
+
 https://leiningen.org/
 
 

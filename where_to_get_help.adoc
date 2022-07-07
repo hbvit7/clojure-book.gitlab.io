@@ -1,6 +1,6 @@
 == Where to get help
 
-If you are new to programming, or even if you are a seasoned programmer, chances are you could be stuck and may need help from time time. For Clojure people these channels listed in this chapter may help.
+If you are new to programming, or even if you are a seasoned programmer, chances are you could be stuck and may need help from time to time. For Clojure people these channels listed in this chapter may help.
 
 === Local communities
 
@@ -14,8 +14,8 @@ The Clojure website may be a good starting point to browse for help if you have 
 
 The official Clojure forum is here https://ask.clojure.org/, one may join it and start asking questions. Some of my initial doubts were cleared by this forum.
 
-Clojure has a second forum here https://clojureverse.org/, its called Clojureverse this one too seems to be popular.
+Clojure has a second forum here https://clojureverse.org/, it's called Clojureverse this one too seems to be popular.
 
 === Reddit
 
-Reddit also has a Clojure community. If you are an reddit user, one may find the community here https://www.reddit.com/r/Clojure/.
+Reddit also has a Clojure community. If you are a reddit user, one may find the community here https://www.reddit.com/r/Clojure/.

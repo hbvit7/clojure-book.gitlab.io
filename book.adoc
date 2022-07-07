@@ -4,6 +4,7 @@ Karthikeyan.A.K <mindaslab@protonmail.com>
 :experimental:
 :source-highlighter: coderay
 :code-url: https://gitlab.com/clojure-book/code/-/raw/master
+:diagram-url: https://gitlab.com/clojure-book/digrams/-/raw/master
 
 include::copyright.adoc[]
 
@@ -20,6 +21,8 @@ include::getting_this_book.adoc[]
 :sectnums:
 
 include::installing_stuff.adoc[]
+
+include::hosted-language.adoc[]
 
 include::first_steps.adoc[]
 

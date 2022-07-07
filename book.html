@@ -556,34 +556,35 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_configuring_ide">1.3. Configuring IDE</a></li>
 </ul>
 </li>
-<li><a href="#_first_steps">2. First Steps</a>
+<li><a href="#_hosted_language">2. Hosted Language</a></li>
+<li><a href="#_first_steps">3. First Steps</a>
 <ul class="sectlevel2">
-<li><a href="#_repl">2.1. REPL</a></li>
-<li><a href="#_printing_things">2.2. Printing Things</a></li>
-<li><a href="#_arithmetic">2.3. Arithmetic</a></li>
-<li><a href="#_variables">2.4. Variables</a></li>
-<li><a href="#_strings">2.5. Strings</a></li>
-<li><a href="#_clojure_in_file">2.6. Clojure in file</a></li>
+<li><a href="#_repl">3.1. REPL</a></li>
+<li><a href="#_printing_things">3.2. Printing Things</a></li>
+<li><a href="#_arithmetic">3.3. Arithmetic</a></li>
+<li><a href="#_variables">3.4. Variables</a></li>
+<li><a href="#_strings">3.5. Strings</a></li>
+<li><a href="#_clojure_in_file">3.6. Clojure in file</a></li>
 </ul>
 </li>
-<li><a href="#_data_structures">3. Data Structures</a>
+<li><a href="#_data_structures">4. Data Structures</a>
 <ul class="sectlevel2">
-<li><a href="#_vectors">3.1. Vectors</a></li>
-<li><a href="#_lists">3.2. Lists</a></li>
-<li><a href="#_sets">3.3. Sets</a></li>
-<li><a href="#_maps">3.4. Maps</a></li>
+<li><a href="#_vectors">4.1. Vectors</a></li>
+<li><a href="#_lists">4.2. Lists</a></li>
+<li><a href="#_sets">4.3. Sets</a></li>
+<li><a href="#_maps">4.4. Maps</a></li>
 </ul>
 </li>
-<li><a href="#_functions">4. Functions</a></li>
-<li><a href="#_logic_and_comparison">5. Logic and comparison</a>
+<li><a href="#_functions">5. Functions</a></li>
+<li><a href="#_logic_and_comparison">6. Logic and comparison</a>
 <ul class="sectlevel2">
-<li><a href="#_whats_true_and_false">5.1. Whats true and false</a></li>
+<li><a href="#_whats_true_and_false">6.1. Whats true and false</a></li>
 </ul>
 </li>
-<li><a href="#_conditions_and_branching">6. Conditions and branching</a>
+<li><a href="#_conditions_and_branching">7. Conditions and branching</a>
 <ul class="sectlevel2">
-<li><a href="#_if">6.1. if</a></li>
-<li><a href="#_do_when">6.2. do when</a></li>
+<li><a href="#_if">7.1. if</a></li>
+<li><a href="#_do_when">7.2. do when</a></li>
 </ul>
 </li>
 </ul>
@@ -618,19 +619,19 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <h2 id="_why_this_book">Why this book?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>For unknown reason very smart programmers are using Clojure, I haven&#8217;t figured out why. The writing of this book is to figure out why. My last job was in a medical coding company where we maintained 3 Rails app, I got to code in two of them, one had 0.1+ million lines of code, was headed by a guy who knew how to code and was maintained okay, other had 0.2+ million lines of code, had no test, headed by a guy who did not know how to code but could just do politics, that project prior to him was headed by people who did not know how to write maintainable software and senior developers in the project had to bear the brunt of history. It showed me how screwed Rails app can get if left unattended, so I want to search for something thats more idiot proof.</p>
+<p>For unknown reason very smart programmers are using Clojure, I haven&#8217;t figured out why. The writing of this book is to figure out why. My last job was in a medical coding company where we maintained 3 Rails app, I got to code in two of them, one had 0.1+ million lines of code, was headed by a guy who knew how to code and was maintained okay, other one had 0.2+ million lines of code, had no test, headed by a guy who did not know how to code but could just do politics, that project prior to him was headed by people who did not know how to write maintainable software and senior developers in the project had to bear the brunt of history. It showed me how screwed Rails app can get if left unattended, so I want to search for something that&#8217;s more idiot-proof.</p>
 </div>
 <div class="paragraph">
 <p>When I first met Ruby on Rails, I was very sure PHP will be the king of web page making, and it&#8217;s true even today, but Rails changed my life and made me more productive. I will not say that with Rails we cannot handle massive projects, in my present job extremely skilled people and me are doing just that, but then this book is just a search, a very similar search I did in my PHP days when I got a hint of the power of Ruby, and this book is to document my search, if Clojure is good enough or not.</p>
 </div>
 <div class="paragraph">
-<p>Another reason why I am going into Clojure is because of ClojureScript. If I can use the same language on both client and server side and if its not dreaded JavaScript, who wouldn&#8217;t want to explore such language? Lisp seems to be a very old language and Clojure seems to be a Lisp dialect. Some how the inventors of Lisp seem to have struck the right balance early on, and I need to find out what it is.</p>
+<p>Another reason why I am going into Clojure is because of Clojure Script. If I can use the same language on both client and server side and if its not dreaded JavaScript, who wouldn&#8217;t want to explore such language? Lisp seems to be a very old language and Clojure seems to be a Lisp dialect. Somehow the inventors of Lisp seem to have struck the right balance early on, and I need to find out what it is.</p>
 </div>
 <div class="paragraph">
-<p>I have lot of Data Science ideas, and looks like Clojure is fast and powerful enough to be used in those fields too. I want  to explore that too, though I wonder if JVM ever runs on GPU for fast computation.</p>
+<p>I have lots of Data Science ideas, and looks like Clojure is fast and powerful enough to be used in those fields too. I want to explore that too, though I wonder if JVM ever runs on GPU for fast computation.</p>
 </div>
 <div class="paragraph">
-<p>One negative I find is JVM. Java is controlled by Oracle and its an evil enterprise like Microsoft and Apple. That&#8217;s the only negative I have , but let&#8217;s see how things go.</p>
+<p>One negative I find is JVM. Java is controlled by Oracle, and it&#8217;s an evil enterprise like Microsoft and Apple. That&#8217;s the only negative I have, but let&#8217;s see how things go.</p>
 </div>
 </div>
 </div>
@@ -638,7 +639,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <h2 id="_where_to_get_help">Where to get help</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you are new to programming, or even if you are a seasoned programmer, chances are you could be stuck and may need help from time time. For Clojure people these channels listed in this chapter may help.</p>
+<p>If you are new to programming, or even if you are a seasoned programmer, chances are you could be stuck and may need help from time to time. For Clojure people these channels listed in this chapter may help.</p>
 </div>
 <div class="sect2">
 <h3 id="_local_communities">Local communities</h3>
@@ -658,13 +659,13 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <p>The official Clojure forum is here <a href="https://ask.clojure.org/" class="bare">https://ask.clojure.org/</a>, one may join it and start asking questions. Some of my initial doubts were cleared by this forum.</p>
 </div>
 <div class="paragraph">
-<p>Clojure has a second forum here <a href="https://clojureverse.org/" class="bare">https://clojureverse.org/</a>, its called Clojureverse this one too seems to be popular.</p>
+<p>Clojure has a second forum here <a href="https://clojureverse.org/" class="bare">https://clojureverse.org/</a>, it&#8217;s called Clojureverse this one too seems to be popular.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_reddit">Reddit</h3>
 <div class="paragraph">
-<p>Reddit also has a Clojure community. If you are an reddit user, one may find the community here <a href="https://www.reddit.com/r/Clojure/" class="bare">https://www.reddit.com/r/Clojure/</a>.</p>
+<p>Reddit also has a Clojure community. If you are a reddit user, one may find the community here <a href="https://www.reddit.com/r/Clojure/" class="bare">https://www.reddit.com/r/Clojure/</a>.</p>
 </div>
 </div>
 </div>
@@ -724,6 +725,11 @@ user=&gt;</pre>
 </div>
 <div class="sect2">
 <h3 id="_leningen">1.2. Leningen</h3>
+<div class="imageblock">
+<div class="content">
+<img src="https://leiningen.org/img/leiningen.jpg" alt="leiningen">
+</div>
+</div>
 <div class="paragraph">
 <p><a href="https://leiningen.org/" class="bare">https://leiningen.org/</a></p>
 </div>
@@ -746,10 +752,20 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_first_steps">2. First Steps</h2>
+<h2 id="_hosted_language">2. Hosted Language</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="https://gitlab.com/clojure-book/digrams/-/raw/master/hosted-language.png" alt="hosted language">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_first_steps">3. First Steps</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_repl">2.1. REPL</h3>
+<h3 id="_repl">3.1. REPL</h3>
 <div class="paragraph">
 <p>REPL in Terminal</p>
 </div>
@@ -758,7 +774,7 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_printing_things">2.2. Printing Things</h3>
+<h3 id="_printing_things">3.2. Printing Things</h3>
 <div class="paragraph">
 <p><a href="https://gitlab.com/clojure-book/code/-/raw/master/printing-things.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/printing-things.clj</a></p>
 </div>
@@ -819,7 +835,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_arithmetic">2.3. Arithmetic</h3>
+<h3 id="_arithmetic">3.3. Arithmetic</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">+</span> <span class="integer">40</span> <span class="integer">2</span>)</code></pre>
@@ -942,7 +958,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_variables">2.4. Variables</h3>
+<h3 id="_variables">3.4. Variables</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">my-name</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Karthik</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -989,7 +1005,10 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_strings">2.5. Strings</h3>
+<h3 id="_strings">3.5. Strings</h3>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/strings.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/strings.clj</a></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">str</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">1 + 2 is </span><span class="delimiter">&quot;</span></span> (<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span>))</code></pre>
@@ -1022,7 +1041,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clojure_in_file">2.6. Clojure in file</h3>
+<h3 id="_clojure_in_file">3.6. Clojure in file</h3>
 <div class="listingblock">
 <div class="title"><a href="https://gitlab.com/clojure-book/code/-/raw/master/hello_world.clj">hello_world.clj</a></div>
 <div class="content">
@@ -1037,10 +1056,10 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_data_structures">3. Data Structures</h2>
+<h2 id="_data_structures">4. Data Structures</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_vectors">3.1. Vectors</h3>
+<h3 id="_vectors">4.1. Vectors</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">[<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>] <span class="comment">; a very simple vector</span></code></pre>
@@ -1210,7 +1229,10 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_lists">3.2. Lists</h3>
+<h3 id="_lists">4.2. Lists</h3>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/list.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/list.clj</a></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">'(<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>)</code></pre>
@@ -1364,7 +1386,10 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect2">
-<h3 id="_sets">3.3. Sets</h3>
+<h3 id="_sets">4.3. Sets</h3>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/sets.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/sets.clj</a></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">#{<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>}</code></pre>
@@ -1677,7 +1702,10 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect2">
-<h3 id="_maps">3.4. Maps</h3>
+<h3 id="_maps">4.4. Maps</h3>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/maps.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/maps.clj</a></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">{ <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Bashir</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">age</span><span class="delimiter">&quot;</span></span> <span class="integer">12</span> }</code></pre>
@@ -1911,29 +1939,29 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_functions">4. Functions</h2>
+<h2 id="_functions">5. Functions</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_logic_and_comparison">5. Logic and comparison</h2>
+<h2 id="_logic_and_comparison">6. Logic and comparison</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_whats_true_and_false">5.1. Whats true and false</h3>
+<h3 id="_whats_true_and_false">6.1. Whats true and false</h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_conditions_and_branching">6. Conditions and branching</h2>
+<h2 id="_conditions_and_branching">7. Conditions and branching</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_if">6.1. if</h3>
+<h3 id="_if">7.1. if</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_do_when">6.2. do when</h3>
+<h3 id="_do_when">7.2. do when</h3>
 
 </div>
 </div>
@@ -1941,7 +1969,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-07 19:12:04 +0530
+Last updated 2022-07-07 22:58:01 +0530
 </div>
 </div>
 </body>

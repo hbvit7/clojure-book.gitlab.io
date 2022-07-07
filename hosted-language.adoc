@@ -1,0 +1,3 @@
+== Hosted Language
+
+image::{diagram-url}/hosted-language.png[]

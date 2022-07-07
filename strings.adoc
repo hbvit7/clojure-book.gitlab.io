@@ -1,5 +1,7 @@
 === Strings
 
+{code-url}/strings.clj
+
 [source, clojure]
 ----
 (str "1 + 2 is " (+ 1 2))
