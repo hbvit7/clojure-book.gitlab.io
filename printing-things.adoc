@@ -1,6 +1,6 @@
 === Printing Things
 
-https://gitlab.com/clojure-book/code/-/blob/master/printing-things.clj 
+{code-url}/printing-things.clj 
 
 [source, clojure]
 ----

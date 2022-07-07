@@ -1,0 +1,41 @@
+=== Variables
+
+[source, clojure]
+----
+(def my-name "Karthik")
+----
+
+----
+#'user/my-name
+----
+
+[source, clojure]
+----
+(println my-name)
+----
+
+----
+Karthik
+nil
+----
+
+[source, clojure]
+----
+(println "Hello" my-name)
+----
+
+----
+Hello Karthik
+nil
+----
+
+[source, clojure]
+----
+(def greeting (str "Hello " my-name "!"))
+(println greeting)
+----
+
+----
+Hello Karthik!
+nil
+----

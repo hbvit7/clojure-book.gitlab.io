@@ -758,7 +758,7 @@ user=&gt;</pre>
 <div class="sect2">
 <h3 id="_printing_things">2.2. Printing Things</h3>
 <div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/blob/master/printing-things.clj" class="bare">https://gitlab.com/clojure-book/code/-/blob/master/printing-things.clj</a></p>
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/printing-things.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/printing-things.clj</a></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -941,28 +941,20 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_variables">2.4. Variables</h3>
-<div class="paragraph">
-<p>*In[28]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">my-name</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Karthik</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*Out[28]:*
-----#'user/my-name----</p>
+<div class="listingblock">
+<div class="content">
+<pre>#'user/my-name</pre>
 </div>
-<div class="paragraph">
-<p>*In[30]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> my-name)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[30]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -970,16 +962,10 @@ nil</pre>
 nil</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*In[32]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span> my-name)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[32]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -987,17 +973,11 @@ nil</pre>
 nil</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*In[33]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">greeting</span> (<span class="keyword">str</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello </span><span class="delimiter">&quot;</span></span> my-name <span class="string"><span class="delimiter">&quot;</span><span class="content">!</span><span class="delimiter">&quot;</span></span>))
 (<span class="keyword">println</span> greeting)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[33]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1008,48 +988,30 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_strings">2.5. Strings</h3>
-<div class="paragraph">
-<p>*In[34]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">str</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">1 + 2 is </span><span class="delimiter">&quot;</span></span> (<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span>))</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[34]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>"1 + 2 is 3"</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*In[35]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">count</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[35]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>5</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>*In[36]:*</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">str</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span> <span class="integer">5</span> <span class="string"><span class="delimiter">&quot;</span><span class="content"> and so on...</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>*Out[36]:*</p>
 </div>
 <div class="listingblock">
 <div class="content">

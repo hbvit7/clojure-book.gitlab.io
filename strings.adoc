@@ -1,0 +1,28 @@
+=== Strings
+
+[source, clojure]
+----
+(str "1 + 2 is " (+ 1 2))
+----
+
+----
+"1 + 2 is 3"
+----
+
+[source, clojure]
+----
+(count "Hello")
+----
+
+----
+5
+----
+
+[source, clojure]
+----
+(str 1 2 3 4 5 " and so on...")
+----
+
+----
+"12345 and so on..."
+----
