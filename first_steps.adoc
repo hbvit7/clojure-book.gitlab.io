@@ -1,10 +1,6 @@
 == First Steps
 
-=== REPL
-
-REPL in Terminal
-
-REPL in VSCode
+include::repl.adoc[]
 
 include::printing-things.adoc[]
 

@@ -1,8 +1,8 @@
 == Hosted Language
 
-image::{diagram-url}/hosted-language.png[]
+image::images/hosted-language.png[]
 
-Clojure is a hosted language, which means its author does not intend it to be compiled to machine code that directly runs on a processor or an operating system. Clojure was initially intended to run on JRE (Java Runtime Environment), and gets converted to byte code. Since Clojure is hosted people found ways to get Clojure to get compiled to JavaScript, hence was born Clojure Script. Clojure can be compiled to Common Language Runtime, the same thing what Dot Net languages gets compiled too. Clojure also gets compiled to Dart. So by knowing Clojure one could target these platforms.
+Clojure is a hosted language, which means its author does not intend it to be compiled to machine code that directly runs on a processor or an operating system. Clojure was initially intended to run on JRE (Java Runtime Environment), and gets converted to byte code. Since Clojure is hosted people found ways to get Clojure to get compiled to JavaScript, hence was born Clojure Script https://clojurescript.org/. Clojure can be compiled to Common Language Runtime https://clojure.org/about/clojureclr, the same thing what Dot Net family of languages gets compiled too. Clojure also gets compiled to Dart https://github.com/Tensegritics/ClojureDart. So by knowing Clojure one could target these platforms.
 
 One should note that Clojure never promised WORA (write once run anywhere) like Java does, instead you need to change your code when you write Clojure code targeting different platforms. What you get is uniform Clojure Syntax everywhere.
 

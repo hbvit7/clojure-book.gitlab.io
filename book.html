@@ -584,6 +584,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_do_when">8.2. do when</a></li>
 </ul>
 </li>
+<li><a href="#_what_is_clojure_code">9. What is Clojure code</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -792,11 +793,11 @@ user=&gt;</pre>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="https://gitlab.com/clojure-book/digrams/-/raw/master/hosted-language.png" alt="hosted language">
+<img src="images/hosted-language.png" alt="hosted language">
 </div>
 </div>
 <div class="paragraph">
-<p>Clojure is a hosted language, which means its author does not intend it to be compiled to machine code that directly runs on a processor or an operating system. Clojure was initially intended to run on JRE (Java Runtime Environment), and gets converted to byte code. Since Clojure is hosted people found ways to get Clojure to get compiled to JavaScript, hence was born Clojure Script. Clojure can be compiled to Common Language Runtime, the same thing what Dot Net languages gets compiled too. Clojure also gets compiled to Dart. So by knowing Clojure one could target these platforms.</p>
+<p>Clojure is a hosted language, which means its author does not intend it to be compiled to machine code that directly runs on a processor or an operating system. Clojure was initially intended to run on JRE (Java Runtime Environment), and gets converted to byte code. Since Clojure is hosted people found ways to get Clojure to get compiled to JavaScript, hence was born Clojure Script <a href="https://clojurescript.org/" class="bare">https://clojurescript.org/</a>. Clojure can be compiled to Common Language Runtime <a href="https://clojure.org/about/clojureclr" class="bare">https://clojure.org/about/clojureclr</a>, the same thing what Dot Net family of languages gets compiled too. Clojure also gets compiled to Dart <a href="https://github.com/Tensegritics/ClojureDart" class="bare">https://github.com/Tensegritics/ClojureDart</a>. So by knowing Clojure one could target these platforms.</p>
 </div>
 <div class="paragraph">
 <p>One should note that Clojure never promised WORA (write once run anywhere) like Java does, instead you need to change your code when you write Clojure code targeting different platforms. What you get is uniform Clojure Syntax everywhere.</p>
@@ -811,11 +812,66 @@ user=&gt;</pre>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_repl">3.1. REPL</h3>
-<div class="paragraph">
-<p>REPL in Terminal</p>
+<div class="sect3">
+<h4 id="_repl_in_terminal">3.1.1. REPL in Terminal</h4>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj
+Clojure 1.11.1
+user=&gt; (println "Hello World")
+Hello World
+nil
+user=&gt;</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>REPL in VSCode</p>
+<p><span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_repl_in_vscode">3.1.2. REPL in VSCode</h4>
+<div class="listingblock">
+<div class="content">
+<pre>$ lein repl
+nREPL server started on port 52897 on host 127.0.0.1 - nrepl://127.0.0.1:52897
+REPL-y 0.4.4, nREPL 0.8.3
+Clojure 1.10.1
+OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=&gt;</pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/connect-to-repl-1.png" alt="connect to repl 1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/connect-to-repl-2.png" alt="connect to repl 2">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/connect-to-repl-3.png" alt="connect to repl 3">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/connect-to-repl-4.png" alt="connect to repl 4">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/connect-to-repl-5.png" alt="connect to repl 5">
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2339,6 +2395,31 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
+<h2 id="_what_is_clojure_code">9. What is Clojure code</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">*</span> <span class="integer">5</span> (<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>))</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/what-is-clojure-code-1.png" alt="what is clojure code 1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/what-is-clojure-code-2.png" alt="what is clojure code 2">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/what-is-clojure-code-3.png" alt="what is clojure code 3">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_bibliography">Bibliography</h2>
 <div class="sectionbody">
 <div class="ulist bibliography">
@@ -2362,7 +2443,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-08 19:00:28 +0530
+Last updated 2022-07-08 22:02:10 +0530
 </div>
 </div>
 </body>

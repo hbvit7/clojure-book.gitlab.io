@@ -41,5 +41,6 @@ include::functions.adoc[]
 
 === do when
 
-include::bibligraphy.adoc[]
+include::what-is-clojure-code.adoc[]
 
+include::bibligraphy.adoc[]
