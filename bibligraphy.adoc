@@ -1,5 +1,7 @@
 [bibliography]
 = Bibliography
 
-- Clojure for the brave and true
-- Getting Clojure
+- Clojure for the brave and true https://www.braveclojure.com/
+- Getting Clojure https://amzn.to/3ABmVup
+- Programming Clojure https://amzn.to/3c2aAFe
+- Professional Clojure https://amzn.to/3ARddo7

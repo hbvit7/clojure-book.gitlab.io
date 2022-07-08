@@ -1,0 +1,243 @@
+== Logic and comparison
+
+{code-url}/logic-and-comparison.clj
+
+[source, clojure]
+----
+(= 1 1)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(= 1 2)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(= 7 7 7 )
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(= 7 8 7)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(> 1 2)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(> 2 1)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(> 3 2 1)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(>= 5 5)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(>= 6 5)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(>= 6 7)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(< 1 2)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(< 1 2 3)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(< 2 1)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(< 1 3 2)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(<= 7 7)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(<= 7 8)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(<= 8 7)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(and true true)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(and  true false)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(or true true)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(or true false)
+----
+
+Output
+----
+true
+----
+
+[source, clojure]
+----
+(or false false)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(not true)
+----
+
+Output
+----
+false
+----
+
+[source, clojure]
+----
+(not false)
+----
+
+Output
+----
+true
+----

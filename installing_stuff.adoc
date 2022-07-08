@@ -76,6 +76,3 @@ image::images/searching-for-calva.png[]
 
 https://calva.io/getting-started/
 
-==== Joyride
-
-// See if things can be done without Joyride

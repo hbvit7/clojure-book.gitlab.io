@@ -576,12 +576,8 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 </ul>
 </li>
 <li><a href="#_reading_clojure_documentation">5. Reading Clojure Documentation</a></li>
-<li><a href="#_functions">6. Functions</a></li>
-<li><a href="#_logic_and_comparison">7. Logic and comparison</a>
-<ul class="sectlevel2">
-<li><a href="#_whats_true_and_false">7.1. Whats true and false</a></li>
-</ul>
-</li>
+<li><a href="#_logic_and_comparison">6. Logic and comparison</a></li>
+<li><a href="#_functions">7. Functions</a></li>
 <li><a href="#_conditions_and_branching">8. Conditions and branching</a>
 <ul class="sectlevel2">
 <li><a href="#_if">8.1. if</a></li>
@@ -787,10 +783,6 @@ user=&gt;</pre>
 <div class="paragraph">
 <p><a href="https://calva.io/getting-started/" class="bare">https://calva.io/getting-started/</a></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_joyride">1.3.3. Joyride</h4>
-
 </div>
 </div>
 </div>
@@ -1165,8 +1157,12 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Output
-----#'user/friends----</p>
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#'user/friends</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2004,18 +2000,329 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_functions">6. Functions</h2>
+<h2 id="_logic_and_comparison">6. Logic and comparison</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/logic-and-comparison.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/logic-and-comparison.clj</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">1</span> <span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">1</span> <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">7</span> <span class="integer">7</span> <span class="integer">7</span> )</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">7</span> <span class="integer">8</span> <span class="integer">7</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;</span> <span class="integer">1</span> <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;</span> <span class="integer">2</span> <span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;</span> <span class="integer">3</span> <span class="integer">2</span> <span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;=</span> <span class="integer">5</span> <span class="integer">5</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;=</span> <span class="integer">6</span> <span class="integer">5</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;=</span> <span class="integer">6</span> <span class="integer">7</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">1</span> <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">2</span> <span class="integer">1</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">1</span> <span class="integer">3</span> <span class="integer">2</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;=</span> <span class="integer">7</span> <span class="integer">7</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;=</span> <span class="integer">7</span> <span class="integer">8</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;=</span> <span class="integer">8</span> <span class="integer">7</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">and</span> <span class="predefined-constant">true</span> <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">and</span>  <span class="predefined-constant">true</span> <span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">or</span> <span class="predefined-constant">true</span> <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">or</span> <span class="predefined-constant">true</span> <span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">or</span> <span class="predefined-constant">false</span> <span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">not</span> <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">not</span> <span class="predefined-constant">false</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_logic_and_comparison">7. Logic and comparison</h2>
+<h2 id="_functions">7. Functions</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_whats_true_and_false">7.1. Whats true and false</h3>
 
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2037,10 +2344,16 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="ulist bibliography">
 <ul class="bibliography">
 <li>
-<p>Clojure for the brave and true</p>
+<p>Clojure for the brave and true <a href="https://www.braveclojure.com/" class="bare">https://www.braveclojure.com/</a></p>
 </li>
 <li>
-<p>Getting Clojure</p>
+<p>Getting Clojure <a href="https://amzn.to/3ABmVup" class="bare">https://amzn.to/3ABmVup</a></p>
+</li>
+<li>
+<p>Programming Clojure <a href="https://amzn.to/3c2aAFe" class="bare">https://amzn.to/3c2aAFe</a></p>
+</li>
+<li>
+<p>Professional Clojure <a href="https://amzn.to/3ARddo7" class="bare">https://amzn.to/3ARddo7</a></p>
 </li>
 </ul>
 </div>
@@ -2049,7 +2362,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-08 10:44:14 +0530
+Last updated 2022-07-08 19:00:28 +0530
 </div>
 </div>
 </body>

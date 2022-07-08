@@ -31,12 +31,9 @@ include::data_structures.adoc[]
 
 include::reading-clojure-documentation.adoc[]
 
-== Functions
+include::logic-and-comparison.adoc[]
 
-
-== Logic and comparison
-
-=== Whats true and false
+include::functions.adoc[]
 
 == Conditions and branching
 
