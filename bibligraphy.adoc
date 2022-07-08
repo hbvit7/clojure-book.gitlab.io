@@ -1,0 +1,5 @@
+[bibliography]
+= Bibliography
+
+- Clojure for the brave and true
+- Getting Clojure

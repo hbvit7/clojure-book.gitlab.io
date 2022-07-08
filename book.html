@@ -526,7 +526,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 .CodeRay .head .head{color:#f4f}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="book toc2 toc-left">
 <div id="header">
 <h1>Clojure</h1>
 <div class="details">
@@ -575,18 +575,20 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_maps">4.4. Maps</a></li>
 </ul>
 </li>
-<li><a href="#_functions">5. Functions</a></li>
-<li><a href="#_logic_and_comparison">6. Logic and comparison</a>
+<li><a href="#_reading_clojure_documentation">5. Reading Clojure Documentation</a></li>
+<li><a href="#_functions">6. Functions</a></li>
+<li><a href="#_logic_and_comparison">7. Logic and comparison</a>
 <ul class="sectlevel2">
-<li><a href="#_whats_true_and_false">6.1. Whats true and false</a></li>
+<li><a href="#_whats_true_and_false">7.1. Whats true and false</a></li>
 </ul>
 </li>
-<li><a href="#_conditions_and_branching">7. Conditions and branching</a>
+<li><a href="#_conditions_and_branching">8. Conditions and branching</a>
 <ul class="sectlevel2">
-<li><a href="#_if">7.1. if</a></li>
-<li><a href="#_do_when">7.2. do when</a></li>
+<li><a href="#_if">8.1. if</a></li>
+<li><a href="#_do_when">8.2. do when</a></li>
 </ul>
 </li>
+<li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
 </div>
@@ -595,7 +597,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This book is released under GFDL.</p>
+<p>This book is released under GFDL <a href="https://www.gnu.org/licenses/fdl-1.3.html" class="bare">https://www.gnu.org/licenses/fdl-1.3.html</a>.</p>
 </div>
 </div>
 </div>
@@ -731,18 +733,60 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="https://leiningen.org/" class="bare">https://leiningen.org/</a></p>
+<p>Leiningen is a tool that automates some stuff like setting up a clojure project. Please refer to its website <a href="https://leiningen.org/" class="bare">https://leiningen.org/</a> and install it. Once done type <code>lein repl</code> in your terminal and you will see this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ lein repl
+nREPL server started on port 64285 on host 127.0.0.1 - nrepl://127.0.0.1:64285
+REPL-y 0.4.4, nREPL 0.8.3
+Clojure 1.10.1
+OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Press <span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span> and it should stop. All is well, and you have installed Leningen.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_configuring_ide">1.3. Configuring IDE</h3>
 <div class="sect3">
 <h4 id="_installing_vscodium">1.3.1. Installing VSCodium</h4>
-
+<div class="imageblock">
+<div class="content">
+<img src="https://vscodium.com/img/vscodium.png" alt="vscodium">
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://vscodium.com/" class="bare">https://vscodium.com/</a></p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_calva">1.3.2. Calva</h4>
-
+<div class="imageblock">
+<div class="content">
+<img src="https://raw.githubusercontent.com/BetterThanTomorrow/calva/dev/assets/calva-64h.png" alt="calva 64h">
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://calva.io" class="bare">https://calva.io</a></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/searching-for-calva.png" alt="searching for calva">
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://calva.io/getting-started/" class="bare">https://calva.io/getting-started/</a></p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_joyride">1.3.3. Joyride</h4>
@@ -968,6 +1012,9 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_variables">3.4. Variables</h3>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/variables.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/variables.clj</a></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">my-name</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Karthik</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -1069,6 +1116,9 @@ nil</pre>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_vectors">4.1. Vectors</h3>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/vectors.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/vectors.clj</a></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">[<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>] <span class="comment">; a very simple vector</span></code></pre>
@@ -1948,37 +1998,58 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_functions">5. Functions</h2>
+<h2 id="_reading_clojure_documentation">5. Reading Clojure Documentation</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_logic_and_comparison">6. Logic and comparison</h2>
+<h2 id="_functions">6. Functions</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logic_and_comparison">7. Logic and comparison</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_whats_true_and_false">6.1. Whats true and false</h3>
+<h3 id="_whats_true_and_false">7.1. Whats true and false</h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_conditions_and_branching">7. Conditions and branching</h2>
+<h2 id="_conditions_and_branching">8. Conditions and branching</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_if">7.1. if</h3>
+<h3 id="_if">8.1. if</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_do_when">7.2. do when</h3>
+<h3 id="_do_when">8.2. do when</h3>
 
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bibliography">Bibliography</h2>
+<div class="sectionbody">
+<div class="ulist bibliography">
+<ul class="bibliography">
+<li>
+<p>Clojure for the brave and true</p>
+</li>
+<li>
+<p>Getting Clojure</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-07 22:58:01 +0530
+Last updated 2022-07-08 10:44:14 +0530
 </div>
 </div>
 </body>

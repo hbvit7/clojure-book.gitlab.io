@@ -1,5 +1,7 @@
 === Variables
 
+{code-url}/variables.clj
+
 [source, clojure]
 ----
 (def my-name "Karthik")

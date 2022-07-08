@@ -37,14 +37,45 @@ If you want to come out of this clojure REPL, type kbd:[CTRL + D]. You will get 
 
 image::https://leiningen.org/img/leiningen.jpg[]
 
-https://leiningen.org/
+Leiningen is a tool that automates some stuff like setting up a clojure project. Please refer to its website https://leiningen.org/ and install it. Once done type `lein repl` in your terminal and you will see this:
+
+----
+$ lein repl
+nREPL server started on port 64285 on host 127.0.0.1 - nrepl://127.0.0.1:64285
+REPL-y 0.4.4, nREPL 0.8.3
+Clojure 1.10.1
+OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=>
+----
+
+Press kbd:[CTRL+ D] and it should stop. All is well, and you have installed Leningen.
 
 
 === Configuring IDE
 
 ==== Installing VSCodium
 
+image::https://vscodium.com/img/vscodium.png[]
+
+https://vscodium.com/
+
 ==== Calva
+
+image::https://raw.githubusercontent.com/BetterThanTomorrow/calva/dev/assets/calva-64h.png[]
+
+https://calva.io
+
+image::images/searching-for-calva.png[]
+
+https://calva.io/getting-started/
 
 ==== Joyride
 
+// See if things can be done without Joyride

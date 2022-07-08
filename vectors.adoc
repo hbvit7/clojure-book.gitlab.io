@@ -1,6 +1,6 @@
 === Vectors
 
-
+{code-url}/vectors.clj
 
 [source, clojure]
 ----

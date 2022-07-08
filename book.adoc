@@ -1,5 +1,6 @@
 = Clojure
 Karthikeyan.A.K <mindaslab@protonmail.com>
+:doctype: book
 :toc: left
 :experimental:
 :source-highlighter: coderay
@@ -26,7 +27,9 @@ include::hosted-language.adoc[]
 
 include::first_steps.adoc[]
 
-include::data_Structures.adoc[]
+include::data_structures.adoc[]
+
+include::reading-clojure-documentation.adoc[]
 
 == Functions
 
@@ -41,5 +44,5 @@ include::data_Structures.adoc[]
 
 === do when
 
-
+include::bibligraphy.adoc[]
 
