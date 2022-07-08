@@ -2,7 +2,7 @@
 
 === Clojure
 
-Clojure works on all OS platforms, you can install Clojure following the the link here. Once done its time for ius to check the Clojure REPL. To know what is REPL, checkout https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop. Type `clj` your terminal and you must get something like this:
+Clojure works on all OS platforms, you can install Clojure following the link here. Once done it's time for us to check the Clojure REPL. To know what is REPL, checkout https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop. Type `clj` in your terminal, and you must get something like this:
 
 ----
 $ clj
@@ -31,13 +31,13 @@ user=>
 
 There is also a `nil` after the `Hello World`, don't worry much about that, we will see what is that later. After the nil you see once again `user=>` which means Cloure is waiting for your type another command for it to execute.
 
-If you want to come out of this clojure REPL, type kbd:[CTRL + D]. You will get back to normal GNU/Linux prompt.
+If you want to come out of this Clojure REPL, type kbd:[CTRL + D]. You will get back to normal GNU/Linux prompt.
 
 === Leningen
 
 image::https://leiningen.org/img/leiningen.jpg[]
 
-Leiningen is a tool that automates some stuff like setting up a clojure project. Please refer to its website https://leiningen.org/ and install it. Once done type `lein repl` in your terminal and you will see this:
+Leiningen is a tool that automates some stuff like setting up a Clojure project. Please refer to its website https://leiningen.org/ and install it. Once done type `lein repl` in your terminal, and you will see this:
 
 ----
 $ lein repl
@@ -64,15 +64,14 @@ Press kbd:[CTRL+ D] and it should stop. All is well, and you have installed Leni
 
 image::https://vscodium.com/img/vscodium.png[]
 
-https://vscodium.com/
+You could use any IDE, but since this is my book, I would take the luxury of suggesting VSCodium. This IDE take the editor made by evil Microsoft and removes the bad part out of it. You could get the IDE here https://vscodium.com/ where the installation instructions are given.
 
 ==== Calva
 
 image::https://raw.githubusercontent.com/BetterThanTomorrow/calva/dev/assets/calva-64h.png[]
 
-https://calva.io
+To use Clojure in VSCodium, there is an excellent plugin called Calva. You may learn about it here https://calva.io. Go to VSCodium extensions and install it by searching for it:
 
 image::images/searching-for-calva.png[]
 
-https://calva.io/getting-started/
-
+One may get started with Calva with excellent guides and video's here https://calva.io/getting-started/.
