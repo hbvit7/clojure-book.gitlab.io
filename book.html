@@ -436,6 +436,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 /*! Stylesheet for CodeRay to loosely match GitHub themes | MIT License */
 pre.CodeRay{background:#f7f7f8}
@@ -902,7 +903,7 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>VSCodium wil present another set of menus, in it select <code>Connect to a running REPL, not in your project</code>.</p>
+<p>VSCodium will present another set of menus, in it select <code>Connect to a running REPL, not in your project</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -932,30 +933,57 @@ user=&gt;</pre>
 </div>
 <div class="sect2">
 <h3 id="_printing_things">3.2. Printing Things</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/printing_things.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/printing_things.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/printing-things.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/printing-things.clj</a></p>
+<p>First let&#8217;s print <code>Hello World!</code>, copy the stuff below, paste it and execute it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>Hello World!
 nil</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>So you get <code>Hello World!</code> as well as a <code>nil</code> printed in the next line. Forget about the <code>nil</code>, we will look into it when we see functions, but our mission is accomplished.</p>
+</div>
+<div class="paragraph">
+<p>Commenting is very essential in coding. Comments are nothing but notes for the developer who is reading the code, while executing the code, the computer will ignore comments. In clojure everything that follows after semicolon <code>;</code> is a comment. So in the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>) <span class="comment">; Says Hello to this world</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>Hello World!
 nil</pre>
 </div>
+</div>
+<div class="paragraph">
+<p><code>; Says Hello to this world</code> is a comment which the Clojure interpreter will ignore. In the code above, we are commenting in the same line as there is code, usually its a convention to use just one semicolon <code>;</code> for such things. IF you want an entire line dedicated for comment, we use two semicolons <code>;;</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -963,16 +991,28 @@ nil</pre>
 (<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>Hello World!
 nil</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Both single and double semicolons makes no difference, but that the way conventions have evolved in Clojure.</p>
+</div>
+<div class="paragraph">
+<p>We have printed <code>Hello World</code>, but then wht if we ant to print something else with it. With <code>println</code> its simple, just give other stuff too and it will print as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Try staying cool.</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -980,15 +1020,8 @@ nil</pre>
 nil</pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">str</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">World</span><span class="delimiter">&quot;</span></span>)</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"Hello World"</pre>
-</div>
+<div class="paragraph">
+<p>So you have successfully printed something in Clojure.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2508,7 +2541,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-08 22:02:10 +0530
+Last updated 2022-07-09 21:45:00 +0530
 </div>
 </div>
 </body>

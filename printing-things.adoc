@@ -1,27 +1,38 @@
 === Printing Things
 
-{code-url}/printing-things.clj 
+NOTE: For this section you can use this code {code-url}/printing_things.clj, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+
+First let's print `Hello World!`, copy the stuff below, paste it and execute it: 
 
 [source, clojure]
 ----
 (println "Hello World!")
 ----
 
+Output
+
 ----
 Hello World!
 nil
 ----
+
+So you get `Hello World!` as well as a `nil` printed in the next line. Forget about the `nil`, we will look into it when we see functions, but our mission is accomplished.
+
+Commenting is very essential in coding. Comments are nothing but notes for the developer who is reading the code, while executing the code, the computer will ignore comments. In clojure everything that follows after semicolon `;` is a comment. So in the code below:
 
 [source, clojure]
 ----
 (println "Hello World!") ; Says Hello to this world
 ----
 
+Output
 
 ----
 Hello World!
 nil
 ----
+
+`; Says Hello to this world` is a comment which the Clojure interpreter will ignore. In the code above, we are commenting in the same line as there is code, usually its a convention to use just one semicolon `;` for such things. IF you want an entire line dedicated for comment, we use two semicolons `;;` as shown below: 
 
 [source, clojure]
 ----
@@ -29,26 +40,28 @@ nil
 (println "Hello World!")
 ----
 
+Output
+
 ----
 Hello World!
 nil
 ----
+
+Both single and double semicolons makes no difference, but that the way conventions have evolved in Clojure.
+
+We have printed `Hello World`, but then wht if we ant to print something else with it. With `println` its simple, just give other stuff too and it will print as shown:
 
 [source, clojure]
 ----
 (println "Hello World!" "Try staying cool.")
 ----
 
+Output
+
 ----
 Hello World! Try staying cool.
 nil
 ----
 
-[source, clojure]
-----
-(str "Hello" " " "World")
-----
+So you have successfully printed something in Clojure.
 
-----
-"Hello World"
-----

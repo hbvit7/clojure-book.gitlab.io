@@ -3,6 +3,7 @@ Karthikeyan.A.K <mindaslab@protonmail.com>
 :doctype: book
 :toc: left
 :experimental:
+:icons: font
 :source-highlighter: coderay
 :code-url: https://gitlab.com/clojure-book/code/-/raw/master
 :diagram-url: https://gitlab.com/clojure-book/digrams/-/raw/master

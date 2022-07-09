@@ -67,7 +67,7 @@ In VSCodium type kbd:[CTRL+P] or kbd:[command+P] and type `>`, now you can  type
 
 image::images/connect-to-repl-2.png[]
 
-VSCodium wil present another set of menus, in it select `Connect to a running REPL, not in your project`.
+VSCodium will present another set of menus, in it select `Connect to a running REPL, not in your project`.
 
 image::images/connect-to-repl-3.png[]
 
