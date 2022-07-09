@@ -812,8 +812,24 @@ user=&gt;</pre>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_repl">3.1. REPL</h3>
+<div class="paragraph">
+<p>When I first started to study Clojure, I was introduced to REPL driven development. I did not get it what it was during my early day, even if you don&#8217;t get it, worry not, you will eventually get it. In this let&#8217;s get a taste of REPL driven development.</p>
+</div>
 <div class="sect3">
 <h4 id="_repl_in_terminal">3.1.1. REPL in Terminal</h4>
+<div class="paragraph">
+<p>In your terminal type <code>clj</code> and you will be presented with something as shown</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj
+Clojure 1.11.1
+user=&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>Clojure 1.11.1</code> tells us that Clojure version 1.11.1 is installed on my machine, and then it shows something like <code>user&#8658;</code>. That is Clojure is prompting you to enter something. Type in <code>(println "Hello World")</code> as shown and press enter:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>$ clj
@@ -825,11 +841,33 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span></p>
+<p>You get the output <code>Hello World</code> printed out, and a strange thing <code>nil</code> in a line after that and once again you have been prompted to enter something at <code>user&#8658;</code></p>
+</div>
+<div class="paragraph">
+<p>You can now press <span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span> to exit the REPL.</p>
+</div>
+<div class="paragraph">
+<p>So what really happened when you typed <code>clj</code>. The first thing was Clojure prompted you with <code>user&#8658;</code>. You typed in something into the prompt, and pressed entered, Clojure REPL <strong>R</strong>ead it and <strong>E</strong>valuated it, understood that you want to print <code>Hello World</code>, next Clojure printed out the <code>Hello World</code>, then it also <strong>P</strong>rint a thing called <code>nil</code>, then it <strong>L</strong>ooped back again and prompted you with <code>user&#8658;</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_repl_in_vscode">3.1.2. REPL in VSCode</h4>
+<h4 id="_repl_in_vscodium">3.1.2. REPL in VSCodium</h4>
+<div class="paragraph">
+<p>We have seen REPL in action in terminal, let&#8217;s now see it in action in VSCodium. Create a folder named <code>code</code> and open that location with VSCodium, now crate a file named <code>hello_world.clj</code> in it with the following content:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/hello_world.clj">hello_world.clj</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">;; hello_world.clj</span>
+
+(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now in terminal <code>cd</code> into <code>code/</code> and type <code>lein repl</code></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>$ lein repl
@@ -847,30 +885,48 @@ OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12
 user=&gt;</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The lein is short for Leningen, if you might remember installing it and checking if it launched. <code>repl</code> tells <code>lein</code> to start a REPL. You will see a output as shown. Note <code>nrepl://127.0.0.1:52897</code> in the above output, it means that there is a REPL server running at IP 127.0.0.1 <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup> and at port number <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnotedef_2" title="View footnote.">2</a>]</sup> 52897. Note down <code>127.0.0.1:52897</code>. May be the port number could vary in your case.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/connect-to-repl-1.png" alt="connect to repl 1">
 </div>
+</div>
+<div class="paragraph">
+<p>In VSCodium type <span class="keyseq"><kbd>CTRL</kbd>+<kbd>P</kbd></span> or <span class="keyseq"><kbd>command</kbd>+<kbd>P</kbd></span> and type <code>&gt;</code>, now you can  type in some commands for VSCodium to execute. In it try typing <code>Calva: Start or connect to a Clojure REPL</code>, before you finish typing it, VSCodium would have selected that option for you, press <kbd>ENTER</kbd> or click on it.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/connect-to-repl-2.png" alt="connect to repl 2">
 </div>
 </div>
+<div class="paragraph">
+<p>VSCodium wil present another set of menus, in it select <code>Connect to a running REPL, not in your project</code>.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/connect-to-repl-3.png" alt="connect to repl 3">
 </div>
+</div>
+<div class="paragraph">
+<p>Now in the presented option select <code>Generic</code> as shown above. Now it would prompt for the IP and port number where your REPL is running.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/connect-to-repl-4.png" alt="connect to repl 4">
 </div>
 </div>
+<div class="paragraph">
+<p>Paste the copied value <code>127.0.0.1:52897</code> and press enter. At the right you will see a Clojure REPl window being opened. Now in the file at left in <code>hello_world.clj</code>, keep your cursor inside <code>(println "Hello World")</code> and press <span class="keyseq"><kbd>ALT</kbd>+<kbd>ENTER</kbd></span> or <span class="keyseq"><kbd>option</kbd>+<kbd>return</kbd></span></p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/connect-to-repl-5.png" alt="connect to repl 5">
 </div>
+</div>
+<div class="paragraph">
+<p>You will see the <code>(println "Hello World")</code> evaluated and printed in right-hand REPL pane. Congratulations, you learned how to connect REPL with VSCodium.</p>
 </div>
 </div>
 </div>
@@ -2439,6 +2495,15 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </ul>
 </div>
 </div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://en.wikipedia.org/wiki/Localhost" class="bare">https://en.wikipedia.org/wiki/Localhost</a>
+</div>
+<div class="footnote" id="_footnotedef_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Port_(computer_networking" class="bare">https://en.wikipedia.org/wiki/Port_(computer_networking</a>)
 </div>
 </div>
 <div id="footer">
