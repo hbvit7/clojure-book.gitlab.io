@@ -6,6 +6,8 @@ include::printing-things.adoc[]
 
 include::arithmetic.adoc[]
 
+include::types_of_numbers.adoc[]
+
 include::variables.adoc[]
 
 include::strings.adoc[]

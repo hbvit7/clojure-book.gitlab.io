@@ -1,0 +1,155 @@
+=== Types of Numbers
+
+[source, clojure]
+----
+(type 147)
+----
+
+Output
+
+----
+java.lang.Long
+----
+
+[source, clojure]
+----
+(type 147.67)
+----
+
+Output
+
+----
+java.lang.Double
+----
+
+[source, clojure]
+----
+(type Math/PI)
+----
+
+Output
+
+----
+java.lang.Double
+----
+
+[source, clojure]
+----
+(type (/ 84 32))
+----
+
+Output
+
+----
+clojure.lang.Ratio
+----
+
+[source, clojure]
+----
+(/ 84 32)
+----
+
+Output
+
+----
+21/8
+----
+
+[source, clojure]
+----
+(type 32)
+----
+
+Output
+
+----
+java.lang.Long
+----
+
+[source, clojure]
+----
+(float 32)
+----
+
+Output
+
+----
+32.0
+----
+
+[source, clojure]
+----
+(type (float 32))
+----
+
+Output
+
+----
+java.lang.Float
+----
+
+[source, clojure]
+----
+(/ 84 (float 32))
+----
+
+Output
+
+----
+2.625
+----
+
+[source, clojure]
+----
+(type (/ 84 (float 32)))
+----
+
+Output
+
+----
+java.lang.Double
+----
+
+[source, clojure]
+----
+(int 42.32)
+----
+
+Output
+
+----
+42
+----
+
+[source, clojure]
+----
+(type (int 42.32))
+----
+
+Output
+
+----
+java.lang.Integer
+----
+
+[source, clojure]
+----
+(long 42.32)
+----
+
+Output
+
+----
+42
+----
+
+[source, clojure]
+----
+(type (long 42.32))
+----
+
+Output
+
+----
+java.lang.Long
+----

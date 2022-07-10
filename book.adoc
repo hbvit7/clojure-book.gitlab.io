@@ -4,9 +4,10 @@ Karthikeyan.A.K <mindaslab@protonmail.com>
 :toc: left
 :experimental:
 :icons: font
-:source-highlighter: coderay
+:source-highlighter: rouge
 :code-url: https://gitlab.com/clojure-book/code/-/raw/master
 :diagram-url: https://gitlab.com/clojure-book/digrams/-/raw/master
+:stem:
 
 include::copyright.adoc[]
 

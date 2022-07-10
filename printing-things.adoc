@@ -1,6 +1,8 @@
 === Printing Things
 
-NOTE: For this section you can use this code {code-url}/printing_things.clj, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+:file-name: printing_things.clj
+
+include::use_code_note.adoc[]
 
 First let's print `Hello World!`, copy the stuff below, paste it and execute it: 
 

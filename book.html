@@ -438,93 +438,219 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-/*! Stylesheet for CodeRay to loosely match GitHub themes | MIT License */
-pre.CodeRay{background:#f7f7f8}
-.CodeRay .line-numbers{border-right:1px solid;opacity:.35;padding:0 .5em 0 0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
-.CodeRay span.line-numbers{display:inline-block;margin-right:.75em}
-.CodeRay .line-numbers strong{color:#000}
-table.CodeRay{border-collapse:separate;border:0;margin-bottom:0;background:none}
-table.CodeRay td{vertical-align:top;line-height:inherit}
-table.CodeRay td.line-numbers{text-align:right}
-table.CodeRay td.code{padding:0 0 0 .75em}
-.CodeRay .debug{color:#fff!important;background:navy!important}
-.CodeRay .annotation{color:#007}
-.CodeRay .attribute-name{color:navy}
-.CodeRay .attribute-value{color:#700}
-.CodeRay .binary{color:#509}
-.CodeRay .comment{color:#998;font-style:italic}
-.CodeRay .char{color:#04d}
-.CodeRay .char .content{color:#04d}
-.CodeRay .char .delimiter{color:#039}
-.CodeRay .class{color:#458;font-weight:bold}
-.CodeRay .complex{color:#a08}
-.CodeRay .constant,.CodeRay .predefined-constant{color:teal}
-.CodeRay .color{color:#099}
-.CodeRay .class-variable{color:#369}
-.CodeRay .decorator{color:#b0b}
-.CodeRay .definition{color:#099}
-.CodeRay .delimiter{color:#000}
-.CodeRay .doc{color:#970}
-.CodeRay .doctype{color:#34b}
-.CodeRay .doc-string{color:#d42}
-.CodeRay .escape{color:#666}
-.CodeRay .entity{color:#800}
-.CodeRay .error{color:#808}
-.CodeRay .exception{color:inherit}
-.CodeRay .filename{color:#099}
-.CodeRay .function{color:#900;font-weight:bold}
-.CodeRay .global-variable{color:teal}
-.CodeRay .hex{color:#058}
-.CodeRay .integer,.CodeRay .float{color:#099}
-.CodeRay .include{color:#555}
-.CodeRay .inline{color:#000}
-.CodeRay .inline .inline{background:#ccc}
-.CodeRay .inline .inline .inline{background:#bbb}
-.CodeRay .inline .inline-delimiter{color:#d14}
-.CodeRay .inline-delimiter{color:#d14}
-.CodeRay .important{color:#555;font-weight:bold}
-.CodeRay .interpreted{color:#b2b}
-.CodeRay .instance-variable{color:teal}
-.CodeRay .label{color:#970}
-.CodeRay .local-variable{color:#963}
-.CodeRay .octal{color:#40e}
-.CodeRay .predefined{color:#369}
-.CodeRay .preprocessor{color:#579}
-.CodeRay .pseudo-class{color:#555}
-.CodeRay .directive{font-weight:bold}
-.CodeRay .type{font-weight:bold}
-.CodeRay .predefined-type{color:inherit}
-.CodeRay .reserved,.CodeRay .keyword{color:#000;font-weight:bold}
-.CodeRay .key{color:#808}
-.CodeRay .key .delimiter{color:#606}
-.CodeRay .key .char{color:#80f}
-.CodeRay .value{color:#088}
-.CodeRay .regexp .delimiter{color:#808}
-.CodeRay .regexp .content{color:#808}
-.CodeRay .regexp .modifier{color:#808}
-.CodeRay .regexp .char{color:#d14}
-.CodeRay .regexp .function{color:#404;font-weight:bold}
-.CodeRay .string{color:#d20}
-.CodeRay .string .string .string{background:#ffd0d0}
-.CodeRay .string .content{color:#d14}
-.CodeRay .string .char{color:#d14}
-.CodeRay .string .delimiter{color:#d14}
-.CodeRay .shell{color:#d14}
-.CodeRay .shell .delimiter{color:#d14}
-.CodeRay .symbol{color:#990073}
-.CodeRay .symbol .content{color:#a60}
-.CodeRay .symbol .delimiter{color:#630}
-.CodeRay .tag{color:teal}
-.CodeRay .tag-special{color:#d70}
-.CodeRay .variable{color:#036}
-.CodeRay .insert{background:#afa}
-.CodeRay .delete{background:#faa}
-.CodeRay .change{color:#aaf;background:#007}
-.CodeRay .head{color:#f8f;background:#505}
-.CodeRay .insert .insert{color:#080}
-.CodeRay .delete .delete{color:#800}
-.CodeRay .change .change{color:#66f}
-.CodeRay .head .head{color:#f4f}
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
 </style>
 </head>
 <body class="book toc2 toc-left">
@@ -563,9 +689,10 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_repl">3.1. REPL</a></li>
 <li><a href="#_printing_things">3.2. Printing Things</a></li>
 <li><a href="#_arithmetic">3.3. Arithmetic</a></li>
-<li><a href="#_variables">3.4. Variables</a></li>
-<li><a href="#_strings">3.5. Strings</a></li>
-<li><a href="#_clojure_in_file">3.6. Clojure in file</a></li>
+<li><a href="#_types_of_numbers">3.4. Types of Numbers</a></li>
+<li><a href="#_variables">3.5. Variables</a></li>
+<li><a href="#_strings">3.6. Strings</a></li>
+<li><a href="#_clojure_in_file">3.7. Clojure in file</a></li>
 </ul>
 </li>
 <li><a href="#_data_structures">4. Data Structures</a>
@@ -861,9 +988,9 @@ user=&gt;</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">;; hello_world.clj</span>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; hello_world.clj</span><span class="w">
 
-(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)</code></pre>
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -950,7 +1077,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -970,7 +1097,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>) <span class="comment">; Says Hello to this world</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">)</span><span class="w"> </span><span class="c1">; Says Hello to this world</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -987,8 +1114,8 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">;; This program says helo to this world</span>
-(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; This program says helo to this world</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1008,7 +1135,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Try staying cool.</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="w"> </span><span class="s">"Try staying cool."</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1026,135 +1153,499 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_arithmetic">3.3. Arithmetic</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">+</span> <span class="integer">40</span> <span class="integer">2</span>)</code></pre>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/arithmetic.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/arithmetic.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
 </div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>42</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">-</span> <span class="integer">44</span> <span class="integer">2</span>)</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>42</pre>
-</div>
+<div class="paragraph">
+<p>In this section let&#8217;s see about Math in Clojure. First let&#8217;s add two numbers 40 and 2, it been done as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">*</span> <span class="integer">6</span> <span class="integer">7</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre>42</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">210</span> <span class="integer">5</span>)</code></pre>
-</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>42</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the above thing we have the plus <code>+</code> sign, and we pass 40 and 2 to it for it to add and return 42. Similarly let&#8217;s see what will happen when we pass 44 and 2 to minus <code>-</code> sign:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span> <span class="integer">5</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="mi">44</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>42</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It seems to subtract the second argument 2 from 44 and returns 42.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s see what happens when we pass 6 and 7 to asterisk <code>*</code> or a a star:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>42</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We see it returns 42, which is a multiple of 6 and 7.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s see what happens when we pass 210 and 5 to slash <code>/</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">210</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>42</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Looks like 210 is divided by 5 and we get 42.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s see what will happen if we pass more than 2 numbers to plus <code>+</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>15</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>All are added and the result of addition is got.</p>
+</div>
+<div class="paragraph">
+<p>Now look at the code below and can you figure out how it works?</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> (<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span> <span class="integer">5</span>) <span class="integer">5</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>3</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Let&#8217;s take the code <code>(/ (+ 1 2 3 4 5) 5)</code>, concentrate on the inner most braces <code>(+ 1 2 3 4 5)</code>, here a bunch of numbers are been passed to <code>+</code> and we should get the sum of 1 to 5, that is 15 returned. So in place of <code>(+ 1 2 3 4 5)</code> let&#8217;s substitute <code>15</code>, so we get a expression like this <code>(/ 15 5)</code>, which is nothing but 15 and 5 are passed to <code>/</code>, which means 15 divided by 5, and hence we get 3.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s pass one or more argument to <code>/</code>, passing 1, 2 and 3 to it, we get \$1/6\$ as output as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>) <span class="comment">; this gives out a ratio, a clojure data type</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c1">; this gives out a ratio, a clojure data type</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>1/6</pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="float">6.0</span>)</code></pre>
-</div>
+<div class="paragraph">
+<p>This is a fraction, to get a decimal output of a division, append a <code>.0</code> to the number when passing to <code>/</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>0.16666666666666666</pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">6.0</span><span class="p">)</span></code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="float">2.0</span> <span class="integer">3</span>)</code></pre>
-</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>0.16666666666666666</pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you don&#8217;t understand it now, don&#8217;t worry, as you read this book it will get clarified.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It&#8217;s enough that any one number that&#8217;s been passed to <code>/</code> has a decimal value that is point <code>.</code> something appended to it, we will still get decimal rather than an fraction as output as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">/</span> <span class="integer">1</span> <span class="integer">2</span> <span class="float">3.0</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>0.16666666666666666</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Sme is the case below too:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">quot</span> <span class="integer">14</span> <span class="integer">5</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mf">3.0</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>0.16666666666666666</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now if we need to get quotient of a division, we can pass numbers to a function named <code>quot</code> as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">quot</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>2</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>To get reminder of a division operation, pass numbers to rem function as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">rem</span> <span class="integer">14</span> <span class="integer">5</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">rem</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>4</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Let&#8217;s now try to find out area of a circle using clojure. We know the area is \$pi r^2\$, where \$pi\$ is roughly \$22/7\$. So let&#8217;s see how to code it. Look at the code below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; Let's calculate area of circle of radius 7 units</span><span class="w">
+</span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>154N</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we represent \$pi\$ by <code>(/ 22 7)</code> the \$r^2\$ where \$r\$ 7 is <code>(* 7 7)</code>, this is multiplied with <code>(/ 22 7)</code> and we get <code>(* (/ 22 7) (* 7 7))</code>. Now the output we got is <code>154N</code>, I have no idea what the <code>N</code> is.</p>
+</div>
+<div class="paragraph">
+<p>If I add a <code>.0</code> to any number below, the annoying <code>N</code> disappears:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mf">7.0</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>154.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rather than coding our own \$pi\$ as <code>(/ 22 7)</code>, since Clojure is built on Java, we can tap into Java <code>Math</code> library (<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html" class="bare">https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html</a>), and use it&#8217;s methods. This is one advantage of Clojure, since it&#8217;s a hosted language, it can take advange of libraries provided by the host platform. So we replace <code>(/ 22 7)</code> with <code>Math/PI</code> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">Math/PI</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>153.93804002589985</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly to compute \$x^y\$, we can use <code>Math/pow</code> so instead of <code>(* 7 7)</code>, we can replace it with <code>(Math/pow 7 2)</code> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">Math/PI</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>153.93804002589985</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_variables">3.4. Variables</h3>
+<h3 id="_types_of_numbers">3.4. Types of Numbers</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="mi">147</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Long</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="mf">147.67</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Double</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="n">Math/PI</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Double</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>clojure.lang.Ratio</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>21/8</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Long</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>32.0</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Float</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>2.625</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Double</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">int</span><span class="w"> </span><span class="mf">42.32</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>42</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">int</span><span class="w"> </span><span class="mf">42.32</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Integer</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">long</span><span class="w"> </span><span class="mf">42.32</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>42</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">long</span><span class="w"> </span><span class="mf">42.32</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.Long</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variables">3.5. Variables</h3>
 <div class="paragraph">
 <p><a href="https://gitlab.com/clojure-book/code/-/raw/master/variables.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/variables.clj</a></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">my-name</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Karthik</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">my-name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1164,7 +1655,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> my-name)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">my-name</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1175,7 +1666,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span> my-name)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello"</span><span class="w"> </span><span class="n">my-name</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1186,8 +1677,8 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">greeting</span> (<span class="keyword">str</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello </span><span class="delimiter">&quot;</span></span> my-name <span class="string"><span class="delimiter">&quot;</span><span class="content">!</span><span class="delimiter">&quot;</span></span>))
-(<span class="keyword">println</span> greeting)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">greeting</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"Hello "</span><span class="w"> </span><span class="n">my-name</span><span class="w"> </span><span class="s">"!"</span><span class="p">))</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">greeting</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1198,13 +1689,13 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_strings">3.5. Strings</h3>
+<h3 id="_strings">3.6. Strings</h3>
 <div class="paragraph">
 <p><a href="https://gitlab.com/clojure-book/code/-/raw/master/strings.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/strings.clj</a></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">str</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">1 + 2 is </span><span class="delimiter">&quot;</span></span> (<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span>))</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"1 + 2 is "</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1214,7 +1705,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">count</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">count</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1224,7 +1715,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">str</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span> <span class="integer">5</span> <span class="string"><span class="delimiter">&quot;</span><span class="content"> and so on...</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">" and so on..."</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -1234,15 +1725,13 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_clojure_in_file">3.6. Clojure in file</h3>
+<h3 id="_clojure_in_file">3.7. Clojure in file</h3>
 <div class="listingblock">
 <div class="title"><a href="https://gitlab.com/clojure-book/code/-/raw/master/hello_world.clj">hello_world.clj</a></div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><table class="CodeRay"><tr>
-  <td class="line-numbers"><pre>1
-</pre></td>
-  <td class="code"><pre>(<span class="keyword">println</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World</span><span class="delimiter">&quot;</span></span>)</pre></td>
-</tr></table></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+</pre></td><td class="code"><pre><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World"</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre>
 </div>
 </div>
 </div>
@@ -1258,7 +1747,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">[<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>] <span class="comment">; a very simple vector</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="c1">; a very simple vector</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1271,7 +1760,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">vector</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">vector</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1284,7 +1773,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">[<span class="integer">1</span> <span class="predefined-constant">true</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Bashir</span><span class="delimiter">&quot;</span></span>] <span class="comment">; vector containing multiple data types</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="s">"Bashir"</span><span class="p">]</span><span class="w"> </span><span class="c1">; vector containing multiple data types</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1297,8 +1786,8 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">friends</span>
-    [<span class="string"><span class="delimiter">&quot;</span><span class="content">Ram</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Bashir</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Antony</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Buddha</span><span class="delimiter">&quot;</span></span>])</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">friends</span><span class="w">
+    </span><span class="p">[</span><span class="s">"Ram"</span><span class="w"> </span><span class="s">"Bashir"</span><span class="w"> </span><span class="s">"Antony"</span><span class="w"> </span><span class="s">"Buddha"</span><span class="p">])</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1311,7 +1800,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">first</span> friends)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1324,7 +1813,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">rest</span> friends)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1337,7 +1826,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">type</span> friends)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1350,7 +1839,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">type</span> (<span class="keyword">rest</span> friends))</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">friends</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1363,7 +1852,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">nth</span> friends <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">friends</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1376,7 +1865,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(friends <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">friends</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1389,7 +1878,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">conj</span> friends <span class="string"><span class="delimiter">&quot;</span><span class="content">Periyaar</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="n">friends</span><span class="w"> </span><span class="s">"Periyaar"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1402,7 +1891,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">println</span> friends)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1416,7 +1905,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">cons</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Periyaar</span><span class="delimiter">&quot;</span></span> friends)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="s">"Periyaar"</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1435,7 +1924,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">'(<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="o">'</span><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1448,7 +1937,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">list</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1461,7 +1950,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">list</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1474,8 +1963,8 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">friends-list</span>
-    '(<span class="string"><span class="delimiter">&quot;</span><span class="content">Ram</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Bashir</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Antony</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Buddha</span><span class="delimiter">&quot;</span></span>))</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">friends-list</span><span class="w">
+    </span><span class="o">'</span><span class="p">(</span><span class="s">"Ram"</span><span class="w"> </span><span class="s">"Bashir"</span><span class="w"> </span><span class="s">"Antony"</span><span class="w"> </span><span class="s">"Buddha"</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1488,7 +1977,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">count</span> friends-list)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">count</span><span class="w"> </span><span class="n">friends-list</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1501,7 +1990,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">first</span> friends-list)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">friends-list</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1514,7 +2003,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">rest</span> friends-list)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">friends-list</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1527,7 +2016,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">nth</span> friends-list <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">friends-list</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1540,7 +2029,7 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(friends-list <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">friends-list</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1573,7 +2062,7 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">conj</span> friends-list <span class="string"><span class="delimiter">&quot;</span><span class="content">Periyaar</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="n">friends-list</span><span class="w"> </span><span class="s">"Periyaar"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1592,7 +2081,7 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">#{<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>}</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="o">#</span><span class="p">{</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1605,7 +2094,7 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">type</span> #{<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span>})</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">})</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1618,7 +2107,7 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">#{<span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span> <span class="integer">4</span> <span class="integer">4</span>}</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="o">#</span><span class="p">{</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">4</span><span class="p">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1661,7 +2150,7 @@ Duplicate key: 4
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">#{<span class="string"><span class="delimiter">&quot;</span><span class="content">Apple</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Orange</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Mango</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Banana</span><span class="delimiter">&quot;</span></span>}</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="o">#</span><span class="p">{</span><span class="s">"Apple"</span><span class="w"> </span><span class="s">"Orange"</span><span class="w"> </span><span class="s">"Mango"</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1674,7 +2163,7 @@ Duplicate key: 4
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">#{<span class="string"><span class="delimiter">&quot;</span><span class="content">Apple</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Orange</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Mango</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Banana</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Apple</span><span class="delimiter">&quot;</span></span>}</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="o">#</span><span class="p">{</span><span class="s">"Apple"</span><span class="w"> </span><span class="s">"Orange"</span><span class="w"> </span><span class="s">"Mango"</span><span class="w"> </span><span class="s">"Banana"</span><span class="w"> </span><span class="s">"Apple"</span><span class="p">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1717,7 +2206,7 @@ Duplicate key: Apple
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">fruits</span> #{<span class="string"><span class="delimiter">&quot;</span><span class="content">Apple</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Orange</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Mango</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Banana</span><span class="delimiter">&quot;</span></span>})</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">fruits</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="s">"Apple"</span><span class="w"> </span><span class="s">"Orange"</span><span class="w"> </span><span class="s">"Mango"</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">})</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1730,7 +2219,7 @@ Duplicate key: Apple
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">contains?</span> fruits <span class="string"><span class="delimiter">&quot;</span><span class="content">Banana</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="n">fruits</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1743,7 +2232,7 @@ Duplicate key: Apple
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">contains?</span> fruits <span class="string"><span class="delimiter">&quot;</span><span class="content">Jack Fruit</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="n">fruits</span><span class="w"> </span><span class="s">"Jack Fruit"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1756,7 +2245,7 @@ Duplicate key: Apple
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(fruits <span class="string"><span class="delimiter">&quot;</span><span class="content">Banana</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">fruits</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1769,7 +2258,7 @@ Duplicate key: Apple
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(fruits <span class="string"><span class="delimiter">&quot;</span><span class="content">Jack Fruit</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">fruits</span><span class="w"> </span><span class="s">"Jack Fruit"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1782,7 +2271,7 @@ Duplicate key: Apple
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="string"><span class="delimiter">&quot;</span><span class="content">Banana</span><span class="delimiter">&quot;</span></span> fruits)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="s">"Banana"</span><span class="w"> </span><span class="n">fruits</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1815,7 +2304,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">programming-languages</span> #{<span class="symbol">:ruby</span> <span class="symbol">:python</span> <span class="symbol">:clojure</span>})</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:ruby</span><span class="w"> </span><span class="no">:python</span><span class="w"> </span><span class="no">:clojure</span><span class="p">})</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1828,7 +2317,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">contains?</span> programming-languages <span class="symbol">:ruby</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="no">:ruby</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1841,7 +2330,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">contains?</span> programming-languages <span class="symbol">:java</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="no">:java</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1850,7 +2339,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(programming-languages <span class="symbol">:ruby</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">programming-languages</span><span class="w"> </span><span class="no">:ruby</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1863,7 +2352,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="symbol">:ruby</span> programming-languages)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="no">:ruby</span><span class="w"> </span><span class="n">programming-languages</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1876,7 +2365,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">conj</span> programming-languages <span class="symbol">:perl</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="no">:perl</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1889,7 +2378,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">disj</span> programming-languages <span class="symbol">:perl</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">disj</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="no">:perl</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1908,7 +2397,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">{ <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Bashir</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">age</span><span class="delimiter">&quot;</span></span> <span class="integer">12</span> }</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">{</span><span class="w"> </span><span class="s">"name"</span><span class="w"> </span><span class="s">"Bashir"</span><span class="w"> </span><span class="s">"age"</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1921,8 +2410,8 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">hash-map</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Bashir</span><span class="delimiter">&quot;</span></span>
-          <span class="string"><span class="delimiter">&quot;</span><span class="content">age</span><span class="delimiter">&quot;</span></span> <span class="integer">20</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">hash-map</span><span class="w"> </span><span class="s">"name"</span><span class="w"> </span><span class="s">"Bashir"</span><span class="w">
+          </span><span class="s">"age"</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1935,7 +2424,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">friend</span> { <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Bashir</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">age</span><span class="delimiter">&quot;</span></span> <span class="integer">12</span> })</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">friend</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"name"</span><span class="w"> </span><span class="s">"Bashir"</span><span class="w"> </span><span class="s">"age"</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">})</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1948,7 +2437,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">get</span> friend <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="n">friend</span><span class="w"> </span><span class="s">"name"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1961,7 +2450,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(friend <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">friend</span><span class="w"> </span><span class="s">"name"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1974,7 +2463,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">type</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="s">"name"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1987,7 +2476,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">type</span> <span class="symbol">:name</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="no">:name</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2000,8 +2489,8 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">def</span> <span class="function">wise-friend</span> {<span class="symbol">:name</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Periyaar</span><span class="delimiter">&quot;</span></span>
-                  <span class="symbol">:age</span> <span class="integer">90</span>})</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Periyaar"</span><span class="w">
+                  </span><span class="no">:age</span><span class="w"> </span><span class="mi">90</span><span class="p">})</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2014,7 +2503,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(wise-friend <span class="symbol">:name</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">wise-friend</span><span class="w"> </span><span class="no">:name</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2027,7 +2516,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">get</span> wise-friend <span class="symbol">:age</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="no">:age</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2040,8 +2529,8 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">print</span> (wise-friend <span class="symbol">:name</span>)
-       <span class="string"><span class="delimiter">&quot;</span><span class="content">is very wise.</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">print</span><span class="w"> </span><span class="p">(</span><span class="nf">wise-friend</span><span class="w"> </span><span class="no">:name</span><span class="p">)</span><span class="w">
+       </span><span class="s">"is very wise."</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2054,7 +2543,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">assoc</span> wise-friend <span class="symbol">:belief</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Rationalism</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="no">:belief</span><span class="w"> </span><span class="s">"Rationalism"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2067,7 +2556,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(wise-friend <span class="symbol">:belief</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">wise-friend</span><span class="w"> </span><span class="no">:belief</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2076,7 +2565,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(wise-friend <span class="symbol">:age</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">wise-friend</span><span class="w"> </span><span class="no">:age</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2085,7 +2574,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">dissoc</span> wise-friend <span class="symbol">:age</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">dissoc</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="no">:age</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2098,7 +2587,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">keys</span> wise-friend)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">keys</span><span class="w"> </span><span class="n">wise-friend</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2111,7 +2600,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">vals</span> wise-friend)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">vals</span><span class="w"> </span><span class="n">wise-friend</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2124,7 +2613,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">assoc</span> wise-friend <span class="string"><span class="delimiter">&quot;</span><span class="content">name</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Ramasamy</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="s">"name"</span><span class="w"> </span><span class="s">"Ramasamy"</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2152,7 +2641,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">1</span> <span class="integer">1</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2165,7 +2654,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">1</span> <span class="integer">2</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2178,7 +2667,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">7</span> <span class="integer">7</span> <span class="integer">7</span> )</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2191,7 +2680,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">=</span> <span class="integer">7</span> <span class="integer">8</span> <span class="integer">7</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2204,7 +2693,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;</span> <span class="integer">1</span> <span class="integer">2</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2217,7 +2706,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;</span> <span class="integer">2</span> <span class="integer">1</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2230,7 +2719,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;</span> <span class="integer">3</span> <span class="integer">2</span> <span class="integer">1</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2243,7 +2732,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;=</span> <span class="integer">5</span> <span class="integer">5</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2256,7 +2745,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;=</span> <span class="integer">6</span> <span class="integer">5</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2269,7 +2758,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&gt;=</span> <span class="integer">6</span> <span class="integer">7</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2282,7 +2771,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">1</span> <span class="integer">2</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2295,7 +2784,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2308,7 +2797,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">2</span> <span class="integer">1</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2321,7 +2810,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;</span> <span class="integer">1</span> <span class="integer">3</span> <span class="integer">2</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2334,7 +2823,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;=</span> <span class="integer">7</span> <span class="integer">7</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2347,7 +2836,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;=</span> <span class="integer">7</span> <span class="integer">8</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2360,7 +2849,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">&lt;=</span> <span class="integer">8</span> <span class="integer">7</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2373,7 +2862,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">and</span> <span class="predefined-constant">true</span> <span class="predefined-constant">true</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">and</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2386,7 +2875,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">and</span>  <span class="predefined-constant">true</span> <span class="predefined-constant">false</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">and</span><span class="w">  </span><span class="n">true</span><span class="w"> </span><span class="n">false</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2399,7 +2888,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">or</span> <span class="predefined-constant">true</span> <span class="predefined-constant">true</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">or</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">true</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2412,7 +2901,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">or</span> <span class="predefined-constant">true</span> <span class="predefined-constant">false</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">or</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="n">false</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2425,7 +2914,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">or</span> <span class="predefined-constant">false</span> <span class="predefined-constant">false</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">or</span><span class="w"> </span><span class="n">false</span><span class="w"> </span><span class="n">false</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2438,7 +2927,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">not</span> <span class="predefined-constant">true</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">not</span><span class="w"> </span><span class="n">true</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2451,7 +2940,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">not</span> <span class="predefined-constant">false</span>)</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">not</span><span class="w"> </span><span class="n">false</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2488,7 +2977,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure">(<span class="keyword">*</span> <span class="integer">5</span> (<span class="keyword">+</span> <span class="integer">1</span> <span class="integer">2</span> <span class="integer">3</span>))</code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="imageblock">
@@ -2541,8 +3030,32 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-07-09 21:45:00 +0530
+Last updated 2022-07-10 10:07:07 +0530
 </div>
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>
