@@ -1,5 +1,11 @@
 === Types of Numbers
 
+:file-name: types_of_numbers.clj
+
+include::use_code_note.adoc[]
+
+There are different types of numbers in computing just like 
+
 [source, clojure]
 ----
 (type 147)
