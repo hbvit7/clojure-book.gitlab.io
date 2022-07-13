@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-There are different types of numbers in computing just like 
+There are different types of numbers in computing just like there are different types of numbers in Mathematics. For example whole numbers are called as Long in Clojure. You can verify it by passing a whole number to a function named `type` which tells the type of data been passes to it as shown below:
 
 [source, clojure]
 ----
@@ -17,6 +17,8 @@ Output
 java.lang.Long
 ----
 
+The numbers with decimal value are called as Double in clojure as you can see below:
+
 [source, clojure]
 ----
 (type 147.67)
@@ -27,6 +29,8 @@ Output
 ----
 java.lang.Double
 ----
+
+The value of stem:[pi] too is a double in Clojure:
 
 [source, clojure]
 ----
@@ -39,6 +43,8 @@ Output
 java.lang.Double
 ----
 
+If two whole numbers or Long divides another Long, what you get is a Ratio in Clojure:
+
 [source, clojure]
 ----
 (type (/ 84 32))
@@ -49,6 +55,8 @@ Output
 ----
 clojure.lang.Ratio
 ----
+
+As you can see below stem:[84 / 32] in Clojure does not provide a decimal value, but outputs a Ratio:
 
 [source, clojure]
 ----
@@ -61,6 +69,8 @@ Output
 21/8
 ----
 
+You can convert one type of number to another, for example 32 is of type Long:
+
 [source, clojure]
 ----
 (type 32)
@@ -72,9 +82,11 @@ Output
 java.lang.Long
 ----
 
+But you can convert it to double by passing it to a `double` function as shown:
+
 [source, clojure]
 ----
-(float 32)
+(double 32)
 ----
 
 Output
@@ -83,31 +95,11 @@ Output
 32.0
 ----
 
-[source, clojure]
-----
-(type (float 32))
-----
-
-Output
-
-----
-java.lang.Float
-----
+When querying about it's type, it does say Double:
 
 [source, clojure]
 ----
-(/ 84 (float 32))
-----
-
-Output
-
-----
-2.625
-----
-
-[source, clojure]
-----
-(type (/ 84 (float 32)))
+(type (double 32))
 ----
 
 Output
@@ -116,27 +108,33 @@ Output
 java.lang.Double
 ----
 
+Say you don't want a division of two Long's to give you a Ratio as output, to prevent it, convert any one of the number thats been passed to `/` function into a Double as shown below:
+
 [source, clojure]
 ----
-(int 42.32)
+(/ 84 (double 32))
 ----
 
 Output
 
 ----
-42
+2.625
 ----
+
+The output you get is a Double and not a Ratio:
 
 [source, clojure]
 ----
-(type (int 42.32))
+(type (/ 84 (double 32)))
 ----
 
 Output
 
 ----
-java.lang.Integer
+java.lang.Double
 ----
+
+If you wan to just get a non decimal part of a Double, pass that double to long function as shown:
 
 [source, clojure]
 ----
@@ -148,6 +146,8 @@ Output
 ----
 42
 ----
+
+As you see, when a Double is passed to `long` function, it gets type casted to Long: 
 
 [source, clojure]
 ----

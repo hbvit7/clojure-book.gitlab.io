@@ -1468,7 +1468,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </table>
 </div>
 <div class="paragraph">
-<p>There are different types of numbers in computing just like</p>
+<p>There are different types of numbers in computing just like there are different types of numbers in Mathematics. For example whole numbers are called as Long in Clojure. You can verify it by passing a whole number to a function named <code>type</code> which tells the type of data been passes to it as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1483,6 +1483,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>java.lang.Long</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The numbers with decimal value are called as Double in clojure as you can see below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="mf">147.67</span><span class="p">)</span></code></pre>
@@ -1495,6 +1498,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>java.lang.Double</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The value of \$pi\$ too is a double in Clojure:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1509,6 +1515,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>java.lang.Double</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>If two whole numbers or Long divides another Long, what you get is a Ratio in Clojure:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
@@ -1521,6 +1530,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>clojure.lang.Ratio</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>As you can see below \$84 / 32\$ in Clojure does not provide a decimal value, but outputs a Ratio:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1535,6 +1547,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>21/8</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>You can convert one type of number to another, for example 32 is of type Long:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span></code></pre>
@@ -1548,9 +1563,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>java.lang.Long</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>But you can convert it to double by passing it to a <code>double</code> function as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">double</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1561,35 +1579,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>32.0</pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
-</div>
-</div>
 <div class="paragraph">
-<p>Output</p>
+<p>When querying about it&#8217;s type, it does say Double:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>java.lang.Float</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Output</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>2.625</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="p">(</span><span class="nb">float</span><span class="w"> </span><span class="mi">32</span><span class="p">)))</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">double</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1600,9 +1595,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>java.lang.Double</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Say you don&#8217;t want a division of two Long&#8217;s to give you a Ratio as output, to prevent it, convert any one of the number thats been passed to <code>/</code> function into a Double as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">int</span><span class="w"> </span><span class="mf">42.32</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="p">(</span><span class="nb">double</span><span class="w"> </span><span class="mi">32</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1610,12 +1608,15 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>42</pre>
+<pre>2.625</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The output you get is a Double and not a Ratio:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">int</span><span class="w"> </span><span class="mf">42.32</span><span class="p">))</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="p">(</span><span class="nb">/</span><span class="w"> </span><span class="mi">84</span><span class="w"> </span><span class="p">(</span><span class="nb">double</span><span class="w"> </span><span class="mi">32</span><span class="p">)))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1623,8 +1624,11 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>java.lang.Integer</pre>
+<pre>java.lang.Double</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>If you wan to just get a non decimal part of a Double, pass that double to long function as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1638,6 +1642,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>42</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>As you see, when a Double is passed to <code>long</code> function, it gets type casted to Long:</p>
 </div>
 <div class="listingblock">
 <div class="content">
