@@ -9,40 +9,4 @@ Karthikeyan.A.K <mindaslab@protonmail.com>
 :diagram-url: https://gitlab.com/clojure-book/digrams/-/raw/master
 :stem:
 
-include::copyright.adoc[]
-
-include::author.adoc[]
-
-include::prerequisite.adoc[]
-
-include::why_this_book.adoc[]
-
-include::where_to_get_help.adoc[]
-
-include::getting_this_book.adoc[]
-
-:sectnums:
-
-include::installing_stuff.adoc[]
-
-include::hosted-language.adoc[]
-
-include::first_steps.adoc[]
-
-include::data_structures.adoc[]
-
-include::reading-clojure-documentation.adoc[]
-
-include::logic-and-comparison.adoc[]
-
-include::functions.adoc[]
-
-== Conditions and branching
-
-=== if
-
-=== do when
-
-include::what-is-clojure-code.adoc[]
-
-include::bibligraphy.adoc[]
+include::content.adoc[]
