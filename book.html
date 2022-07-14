@@ -1662,23 +1662,79 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="sect2">
 <h3 id="_variables">3.5. Variables</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/variables.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/variables.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/variables.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/variables.clj</a></p>
+<p>Imagine variables as boxes containing some value, this can then be used in code to make it more human readable. For example look at the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">my-name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>#'user/my-name</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>I have assigned String "Karthik" to a variable named <code>my-name</code>, now I can use this <code>my-name</code> any where in the file. If you look at creation of a variable, you can see these three things, first is of course empty braces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="w"> </span><span class="p">()</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then we have the <code>def</code> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Following the <code>def</code> we have the variable name, in this case its <code>my-name</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">my-name</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As a second argument to <code>def</code>, we give the value that needs to be stored in <code>my-name</code> that is <code>"Karthik"</code> in this case:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">my-name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So that is how we define a variable. Usually the variable defined with <code>def</code> is called a global variable, that is it&#8217;s available any where in the program. If it doesn&#8217;t make sense now, don&#8217;t worry.</p>
+</div>
+<div class="paragraph">
+<p>Now we can print this variable as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">my-name</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1686,10 +1742,16 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 nil</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Over here I am adding <code>"Hello"</code> before the variable <code>my-name</code> and its as equivalent of using string <code>"Karthik"</code> instead of <code>my-name</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello"</span><span class="w"> </span><span class="n">my-name</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1697,17 +1759,63 @@ nil</pre>
 nil</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Look at the code below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">greeting</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"Hello "</span><span class="w"> </span><span class="n">my-name</span><span class="w"> </span><span class="s">"!"</span><span class="p">))</span><span class="w">
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">greeting</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre>Hello Karthik!
 nil</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>I am having a variable called <code>greeting</code> defined above and its been assigned the result of <code>(str "Hello " my-name "!")</code>. That is three strings  <code>"Hello "</code>, <code>my-name</code> and <code>"!"</code> are joined together and the result is stored in <code>greeting</code>. Finally we print it using <code>(println greeting)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Variables like <code>my-name</code> and <code>greeting</code> can be used any where in code, because they are defined using <code>def</code> keyword. If you want a localized variable inside a code block <code>()</code>, you can use <code>let</code> to define it as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">local-variable</span><span class="w"> </span><span class="s">"something"</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">local-variable</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>something</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code, we define a variable named <code>local-variable</code> to be <code>"something"</code>,  and we successfully print it, but outside the bounding braces <code>(let &#8230;&#8203;)</code>, this local variable fails to exist as you can see from the code below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">local-variable</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>; Syntax error compiling at (variables.clj:16:1).
+; Unable to resolve symbol: local-variable in this context</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Trying to print <code>local-variable</code> results in an error.</p>
 </div>
 </div>
 <div class="sect2">

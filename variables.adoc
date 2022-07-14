@@ -1,35 +1,81 @@
 === Variables
 
-{code-url}/variables.clj
+:file-name: variables.clj
+
+include::use_code_note.adoc[]
+
+Imagine variables as boxes containing some value, this can then be used in code to make it more human readable. For example look at the code below:
 
 [source, clojure]
 ----
 (def my-name "Karthik")
 ----
 
+Output
+
 ----
 #'user/my-name
 ----
+
+I have assigned String "Karthik" to a variable named `my-name`, now I can use this `my-name` any where in the file. If you look at creation of a variable, you can see these three things, first is of course empty braces:
+
+[source, clojure]
+----
+ ()
+----
+
+Then we have the `def` function:
+
+[source, clojure]
+----
+(def)
+----
+
+Following the `def` we have the variable name, in this case its `my-name`:
+
+[source, clojure]
+----
+(def my-name)
+----
+
+As a second argument to `def`, we give the value that needs to be stored in `my-name` that is `"Karthik"` in this case:
+
+[source, clojure]
+----
+(def my-name "Karthik")
+----
+
+So that is how we define a variable. Usually the variable defined with `def` is called a global variable, that is it's available any where in the program. If it doesn't make sense now, don't worry.
+
+Now we can print this variable as shown:
 
 [source, clojure]
 ----
 (println my-name)
 ----
 
+Output
+
 ----
 Karthik
 nil
 ----
+
+Over here I am adding `"Hello"` before the variable `my-name` and its as equivalent of using string `"Karthik"` instead of `my-name`:
 
 [source, clojure]
 ----
 (println "Hello" my-name)
 ----
 
+Output
+
 ----
 Hello Karthik
 nil
 ----
+
+Look at the code below:
 
 [source, clojure]
 ----
@@ -37,7 +83,40 @@ nil
 (println greeting)
 ----
 
+Output
+
 ----
 Hello Karthik!
 nil
 ----
+
+I am having a variable called `greeting` defined above and its been assigned the result of `(str "Hello " my-name "!")`. That is three strings  `"Hello "`, `my-name` and `"!"` are joined together and the result is stored in `greeting`. Finally we print it using `(println greeting)`.
+
+Variables like `my-name` and `greeting` can be used any where in code, because they are defined using `def` keyword. If you want a localized variable inside a code block `()`, you can use `let` to define it as shown:
+
+[source, clojure]
+----
+(let [local-variable "something"]
+  (println local-variable))
+----
+
+Output
+----
+something
+----
+
+In the above code, we define a variable named `local-variable` to be `"something"`,  and we successfully print it, but outside the bounding braces `(let ...)`, this local variable fails to exist as you can see from the code below:
+
+[source, clojure]
+----
+(println local-variable)
+----
+
+Output
+
+----
+; Syntax error compiling at (variables.clj:16:1).
+; Unable to resolve symbol: local-variable in this context
+----
+
+Trying to print `local-variable` results in an error.
