@@ -1,0 +1,27 @@
+=== Clojure in file
+
+Till now you might have run your code on REPL, either in your terminal or in your IDE, possibly VSCodium. Now let's see how to store your code in a file and run it. First type the following name in a text editor:
+
+
+.{code-url}/hello_world.clj[hello_world.clj]
+[source, clojure]
+----
+;; hello_world.clj
+
+(println "Hello World")
+----
+
+Save the code as `hello_world.clj`, in your terminal `cd` to that directory, then type this in terminal:
+
+----
+$ clj hello_world.clj
+----
+
+The entire program will be run and you will see `Hello World` as output. I got this as output:
+
+----
+$ clj hello_world.clj
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+Hello World
+
+----

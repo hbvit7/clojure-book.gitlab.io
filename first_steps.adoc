@@ -8,14 +8,9 @@ include::arithmetic.adoc[]
 
 include::types_of_numbers.adoc[]
 
-include::variables.adoc[]
-
 include::strings.adoc[]
 
-=== Clojure in file
+include::variables.adoc[]
 
-.{code-url}/hello_world.clj[hello_world.clj]
-[source,clojure,linenums]
-----
-(println "Hello World")
-----
+include::clojure_in_file.adoc[]
+

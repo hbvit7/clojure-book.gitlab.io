@@ -690,8 +690,8 @@ pre.rouge {
 <li><a href="#_printing_things">3.2. Printing Things</a></li>
 <li><a href="#_arithmetic">3.3. Arithmetic</a></li>
 <li><a href="#_types_of_numbers">3.4. Types of Numbers</a></li>
-<li><a href="#_variables">3.5. Variables</a></li>
-<li><a href="#_strings">3.6. Strings</a></li>
+<li><a href="#_strings">3.5. Strings</a></li>
+<li><a href="#_variables">3.6. Variables</a></li>
 <li><a href="#_clojure_in_file">3.7. Clojure in file</a></li>
 </ul>
 </li>
@@ -1661,7 +1661,138 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_variables">3.5. Variables</h3>
+<h3 id="_strings">3.5. Strings</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/strings.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/strings.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this book I think your very first clojure program would have been this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It prints <code>Hello World</code> on the screen. The <code>"Hello World!"</code> which is enclosed by double quoted <code>"</code> is nothing but a string of characters and hence its called a string.</p>
+</div>
+<div class="paragraph">
+<p>anything that&#8217;s enclosed by double quotes in Clojure is a String as you can see below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.String</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Strings can be joined with even non String things using <code>str</code> function as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"1 + 2 is "</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"1 + 2 is 3"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code <code>(+ 1 2)</code> returns Long, but it can be joined with a string <code>"1 + 2 is "</code> by passing them both to  <code>str</code> function.</p>
+</div>
+<div class="paragraph">
+<p>You can get the character count in a string using using the <code>count</code> function as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">count</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the code below, to <code>str</code> function we are passing 6 arguments. the first five are numbers , and the last one is a string <code>" and so on&#8230;&#8203;"</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">" and so on..."</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"12345 and so on..."</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see how Clojure neatly concatenates them and returns out a string.</p>
+</div>
+<div class="paragraph">
+<p>Clojure has a inbuilt String library, you can read it&#8217;s documentation here <a href="https://clojuredocs.org/clojure.string" class="bare">https://clojuredocs.org/clojure.string</a>. From it let&#8217;s use the function <code>reverse</code> to reverse a String:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">clojure.string/reverse</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"olleH"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s covert all characters to upper case:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">clojure.string/upper-case</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"HELLO"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I hope this section has briefly explained something about strings. You wil learn more as you go by. Hang on&#8230;&#8203;.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variables">3.6. Variables</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1819,49 +1950,34 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_strings">3.6. Strings</h3>
-<div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/strings.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/strings.clj</a></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="s">"1 + 2 is "</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"1 + 2 is 3"</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">count</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">)</span></code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>5</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">" and so on..."</span><span class="p">)</span></code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>"12345 and so on..."</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
 <h3 id="_clojure_in_file">3.7. Clojure in file</h3>
+<div class="paragraph">
+<p>Till now you might have run your code on REPL, either in your terminal or in your IDE, possibly VSCodium. Now let&#8217;s see how to store your code in a file and run it. First type the following name in a text editor:</p>
+</div>
 <div class="listingblock">
 <div class="title"><a href="https://gitlab.com/clojure-book/code/-/raw/master/hello_world.clj">hello_world.clj</a></div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
-</pre></td><td class="code"><pre><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World"</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; hello_world.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Save the code as <code>hello_world.clj</code>, in your terminal <code>cd</code> to that directory, then type this in terminal:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj hello_world.clj</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The entire program will be run and you will see <code>Hello World</code> as output. I got this as output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj hello_world.clj
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+Hello World</pre>
 </div>
 </div>
 </div>
