@@ -12,10 +12,4 @@ Karthikeyan.A.K <mindaslab@protonmail.com>
 :front-cover-image: image:images/clojure-book-cover-2001-space-odyssey-8.png[fit=fill]
 :back-cover-image: image:images/clojure-book_back_cover.png[fit=fill]
 
-// cover:
-//   front:
-//     image: image:images/clojure-book-cover-2001-space-odyssey-8.png[fit=fill]
-//   back:
-//     image: image:images/clojure-book_back_cover.png[fit=fill]
-
 include::content.adoc[]

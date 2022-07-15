@@ -1,5 +1,9 @@
 == Data Structures
 
+Almost every programming language offers some way to pack, organize and access data in computer's RAM footnote:[https://en.wikipedia.org/wiki/Random-access_memory], this eases the burden out of programmers from writing lot of code to manage data stored in computer's temporary memory.
+
+String according to me is a data structure too. It enables us to represent any written language in computers memory, and helps us perform operations with it. In this section we are going to see about other data structures Clojure provides which you can use it out of the box.
+
 include::vectors.adoc[]
 
 include::lists.adoc[]

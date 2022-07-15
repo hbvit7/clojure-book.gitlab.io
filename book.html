@@ -1986,10 +1986,31 @@ Hello World</pre>
 <div class="sect1">
 <h2 id="_data_structures">4. Data Structures</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Almost every programming language offers some way to pack, organize and access data in computer&#8217;s RAM <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, this eases the burden out of programmers from writing lot of code to manage data stored in computer&#8217;s temporary memory.</p>
+</div>
+<div class="paragraph">
+<p>String according to me is a data structure too. It enables us to represent any written language in computers memory, and helps us perform operations with it. In this section we are going to see about other data structures Clojure provides which you can use it out of the box.</p>
+</div>
 <div class="sect2">
 <h3 id="_vectors">4.1. Vectors</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/vectors.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/vectors.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/vectors.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/vectors.clj</a></p>
+<p>Image racks with lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.</p>
+</div>
+<div class="paragraph">
+<p>Look at the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2004,6 +2025,12 @@ Hello World</pre>
 <pre>[1 2 3 4]</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>This is how you represent a vector in Clojure. It start&#8217;s with a opening square braces <code>[</code> and ends with a closing one <code>]</code>, and any thing in between are the elements of the vector. In the above code you got 4 elements namely <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code>.</p>
+</div>
+<div class="paragraph">
+<p>Another way to create a vector is to pass stuff to a function called <code>vector</code> as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">vector</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
@@ -2017,6 +2044,12 @@ Hello World</pre>
 <pre>[1 2 3]</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the above code we have passed <code>1</code>, <code>2</code> and <code>3</code> to a the function vector and we have got out a vector <code>[1 2 3]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Till now we have seen creating vectors with numbers, in reality you can create vector with any type of value:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="s">"Bashir"</span><span class="p">]</span><span class="w"> </span><span class="c1">; vector containing multiple data types</span></code></pre>
@@ -2029,6 +2062,12 @@ Hello World</pre>
 <div class="content">
 <pre>[1 true "Bashir"]</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the above code we have created a three element vector with <code>1</code> which is a Long, <code>true</code> which is boolean (you will learn about them soon), and <code>"Bashir"</code> which is a String.</p>
+</div>
+<div class="paragraph">
+<p>In the code below, we are defining a variable named <code>friends</code> and we are assigning a vector that contains four names to it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2044,6 +2083,9 @@ Hello World</pre>
 <pre>#'user/friends</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Now let&#8217;s see what is the first element of the vector <code>friends</code> is, for that we pass <code>friends</code> to a function named <code>first</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
@@ -2056,6 +2098,12 @@ Hello World</pre>
 <div class="content">
 <pre>"Ram"</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>and we get the first element in the vector.</p>
+</div>
+<div class="paragraph">
+<p>There is a function called <code>rest</code> which when given a vector, omits the first element and returns the rest of the elements in the vector as shown belo:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2070,6 +2118,12 @@ Hello World</pre>
 <pre>("Bashir" "Antony" "Buddha")</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>As you see <code>"Ram"</code> is ignored as it&#8217;s the first element and the rest is returned.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s check the tyoe of <code>friends</code></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
@@ -2082,6 +2136,9 @@ Hello World</pre>
 <div class="content">
 <pre>clojure.lang.PersistentVector</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Fro the output it seems clear that it&#8217;s a vector, but then let&#8217;s checkout what type the <code>rest</code> returns:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2096,6 +2153,12 @@ Hello World</pre>
 <pre>clojure.lang.PersistentVector$ChunkedSeq</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Though it seems to return <code>("Bashir" "Antony" "Buddha")</code>, which are not enclosed in square braces, on querying the type, it seems to be a chunk of the passed in vector.</p>
+</div>
+<div class="paragraph">
+<p>We can access any element by it&#8217;s index in a vector using the <code>nth</code> function who&#8217;s first argument should be a vector and second should be the index number as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">friends</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
@@ -2108,6 +2171,12 @@ Hello World</pre>
 <div class="content">
 <pre>"Buddha"</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>If you see, at index <code>3</code> of <code>friends</code> is a String <code>"Buddha"</code>.</p>
+</div>
+<div class="paragraph">
+<p>The third index can also be access like shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2122,6 +2191,12 @@ Hello World</pre>
 <pre>"Buddha"</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Doesn&#8217;t it look like when you did <code>(def friends &lt;a vector&gt;)</code>, clojure seems to have constructed a function called <code>friends</code> which can take a number, and the value at the index gets returned?</p>
+</div>
+<div class="paragraph">
+<p>To add an element at the end of vector, use the function <code>conj</code> whcih takes in vector as first argument and the value to be added as the second:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">conj</span><span class="w"> </span><span class="n">friends</span><span class="w"> </span><span class="s">"Periyaar"</span><span class="p">)</span></code></pre>
@@ -2134,6 +2209,9 @@ Hello World</pre>
 <div class="content">
 <pre>["Ram" "Bashir" "Antony" "Buddha" "Periyaar"]</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the above code we have added <code>"Periyaar"</code> to friends, but this does not mean <code>friends</code> as been modified, we can print <code>friends</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2149,6 +2227,12 @@ Hello World</pre>
 nil</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>and it still shows the old values without <code>"Periyaar"</code>, in reality Clojure constructs a new vector when we say <code>(conj friends "Periyaar")</code> and returns it out.</p>
+</div>
+<div class="paragraph">
+<p>To add a element before a vector, use <code>cons</code> as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">cons</span><span class="w"> </span><span class="s">"Periyaar"</span><span class="w"> </span><span class="n">friends</span><span class="p">)</span></code></pre>
@@ -2160,6 +2244,22 @@ nil</pre>
 <div class="listingblock">
 <div class="content">
 <pre>("Periyaar" "Ram" "Bashir" "Antony" "Buddha")</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Does it modify <code>friends</code>? Now research what is immutability <sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnotedef_4" title="View footnote.">4</a>]</sup> in computing.</p>
+</div>
+<div class="sect3">
+<h4 id="_exercise">4.1.1. Exercise</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>How to get total number of elements in a vector?</p>
+</li>
+<li>
+<p>What will happen if I give <code>(friends 42)</code>?</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3272,6 +3372,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="footnote" id="_footnotedef_2">
 <a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/Port_(computer_networking" class="bare">https://en.wikipedia.org/wiki/Port_(computer_networking</a>)
+</div>
+<div class="footnote" id="_footnotedef_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://en.wikipedia.org/wiki/Random-access_memory" class="bare">https://en.wikipedia.org/wiki/Random-access_memory</a>
+</div>
+<div class="footnote" id="_footnotedef_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://en.wikipedia.org/wiki/Immutable_object" class="bare">https://en.wikipedia.org/wiki/Immutable_object</a>
 </div>
 </div>
 <div id="footer">

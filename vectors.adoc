@@ -1,6 +1,12 @@
 === Vectors
 
-{code-url}/vectors.clj
+:file-name: vectors.clj
+
+include::use_code_note.adoc[]
+
+Image racks with lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.
+
+Look at the code below:
 
 [source, clojure]
 ----
@@ -9,37 +15,44 @@
 
 
 Output
+
 ----
 [1 2 3 4]
 ----
 
+This is how you represent a vector in Clojure. It start's with a opening square braces `[` and ends with a closing one `]`, and any thing in between are the elements of the vector. In the above code you got 4 elements namely `1`, `2`, `3` and `4`.
 
+Another way to create a vector is to pass stuff to a function called `vector` as shown below:
 
 [source, clojure]
 ----
 (vector 1 2 3)
 ----
 
-
 Output
+
 ----
 [1 2 3]
 ----
 
+In the above code we have passed `1`, `2` and `3` to a the function vector and we have got out a vector `[1 2 3]`.
 
+Till now we have seen creating vectors with numbers, in reality you can create vector with any type of value:
 
 [source, clojure]
 ----
 [1 true "Bashir"] ; vector containing multiple data types
 ----
 
-
 Output
+
 ----
 [1 true "Bashir"]
 ----
 
+In the above code we have created a three element vector with `1` which is a Long, `true` which is boolean (you will learn about them soon), and `"Bashir"` which is a String.
 
+In the code below, we are defining a variable named `friends` and we are assigning a vector that contains four names to it:
 
 [source, clojure]
 ----
@@ -47,103 +60,114 @@ Output
     ["Ram" "Bashir" "Antony" "Buddha"])
 ----
 
-
 Output
+
 ----
 #'user/friends
 ----
 
-
+Now let's see what is the first element of the vector `friends` is, for that we pass `friends` to a function named `first`:
 
 [source, clojure]
 ----
 (first friends)
 ----
 
-
 Output
+
 ----
 "Ram"
 ----
 
+and we get the first element in the vector.
 
+There is a function called `rest` which when given a vector, omits the first element and returns the rest of the elements in the vector as shown belo: 
 
 [source, clojure]
 ----
 (rest friends)
 ----
 
-
 Output
+
 ----
 ("Bashir" "Antony" "Buddha")
 ----
 
+As you see `"Ram"` is ignored as it's the first element and the rest is returned.
 
+Let's check the tyoe of `friends`
 
 [source, clojure]
 ----
 (type friends)
 ----
 
-
 Output
+
 ----
 clojure.lang.PersistentVector
 ----
 
-
+Fro the output it seems clear that it's a vector, but then let's checkout what type the `rest` returns: 
 
 [source, clojure]
 ----
 (type (rest friends))
 ----
 
-
 Output
+
 ----
 clojure.lang.PersistentVector$ChunkedSeq
 ----
 
+Though it seems to return `("Bashir" "Antony" "Buddha")`, which are not enclosed in square braces, on querying the type, it seems to be a chunk of the passed in vector.
 
+We can access any element by it's index in a vector using the `nth` function who's first argument should be a vector and second should be the index number as shown: 
 
 [source, clojure]
 ----
 (nth friends 3)
 ----
 
-
 Output
+
 ----
 "Buddha"
 ----
 
+If you see, at index `3` of `friends` is a String `"Buddha"`.
 
+The third index can also be access like shown:
 
 [source, clojure]
 ----
 (friends 3)
 ----
 
-
 Output
+
 ----
 "Buddha"
 ----
 
+Doesn't it look like when you did `(def friends <a vector>)`, clojure seems to have constructed a function called `friends` which can take a number, and the value at the index gets returned?
 
+To add an element at the end of vector, use the function `conj` whcih takes in vector as first argument and the value to be added as the second:
 
 [source, clojure]
 ----
 (conj friends "Periyaar")
 ----
 
-
 Output
+
 ----
 ["Ram" "Bashir" "Antony" "Buddha" "Periyaar"]
 ----
 
+In the above code we have added `"Periyaar"` to friends, but this does not mean `friends` as been modified, we can print `friends`: 
 
 
 [source, clojure]
@@ -151,13 +175,16 @@ Output
 (println friends)
 ----
 
-
 Output
+
 ----
 [Ram Bashir Antony Buddha]
 nil
 ----
 
+and it still shows the old values without `"Periyaar"`, in reality Clojure constructs a new vector when we say `(conj friends "Periyaar")` and returns it out.
+
+To add a element before a vector, use `cons` as shown below:
 
 
 [source, clojure]
@@ -165,8 +192,15 @@ nil
 (cons "Periyaar" friends)
 ----
 
-
 Output
+
 ----
 ("Periyaar" "Ram" "Bashir" "Antony" "Buddha")
 ----
+
+Does it modify `friends`? Now research what is immutability footnote:[https://en.wikipedia.org/wiki/Immutable_object] in computing.
+
+==== Exercise
+
+- How to get total number of elements in a vector?
+- What will happen if I give `(friends 42)`?
