@@ -1,0 +1,49 @@
+== if
+
+[source, clojure]
+----
+;; if.clj
+
+(let [a 5]
+  (if (> a 0)
+    (println a "is positive")))
+----
+
+[source, clojure]
+----
+;; if_else.clj
+
+(let [a -5]
+  (if (> a 0)
+    (println a "is positive")
+    (println a "is negative")))
+----
+
+[source, clojure]
+----
+;; if_nested.clj
+
+(let [a 5]
+  (if (> a 0)
+    (println a "is positive")
+    (if (< a 0)
+      (println a "is negative")
+      (println a "is neither positive nor negative"))))
+----
+
+[source, clojure]
+----
+;; if_multiple_statemnts_in_branch.clj
+
+(let [a 5]
+  (if (> a 0)
+    
+    (do
+      (println a "is negative")
+      (println "There are infinite positive numbers"))
+
+    (do
+      (println a "is negative")
+      (println "There are infinite negative numbers"))))
+----
+

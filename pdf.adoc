@@ -9,7 +9,7 @@ Karthikeyan.A.K <mindaslab@protonmail.com>
 :diagram-url: https://gitlab.com/clojure-book/digrams/-/raw/master
 :stem:
 :cache-uri:
-:front-cover-image: image:images/clojure-book-cover-2001-space-odyssey-8.png[fit=fill]
+:front-cover-image: image:images/clojure-book-cover-2001-space-odyssey-10.png[fit=fill]
 :back-cover-image: image:images/clojure-book_back_cover.png[fit=fill]
 
 include::content.adoc[]

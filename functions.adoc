@@ -1,2 +1,86 @@
 == Functions
 
+[source, clojure]
+----
+;; function_say_hello.clj
+
+(defn say-hello []
+  (println "Hello world!"))
+
+(say-hello)
+----
+
+[source, clojure]
+----
+;; function_with_arguments.clj
+
+(defn say-hello [name]
+  (println "Hello" name "!"))
+
+(say-hello "Karthik")
+----
+
+
+[source, clojure]
+----
+;; function_returning_something.clj
+
+(defn add [a b]
+  (+ a b))
+
+(println (add 2  3))
+----
+
+
+[source, clojure]
+----
+;; function_recursion.clj
+
+(defn count-down [number]
+  (println number)
+  (if (not (= 0 (dec number)))
+    (count-down (dec number))))
+
+(count-down 5)
+----
+
+
+[source, clojure]
+----
+;; function_recur.clj
+
+(defn count-down [number]
+  (println number)
+  (if (not (= 0 (dec number)))
+    (recur (dec number))))
+
+(count-down 5)
+----
+
+[source, clojure]
+----
+;; function_sum_using_recursion.clj
+
+(defn sum [numbers total]
+  (if (empty? numbers)
+    total
+    (recur (rest numbers) (+ total (first numbers)))))
+
+(println (sum [1 2 3 4 5], 0))
+----
+
+[source, clojure]
+----
+;; function_collection_sum.clj
+
+(defn sum [numbers total]
+  (if (empty? numbers)
+    total
+    (recur (rest numbers) (+ total (first numbers)))))
+
+(defn collection-sum [collection]
+  (sum collection 0))
+
+(println (collection-sum [1 2 3 4 5]))
+----
+
