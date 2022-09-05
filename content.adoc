@@ -24,11 +24,11 @@ include::reading-clojure-documentation.adoc[]
 
 include::logic-and-comparison.adoc[]
 
-include::if.adoc[]
+include::conditions_and_branching.adoc[]
 
 include::functions.adoc[]
 
-== Conditions and branching
+
 
 === do when
 

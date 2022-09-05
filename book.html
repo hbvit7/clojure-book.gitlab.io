@@ -705,14 +705,19 @@ pre.rouge {
 </li>
 <li><a href="#_reading_clojure_documentation">5. Reading Clojure Documentation</a></li>
 <li><a href="#_logic_and_comparison">6. Logic and comparison</a></li>
-<li><a href="#_if">7. if</a></li>
-<li><a href="#_functions">8. Functions</a></li>
-<li><a href="#_conditions_and_branching">9. Conditions and branching</a>
+<li><a href="#_conditions_and_branching">7. Conditions and branching</a>
 <ul class="sectlevel2">
-<li><a href="#_do_when">9.1. do when</a></li>
+<li><a href="#_if">7.1. if</a></li>
+<li><a href="#_when">7.2. when</a></li>
+<li><a href="#_cond">7.3. cond</a></li>
 </ul>
 </li>
-<li><a href="#_what_is_clojure_code">10. What is Clojure code</a></li>
+<li><a href="#_functions">8. Functions</a>
+<ul class="sectlevel2">
+<li><a href="#_do_when">8.1. do when</a></li>
+</ul>
+</li>
+<li><a href="#_what_is_clojure_code">9. What is Clojure code</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -3300,8 +3305,10 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_if">7. if</h2>
+<h2 id="_conditions_and_branching">7. Conditions and branching</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_if">7.1. if</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if.clj</span><span class="w">
@@ -3347,6 +3354,42 @@ java.lang.String cannot be cast to clojure.lang.IFn
     </span><span class="p">(</span><span class="nf">do</span><span class="w">
       </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
       </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"There are infinite negative numbers"</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_when">7.2. when</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; when.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">print-something</span><span class="w"> </span><span class="n">true</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="n">print-something</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print something."</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print other things too."</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cond">7.3. cond</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; cond.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">cond</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is positive."</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is negative."</span><span class="p">)</span><span class="w">
+    </span><span class="no">:else</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is neither positive nor negative."</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">cond</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is positive."</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is negative."</span><span class="p">)))</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -3435,19 +3478,14 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">collection-sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">]))</span></code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_conditions_and_branching">9. Conditions and branching</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_do_when">9.1. do when</h3>
+<h3 id="_do_when">8.1. do when</h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_is_clojure_code">10. What is Clojure code</h2>
+<h2 id="_what_is_clojure_code">9. What is Clojure code</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">

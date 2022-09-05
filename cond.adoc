@@ -1,0 +1,21 @@
+=== cond
+
+[source, clojure]
+----
+;; cond.clj
+
+(let [number 5]
+  (cond
+    (> number 0) (println number "is positive.")
+    (< number 0) (println number "is negative.")
+    :else (println number "is neither positive nor negative.")))
+----
+
+
+[source, clojure]
+----
+(let [number 5]
+  (cond
+    (> number 0) (println number "is positive.")
+    (< number 0) (println number "is negative.")))
+----
