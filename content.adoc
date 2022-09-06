@@ -34,4 +34,8 @@ include::functions.adoc[]
 
 include::what-is-clojure-code.adoc[]
 
+include::sequence.adoc[]
+
+include::lazy_sequence.adoc[]
+
 include::bibligraphy.adoc[]

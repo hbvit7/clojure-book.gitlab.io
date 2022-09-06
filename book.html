@@ -718,6 +718,17 @@ pre.rouge {
 </ul>
 </li>
 <li><a href="#_what_is_clojure_code">9. What is Clojure code</a></li>
+<li><a href="#_sequence">10. Sequence</a></li>
+<li><a href="#_lazy_sequence">11. Lazy Sequence</a>
+<ul class="sectlevel2">
+<li><a href="#_repeat">11.1. repeat</a></li>
+</ul>
+</li>
+<li><a href="#_cycle">12. cycle</a>
+<ul class="sectlevel2">
+<li><a href="#_iterate">12.1. iterate</a></li>
+</ul>
+</li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -3505,6 +3516,124 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="imageblock">
 <div class="content">
 <img src="images/what-is-clojure-code-3.png" alt="what is clojure code 3">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sequence">10. Sequence</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lazy_sequence">11. Lazy Sequence</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_repeat">11.1. repeat</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">multiverse</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">multiverse</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; (rest multiverse) ;; doesn't seem to work</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; (last multiverse) ;; doesn't seem to work</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="mi">10</span><span class="n">,000</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_cycle">12. cycle</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"universe"</span><span class="w"> </span><span class="s">"antiverse"</span><span class="p">]))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">multiverse</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">second</span><span class="w"> </span><span class="n">multiverse</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">multiverse</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="mi">1783</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tiffin-items</span><span class="w">
+  </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"idli"</span><span class="n">,</span><span class="w"> </span><span class="s">"vadai"</span><span class="n">,</span><span class="w"> </span><span class="s">"dosai"</span><span class="n">,</span><span class="w"> </span><span class="s">"sambar"</span><span class="p">]))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">tiffin-items</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">tiffin-items</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_iterate">12.1. iterate</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="p">(</span><span class="nb">iterate</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">all-numbers</span><span class="p">)</span></code></pre>
+</div>
 </div>
 </div>
 </div>

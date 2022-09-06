@@ -1,0 +1,107 @@
+== Lazy Sequence
+
+=== repeat
+
+[source, clojure]
+----
+(def multiverse (repeat "universe"))
+----
+
+[source, clojure]
+----
+(first multiverse)
+----
+
+[source, clojure]
+----
+(take 5 multiverse)
+----
+
+[source, clojure]
+----
+;; (rest multiverse) ;; doesn't seem to work
+----
+
+[source, clojure]
+----
+;; (last multiverse) ;; doesn't seem to work
+----
+
+[source, clojure]
+----
+(nth multiverse 10,000)
+----
+
+[source, clojure]
+----
+(nth multiverse 100)
+----
+
+== cycle
+
+[source, clojure]
+----
+(def multiverse (cycle ["universe" "antiverse"]))
+----
+
+[source, clojure]
+----
+(first multiverse)
+----
+
+[source, clojure]
+----
+(second multiverse)
+----
+
+[source, clojure]
+----
+(take 5 multiverse)
+----
+
+[source, clojure]
+----
+(nth multiverse 2000)
+----
+
+[source, clojure]
+----
+(nth multiverse 1783)
+----
+
+[source, clojure]
+----
+(def tiffin-items
+  (cycle ["idli", "vadai", "dosai", "sambar"]))
+----
+
+[source, clojure]
+----
+(nth tiffin-items 5)
+----
+
+[source, clojure]
+----
+(take 10 tiffin-items)
+----
+
+=== iterate
+
+[source, clojure]
+----
+(def all-numbers (iterate inc 1))
+----
+
+[source, clojure]
+----
+(nth all-numbers 24)
+----
+
+[source, clojure]
+----
+(take 10 all-numbers)
+----
+
+
+
+
