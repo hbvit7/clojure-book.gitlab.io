@@ -3430,6 +3430,105 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="listingblock">
 <div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function-multiple-arguments.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">multiple-args</span><span class="w">
+  </span><span class="p">([</span><span class="n">arg-1</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"One argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">arg-1</span><span class="w"> </span><span class="n">arg-2</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Two argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="w"> </span><span class="n">arg-2</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">multiple-args</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nf">multiple-args</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>One argument passed: 1
+Two argument passed: 1 2</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_unlimited_arguments.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">unlimited-arguments</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Arguments:"</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Type of args:"</span><span class="w"> </span><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="n">args</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">unlimited-arguments</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nf">unlimited-arguments</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w"> </span><span class="no">:coder</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Arguments: (1)
+Type of args: clojure.lang.ArraySeq
+
+Arguments: (1 17 true Karthik :coder)
+Type of args: clojure.lang.ArraySeq</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_unlimited_arguments_2.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">unlimited-arguments</span><span class="w"> </span><span class="p">[</span><span class="n">first-arg</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"First argument:"</span><span class="w"> </span><span class="n">first-arg</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Other arguments:"</span><span class="w"> </span><span class="n">args</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">unlimited-arguments</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nf">unlimited-arguments</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w"> </span><span class="no">:coder</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>First argument: 1
+Other arguments: nil
+
+First argument: 1
+Other arguments: (17 true Karthik :coder)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_unlimited_arguments_3.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">unlimited-arguments</span><span class="w"> </span><span class="p">[</span><span class="n">first-arg</span><span class="w"> </span><span class="n">second-arg</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">args</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"First argument:"</span><span class="w"> </span><span class="n">first-arg</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Second argument:"</span><span class="w"> </span><span class="n">second-arg</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Other arguments:"</span><span class="w"> </span><span class="n">args</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">unlimited-arguments</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nf">unlimited-arguments</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="n">true</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w"> </span><span class="no">:coder</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>First argument: 1
+Second argument: 2
+Other arguments: nil
+
+First argument: 1
+Second argument: 17
+Other arguments: (true Karthik :coder)</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_something.clj</span><span class="w">
 
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">

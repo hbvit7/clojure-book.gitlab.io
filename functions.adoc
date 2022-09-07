@@ -20,6 +20,100 @@
 (say-hello "Karthik")
 ----
 
+[source, clojure]
+----
+;; function-multiple-arguments.clj
+
+(defn multiple-args
+  ([arg-1] (println "One argument passed:" arg-1))
+  ([arg-1 arg-2] (println "Two argument passed:" arg-1 arg-2)))
+
+(multiple-args 1)
+(multiple-args 1 2)
+----
+
+
+Output
+
+----
+One argument passed: 1
+Two argument passed: 1 2
+----
+
+
+[source, clojure]
+----
+;; function_unlimited_arguments.clj
+
+(defn unlimited-arguments [& args]
+  (println "Arguments:" args)
+  (println "Type of args:" (type args)))
+
+(unlimited-arguments 1)
+(println)
+(unlimited-arguments 1 17 true "Karthik" :coder)
+----
+
+Output
+
+----
+Arguments: (1)
+Type of args: clojure.lang.ArraySeq
+
+Arguments: (1 17 true Karthik :coder)
+Type of args: clojure.lang.ArraySeq
+----
+
+
+[source, clojure]
+----
+;; function_unlimited_arguments_2.clj
+
+(defn unlimited-arguments [first-arg & args]
+  (println "First argument:" first-arg)
+  (println "Other arguments:" args))
+
+(unlimited-arguments 1)
+(println)
+(unlimited-arguments 1 17 true "Karthik" :coder)
+----
+
+Output
+
+----
+First argument: 1
+Other arguments: nil
+
+First argument: 1
+Other arguments: (17 true Karthik :coder)
+----
+
+[source, clojure]
+----
+;; function_unlimited_arguments_3.clj
+
+(defn unlimited-arguments [first-arg second-arg & args]
+  (println "First argument:" first-arg)
+  (println "Second argument:" second-arg)
+  (println "Other arguments:" args))
+
+(unlimited-arguments 1 2)
+(println)
+(unlimited-arguments 1 17 true "Karthik" :coder)
+----
+
+Output
+
+----
+First argument: 1
+Second argument: 2
+Other arguments: nil
+
+First argument: 1
+Second argument: 17
+Other arguments: (true Karthik :coder)
+----
+
 
 [source, clojure]
 ----
