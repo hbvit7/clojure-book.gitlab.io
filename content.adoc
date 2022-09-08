@@ -28,10 +28,6 @@ include::conditions_and_branching.adoc[]
 
 include::functions.adoc[]
 
-
-
-=== do when
-
 include::what-is-clojure-code.adoc[]
 
 include::sequence.adoc[]

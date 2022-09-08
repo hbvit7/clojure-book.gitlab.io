@@ -279,3 +279,49 @@ Welcome Bharathiyaar from Yettaiyapuram
 
 (println (sum 4 5))
 ----
+
+
+=== Docstring
+
+[source, clojure]
+----
+;; docstring.clj
+
+(defn sum 
+  "Adds two numbers passed as arguments.
+   
+   The argumets should be numbers.
+
+   **Usage**
+
+   ```clojure
+   (sum 4 5) ;; returns 9
+   ```
+  " 
+  [a b]
+  {:pre [(number? a) (number? b)]}
+  (+ a b))
+
+(println (sum 4 5))
+----
+
+----
+clj꞉user꞉> (doc sum)
+-------------------------
+user/sum
+([a b])
+  Adds two numbers passed as arguments.
+   
+   The argumets should be numbers.
+
+   **Usage**
+
+   ```clojure
+   (sum 4 5) ;; returns 9
+   ```
+  
+nil
+----
+
+image::images/docstring.png[]
+
