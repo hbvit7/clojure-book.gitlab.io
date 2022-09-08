@@ -239,5 +239,43 @@ Welcome Kalam from Ramanthapuram
 Welcome Bharathiyaar from Yettaiyapuram
 ----
 
+=== Pre and Post Condition Checking
 
+[source, clojure]
+----
+;; function_pre.clj
 
+(defn sum [a b]
+  {:pre [(number? a) (number? b)]}
+  (+ a b))
+
+(println (sum 4 5))
+;; (println (sum "4" 5)) ;; Thows an error
+----
+
+[source, clojure]
+----
+;; function_post.clj
+
+(defn sum [a b]
+  {:post [(number? %)]}
+  "45")
+
+(defn sum-without-post [a b]
+  "45")
+
+(println (sum-without-post 4 5))
+(println (sum 4 5)) ;; ; Assert failed: (number? %)
+----
+
+[source, clojure]
+----
+;; function_pre_post.clj
+
+(defn sum [a b]
+  {:pre [(number? a) (number? b)]
+   :post [(number? %)]}
+  (+ a b))
+
+(println (sum 4 5))
+----
