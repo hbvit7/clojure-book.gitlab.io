@@ -1,0 +1,106 @@
+== Destructuring
+
+[source, clojure]
+----
+;; array_destructuring.clj
+
+(def people ["Rehmaan" "Kalaam"])
+
+(let [[musician scientist] people]
+  (println "Musician is" musician)
+  (println "Scientist is" scientist))
+----
+
+Output
+
+----
+Musician is Rehmaan
+Scientist is Kalaam
+nil
+----
+
+[source, clojure]
+----
+;; array_destructuring_2.clj
+
+(def people ["Rehmaan" "Kalaam"])
+
+(let [[musician scientist artist] people]
+  (println "Musician is" musician)
+  (println "Scientist is" scientist)
+  (println "Artist is" artist))
+----
+
+Output
+
+----
+Musician is Rehmaan
+Scientist is Kalaam
+Artist is nil
+nil
+----
+
+[source, clojure]
+----
+;; array_destructuring_3.clj
+
+(def people ["Rehmaan" "Kalaam" "Hussein" "Madhavan"])
+
+(let [[musician scientist artist] people]
+  (println "Musician is" musician)
+  (println "Scientist is" scientist)
+  (println "Artist is" artist))
+----
+
+Output
+
+----
+Musician is Rehmaan
+Scientist is Kalaam
+Artist is Hussein
+nil
+----
+
+[source, clojure]
+----
+;; array_destructuring_4.clj
+
+(def people ["Rehmaan" "Kalaam" "Hussein" "Madhavan"])
+
+(let [[musician scientist artist actor] people]
+  (println "Musician is" musician)
+  (println "Scientist is" scientist)
+  (println "Artist is" artist)
+  (println "Actor is" actor))
+----
+
+Output
+
+----
+Musician is Rehmaan
+Scientist is Kalaam
+Artist is Hussein
+Actor is Madhavan
+nil
+----
+
+[source, clojure]
+----
+;; array_destructuring_5.clj
+
+(def people ["Rehmaan" "Kalaam" "Hussein" "Madhavan"])
+
+(let [[_ scientist _ actor] people]
+  (println "Scientist is" scientist)
+  (println "Actor is" actor))
+----
+
+Output
+
+----
+Scientist is Kalaam
+Actor is Madhavan
+nil
+----
+
+
