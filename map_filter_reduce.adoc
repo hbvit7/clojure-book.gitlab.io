@@ -1,0 +1,103 @@
+== map, filter, reduce
+
+=== map
+
+[source, clojure]
+----
+(map inc [1 2 3])
+----
+[source, clojure]
+----
+(map (fn [x] (+ x 1)) [1 2 3])
+----
+[source, clojure]
+----
+(map #(+ % 1) [1 2 3])
+----
+
+[source, clojure]
+----
+(map (fn [x y]
+       (+ (Math/pow x 2)
+          (Math/pow y 2))) [1 2 3] [2 3 4])
+----
+
+[source, clojure]
+----
+(defn double-it [x]
+  (* x 2))
+
+(map double-it [1 2 3])
+----
+
+
+=== filter
+
+[source, clojure]
+----
+(filter odd? (range 1 11))
+----
+
+[source, clojure]
+----
+(filter even? (range 1 11))
+----
+
+[source, clojure]
+----
+(filter #(> % 5) (range 1 11))
+----
+
+[source, clojure]
+----
+(filter #(> 5 %) (range 1 11))
+----
+
+[source, clojure]
+----
+(filter (fn [x] (> x 5)) (range 1 11))
+----
+
+[source, clojure]
+----
+(defn greater-than-5 [x]
+  (> x 5))
+
+(filter greater-than-5 (range 1 11))
+----
+
+=== reduce
+
+
+
+[source, clojure]
+----
+(reduce + [1 2 3 4])
+----
+
+[source, clojure]
+----
+(reduce * [1 2 3 4])
+----
+
+[source, clojure]
+----
+(defn add [a b]
+  (+ a b))
+----
+
+[source, clojure]
+----
+(reduce add [1 2 3 4])
+----
+
+[source, clojure]
+----
+(defn multiply [a b]
+  (* a b))
+----
+
+[source, clojure]
+----
+(reduce multiply [1 2 3 4])
+----
