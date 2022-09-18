@@ -2,7 +2,7 @@
 
 [source, clojure]
 ----
-;; array_destructuring.clj
+;; vector_destructuring.clj
 
 (def people ["Rehmaan" "Kalaam"])
 
@@ -21,7 +21,7 @@ nil
 
 [source, clojure]
 ----
-;; array_destructuring_2.clj
+;; vector_destructuring_2.clj
 
 (def people ["Rehmaan" "Kalaam"])
 
@@ -42,7 +42,7 @@ nil
 
 [source, clojure]
 ----
-;; array_destructuring_3.clj
+;; vector_destructuring_3.clj
 
 (def people ["Rehmaan" "Kalaam" "Hussein" "Madhavan"])
 
@@ -63,7 +63,7 @@ nil
 
 [source, clojure]
 ----
-;; array_destructuring_4.clj
+;; vector_destructuring_4.clj
 
 (def people ["Rehmaan" "Kalaam" "Hussein" "Madhavan"])
 
@@ -86,7 +86,7 @@ nil
 
 [source, clojure]
 ----
-;; array_destructuring_5.clj
+;; vector_destructuring_5.clj
 
 (def people ["Rehmaan" "Kalaam" "Hussein" "Madhavan"])
 
@@ -103,4 +103,26 @@ Actor is Madhavan
 nil
 ----
 
+[source, clojure]
+----
+;; map_destructuring_4.clj
+
+(def people
+  {:musician "Rehmaan"
+   :scientist "Kalaam"
+   :artist "Hussein"
+   :actor "Madhavan"})
+
+(let [{scientist :scientist actor :actor} people]
+  (println "Scientist is" scientist)
+  (println "Actor is" actor))
+----
+
+Output
+
+----
+Scientist is Kalaam
+Actor is Madhavan
+nil
+----
 
