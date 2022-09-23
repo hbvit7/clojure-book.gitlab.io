@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-Image racks with lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.
+Imagine racks with lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.
 
 Look at the code below:
 

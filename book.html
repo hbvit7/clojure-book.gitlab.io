@@ -703,7 +703,11 @@ pre.rouge {
 <li><a href="#_maps">4.4. Maps</a></li>
 </ul>
 </li>
-<li><a href="#_reading_clojure_documentation">5. Reading Clojure Documentation</a></li>
+<li><a href="#_reading_clojure_documentation">5. Reading Clojure Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#_clojure_docs_online">5.1. Clojure docs online</a></li>
+</ul>
+</li>
 <li><a href="#_logic_and_comparison">6. Logic and comparison</a></li>
 <li><a href="#_conditions_and_branching">7. Conditions and branching</a>
 <ul class="sectlevel2">
@@ -725,13 +729,18 @@ pre.rouge {
 <li><a href="#_lazy_sequence">11. Lazy Sequence</a>
 <ul class="sectlevel2">
 <li><a href="#_repeat">11.1. repeat</a></li>
+<li><a href="#_cycle">11.2. cycle</a></li>
+<li><a href="#_iterate">11.3. iterate</a></li>
 </ul>
 </li>
-<li><a href="#_cycle">12. cycle</a>
+<li><a href="#_map_filter_reduce">12. map, filter, reduce</a>
 <ul class="sectlevel2">
-<li><a href="#_iterate">12.1. iterate</a></li>
+<li><a href="#_map">12.1. map</a></li>
+<li><a href="#_filter">12.2. filter</a></li>
+<li><a href="#_reduce">12.3. reduce</a></li>
 </ul>
 </li>
+<li><a href="#_destructuring">13. Destructuring</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -2026,7 +2035,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </table>
 </div>
 <div class="paragraph">
-<p>Image racks with lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.</p>
+<p>Imagine racks with lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.</p>
 </div>
 <div class="paragraph">
 <p>Look at the code below:</p>
@@ -2284,8 +2293,17 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_lists">4.2. Lists</h3>
-<div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/list.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/list.clj</a></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/list.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/list.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2995,7 +3013,24 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="sect1">
 <h2 id="_reading_clojure_documentation">5. Reading Clojure Documentation</h2>
 <div class="sectionbody">
-
+<div class="sect2">
+<h3 id="_clojure_docs_online">5.1. Clojure docs online</h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/clojuredocs.png" alt="clojuredocs">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/clojuredocs_2.png" alt="clojuredocs 2">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/clojuredocs_3.png" alt="clojuredocs 3">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3823,11 +3858,8 @@ nil</pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_cycle">12. cycle</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_cycle">11.2. cycle</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"universe"</span><span class="w"> </span><span class="s">"antiverse"</span><span class="p">]))</span></code></pre>
@@ -3874,8 +3906,9 @@ nil</pre>
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">tiffin-items</span><span class="p">)</span></code></pre>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_iterate">12.1. iterate</h3>
+<h3 id="_iterate">11.3. iterate</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="p">(</span><span class="nb">iterate</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
@@ -3890,6 +3923,258 @@ nil</pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">all-numbers</span><span class="p">)</span></code></pre>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_map_filter_reduce">12. map, filter, reduce</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_map">12.1. map</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+          </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">double-it</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="n">double-it</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_filter">12.2. filter</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">odd?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">even?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">%</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">greater-than-5</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">5</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">greater-than-5</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reduce">12.3. reduce</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">multiply</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="n">multiply</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_destructuring">13. Destructuring</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; vector_destructuring.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="p">[</span><span class="s">"Rehmaan"</span><span class="w"> </span><span class="s">"Kalaam"</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">musician</span><span class="w"> </span><span class="n">scientist</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Musician is"</span><span class="w"> </span><span class="n">musician</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Scientist is"</span><span class="w"> </span><span class="n">scientist</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Musician is Rehmaan
+Scientist is Kalaam
+nil</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; vector_destructuring_2.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="p">[</span><span class="s">"Rehmaan"</span><span class="w"> </span><span class="s">"Kalaam"</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">musician</span><span class="w"> </span><span class="n">scientist</span><span class="w"> </span><span class="n">artist</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Musician is"</span><span class="w"> </span><span class="n">musician</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Scientist is"</span><span class="w"> </span><span class="n">scientist</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Artist is"</span><span class="w"> </span><span class="n">artist</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Musician is Rehmaan
+Scientist is Kalaam
+Artist is nil
+nil</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; vector_destructuring_3.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="p">[</span><span class="s">"Rehmaan"</span><span class="w"> </span><span class="s">"Kalaam"</span><span class="w"> </span><span class="s">"Hussein"</span><span class="w"> </span><span class="s">"Madhavan"</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">musician</span><span class="w"> </span><span class="n">scientist</span><span class="w"> </span><span class="n">artist</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Musician is"</span><span class="w"> </span><span class="n">musician</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Scientist is"</span><span class="w"> </span><span class="n">scientist</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Artist is"</span><span class="w"> </span><span class="n">artist</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Musician is Rehmaan
+Scientist is Kalaam
+Artist is Hussein
+nil</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; vector_destructuring_4.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="p">[</span><span class="s">"Rehmaan"</span><span class="w"> </span><span class="s">"Kalaam"</span><span class="w"> </span><span class="s">"Hussein"</span><span class="w"> </span><span class="s">"Madhavan"</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">musician</span><span class="w"> </span><span class="n">scientist</span><span class="w"> </span><span class="n">artist</span><span class="w"> </span><span class="n">actor</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Musician is"</span><span class="w"> </span><span class="n">musician</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Scientist is"</span><span class="w"> </span><span class="n">scientist</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Artist is"</span><span class="w"> </span><span class="n">artist</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Actor is"</span><span class="w"> </span><span class="n">actor</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Musician is Rehmaan
+Scientist is Kalaam
+Artist is Hussein
+Actor is Madhavan
+nil</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; vector_destructuring_5.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="p">[</span><span class="s">"Rehmaan"</span><span class="w"> </span><span class="s">"Kalaam"</span><span class="w"> </span><span class="s">"Hussein"</span><span class="w"> </span><span class="s">"Madhavan"</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[[</span><span class="n">_</span><span class="w"> </span><span class="n">scientist</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="n">actor</span><span class="p">]</span><span class="w"> </span><span class="n">people</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Scientist is"</span><span class="w"> </span><span class="n">scientist</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Actor is"</span><span class="w"> </span><span class="n">actor</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Scientist is Kalaam
+Actor is Madhavan
+nil</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; map_destructuring_4.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">people</span><span class="w">
+  </span><span class="p">{</span><span class="no">:musician</span><span class="w"> </span><span class="s">"Rehmaan"</span><span class="w">
+   </span><span class="no">:scientist</span><span class="w"> </span><span class="s">"Kalaam"</span><span class="w">
+   </span><span class="no">:artist</span><span class="w"> </span><span class="s">"Hussein"</span><span class="w">
+   </span><span class="no">:actor</span><span class="w"> </span><span class="s">"Madhavan"</span><span class="p">})</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[{</span><span class="n">scientist</span><span class="w"> </span><span class="no">:scientist</span><span class="w"> </span><span class="n">actor</span><span class="w"> </span><span class="no">:actor</span><span class="p">}</span><span class="w"> </span><span class="n">people</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Scientist is"</span><span class="w"> </span><span class="n">scientist</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Actor is"</span><span class="w"> </span><span class="n">actor</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Scientist is Kalaam
+Actor is Madhavan
+nil</pre>
 </div>
 </div>
 </div>

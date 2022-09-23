@@ -1,6 +1,8 @@
 === Lists
 
-{code-url}/list.clj
+:file-name: list.clj
+
+include::use_code_note.adoc[]
 
 
 [source, clojure]
@@ -149,6 +151,7 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 
 
 Output
+
 ----
 ("Periyaar" "Ram" "Bashir" "Antony" "Buddha")
 ----
