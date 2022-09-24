@@ -20,6 +20,8 @@ include::first_steps.adoc[]
 
 include::data_structures.adoc[]
 
+include::difference_between_vectors_and_lists.adoc[]
+
 include::reading-clojure-documentation.adoc[]
 
 include::logic-and-comparison.adoc[]
@@ -37,5 +39,7 @@ include::lazy_sequence.adoc[]
 include::map_filter_reduce.adoc[]
 
 include::destructuring.adoc[]
+
+include::records_and_protocols.adoc[]
 
 include::bibligraphy.adoc[]

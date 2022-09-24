@@ -703,44 +703,46 @@ pre.rouge {
 <li><a href="#_maps">4.4. Maps</a></li>
 </ul>
 </li>
-<li><a href="#_reading_clojure_documentation">5. Reading Clojure Documentation</a>
+<li><a href="#_difference_between_vectors_and_lists">5. Difference Between Vectors and Lists</a></li>
+<li><a href="#_reading_clojure_documentation">6. Reading Clojure Documentation</a>
 <ul class="sectlevel2">
-<li><a href="#_clojure_docs_online">5.1. Clojure docs online</a></li>
+<li><a href="#_clojure_docs_online">6.1. Clojure docs online</a></li>
 </ul>
 </li>
-<li><a href="#_logic_and_comparison">6. Logic and comparison</a></li>
-<li><a href="#_conditions_and_branching">7. Conditions and branching</a>
+<li><a href="#_logic_and_comparison">7. Logic and comparison</a></li>
+<li><a href="#_conditions_and_branching">8. Conditions and branching</a>
 <ul class="sectlevel2">
-<li><a href="#_if">7.1. if</a></li>
-<li><a href="#_when">7.2. when</a></li>
-<li><a href="#_cond">7.3. cond</a></li>
+<li><a href="#_if">8.1. if</a></li>
+<li><a href="#_when">8.2. when</a></li>
+<li><a href="#_cond">8.3. cond</a></li>
 </ul>
 </li>
-<li><a href="#_functions">8. Functions</a>
+<li><a href="#_functions">9. Functions</a>
 <ul class="sectlevel2">
-<li><a href="#_recursion">8.1. Recursion</a></li>
-<li><a href="#_multimethods">8.2. Multimethods</a></li>
-<li><a href="#_pre_and_post_condition_checking">8.3. Pre and Post Condition Checking</a></li>
-<li><a href="#_docstring">8.4. Docstring</a></li>
+<li><a href="#_recursion">9.1. Recursion</a></li>
+<li><a href="#_multimethods">9.2. Multimethods</a></li>
+<li><a href="#_pre_and_post_condition_checking">9.3. Pre and Post Condition Checking</a></li>
+<li><a href="#_docstring">9.4. Docstring</a></li>
 </ul>
 </li>
-<li><a href="#_what_is_clojure_code">9. What is Clojure code</a></li>
-<li><a href="#_sequence">10. Sequence</a></li>
-<li><a href="#_lazy_sequence">11. Lazy Sequence</a>
+<li><a href="#_what_is_clojure_code">10. What is Clojure code</a></li>
+<li><a href="#_sequence">11. Sequence</a></li>
+<li><a href="#_lazy_sequence">12. Lazy Sequence</a>
 <ul class="sectlevel2">
-<li><a href="#_repeat">11.1. repeat</a></li>
-<li><a href="#_cycle">11.2. cycle</a></li>
-<li><a href="#_iterate">11.3. iterate</a></li>
+<li><a href="#_repeat">12.1. repeat</a></li>
+<li><a href="#_cycle">12.2. cycle</a></li>
+<li><a href="#_iterate">12.3. iterate</a></li>
 </ul>
 </li>
-<li><a href="#_map_filter_reduce">12. map, filter, reduce</a>
+<li><a href="#_map_filter_reduce">13. map, filter, reduce</a>
 <ul class="sectlevel2">
-<li><a href="#_map">12.1. map</a></li>
-<li><a href="#_filter">12.2. filter</a></li>
-<li><a href="#_reduce">12.3. reduce</a></li>
+<li><a href="#_map">13.1. map</a></li>
+<li><a href="#_filter">13.2. filter</a></li>
+<li><a href="#_reduce">13.3. reduce</a></li>
 </ul>
 </li>
-<li><a href="#_destructuring">13. Destructuring</a></li>
+<li><a href="#_destructuring">14. Destructuring</a></li>
+<li><a href="#_records_and_protocols">15. Records and Protocols</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -3011,10 +3013,30 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_reading_clojure_documentation">5. Reading Clojure Documentation</h2>
+<h2 id="_difference_between_vectors_and_lists">5. Difference Between Vectors and Lists</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/vector.png" alt="vector">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/list_element.png" alt="list element">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/list.png" alt="list">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reading_clojure_documentation">6. Reading Clojure Documentation</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_clojure_docs_online">5.1. Clojure docs online</h3>
+<h3 id="_clojure_docs_online">6.1. Clojure docs online</h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/clojuredocs.png" alt="clojuredocs">
@@ -3034,7 +3056,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_logic_and_comparison">6. Logic and comparison</h2>
+<h2 id="_logic_and_comparison">7. Logic and comparison</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://gitlab.com/clojure-book/code/-/raw/master/logic-and-comparison.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/logic-and-comparison.clj</a></p>
@@ -3354,10 +3376,10 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_conditions_and_branching">7. Conditions and branching</h2>
+<h2 id="_conditions_and_branching">8. Conditions and branching</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_if">7.1. if</h3>
+<h3 id="_if">8.1. if</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if.clj</span><span class="w">
@@ -3407,7 +3429,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect2">
-<h3 id="_when">7.2. when</h3>
+<h3 id="_when">8.2. when</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; when.clj</span><span class="w">
@@ -3420,7 +3442,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cond">7.3. cond</h3>
+<h3 id="_cond">8.3. cond</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; cond.clj</span><span class="w">
@@ -3444,7 +3466,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="sect1">
-<h2 id="_functions">8. Functions</h2>
+<h2 id="_functions">9. Functions</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -3576,7 +3598,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_recursion">8.1. Recursion</h3>
+<h3 id="_recursion">9.1. Recursion</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_recursion.clj</span><span class="w">
@@ -3630,7 +3652,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multimethods">8.2. Multimethods</h3>
+<h3 id="_multimethods">9.2. Multimethods</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; without_multimethods.clj</span><span class="w">
@@ -3694,7 +3716,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pre_and_post_condition_checking">8.3. Pre and Post Condition Checking</h3>
+<h3 id="_pre_and_post_condition_checking">9.3. Pre and Post Condition Checking</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_pre.clj</span><span class="w">
@@ -3736,7 +3758,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_docstring">8.4. Docstring</h3>
+<h3 id="_docstring">9.4. Docstring</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; docstring.clj</span><span class="w">
@@ -3787,7 +3809,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_is_clojure_code">9. What is Clojure code</h2>
+<h2 id="_what_is_clojure_code">10. What is Clojure code</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -3812,16 +3834,16 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sequence">10. Sequence</h2>
+<h2 id="_sequence">11. Sequence</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lazy_sequence">11. Lazy Sequence</h2>
+<h2 id="_lazy_sequence">12. Lazy Sequence</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_repeat">11.1. repeat</h3>
+<h3 id="_repeat">12.1. repeat</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
@@ -3859,7 +3881,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cycle">11.2. cycle</h3>
+<h3 id="_cycle">12.2. cycle</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"universe"</span><span class="w"> </span><span class="s">"antiverse"</span><span class="p">]))</span></code></pre>
@@ -3908,7 +3930,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_iterate">11.3. iterate</h3>
+<h3 id="_iterate">12.3. iterate</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="p">(</span><span class="nb">iterate</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
@@ -3928,10 +3950,10 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_map_filter_reduce">12. map, filter, reduce</h2>
+<h2 id="_map_filter_reduce">13. map, filter, reduce</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_map">12.1. map</h3>
+<h3 id="_map">13.1. map</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
@@ -3964,7 +3986,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filter">12.2. filter</h3>
+<h3 id="_filter">13.2. filter</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">odd?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
@@ -4000,7 +4022,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reduce">12.3. reduce</h3>
+<h3 id="_reduce">13.3. reduce</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
@@ -4037,7 +4059,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_destructuring">13. Destructuring</h2>
+<h2 id="_destructuring">14. Destructuring</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -4175,6 +4197,124 @@ nil</pre>
 <pre>Scientist is Kalaam
 Actor is Madhavan
 nil</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_records_and_protocols">15. Records and Protocols</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; record.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">top-speed</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Car</span><span class="w"> </span><span class="s">"Tata Nano"</span><span class="w"> </span><span class="mi">120</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="no">:name</span><span class="w"> </span><span class="n">tata-nano</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="no">:name</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="no">:top-speed</span><span class="w"> </span><span class="n">tata-nano</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="no">:top-speed</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">ambassador</span><span class="w"> </span><span class="p">(</span><span class="nf">map-&gt;Car</span><span class="w"> </span><span class="p">{</span><span class="w">
+                           </span><span class="no">:name</span><span class="w"> </span><span class="s">"Ambassador"</span><span class="n">,</span><span class="w">
+                           </span><span class="no">:top-speed</span><span class="w"> </span><span class="mi">240</span><span class="w"> </span><span class="p">}))</span><span class="w">
+
+</span><span class="p">(</span><span class="no">:name</span><span class="w"> </span><span class="n">ambassador</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="n">ambassador</span><span class="w"> </span><span class="no">:name</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="no">:top-speed</span><span class="w"> </span><span class="n">ambassador</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="n">ambassador</span><span class="w"> </span><span class="no">:top-speed</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; record_2.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">top-speed</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Car</span><span class="w"> </span><span class="s">"Tata Nano"</span><span class="w"> </span><span class="mi">120</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">describe</span><span class="w"> </span><span class="p">[</span><span class="n">vehicle</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[{</span><span class="nb">name</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="no">:top-speed</span><span class="p">}</span><span class="w"> </span><span class="n">vehicle</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="s">" has a top speed of "</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="s">"Km/hr."</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">tata-nano</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Ship</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">top-speed</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">artic-explorer</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Ship</span><span class="w"> </span><span class="s">"Artic Explorer"</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">describe-ship</span><span class="w"> </span><span class="p">[</span><span class="n">vehicle</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[{</span><span class="nb">name</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="no">:top-speed</span><span class="p">}</span><span class="w"> </span><span class="n">vehicle</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="s">" has a top speed of "</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="s">" knots."</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">describe-ship</span><span class="w"> </span><span class="n">artic-explorer</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; protocol.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defprotocol</span><span class="w"> </span><span class="n">Describe</span><span class="w">
+  </span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">top-speed</span><span class="p">]</span><span class="w">
+  </span><span class="n">Describe</span><span class="w">
+  </span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[{</span><span class="nb">name</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="no">:top-speed</span><span class="p">}</span><span class="w"> </span><span class="n">this</span><span class="p">]</span><span class="w">
+      </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="s">" has a top speed of "</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="s">"Km/hr."</span><span class="p">))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Ship</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">top-speed</span><span class="p">]</span><span class="w">
+  </span><span class="n">Describe</span><span class="w">
+  </span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[{</span><span class="nb">name</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="no">:top-speed</span><span class="p">}</span><span class="w"> </span><span class="n">this</span><span class="p">]</span><span class="w">
+      </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="s">" has a top speed of "</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="s">" knots."</span><span class="p">))))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Car</span><span class="w"> </span><span class="s">"Tata Nano"</span><span class="w"> </span><span class="mi">120</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">artic-explorer</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Ship</span><span class="w"> </span><span class="s">"Artic Explorer"</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">tata-nano</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">artic-explorer</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; extend-protocol.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defprotocol</span><span class="w"> </span><span class="n">Describe</span><span class="w">
+  </span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">top-speed</span><span class="p">]</span><span class="w">
+  </span><span class="n">Describe</span><span class="w">
+  </span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[{</span><span class="nb">name</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="no">:top-speed</span><span class="p">}</span><span class="w"> </span><span class="n">this</span><span class="p">]</span><span class="w">
+      </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="s">" has a top speed of "</span><span class="w"> </span><span class="n">top-speed</span><span class="w"> </span><span class="s">"Km/hr."</span><span class="p">))))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Car</span><span class="w"> </span><span class="s">"Tata Nano"</span><span class="w"> </span><span class="mi">120</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">tata-nano</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Rocket</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">orbit</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">extend-protocol</span><span class="w"> </span><span class="n">Describe</span><span class="w">
+  </span><span class="n">Rocket</span><span class="w">
+   </span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="p">[</span><span class="n">this</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="p">(</span><span class="no">:name</span><span class="w"> </span><span class="n">this</span><span class="p">)</span><span class="w"> </span><span class="s">" reaches "</span><span class="w"> </span><span class="p">(</span><span class="no">:orbit</span><span class="w"> </span><span class="n">this</span><span class="p">)</span><span class="w"> </span><span class="s">" orbit."</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">pslv</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Rocket</span><span class="w"> </span><span class="s">"PSLV"</span><span class="w"> </span><span class="s">"Low Earth"</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">pslv</span><span class="p">)</span></code></pre>
 </div>
 </div>
 </div>

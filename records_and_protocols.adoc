@@ -1,0 +1,117 @@
+## Records and Protocols
+
+https://www.youtube.com/watch?v=xpH6RGjZwNg
+
+
+[source, clojure]
+----
+;; record.clj
+
+(defrecord Car [name top-speed])
+
+(def tata-nano (->Car "Tata Nano" 120))
+
+(:name tata-nano)
+
+(get tata-nano :name)
+
+(:top-speed tata-nano)
+
+(get tata-nano :top-speed)
+
+(def ambassador (map->Car {
+                           :name "Ambassador",
+                           :top-speed 240 }))
+
+(:name ambassador)
+
+(get ambassador :name)
+
+(:top-speed ambassador)
+
+(get ambassador :top-speed)
+----
+
+
+[source, clojure]
+----
+;; record_2.clj
+
+(defrecord Car [name top-speed])
+
+(def tata-nano (->Car "Tata Nano" 120))
+
+(defn describe [vehicle]
+  (let [{name :name top-speed :top-speed} vehicle]
+    (str name " has a top speed of " top-speed "Km/hr.")))
+
+(describe tata-nano)
+
+(defrecord Ship [name top-speed])
+
+(def artic-explorer (->Ship "Artic Explorer" 10))
+
+(defn describe-ship [vehicle]
+  (let [{name :name top-speed :top-speed} vehicle]
+    (str name " has a top speed of " top-speed " knots.")))
+
+(describe-ship artic-explorer)
+----
+
+[source, clojure]
+----
+;; protocol.clj
+
+(defprotocol Describe
+  (describe [this]))
+
+(defrecord Car [name top-speed]
+  Describe
+  (describe [this]
+    (let [{name :name top-speed :top-speed} this]
+      (str name " has a top speed of " top-speed "Km/hr."))))
+
+(defrecord Ship [name top-speed]
+  Describe
+  (describe [this]
+    (let [{name :name top-speed :top-speed} this]
+      (str name " has a top speed of " top-speed " knots."))))
+
+(def tata-nano (->Car "Tata Nano" 120))
+
+(def artic-explorer (->Ship "Artic Explorer" 10))
+
+(describe tata-nano)
+
+(describe artic-explorer)
+----
+
+[source, clojure]
+----
+;; extend-protocol.clj
+
+(defprotocol Describe
+  (describe [this]))
+
+(defrecord Car [name top-speed]
+  Describe
+  (describe [this]
+    (let [{name :name top-speed :top-speed} this]
+      (str name " has a top speed of " top-speed "Km/hr."))))
+
+(def tata-nano (->Car "Tata Nano" 120))
+
+(describe tata-nano)
+
+(defrecord Rocket [name orbit])
+
+(extend-protocol Describe
+  Rocket
+   (describe [this] (str (:name this) " reaches " (:orbit this) " orbit.")))
+
+(def pslv (->Rocket "PSLV" "Low Earth"))
+
+(describe pslv)
+----
+
+

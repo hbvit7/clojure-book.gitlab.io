@@ -1,2 +1,7 @@
 ## Difference Between Vectors and Lists
 
+image::images/vector.png[]
+
+image::images/list_element.png[]
+
+image::images/list.png[]
