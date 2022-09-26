@@ -1,0 +1,40 @@
+== namespaces
+
+[source, clojure]
+----
+;; name_space.clj
+
+(ns lawyer)
+
+(def about-me "I never speak truth.")
+
+(ns politician)
+
+(def about-me "I loot the nation.")
+
+(ns engineer)
+
+(def about-me "I apply acience.")
+
+(println lawyer/about-me)
+(println politician/about-me)
+(println about-me)
+
+(ns politician)
+
+(println about-me)
+----
+
+----
+$ clj name_space.clj
+----
+
+Output
+
+----
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+I never speak truth.
+I loot the nation.
+I apply acience.
+I loot the nation.
+----

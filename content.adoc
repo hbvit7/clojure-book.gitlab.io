@@ -42,4 +42,6 @@ include::destructuring.adoc[]
 
 include::records_and_protocols.adoc[]
 
+include::namespaces.adoc[]
+
 include::bibligraphy.adoc[]

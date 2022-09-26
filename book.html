@@ -743,6 +743,7 @@ pre.rouge {
 </li>
 <li><a href="#_destructuring">14. Destructuring</a></li>
 <li><a href="#_records_and_protocols">15. Records and Protocols</a></li>
+<li><a href="#_namespaces">16. namespaces</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -4315,6 +4316,53 @@ nil</pre>
 </span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">pslv</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Rocket</span><span class="w"> </span><span class="s">"PSLV"</span><span class="w"> </span><span class="s">"Low Earth"</span><span class="p">))</span><span class="w">
 
 </span><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">pslv</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_namespaces">16. namespaces</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; name_space.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">lawyer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I never speak truth."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">politician</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I loot the nation."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">engineer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply acience."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">lawyer/about-me</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">politician/about-me</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">about-me</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">politician</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">about-me</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj name_space.clj</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>WARNING: Implicit use of clojure.main with options is deprecated, use -M
+I never speak truth.
+I loot the nation.
+I apply acience.
+I loot the nation.</pre>
 </div>
 </div>
 </div>
