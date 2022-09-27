@@ -2308,6 +2308,15 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Lists are just like vectors, now all you need to remember is a vector is set of things wrapped between square brackets <code>[</code> and <code>]</code>, a list is wrapped between round brackets <code>(</code> and <code>)</code>. In fact entire Clojure program is a list. Remember how we calculate \$3 + 5\$ in Clojure, it&#8217;s like this <code>(+ 3 5)</code>, it&#8217;s wrapped in round braces, and hence it&#8217;s a list.</p>
+</div>
+<div class="paragraph">
+<p>Entire Cloujre code is nothing but a list. It has a open braces <code>(</code>, and a function to call. To add we use the <code>+</code> function, and so we have <code>(+</code>, this is followed by arguments that are passed to the function, so to add 3 with 5, we pass the arguments to function like this <code>(+ 3 5</code>, then this is followed by closing round braces <code>(+ 3 5)</code>, thus completing the list, which could be executed by the Clojure interpreter.</p>
+</div>
+<div class="paragraph">
+<p>Take a look at the example below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="o">'</span><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span></code></pre>
@@ -2321,6 +2330,32 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>(1 2 3 4)</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the example above, we build a list of 4 numbers. But notice that we don&#8217;t start with a <code>(</code>, but we start with an apostrophe followed by bracket like this <code>'(</code>. This is to tell Clojure that not to execute the content in the bracket.</p>
+</div>
+<div class="paragraph">
+<p>When you try it without an apostrophe, Clojure thinks <code>1</code> is a function and <code>2 3 4</code> are the arguments passed to it, and it tries to execute it and fails as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>; Execution error (ClassCastException) at lawyer/eval2148 (REPL:79).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'bootstrap')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the apostrophe before the round brackets is to tell the Clojure not to execute <code>'(1 2 3 4)</code>, but just treat it as a list.</p>
+</div>
+<div class="paragraph">
+<p>You can also create a list using the <code>list</code> method as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
@@ -2334,18 +2369,11 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>(1 2 3)</pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">list</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
-</div>
+<div class="paragraph">
+<p>Above we pass <code>1</code>, <code>2</code>, and <code>3</code> to the <code>list</code> method, and we get a list returned.</p>
 </div>
 <div class="paragraph">
-<p>Output</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>(1 2 3)</pre>
-</div>
+<p>In the code below, I am creating a list of four strings and assigning it to a variable <code>friends-list</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2361,6 +2389,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>#'user/friends-list</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Note how I am using the apostrophe in the above <code>'("Ram" "Bashir" "Antony" "Buddha")</code>, to tell the Clojure interpreter, not to execute the list.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s see how many elements are there in <code>friends-list</code>. For that we use <code>count</code> as shown below and pass <code>friends-list</code> to it.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">count</span><span class="w"> </span><span class="n">friends-list</span><span class="p">)</span></code></pre>
@@ -2373,6 +2407,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>4</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>So <code>count</code> say there are four elements in <code>friends-list</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s get the first element in <code>friends-list</code>, for that we use function called <code>first</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2387,6 +2427,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>"Ram"</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Now let&#8217;s get all elements except the first element in <code>friends-list</code>. For that we use the function <code>rest</code> as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">friends-list</span><span class="p">)</span></code></pre>
@@ -2400,6 +2443,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>("Bashir" "Antony" "Buddha")</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Now let&#8217;s get the third element in <code>friends-list</code>. For that we use the function <code>nth</code>, which takes list as the first argument and the index to be fetched as the second argument.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">friends-list</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
@@ -2412,6 +2458,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>"Buddha"</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Note that list indexing starts from zero. That is the first element is indexed 0, second is 1 and so on.</p>
+</div>
+<div class="paragraph">
+<p>In the example below, Let&#8217;s try to get the fourth element in <code>friends-list</code> by passing number 3 to it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2445,6 +2497,12 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 
     Thread.java:   745 java.lang.Thread/run</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>and it fails.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s add an element to the list. For that we use method called <code>conj</code>, to it, we will pass the list to which the element should be appended, followed by the element which needs to appended to the list as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">

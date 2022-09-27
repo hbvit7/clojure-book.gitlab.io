@@ -5,17 +5,42 @@
 include::use_code_note.adoc[]
 
 
+Lists are just like vectors, now all you need to remember is a vector is set of things wrapped between square brackets `[` and `]`, a list is wrapped between round brackets `(` and `)`. In fact entire Clojure program is a list. Remember how we calculate stem:[3 + 5] in Clojure, it's like this `(+ 3 5)`, it's wrapped in round braces, and hence it's a list.
+
+Entire Cloujre code is nothing but a list. It has a open braces `(`, and a function to call. To add we use the `+` function, and so we have `(+`, this is followed by arguments that are passed to the function, so to add 3 with 5, we pass the arguments to function like this `(+ 3 5`, then this is followed by closing round braces `(+ 3 5)`, thus completing the list, which could be executed by the Clojure interpreter.
+
+Take a look at the example below:
+
 [source, clojure]
 ----
 '(1 2 3 4)
 ----
 
-
 Output
+
 ----
 (1 2 3 4)
 ----
 
+In the example above, we build a list of 4 numbers. But notice that we don't start with a `(`, but we start with an apostrophe followed by bracket like this `'(`. This is to tell Clojure that not to execute the content in the bracket.
+
+When you try it without an apostrophe, Clojure thinks `1` is a function and `2 3 4` are the arguments passed to it, and it tries to execute it and fails as shown below:
+
+[source, clojure]
+----
+(1 2 3 4)
+----
+
+Output
+
+----
+; Execution error (ClassCastException) at lawyer/eval2148 (REPL:79).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'bootstrap')
+----
+
+So the apostrophe before the round brackets is to tell the Clojure not to execute `'(1 2 3 4)`, but just treat it as a list.
+
+You can also create a list using the `list` method as shown below:
 
 
 [source, clojure]
@@ -23,26 +48,15 @@ Output
 (list 1 2 3)
 ----
 
-
 Output
+
 ----
 (1 2 3)
 ----
 
+Above we pass `1`, `2`, and `3` to the `list` method, and we get a list returned.
 
-
-[source, clojure]
-----
-(list 1 2 3)
-----
-
-
-Output
-----
-(1 2 3)
-----
-
-
+In the code below, I am creating a list of four strings and assigning it to a variable `friends-list`:
 
 [source, clojure]
 ----
@@ -50,64 +64,71 @@ Output
     '("Ram" "Bashir" "Antony" "Buddha"))
 ----
 
-
 Output
+
 ----
 #'user/friends-list
 ----
 
+Note how I am using the apostrophe in the above `'("Ram" "Bashir" "Antony" "Buddha")`, to tell the Clojure interpreter, not to execute the list.
 
+Now let's see how many elements are there in `friends-list`. For that we use `count` as shown below and pass `friends-list` to it.
 
 [source, clojure]
 ----
 (count friends-list)
 ----
 
-
 Output
+
 ----
 4
 ----
 
+So `count` say there are four elements in `friends-list`.
 
+Let's get the first element in `friends-list`, for that we use function called `first` as shown below:
 
 [source, clojure]
 ----
 (first friends-list)
 ----
 
-
 Output
+
 ----
 "Ram"
 ----
 
-
+Now let's get all elements except the first element in `friends-list`. For that we use the function `rest` as shown below:
 
 [source, clojure]
 ----
 (rest friends-list)
 ----
 
-
 Output
+
 ----
 ("Bashir" "Antony" "Buddha")
 ----
 
-
+Now let's get the third element in `friends-list`. For that we use the function `nth`, which takes list as the first argument and the index to be fetched as the second argument.
 
 [source, clojure]
 ----
 (nth friends-list 3)
 ----
 
-
 Output
+
 ----
 "Buddha"
 ----
 
+Note that list indexing starts from zero. That is the first element is indexed 0, second is 1 and so on.
+
+In the example below, Let's try to get the fourth element in `friends-list` by passing number 3 to it:
 
 
 [source, clojure]
@@ -115,8 +136,8 @@ Output
 (friends-list 3)
 ----
 
-
 Output
+
 ----
 Execution error (ClassCastException) at user/eval5554 (REPL:1).
 clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
@@ -142,13 +163,14 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 
 ----
 
+and it fails.
 
+Now let's add an element to the list. For that we use method called `conj`, to it, we will pass the list to which the element should be appended, followed by the element which needs to appended to the list as shown below:
 
 [source, clojure]
 ----
 (conj friends-list "Periyaar")
 ----
-
 
 Output
 
