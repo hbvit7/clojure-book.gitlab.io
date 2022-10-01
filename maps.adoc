@@ -1,18 +1,42 @@
 === Maps
 
-{code-url}/maps.clj
+:file-name: maps.clj
+
+include::use_code_note.adoc[]
+
+Lists and vectors can be accessed with numeric index, say in the below code:
+
+[source, clojure]
+----
+(def nums ["zero" "one" "two" "three" "four" "five" "six"])
+
+(nth nums 5)
+----
+
+Output
+
+----
+"five"
+----
+
+We get `"five"` as output. But what if we want something user-friendly words as index for our data collection? Enter the world of maps.
+
+Look at the code below, type it and execute it:
 
 [source, clojure]
 ----
 { "name" "Bashir" "age" 12 }
 ----
 
-
 Output
+
 ----
 {"name" "Bashir", "age" 12}
 ----
 
+In the above code we create a map, its first element has key "name" and value "Bashir", the second element has key "age" and value 12.
+
+Rather than using curly brackets, we can create a map by passing keys and values to a function called hash map as shown below:
 
 
 [source, clojure]
@@ -21,64 +45,71 @@ Output
           "age" 20)
 ----
 
-
 Output
+
 ----
 {"age" 20, "name" "Bashir"}
 ----
 
+The function `hash-map` receives keys as odd arguments and values as even arguments. So in the code above `"name"` is mapped to `"Bashir"` and key `"age"` is mapped to value 20.
 
+Now let's create a map and assign it to a variable `friend`:
 
 [source, clojure]
 ----
 (def friend { "name" "Bashir" "age" 12 })
 ----
 
-
 Output
+
 ----
 #'user/friend
 ----
 
-
+Now we get `"name"` of `friend` using the `get` method to which we first pass the map and the second argument is the key to be fetched.
 
 [source, clojure]
 ----
 (get friend "name")
 ----
 
-
 Output
+
 ----
 "Bashir"
 ----
 
+So the code above looks for key `"name"` in `friend`, its corresponding value is `"Bashir"` which gets returned out. 
 
+There is also a shortcut to get value from a map, just treat map as a function and pass key to it as a shown below:
 
 [source, clojure]
 ----
 (friend "name")
 ----
 
-
 Output
+
 ----
 "Bashir"
 ----
 
+So the example above we have map `friend`, and to it, we are passing the key `"name"`, and it returns the mapped value `"Bashir"`.
 
+Now the type of `"name"` is string as you can see below:
 
 [source, clojure]
 ----
 (type "name")
 ----
 
-
 Output
+
 ----
 java.lang.String
 ----
 
+There is another thing called keyword, that is preceded by a colon `:` followed by the name of the keyword. So as you see below `:name` is a keyword:
 
 
 [source, clojure]
@@ -86,13 +117,13 @@ java.lang.String
 (type :name)
 ----
 
-
 Output
+
 ----
 clojure.lang.Keyword
 ----
 
-
+Now rather using strings as key's, let's create a map with keywords as keys as shown:
 
 [source, clojure]
 ----
@@ -100,12 +131,15 @@ clojure.lang.Keyword
                   :age 90})
 ----
 
-
 Output
+
 ----
 #'user/wise-friend
 ----
 
+In the code above, we create a map with key `:name`, which is mapped to "Periyaar"; and key `:age` is mapped to 20. We assign it to `wise-friend`.
+
+Now we can get the `:name` of `wise-friend` as shown:
 
 
 [source, clojure]
@@ -113,25 +147,28 @@ Output
 (wise-friend :name)
 ----
 
-
 Output
+
 ----
 "Periyaar"
 ----
 
-
+We can get `:age` of `wise-friend` as shown below:
 
 [source, clojure]
 ----
 (get wise-friend :age)
 ----
 
-
 Output
+
 ----
 90
 ----
 
+In the above example e use `get` function, to it the map is passed as the first argument, and key is passed as the second argument.
+
+In the below example, we extract name of `wise-friend` using `(wise-friend :name)` and pass it to `print`, we also pass a second argument `"is very wise."` to `print`:
 
 
 [source, clojure]
@@ -140,95 +177,120 @@ Output
        "is very wise.")
 ----
 
-
 Output
+
 ----
 Periyaar is very wise.nil
 ----
 
+We get `Periyaar is very wise.nil` printed out. Replace `print` with `println` in the example above. What do you observe?
 
+Since we use keywords as keys in `wise-friend`, getting value of a key is possible as shown:
+ 
+[source, clojure]
+----
+(:name wise-friend)
+----
+
+Output
+
+----
+"Periyaar"
+----
+
+In the above code we treat `:name` as a function, and we pass the map `wise-friend` to it, and it fetches the value.
+
+Now let's add a new key and value to `wise-friend`:
 
 [source, clojure]
 ----
 (assoc wise-friend :belief "Rationalism")
 ----
 
-
 Output
+
 ----
 {:name "Periyaar", :age 90, :belief "Rationalism"}
 ----
 
-
+In the code above we have the `assoc` function, which we can call associate. To it we pass the map `wise-friend`, then we pass the key `:belief` and value `"Rationalism"` to it. In Clojure, things are immutable. The above operation returned a new map `{:name "Periyaar", :age 90, :belief "Rationalism"}`, and since we did not define it to any variable it's just lost. One might not think `wise-friend` got a new key and value. In fact if you query `wise-friend` for `:belief`, it would say nothing is there:
 
 [source, clojure]
 ----
 (wise-friend :belief)
 ----
 
-
 Output
-----nil----
 
+----
+nil
+----
 
+All old values of `wise-friend` are still intact, let's query its age:
 
 [source, clojure]
 ----
 (wise-friend :age)
 ----
 
-
 Output
-----90----
 
+----
+90
+----
 
+Now let's remove a key, value pair from wise friend as shown: 
 
 [source, clojure]
 ----
 (dissoc wise-friend :age)
 ----
 
-
 Output
+
 ----
 {:name "Periyaar"}
 ----
 
+In the code above we remove `:age` from `wise-friend` and we get an output map containing only the `:name`. Once again you must not think Clojure changed `wise-friend`. `dissoc` (or disassociate) took `wise-friend` as first argument, and key to be removed as second, and it created a new map without the passed key and returned it. In Clojure things don't mutate.
 
+If we query the keys of  `wise-friend` we still get `:name` and `:age` as shown:
 
 [source, clojure]
 ----
 (keys wise-friend)
 ----
 
-
 Output
+
 ----
 (:name :age)
 ----
 
-
+To get values stored in amp, pass it to `vals` function as shown: 
 
 [source, clojure]
 ----
 (vals wise-friend)
 ----
 
-
 Output
+
 ----
 ("Periyaar" 90)
 ----
 
-
+`wise-friend` has key `:name` which is of type keyword, "name" is of type string. So you can have a array with keyword and string spelled the same. As you see below: 
 
 [source, clojure]
 ----
 (assoc wise-friend "name" "Ramasamy")
 ----
 
-
 Output
+
 ----
 {:name "Periyaar", :age 90, "name" "Ramasamy"}
 ----
+
+By adding `"name"` as key and associating a value "Ramasamy" to it, we are creating a map with keys `:name` and `"name"`. though such kind of tricks are possible, it's highly discouraged for the sake of clarity in code.

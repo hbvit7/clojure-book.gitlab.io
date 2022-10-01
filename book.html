@@ -2533,7 +2533,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </table>
 </div>
 <div class="paragraph">
-<p>Set is a collection of unique items. Imagine a list or a vector where no two item repeats, that&#8217;s a set. In clojure you can create a set as shown:</p>
+<p>Set is a collection of unique items. Imagine a list or a vector where no two item repeats, that&#8217;s a set. In Clojure you can create a set as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2549,7 +2549,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>A set starts a hash and curly braces <code><mark>{</code> followed by set items <code></mark>{1 2 3  4</code>, then it closes with a curly brace <code>#{1 2 3 4}</code>.</p>
+<p>A set starts a hash and curly braces <code><mark>{</code> followed by set items <code></mark>{1 2 3 4</code>, then it closes with a curly brace <code>#{1 2 3 4}</code>.</p>
 </div>
 <div class="paragraph">
 <p>Below we query the type of set:</p>
@@ -2587,7 +2587,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <p>Since <code>#{1 2 3 4}</code> is a set, it returns true.</p>
 </div>
 <div class="paragraph">
-<p>A set can have only unique elements. So if we try to create a set with non unique elements, it will throw an error as shown:</p>
+<p>A set can have only unique elements. So if we try to create a set with non-unique elements, it will throw an error as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2649,7 +2649,7 @@ Duplicate key: 4
 </div>
 </div>
 <div class="paragraph">
-<p>Now when we try to create a similar set with  duplicate element <code>"Apple"</code> it throws an error as shown below:</p>
+<p>Now when we try to create a similar set with a duplicate element <code>"Apple"</code> it throws an error as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2765,10 +2765,10 @@ Duplicate key: Apple
 </div>
 </div>
 <div class="paragraph">
-<p>In the coe above we pass <code>"Banana"</code> to <code>fruits</code> and it returns <code>"Banana"</code> since <code>"Banana"</code> is in fruits.</p>
+<p>In the code above we pass <code>"Banana"</code> to <code>fruits</code> and it returns <code>"Banana"</code> since <code>"Banana"</code> is in fruits.</p>
 </div>
 <div class="paragraph">
-<p>When we pass <code>"Jack Fruit"</code> to <code>fruits</code>, it returns a <code>nil</code>  or nothing since <code>"Jack Fruit"</code> is not in fruits:</p>
+<p>When we pass <code>"Jack Fruit"</code> to <code>fruits</code>, it returns a <code>nil</code> or nothing since <code>"Jack Fruit"</code> is not in fruits:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2823,7 +2823,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <p>It fails.</p>
 </div>
 <div class="paragraph">
-<p>There are a thing called keywords in Clojure. Their syntax is colon followed by some stuff <code>:&lt;some-stuff&gt;</code>, say if we want a set of programming languages, we can define it as shown below:</p>
+<p>There is a thing called keywords in Clojure. Their syntax is colon followed by some stuff <code>:&lt;some-stuff&gt;</code>, say if we want a set of programming languages, we can define it as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2896,10 +2896,10 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="paragraph">
-<p>Since <code>:ruby</code> is in <code>programming-languages</code>, it get&#8217;s returned.</p>
+<p>Since <code>:ruby</code> is in <code>programming-languages</code>, it gets returned.</p>
 </div>
 <div class="paragraph">
-<p><code>:ruby</code> is a keyword. So has some special properties compared to string. If you remeber checking if <code>"Banana"</code> exists in <code>fruits</code> using the code <code>("Banana" fruits)</code> fails, but checking if <code>:ruby</code> exists in <code>programming-languages</code> will work as shown below:</p>
+<p><code>:ruby</code> is a keyword. So has some special properties compared to string. If you remember checking if <code>"Banana"</code> exists in <code>fruits</code> using the code <code>("Banana" fruits)</code> fails, but checking if <code>:ruby</code> exists in <code>programming-languages</code> will work as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2915,7 +2915,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="paragraph">
-<p>We can add a element to a set using the function <code>conj</code>, followed by the set <code>programming-languages</code> in this case and le&#8217;s add <code>perl</code> to it:</p>
+<p>We can add a element to a set using the function <code>conj</code>, followed by the set <code>programming-languages</code> in this case and let&#8217;s add <code>:perl</code> to it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2931,7 +2931,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="paragraph">
-<p>We can remove a element from a set using the function <code>disj</code>, followed by the set <code>programming-languages</code> in this case and le&#8217;s remove <code>:perl</code>:</p>
+<p>We can remove an element from a set using the function <code>disj</code>, followed by the set <code>programming-languages</code> in this case and let&#8217;s remove <code>:perl</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2952,8 +2952,41 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 <div class="sect2">
 <h3 id="_maps">4.4. Maps</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/maps.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/maps.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/maps.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/maps.clj</a></p>
+<p>Lists and vectors can be accessed with numeric index, say in the below code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">nums</span><span class="w"> </span><span class="p">[</span><span class="s">"zero"</span><span class="w"> </span><span class="s">"one"</span><span class="w"> </span><span class="s">"two"</span><span class="w"> </span><span class="s">"three"</span><span class="w"> </span><span class="s">"four"</span><span class="w"> </span><span class="s">"five"</span><span class="w"> </span><span class="s">"six"</span><span class="p">])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">nums</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"five"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We get <code>"five"</code> as output. But what if we want something user-friendly words as index for our data collection? Enter the world of maps.</p>
+</div>
+<div class="paragraph">
+<p>Look at the code below, type it and execute it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2967,6 +3000,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>{"name" "Bashir", "age" 12}</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the above code we create a map, its first element has key "name" and value "Bashir", the second element has key "age" and value 12.</p>
+</div>
+<div class="paragraph">
+<p>Rather than using curly brackets, we can create a map by passing keys and values to a function called hash map as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2982,6 +3021,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>{"age" 20, "name" "Bashir"}</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The function <code>hash-map</code> receives keys as odd arguments and values as even arguments. So in the code above <code>"name"</code> is mapped to <code>"Bashir"</code> and key <code>"age"</code> is mapped to value 20.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s create a map and assign it to a variable <code>friend</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">friend</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"name"</span><span class="w"> </span><span class="s">"Bashir"</span><span class="w"> </span><span class="s">"age"</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">})</span></code></pre>
@@ -2994,6 +3039,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>#'user/friend</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now we get <code>"name"</code> of <code>friend</code> using the <code>get</code> method to which we first pass the map and the second argument is the key to be fetched.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3008,6 +3056,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>"Bashir"</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>So the code above looks for key <code>"name"</code> in <code>friend</code>, its corresponding value is <code>"Bashir"</code> which gets returned out.</p>
+</div>
+<div class="paragraph">
+<p>There is also a shortcut to get value from a map, just treat map as a function and pass key to it as a shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">friend</span><span class="w"> </span><span class="s">"name"</span><span class="p">)</span></code></pre>
@@ -3020,6 +3074,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>"Bashir"</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>So the example above we have map <code>friend</code>, and to it, we are passing the key <code>"name"</code>, and it returns the mapped value <code>"Bashir"</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now the type of <code>"name"</code> is string as you can see below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3034,6 +3094,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>java.lang.String</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>There is another thing called keyword, that is preceded by a colon <code>:</code> followed by the name of the keyword. So as you see below <code>:name</code> is a keyword:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="no">:name</span><span class="p">)</span></code></pre>
@@ -3046,6 +3109,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>clojure.lang.Keyword</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now rather using strings as key&#8217;s, let&#8217;s create a map with keywords as keys as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3061,6 +3127,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>#'user/wise-friend</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the code above, we create a map with key <code>:name</code>, which is mapped to "Periyaar"; and key <code>:age</code> is mapped to 20. We assign it to <code>wise-friend</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now we can get the <code>:name</code> of <code>wise-friend</code> as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">wise-friend</span><span class="w"> </span><span class="no">:name</span><span class="p">)</span></code></pre>
@@ -3074,6 +3146,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>"Periyaar"</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>We can get <code>:age</code> of <code>wise-friend</code> as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">get</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="no">:age</span><span class="p">)</span></code></pre>
@@ -3086,6 +3161,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>90</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the above example e use <code>get</code> function, to it the map is passed as the first argument, and key is passed as the second argument.</p>
+</div>
+<div class="paragraph">
+<p>In the below example, we extract name of <code>wise-friend</code> using <code>(wise-friend :name)</code> and pass it to <code>print</code>, we also pass a second argument <code>"is very wise."</code> to <code>print</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3101,6 +3182,31 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>Periyaar is very wise.nil</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>We get <code>Periyaar is very wise.nil</code> printed out. Replace <code>print</code> with <code>println</code> in the example above. What do you observe?</p>
+</div>
+<div class="paragraph">
+<p>Since we use keywords as keys in <code>wise-friend</code>, getting value of a key is possible as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="no">:name</span><span class="w"> </span><span class="n">wise-friend</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"Periyaar"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code we treat <code>:name</code> as a function, and we pass the map <code>wise-friend</code> to it, and it fetches the value.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s add a new key and value to <code>wise-friend</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="no">:belief</span><span class="w"> </span><span class="s">"Rationalism"</span><span class="p">)</span></code></pre>
@@ -3114,14 +3220,24 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>{:name "Periyaar", :age 90, :belief "Rationalism"}</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the code above we have the <code>assoc</code> function, which we can call associate. To it we pass the map <code>wise-friend</code>, then we pass the key <code>:belief</code> and value <code>"Rationalism"</code> to it. In Clojure, things are immutable. The above operation returned a new map <code>{:name "Periyaar", :age 90, :belief "Rationalism"}</code>, and since we did not define it to any variable it&#8217;s just lost. One might not think <code>wise-friend</code> got a new key and value. In fact if you query <code>wise-friend</code> for <code>:belief</code>, it would say nothing is there:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">wise-friend</span><span class="w"> </span><span class="no">:belief</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Output
-----nil----</p>
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All old values of <code>wise-friend</code> are still intact, let&#8217;s query its age:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3129,8 +3245,15 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="paragraph">
-<p>Output
-----90----</p>
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>90</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s remove a key, value pair from wise friend as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3145,6 +3268,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>{:name "Periyaar"}</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the code above we remove <code>:age</code> from <code>wise-friend</code> and we get an output map containing only the <code>:name</code>. Once again you must not think Clojure changed <code>wise-friend</code>. <code>dissoc</code> (or disassociate) took <code>wise-friend</code> as first argument, and key to be removed as second, and it created a new map without the passed key and returned it. In Clojure things don&#8217;t mutate.</p>
+</div>
+<div class="paragraph">
+<p>If we query the keys of  <code>wise-friend</code> we still get <code>:name</code> and <code>:age</code> as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">keys</span><span class="w"> </span><span class="n">wise-friend</span><span class="p">)</span></code></pre>
@@ -3157,6 +3286,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>(:name :age)</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>To get values stored in amp, pass it to <code>vals</code> function as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3171,6 +3303,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>("Periyaar" 90)</pre>
 </div>
 </div>
+<div class="paragraph">
+<p><code>wise-friend</code> has key <code>:name</code> which is of type keyword, "name" is of type string. So you can have a array with keyword and string spelled the same. As you see below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">assoc</span><span class="w"> </span><span class="n">wise-friend</span><span class="w"> </span><span class="s">"name"</span><span class="w"> </span><span class="s">"Ramasamy"</span><span class="p">)</span></code></pre>
@@ -3183,6 +3318,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>{:name "Periyaar", :age 90, "name" "Ramasamy"}</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>By adding <code>"name"</code> as key and associating a value "Ramasamy" to it, we are creating a map with keys <code>:name</code> and <code>"name"</code>. though such kind of tricks are possible, it&#8217;s highly discouraged for the sake of clarity in code.</p>
 </div>
 </div>
 </div>

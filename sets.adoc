@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-Set is a collection of unique items. Imagine a list or a vector where no two item repeats, that's a set. In clojure you can create a set as shown:
+Set is a collection of unique items. Imagine a list or a vector where no two item repeats, that's a set. In Clojure you can create a set as shown:
 
 [source, clojure]
 ----
@@ -17,7 +17,7 @@ Output
 #{1 4 3 2}
 ----
 
-A set starts a hash and curly braces `#{` followed by set items `#{1 2 3  4`, then it closes with a curly brace `#{1 2 3 4}`.
+A set starts a hash and curly braces `#{` followed by set items `#{1 2 3 4`, then it closes with a curly brace `#{1 2 3 4}`.
 
 Below we query the type of set:
 
@@ -47,7 +47,7 @@ true
 
 Since `#{1 2 3 4}` is a set, it returns true.
 
-A set can have only unique elements. So if we try to create a set with non unique elements, it will throw an error as shown:
+A set can have only unique elements. So if we try to create a set with non-unique elements, it will throw an error as shown:
 
 [source, clojure]
 ----
@@ -104,7 +104,7 @@ Output
 #{"Mango" "Orange" "Apple" "Banana"}
 ----
 
-Now when we try to create a similar set with  duplicate element `"Apple"` it throws an error as shown below:
+Now when we try to create a similar set with a duplicate element `"Apple"` it throws an error as shown below:
 
 
 [source, clojure]
@@ -207,9 +207,9 @@ Output
 "Banana"
 ----
 
-In the coe above we pass `"Banana"` to `fruits` and it returns `"Banana"` since `"Banana"` is in fruits. 
+In the code above we pass `"Banana"` to `fruits` and it returns `"Banana"` since `"Banana"` is in fruits. 
 
-When we pass `"Jack Fruit"` to `fruits`, it returns a `nil`  or nothing since `"Jack Fruit"` is not in fruits: 
+When we pass `"Jack Fruit"` to `fruits`, it returns a `nil` or nothing since `"Jack Fruit"` is not in fruits: 
 
 [source, clojure]
 ----
@@ -258,7 +258,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 
 It fails.
 
-There are a thing called keywords in Clojure. Their syntax is colon followed by some stuff `:<some-stuff>`, say if we want a set of programming languages, we can define it as shown below:
+There is a thing called keywords in Clojure. Their syntax is colon followed by some stuff `:<some-stuff>`, say if we want a set of programming languages, we can define it as shown below:
 
 [source, clojure]
 ----
@@ -316,9 +316,9 @@ Output
 :ruby
 ----
 
-Since `:ruby` is in `programming-languages`, it get's returned.
+Since `:ruby` is in `programming-languages`, it gets returned.
 
-`:ruby` is a keyword. So has some special properties compared to string. If you remeber checking if `"Banana"` exists in `fruits` using the code `("Banana" fruits)` fails, but checking if `:ruby` exists in `programming-languages` will work as shown below:
+`:ruby` is a keyword. So has some special properties compared to string. If you remember checking if `"Banana"` exists in `fruits` using the code `("Banana" fruits)` fails, but checking if `:ruby` exists in `programming-languages` will work as shown below:
 
 
 [source, clojure]
@@ -332,7 +332,7 @@ Output
 :ruby
 ----
 
-We can add a element to a set using the function `conj`, followed by the set `programming-languages` in this case and le's add `perl` to it:
+We can add a element to a set using the function `conj`, followed by the set `programming-languages` in this case and let's add `:perl` to it:
 
 [source, clojure]
 ----
@@ -345,7 +345,7 @@ Output
 #{:clojure :python :perl :ruby}
 ----
 
-We can remove a element from a set using the function `disj`, followed by the set `programming-languages` in this case and le's remove `:perl`:
+We can remove an element from a set using the function `disj`, followed by the set `programming-languages` in this case and let's remove `:perl`:
 
 [source, clojure]
 ----
