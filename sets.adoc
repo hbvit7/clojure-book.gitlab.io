@@ -1,40 +1,61 @@
 === Sets
 
-{code-url}/sets.clj
+:file-name: sets.clj
+
+include::use_code_note.adoc[]
+
+Set is a collection of unique items. Imagine a list or a vector where no two item repeats, that's a set. In clojure you can create a set as shown:
 
 [source, clojure]
 ----
 #{1 2 3 4}
 ----
 
-
 Output
+
 ----
 #{1 4 3 2}
 ----
 
+A set starts a hash and curly braces `#{` followed by set items `#{1 2 3  4`, then it closes with a curly brace `#{1 2 3 4}`.
 
+Below we query the type of set:
 
 [source, clojure]
 ----
 (type #{1 2 3 4})
 ----
 
-
 Output
+
 ----
 clojure.lang.PersistentHashSet
 ----
 
+It returns something `clojure.lang.PersistentHashSet` that might be confusing to the beginner. Instead one can use the `set?` function to check if something is a set or not as shown below:
 
+[source, clojure]
+----
+(set? #{1 2 3 4})
+----
+
+Output
+
+----
+true
+----
+
+Since `#{1 2 3 4}` is a set, it returns true.
+
+A set can have only unique elements. So if we try to create a set with non unique elements, it will throw an error as shown:
 
 [source, clojure]
 ----
 #{1 2 3 4 4}
 ----
 
-
 Output
+
 ----
 Syntax error reading source at (REPL:1:13).
 Duplicate key: 4
@@ -70,19 +91,20 @@ Duplicate key: 4
 
 ----
 
-
+Once again we create a set of unique fruit names:
 
 [source, clojure]
 ----
 #{"Apple" "Orange" "Mango" "Banana"}
 ----
 
-
 Output
+
 ----
 #{"Mango" "Orange" "Apple" "Banana"}
 ----
 
+Now when we try to create a similar set with  duplicate element `"Apple"` it throws an error as shown below:
 
 
 [source, clojure]
@@ -90,8 +112,8 @@ Output
 #{"Apple" "Orange" "Mango" "Banana" "Apple"}
 ----
 
-
 Output
+
 ----
 Syntax error reading source at (REPL:1:45).
 Duplicate key: Apple
@@ -127,32 +149,36 @@ Duplicate key: Apple
 
 ----
 
-
+Let's create a set of fruit names and assign it to a variable named `fruits` ash shown below:
 
 [source, clojure]
 ----
 (def fruits #{"Apple" "Orange" "Mango" "Banana"})
 ----
 
-
 Output
+
 ----
 #'user/fruits
 ----
 
-
+Now we can check if `fruits` contains "Banana" as shown below:
 
 [source, clojure]
 ----
 (contains? fruits "Banana")
 ----
 
-
 Output
+
 ----
 true
 ----
 
+It returns true since `fruits` does contain `"Banana"`.
+
+
+Now let's check if `fruits` contains "Jack Fruit":
 
 
 [source, clojure]
@@ -160,47 +186,51 @@ true
 (contains? fruits "Jack Fruit")
 ----
 
-
 Output
+
 ----
 false
 ----
 
+It returns `false`, as "Jack Fruit" is not part of `fruits`.
 
+You can also check if a set contains an element as shown below:
 
 [source, clojure]
 ----
 (fruits "Banana")
 ----
 
-
 Output
+
 ----
 "Banana"
 ----
 
+In the coe above we pass `"Banana"` to `fruits` and it returns `"Banana"` since `"Banana"` is in fruits. 
 
+When we pass `"Jack Fruit"` to `fruits`, it returns a `nil`  or nothing since `"Jack Fruit"` is not in fruits: 
 
 [source, clojure]
 ----
 (fruits "Jack Fruit")
 ----
 
-
 Output
+
 ----
 nil
 ----
 
-
+Now let's try to see if `fruits` contains `"Banana"` by passing `fruits` to `"Banana"` as shown below:
 
 [source, clojure]
 ----
 ("Banana" fruits)
 ----
 
-
 Output
+
 ----
 Execution error (ClassCastException) at user/eval5624 (REPL:1).
 java.lang.String cannot be cast to clojure.lang.IFn
@@ -226,56 +256,69 @@ java.lang.String cannot be cast to clojure.lang.IFn
 
 ----
 
+It fails.
 
+There are a thing called keywords in Clojure. Their syntax is colon followed by some stuff `:<some-stuff>`, say if we want a set of programming languages, we can define it as shown below:
 
 [source, clojure]
 ----
 (def programming-languages #{:ruby :python :clojure})
 ----
 
-
 Output
+
 ----
 #'user/programming-languages
 ----
 
+Here every element in `programming-languages` is a keyword.
 
+Now let's check if `programming-languages` contains `:ruby`
 
 [source, clojure]
 ----
 (contains? programming-languages :ruby)
 ----
 
-
 Output
+
 ----
 true
 ----
 
+It does.
 
+Now let's check if it contains `:java`:
 
 [source, clojure]
 ----
 (contains? programming-languages :java)
 ----
 
-
 Output
-----false----
 
+----
+false
+----
 
+It does not.
+
+You can also see if a element exists in `programming-languages` by passing that element to it:
 
 [source, clojure]
 ----
 (programming-languages :ruby)
 ----
 
-
 Output
+
 ----
 :ruby
 ----
 
+Since `:ruby` is in `programming-languages`, it get's returned.
+
+`:ruby` is a keyword. So has some special properties compared to string. If you remeber checking if `"Banana"` exists in `fruits` using the code `("Banana" fruits)` fails, but checking if `:ruby` exists in `programming-languages` will work as shown below:
 
 
 [source, clojure]
@@ -283,36 +326,36 @@ Output
 (:ruby programming-languages)
 ----
 
-
 Output
+
 ----
 :ruby
 ----
 
-
+We can add a element to a set using the function `conj`, followed by the set `programming-languages` in this case and le's add `perl` to it:
 
 [source, clojure]
 ----
 (conj programming-languages :perl)
 ----
 
-
 Output
+
 ----
 #{:clojure :python :perl :ruby}
 ----
 
-
+We can remove a element from a set using the function `disj`, followed by the set `programming-languages` in this case and le's remove `:perl`:
 
 [source, clojure]
 ----
 (disj programming-languages :perl)
 ----
 
-
 Output
+
 ----
 #{:clojure :python :ruby}
 ----
 
-
+So that's it about set's for now.

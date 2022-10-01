@@ -2520,8 +2520,20 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 </div>
 <div class="sect2">
 <h3 id="_sets">4.3. Sets</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/sets.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/sets.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p><a href="https://gitlab.com/clojure-book/code/-/raw/master/sets.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/sets.clj</a></p>
+<p>Set is a collection of unique items. Imagine a list or a vector where no two item repeats, that&#8217;s a set. In clojure you can create a set as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2536,6 +2548,12 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 <pre>#{1 4 3 2}</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>A set starts a hash and curly braces <code><mark>{</code> followed by set items <code></mark>{1 2 3  4</code>, then it closes with a curly brace <code>#{1 2 3 4}</code>.</p>
+</div>
+<div class="paragraph">
+<p>Below we query the type of set:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">type</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">})</span></code></pre>
@@ -2548,6 +2566,28 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>clojure.lang.PersistentHashSet</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>It returns something <code>clojure.lang.PersistentHashSet</code> that might be confusing to the beginner. Instead one can use the <code>set?</code> function to check if something is a set or not as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">set?</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">})</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since <code>#{1 2 3 4}</code> is a set, it returns true.</p>
+</div>
+<div class="paragraph">
+<p>A set can have only unique elements. So if we try to create a set with non unique elements, it will throw an error as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2592,6 +2632,9 @@ Duplicate key: 4
                Thread.java:   745 java.lang.Thread/run</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Once again we create a set of unique fruit names:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="o">#</span><span class="p">{</span><span class="s">"Apple"</span><span class="w"> </span><span class="s">"Orange"</span><span class="w"> </span><span class="s">"Mango"</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">}</span></code></pre>
@@ -2604,6 +2647,9 @@ Duplicate key: 4
 <div class="content">
 <pre>#{"Mango" "Orange" "Apple" "Banana"}</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now when we try to create a similar set with  duplicate element <code>"Apple"</code> it throws an error as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2648,6 +2694,9 @@ Duplicate key: Apple
                Thread.java:   745 java.lang.Thread/run</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Let&#8217;s create a set of fruit names and assign it to a variable named <code>fruits</code> ash shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">fruits</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="s">"Apple"</span><span class="w"> </span><span class="s">"Orange"</span><span class="w"> </span><span class="s">"Mango"</span><span class="w"> </span><span class="s">"Banana"</span><span class="p">})</span></code></pre>
@@ -2660,6 +2709,9 @@ Duplicate key: Apple
 <div class="content">
 <pre>#'user/fruits</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now we can check if <code>fruits</code> contains "Banana" as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2674,6 +2726,12 @@ Duplicate key: Apple
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>It returns true since <code>fruits</code> does contain <code>"Banana"</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s check if <code>fruits</code> contains "Jack Fruit":</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="n">fruits</span><span class="w"> </span><span class="s">"Jack Fruit"</span><span class="p">)</span></code></pre>
@@ -2686,6 +2744,12 @@ Duplicate key: Apple
 <div class="content">
 <pre>false</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>It returns <code>false</code>, as "Jack Fruit" is not part of <code>fruits</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can also check if a set contains an element as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2700,6 +2764,12 @@ Duplicate key: Apple
 <pre>"Banana"</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the coe above we pass <code>"Banana"</code> to <code>fruits</code> and it returns <code>"Banana"</code> since <code>"Banana"</code> is in fruits.</p>
+</div>
+<div class="paragraph">
+<p>When we pass <code>"Jack Fruit"</code> to <code>fruits</code>, it returns a <code>nil</code>  or nothing since <code>"Jack Fruit"</code> is not in fruits:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">fruits</span><span class="w"> </span><span class="s">"Jack Fruit"</span><span class="p">)</span></code></pre>
@@ -2712,6 +2782,9 @@ Duplicate key: Apple
 <div class="content">
 <pre>nil</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s try to see if <code>fruits</code> contains <code>"Banana"</code> by passing <code>fruits</code> to <code>"Banana"</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2746,6 +2819,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
     Thread.java:   745 java.lang.Thread/run</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>It fails.</p>
+</div>
+<div class="paragraph">
+<p>There are a thing called keywords in Clojure. Their syntax is colon followed by some stuff <code>:&lt;some-stuff&gt;</code>, say if we want a set of programming languages, we can define it as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:ruby</span><span class="w"> </span><span class="no">:python</span><span class="w"> </span><span class="no">:clojure</span><span class="p">})</span></code></pre>
@@ -2758,6 +2837,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>#'user/programming-languages</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Here every element in <code>programming-languages</code> is a keyword.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s check if <code>programming-languages</code> contains <code>:ruby</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2772,14 +2857,30 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>It does.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s check if it contains <code>:java</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">contains?</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="no">:java</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Output
-----false----</p>
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It does not.</p>
+</div>
+<div class="paragraph">
+<p>You can also see if a element exists in <code>programming-languages</code> by passing that element to it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2794,6 +2895,12 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>:ruby</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Since <code>:ruby</code> is in <code>programming-languages</code>, it get&#8217;s returned.</p>
+</div>
+<div class="paragraph">
+<p><code>:ruby</code> is a keyword. So has some special properties compared to string. If you remeber checking if <code>"Banana"</code> exists in <code>fruits</code> using the code <code>("Banana" fruits)</code> fails, but checking if <code>:ruby</code> exists in <code>programming-languages</code> will work as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="no">:ruby</span><span class="w"> </span><span class="n">programming-languages</span><span class="p">)</span></code></pre>
@@ -2806,6 +2913,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>:ruby</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>We can add a element to a set using the function <code>conj</code>, followed by the set <code>programming-languages</code> in this case and le&#8217;s add <code>perl</code> to it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2820,6 +2930,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <pre>#{:clojure :python :perl :ruby}</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>We can remove a element from a set using the function <code>disj</code>, followed by the set <code>programming-languages</code> in this case and le&#8217;s remove <code>:perl</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">disj</span><span class="w"> </span><span class="n">programming-languages</span><span class="w"> </span><span class="no">:perl</span><span class="p">)</span></code></pre>
@@ -2832,6 +2945,9 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <div class="content">
 <pre>#{:clojure :python :ruby}</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>So that&#8217;s it about set&#8217;s for now.</p>
 </div>
 </div>
 <div class="sect2">
