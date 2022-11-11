@@ -147,8 +147,16 @@ nil
 
 === Clojure docs online
 
+If one is not comfortable to use Clojure REPL to access documentation, one may use Clojure's online documentation which is available on https://clojuredocs.org/
+
 image::images/clojuredocs.png[]
+
+If you see the image below, I have searched for reduce, and it shows all functions who names have the word reduce in them.
 
 image::images/clojuredocs_2.png[]
 
+I clicked on `reduce` and below you can see that Clojure shows documentation for it:
+ 
 image::images/clojuredocs_3.png[]
+
+Clojure docs is a convenient way access documentation on the browser.
