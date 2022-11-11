@@ -1,6 +1,10 @@
 == Logic and comparison
 
-{code-url}/logic-and-comparison.clj
+:file-name: logic-and-comparison.clj
+
+include::use_code_note.adoc[]
+
+Clojure comes with functions that helps us to compare stuff. For exa,ple you can use the equal to `=` function to check if two things are equal as shown below:
 
 [source, clojure]
 ----
@@ -8,9 +12,12 @@
 ----
 
 Output
+
 ----
 true
 ----
+
+Since 1 is equal to 1, the above code returns `true`. in the code below, 1 is not equal to 2 and hence `=` returns `false` when `1` and `2` are passed as arguments to it:
 
 [source, clojure]
 ----
@@ -18,9 +25,12 @@ true
 ----
 
 Output
+
 ----
 false
 ----
+
+`=` does not just compare two arguments, you can pass any number of arguments to it, and it returns `true`` only when all arguments are equal.
 
 [source, clojure]
 ----
@@ -28,6 +38,7 @@ false
 ----
 
 Output
+
 ----
 true
 ----
@@ -41,6 +52,8 @@ Output
 ----
 false
 ----
+
+The greater than `>` function is used to check if the first argument passed to it is greater than the second one:
 
 [source, clojure]
 ----
@@ -62,15 +75,20 @@ Output
 true
 ----
 
+If you provide it with more than one argument, it will check if the arguments are passed in descending order, if yes it will return `true`:
+
 [source, clojure]
 ----
 (> 3 2 1)
 ----
 
 Output
+
 ----
 true
 ----
+
+The greater than or equal to `>=` function returns if the arguments passed to it either greater than or equal to the second one. In the code below, 5 is equal to 5 and hence it will return `true`:
 
 [source, clojure]
 ----
@@ -78,9 +96,12 @@ true
 ----
 
 Output
+
 ----
 true
 ----
+
+In example below 6 is greater than 5 and hence it's `true`:
 
 [source, clojure]
 ----
@@ -88,9 +109,12 @@ true
 ----
 
 Output
+
 ----
-false
+true
 ----
+
+The code below returns `false` because 6 is neither greater than 7 nor it's equal to 7:
 
 [source, clojure]
 ----
@@ -98,9 +122,12 @@ false
 ----
 
 Output
+
 ----
 false
 ----
+
+The less than function `<` returns `true` if the arguments passed to it are in ascending order. Below 1 is less than 2 so `true` is returned:
 
 [source, clojure]
 ----
@@ -108,9 +135,12 @@ false
 ----
 
 Output
+
 ----
 true
 ----
+
+In ht example below, 1 is less than 2, which is less than 3 and hence `true` is returned:
 
 [source, clojure]
 ----
@@ -118,9 +148,12 @@ true
 ----
 
 Output
+
 ----
 true
 ----
+
+2 is not less than 1 and hence the code below returns `false`:
 
 [source, clojure]
 ----
@@ -128,9 +161,12 @@ true
 ----
 
 Output
+
 ----
 false
 ----
+
+The code below returns `false` because 1, 3 and 2 are not passed to `>` in ascending order:
 
 [source, clojure]
 ----
@@ -138,9 +174,12 @@ false
 ----
 
 Output
+
 ----
 false
 ----
+
+The code below returns `true` because 7 is equal to 7:
 
 [source, clojure]
 ----
@@ -148,9 +187,12 @@ false
 ----
 
 Output
+
 ----
 true
 ----
+
+the code below returns `true`, because 7 is less than 8, if not equal to:
 
 [source, clojure]
 ----
@@ -158,9 +200,12 @@ true
 ----
 
 Output
+
 ----
-false
+true
 ----
+
+The code below returns false because 8 is neither less than 7 nor its equal to it:
 
 [source, clojure]
 ----
@@ -168,9 +213,12 @@ false
 ----
 
 Output
+
 ----
 false
 ----
+
+Now let's come to logical functions, the `and` function returns `true`, if all the arguments passed to it are `true`:
 
 [source, clojure]
 ----
@@ -178,9 +226,12 @@ false
 ----
 
 Output
+
 ----
 true
 ----
+
+If any of the argument passed to `and` is `false`, it returns `false`.
 
 [source, clojure]
 ----
@@ -188,9 +239,12 @@ true
 ----
 
 Output
+
 ----
 false
 ----
+
+The `or` function returns `true` if any of the argument passed to it is `true`:
 
 [source, clojure]
 ----
@@ -198,9 +252,12 @@ false
 ----
 
 Output
+
 ----
 true
 ----
+
+
 
 [source, clojure]
 ----
@@ -208,6 +265,7 @@ true
 ----
 
 Output
+
 ----
 true
 ----
@@ -218,9 +276,12 @@ true
 ----
 
 Output
+
 ----
 false
 ----
+
+The not simply inverts `true` to `false` and vice versa:
 
 [source, clojure]
 ----
@@ -228,6 +289,7 @@ false
 ----
 
 Output
+
 ----
 false
 ----
@@ -238,6 +300,7 @@ false
 ----
 
 Output
+
 ----
 true
 ----
