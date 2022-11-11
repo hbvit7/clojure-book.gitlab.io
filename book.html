@@ -718,6 +718,7 @@ pre.rouge {
 <li><a href="#_if">7.1. if</a></li>
 <li><a href="#_when">7.2. when</a></li>
 <li><a href="#_cond">7.3. cond</a></li>
+<li><a href="#_case">7.4. case</a></li>
 </ul>
 </li>
 <li><a href="#_functions">8. Functions</a>
@@ -3976,8 +3977,17 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="sect1">
 <h2 id="_conditions_and_branching">7. Conditions and branching</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>In programming depending on the data or information you gained, the program flow should alter its execution. Say every one can visit landing page of a website, but when trying to visit a secured page if the person is not logged in he must be challenged with a login screen. For such kind of cases we need to check for conditions and depending on it, we need to branch.</p>
+</div>
+<div class="paragraph">
+<p>In this section we will see how to do it.</p>
+</div>
 <div class="sect2">
 <h3 id="_if">7.1. if</h3>
+<div class="paragraph">
+<p><code>if</code> is one of the basic condition checking functions in Clojure. Let&#8217;s try out a simple example. Execute the code shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if.clj</span><span class="w">
@@ -3986,6 +3996,44 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
     </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is positive"</span><span class="p">)))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5 is positive
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We get the result <code>5 is positive</code> as shown above. So we get the following to an <code>if</code> the first argument is condition check, over here its <code>(&gt; a 0)</code>, if the condition check returns <code>true</code>, then the second argument passed <code>(println a "is positive")</code> is executed.</p>
+</div>
+<div class="paragraph">
+<p>Now modify the program as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="mi">-5</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is positive"</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code, <code>a</code> is <code>-5</code> and hence <code>(&gt; a 0)</code> fails. In theory then the third argument passed to <code>if</code> should execute, we have first argument <code>(&gt; a 0)</code>, and second argument <code>(println a "is positive")</code>, there is no third argument, so <code>nil</code> gets returned.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s give a third argument to it, see the code below and execute it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3996,6 +4044,21 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
     </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is positive"</span><span class="p">)</span><span class="w">
     </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-5 is negative
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code <code>a</code> is <code>-5</code> and hence <code>(&gt; a 0)</code> fails. In then the third argument should execute. In this case, the third argument is <code>(println a "is negative")</code> gets executed and <code>-5 is negative</code> gets printed out.</p>
+</div>
+<div class="paragraph">
+<p>Take a look at ehe code below, execute it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4009,20 +4072,145 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
       </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is neither positive nor negative"</span><span class="p">))))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if_multiple_statemnts_in_branch.clj</span><span class="w">
+<pre>5 is positive
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So in the above code <code>(&gt; a 0)</code> is <code>true</code>, so the first argument passed to it <code>(println a "is positive")</code> is executed and above output is printed.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s change <code>a</code> to <code>-5</code> and see what happens.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if_nested.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="mi">-5</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is positive"</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is neither positive nor negative"</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-5 is negative
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the second argument passed to <code>if</code> is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is neither positive nor negative"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This argument itself contains a <code>if</code>, let&#8217;s call it nested if, and here the condition passed to it <code>(&lt; a 0)</code> passes, so the second argument passed to the nested if <code>(println a "is negative")</code> gets executed and <code>-5 is negative</code> gets printed out.</p>
+</div>
+<div class="paragraph">
+<p>Now what if <code>a</code> is zero, once again it comes to the second argument to the top level <code>if</code>, which is</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is neither positive nor negative"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the code above <code>(&lt; a 0)</code> fails, and the third argument passed to nested <code>if</code> <code>(println a "is neither positive nor negative")</code> gets executed, and we have execution as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if_nested.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is positive"</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is neither positive nor negative"</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>0 is neither positive nor negative
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>if</code> function can accept only 3 arguments, the first one is a condition, the second argument will get executed when the condition passes, the third will get executed when condition fails. So what if we want to execute more than one statement if a condition passes or fails, well wrap them in <code>do</code> as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if_multiple_statements_in_branch.clj</span><span class="w">
 
 </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w">
   </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
 
     </span><span class="p">(</span><span class="nf">do</span><span class="w">
-      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is positive"</span><span class="p">)</span><span class="w">
       </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"There are infinite positive numbers"</span><span class="p">))</span><span class="w">
 
     </span><span class="p">(</span><span class="nf">do</span><span class="w">
       </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
       </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"There are infinite negative numbers"</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5 is positive
+There are infinite positive numbers
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s make <code>a</code> negative and execute it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; if_multiple_statements_in_branch.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="mi">-5</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+
+    </span><span class="p">(</span><span class="nf">do</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is positive"</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"There are infinite positive numbers"</span><span class="p">))</span><span class="w">
+
+    </span><span class="p">(</span><span class="nf">do</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">"is negative"</span><span class="p">)</span><span class="w">
+      </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"There are infinite negative numbers"</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>-5 is negative
+There are infinite negative numbers
+nil</pre>
 </div>
 </div>
 </div>
@@ -4058,6 +4246,23 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
   </span><span class="p">(</span><span class="k">cond</span><span class="w">
     </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is positive."</span><span class="p">)</span><span class="w">
     </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is negative."</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_case">7.4. case</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; case.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">num</span><span class="w"> </span><span class="mi">20</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">case</span><span class="w"> </span><span class="n">num</span><span class="w">
+    </span><span class="mi">1</span><span class="w"> </span><span class="s">"one"</span><span class="w">
+    </span><span class="mi">2</span><span class="w"> </span><span class="s">"two"</span><span class="w">
+    </span><span class="mi">3</span><span class="w"> </span><span class="s">"three"</span><span class="w">
+    </span><span class="mi">4</span><span class="w"> </span><span class="s">"four"</span><span class="w">
+    </span><span class="mi">5</span><span class="w"> </span><span class="s">"five"</span><span class="w">
+    </span><span class="s">"I don't know"</span><span class="p">))</span></code></pre>
 </div>
 </div>
 </div>

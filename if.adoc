@@ -1,5 +1,7 @@
 === if
 
+`if` is one of the basic condition checking functions in Clojure. Let's try out a simple example. Execute the code shown below:
+
 [source, clojure]
 ----
 ;; if.clj
@@ -8,6 +10,36 @@
   (if (> a 0)
     (println a "is positive")))
 ----
+
+Output
+
+----
+5 is positive
+nil
+----
+
+We get the result `5 is positive` as shown above. So we get the following to an `if` the first argument is condition check, over here its `(> a 0)`, if the condition check returns `true`, then the second argument passed `(println a "is positive")` is executed.
+
+Now modify the program as shown:
+
+[source, clojure]
+----
+;; if.clj
+
+(let [a -5]
+  (if (> a 0)
+    (println a "is positive")))
+----
+
+Output
+
+----
+nil
+----
+
+In the above code, `a` is `-5` and hence `(> a 0)` fails. In theory then the third argument passed to `if` should execute, we have first argument `(> a 0)`, and second argument `(println a "is positive")`, there is no third argument, so `nil` gets returned.
+
+Now let's give a third argument to it, see the code below and execute it:
 
 [source, clojure]
 ----
@@ -18,6 +50,17 @@
     (println a "is positive")
     (println a "is negative")))
 ----
+
+Output
+
+----
+-5 is negative
+nil
+----
+
+In the above code `a` is `-5` and hence `(> a 0)` fails. In then the third argument should execute. In this case, the third argument is `(println a "is negative")` gets executed and `-5 is negative` gets printed out.
+
+Take a look at ehe code below, execute it.
 
 [source, clojure]
 ----
@@ -31,15 +74,88 @@
       (println a "is neither positive nor negative"))))
 ----
 
+Output
+
+----
+5 is positive
+nil
+----
+
+So in the above code `(> a 0)` is `true`, so the first argument passed to it `(println a "is positive")` is executed and above output is printed.
+
+Now let's change `a` to `-5` and see what happens.
+
 [source, clojure]
 ----
-;; if_multiple_statemnts_in_branch.clj
+;; if_nested.clj
+
+(let [a -5]
+  (if (> a 0)
+    (println a "is positive")
+    (if (< a 0)
+      (println a "is negative")
+      (println a "is neither positive nor negative"))))
+----
+
+Output
+
+----
+-5 is negative
+nil
+----
+
+So the second argument passed to `if` is:
+
+[source, clojure]
+----
+(if (< a 0)
+      (println a "is negative")
+      (println a "is neither positive nor negative"))
+----
+
+This argument itself contains a `if`, let's call it nested if, and here the condition passed to it `(< a 0)` passes, so the second argument passed to the nested if `(println a "is negative")` gets executed and `-5 is negative` gets printed out.
+
+Now what if `a` is zero, once again it comes to the second argument to the top level `if`, which is 
+
+[source, clojure]
+----
+(if (< a 0)
+      (println a "is negative")
+      (println a "is neither positive nor negative"))
+----
+
+In the code above `(< a 0)` fails, and the third argument passed to nested `if` `(println a "is neither positive nor negative")` gets executed, and we have execution as shown below:
+
+[source, clojure]
+----
+;; if_nested.clj
+
+(let [a 0]
+  (if (> a 0)
+    (println a "is positive")
+    (if (< a 0)
+      (println a "is negative")
+      (println a "is neither positive nor negative"))))
+----
+
+Output
+
+----
+0 is neither positive nor negative
+nil
+----
+
+`if` function can accept only 3 arguments, the first one is a condition, the second argument will get executed when the condition passes, the third will get executed when condition fails. So what if we want to execute more than one statement if a condition passes or fails, well wrap them in `do` as shown: 
+
+[source, clojure]
+----
+;; if_multiple_statements_in_branch.clj
 
 (let [a 5]
   (if (> a 0)
     
     (do
-      (println a "is negative")
+      (println a "is positive")
       (println "There are infinite positive numbers"))
 
     (do
@@ -47,3 +163,36 @@
       (println "There are infinite negative numbers"))))
 ----
 
+Output
+
+----
+5 is positive
+There are infinite positive numbers
+nil
+----
+
+Now let's make `a` negative and execute it:
+
+[source, clojure]
+----
+;; if_multiple_statements_in_branch.clj
+
+(let [a -5]
+  (if (> a 0)
+    
+    (do
+      (println a "is positive")
+      (println "There are infinite positive numbers"))
+
+    (do
+      (println a "is negative")
+      (println "There are infinite negative numbers"))))
+----
+
+Output
+
+----
+-5 is negative
+There are infinite negative numbers
+nil
+----

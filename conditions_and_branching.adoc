@@ -1,7 +1,13 @@
 == Conditions and branching
 
+In programming depending on the data or information you gained, the program flow should alter its execution. Say every one can visit landing page of a website, but when trying to visit a secured page if the person is not logged in he must be challenged with a login screen. For such kind of cases we need to check for conditions and depending on it, we need to branch.
+
+In this section we will see how to do it.
+
 include::if.adoc[]
 
 include::when.adoc[]
 
 include::cond.adoc[]
+
+include::case.adoc[]
