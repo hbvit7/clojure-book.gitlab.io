@@ -4216,6 +4216,9 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_when">7.2. when</h3>
+<div class="paragraph">
+<p><code>if</code> accepts a condition as first argument, as second it accepts what should be done if the condition is <code>true</code>, and third is what should be done if the condition is <code>false</code>. <code>if</code> does work when the third argument is left out, but if we want to execute a bunch of statements when condition is <code>true</code>, then we can use <code>when</code> as shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; when.clj</span><span class="w">
@@ -4225,6 +4228,62 @@ nil</pre>
     </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print something."</span><span class="p">)</span><span class="w">
     </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print other things too."</span><span class="p">)))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>I print something.
+I print other things too.
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Type the above program and execute it. When <code>print-something</code> is <code>true</code>, then the statements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print something."</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print other things too."</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>in the form</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="n">print-something</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print something."</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print other things too."</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>gets executed and we get the output shown above.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s set <code>print-something</code> to <code>false</code> as shown below and execute the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; when.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">print-something</span><span class="w"> </span><span class="n">false</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="n">print-something</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print something."</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"I print other things too."</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nothing gets printed. So if the first argument passed to <code>when</code> is true, all statements enclosed in its form gets executed, else nothing happens.</p>
 </div>
 </div>
 <div class="sect2">

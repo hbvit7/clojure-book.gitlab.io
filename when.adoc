@@ -1,5 +1,7 @@
 === when
 
+`if` accepts a condition as first argument, as second it accepts what should be done if the condition is `true`, and third is what should be done if the condition is `false`. `if` does work when the third argument is left out, but if we want to execute a bunch of statements when condition is `true`, then we can use `when` as shown below:
+
 [source, clojure]
 ----
 ;; when.clj
@@ -9,3 +11,50 @@
     (println "I print something.")
     (println "I print other things too.")))
 ----
+
+Output
+
+----
+I print something.
+I print other things too.
+nil
+----
+
+Type the above program and execute it. When `print-something` is `true`, then the statements:
+
+[source, clojure]
+----
+(println "I print something.")
+(println "I print other things too.")
+----
+
+in the form
+
+[source, clojure]
+----
+(when print-something
+    (println "I print something.")
+    (println "I print other things too."))
+----
+
+gets executed and we get the output shown above.
+
+Now let's set `print-something` to `false` as shown below and execute the code:
+
+[source, clojure]
+----
+;; when.clj
+
+(let [print-something false]
+  (when print-something
+    (println "I print something.")
+    (println "I print other things too.")))
+----
+
+Output
+
+----
+nil
+----
+
+Nothing gets printed. So if the first argument passed to `when` is true, all statements enclosed in its form gets executed, else nothing happens.
