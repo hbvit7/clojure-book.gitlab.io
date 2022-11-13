@@ -846,7 +846,7 @@ pre.rouge {
 <div class="sect2">
 <h3 id="_clojure">1.1. Clojure</h3>
 <div class="paragraph">
-<p>Clojure works on all OS platforms, you can install Clojure following the link here. Once done it&#8217;s time for us to check the Clojure REPL. To know what is REPL, checkout <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop" class="bare">https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop</a>. Type <code>clj</code> in your terminal, and you must get something like this:</p>
+<p>Clojure works on all OS platforms, you can install Clojure following the link here <a href="https://clojure.org/guides/install_clojure" class="bare">https://clojure.org/guides/install_clojure</a>. Once done it&#8217;s time for us to check the Clojure REPL. To know what is REPL, checkout <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop" class="bare">https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop</a>. Type <code>clj</code> in your terminal, and you must get something like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4673,25 +4673,57 @@ nil</pre>
 <div class="sect1">
 <h2 id="_what_is_clojure_code">9. What is Clojure code</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Clojure is a dialect of Lisp. Lisp stands for list processing. That is almost all Clojure code is a list data structure. In lisp, program is a data structure, and data structure could be treated as a program, which gives it enormous power.</p>
+</div>
+<div class="paragraph">
+<p>Clojure&#8217;s code follows one pattern and that is this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(function-name argument-1 .... argument-n)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See above how everything is enclosed in <code>(</code> and <code>)</code> which is a list data structure, and as a list processing language Clojure has the knowledge to process it.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s consider the following example:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The above list could be represented as following, the <code>*</code> function receives two arguments, the first one is <code>5</code> and the second one is (+ 1 2 3). This can be diagrammatically represented as follows:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/what-is-clojure-code-1.png" alt="what is clojure code 1">
 </div>
 </div>
+<div class="paragraph">
+<p>Now look at the deepest blue dots, that is <code>1</code>, <code>2</code> and <code>3</code>, they feed into the <code>+</code> function and gets reduced to 6, so we get a new data structure as shown:</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/what-is-clojure-code-2.png" alt="what is clojure code 2">
 </div>
 </div>
+<div class="paragraph">
+<p>This can be written as shown:</p>
+</div>
+<div class="paragraph">
+<p>(* 5 6) in lisp. That is <code>5</code> and <code>6</code> get&#8217;s fed into <code>*</code> function which multiplies it and we get <code>30</code> as output.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/what-is-clojure-code-3.png" alt="what is clojure code 3">
 </div>
+</div>
+<div class="paragraph">
+<p>Because Clojure is lisp, it has excellent uniformity in code, unlike Object-Oriented languages one may need not remember complex syntax, it&#8217;s light on your brain freeing your other neurons to tackle the business problems.</p>
 </div>
 </div>
 </div>

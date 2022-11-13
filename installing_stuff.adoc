@@ -2,7 +2,7 @@
 
 === Clojure
 
-Clojure works on all OS platforms, you can install Clojure following the link here. Once done it's time for us to check the Clojure REPL. To know what is REPL, checkout https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop. Type `clj` in your terminal, and you must get something like this:
+Clojure works on all OS platforms, you can install Clojure following the link here https://clojure.org/guides/install_clojure. Once done it's time for us to check the Clojure REPL. To know what is REPL, checkout https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop. Type `clj` in your terminal, and you must get something like this:
 
 ----
 $ clj
