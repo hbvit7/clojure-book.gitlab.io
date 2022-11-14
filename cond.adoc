@@ -1,5 +1,7 @@
 === cond
 
+What if you want to check multiple conditions and make your code execute according to it. Welcome to `cond` or condition. Take a look at the program below and execute it:
+
 [source, clojure]
 ----
 ;; cond.clj
@@ -11,6 +13,35 @@
     :else (println number "is neither positive nor negative.")))
 ----
 
+Output
+
+----
+5 is positive.
+nil
+----
+
+It prints `5 is positive`. That's because we have set `number` as `5` in `let [number 5]`. Then the `cond` form is coded like this:
+
+[source, clojure]
+----
+(cond
+    (> number 0) (println number "is positive.")
+    (< number 0) (println number "is negative.")
+    :else (println number "is neither positive nor negative."))
+----
+
+In the above piece of code, when `number` is greater than `0`, it satisfies the condition `(> number 0)` and the code next to it `(println number "is positive.")` gets executed.
+
+Change `number` to negative and execute it, see what happens and explain it. When no condition is satisfied the else part:
+
+[source, clojure]
+----
+:else (println number "is neither positive nor negative.")
+----
+
+gets executed. Make `number` as `0` and execute it, see what happens.
+
+Execute the code below and explain it to yourself.
 
 [source, clojure]
 ----
@@ -19,3 +50,5 @@
     (> number 0) (println number "is positive.")
     (< number 0) (println number "is negative.")))
 ----
+
+Make `number` as `0` execute it and see what happens.

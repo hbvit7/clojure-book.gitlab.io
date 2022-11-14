@@ -1,5 +1,7 @@
 === case
 
+Below is an example of `case`, type it and execute it.
+
 [source, clojure]
 ----
 ;; case.clj
@@ -13,3 +15,56 @@
     5 "five"
     "I don't know"))
 ----
+
+Output
+
+----
+"I don't know"
+----
+
+We get `"I don't know"`, so what happens. We have set `num` to `20 in `let [num 20]`, then we pass `num` to `case` as shown:
+
+[source, clojure]
+----
+(case num
+  ........)
+----
+
+So case check the value of `num`, nu, is not `1`, so the statement `1 "one"` is not touched.
+
+[source, clojure]
+----
+(case num
+    1 "one"
+    ........)
+----
+
+Similarly, `num` is not `2`, `3`, `4`, `5`, so the all the statements below is not touched.
+
+[source, clojure]
+----
+(case num
+  1 "one"
+  2 "two"
+  3 "three"
+  4 "four"
+  5 "five"
+  ........)
+----
+
+So finally the else part "I don't know" is executed as shown below:
+
+[source, clojure]
+----
+(case num
+    ........
+    "I don't know")
+----
+
+and it gets returned.
+
+As an exercise, remove the "I don't know" and run the code. What do you get? Change `num` to `4` and run the code what do you get? How can you explain it?
+
+When `num` is `4`, and `"I don't know"` is removed, does it matter? Why?
+
+When `num` is `20`, and `"I don't know"` is removed, does it matter? Why?

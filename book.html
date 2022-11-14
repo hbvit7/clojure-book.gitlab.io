@@ -4288,6 +4288,9 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_cond">7.3. cond</h3>
+<div class="paragraph">
+<p>What if you want to check multiple conditions and make your code execute according to it. Welcome to <code>cond</code> or condition. Take a look at the program below and execute it:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; cond.clj</span><span class="w">
@@ -4299,6 +4302,43 @@ nil</pre>
     </span><span class="no">:else</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is neither positive nor negative."</span><span class="p">)))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5 is positive.
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It prints <code>5 is positive</code>. That&#8217;s because we have set <code>number</code> as <code>5</code> in <code>let [number 5]</code>. Then the <code>cond</code> form is coded like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">cond</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&gt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is positive."</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is negative."</span><span class="p">)</span><span class="w">
+    </span><span class="no">:else</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is neither positive nor negative."</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above piece of code, when <code>number</code> is greater than <code>0</code>, it satisfies the condition <code>(&gt; number 0)</code> and the code next to it <code>(println number "is positive.")</code> gets executed.</p>
+</div>
+<div class="paragraph">
+<p>Change <code>number</code> to negative and execute it, see what happens and explain it. When no condition is satisfied the else part:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="no">:else</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is neither positive nor negative."</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>gets executed. Make <code>number</code> as <code>0</code> and execute it, see what happens.</p>
+</div>
+<div class="paragraph">
+<p>Execute the code below and explain it to yourself.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w">
@@ -4307,9 +4347,15 @@ nil</pre>
     </span><span class="p">(</span><span class="nb">&lt;</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="s">"is negative."</span><span class="p">)))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Make <code>number</code> as <code>0</code> execute it and see what happens.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_case">7.4. case</h3>
+<div class="paragraph">
+<p>Below is an example of <code>case</code>, type it and execute it.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; case.clj</span><span class="w">
@@ -4323,6 +4369,69 @@ nil</pre>
     </span><span class="mi">5</span><span class="w"> </span><span class="s">"five"</span><span class="w">
     </span><span class="s">"I don't know"</span><span class="p">))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"I don't know"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We get <code>"I don&#8217;t know"</code>, so what happens. We have set <code>num</code> to <code>20 in `let [num 20]</code>, then we pass <code>num</code> to <code>case</code> as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">case</span><span class="w"> </span><span class="n">num</span><span class="w">
+  </span><span class="n">........</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So case check the value of <code>num</code>, nu, is not <code>1</code>, so the statement <code>1 "one"</code> is not touched.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">case</span><span class="w"> </span><span class="n">num</span><span class="w">
+    </span><span class="mi">1</span><span class="w"> </span><span class="s">"one"</span><span class="w">
+    </span><span class="n">........</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly, <code>num</code> is not <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, so the all the statements below is not touched.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">case</span><span class="w"> </span><span class="n">num</span><span class="w">
+  </span><span class="mi">1</span><span class="w"> </span><span class="s">"one"</span><span class="w">
+  </span><span class="mi">2</span><span class="w"> </span><span class="s">"two"</span><span class="w">
+  </span><span class="mi">3</span><span class="w"> </span><span class="s">"three"</span><span class="w">
+  </span><span class="mi">4</span><span class="w"> </span><span class="s">"four"</span><span class="w">
+  </span><span class="mi">5</span><span class="w"> </span><span class="s">"five"</span><span class="w">
+  </span><span class="n">........</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So finally the else part "I don&#8217;t know" is executed as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">case</span><span class="w"> </span><span class="n">num</span><span class="w">
+    </span><span class="n">........</span><span class="w">
+    </span><span class="s">"I don't know"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and it gets returned.</p>
+</div>
+<div class="paragraph">
+<p>As an exercise, remove the "I don&#8217;t know" and run the code. What do you get? Change <code>num</code> to <code>4</code> and run the code what do you get? How can you explain it?</p>
+</div>
+<div class="paragraph">
+<p>When <code>num</code> is <code>4</code>, and <code>"I don&#8217;t know"</code> is removed, does it matter? Why?</p>
+</div>
+<div class="paragraph">
+<p>When <code>num</code> is <code>20</code>, and <code>"I don&#8217;t know"</code> is removed, does it matter? Why?</p>
 </div>
 </div>
 </div>
