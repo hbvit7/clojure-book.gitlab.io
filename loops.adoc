@@ -6,10 +6,15 @@ include::use_code_note.adoc[]
 
 === for
 
+[source, clojure]
+----
 (let [nums [1 2 3 4]]
   (for [num nums]
        (* num 10)))
+----
 
+[source, clojure]
+----
 (def colors ["red" "blue" "green" "yellow"])
 
 (def shapes ["square" "circle" "triangle" "rectangle"])
@@ -17,21 +22,31 @@ include::use_code_note.adoc[]
 (for [color colors
       shape shapes]
   (str color " " shape))
+----
 
 === doseq
 
+[source, clojure]
+----
 (let [nums [1 2 3 4]]
   (doseq [num nums]
     (* num 10)))
+----
 
+
+[source, clojure]
+----
 (let [nums [1 2 3 4]]
   (doseq [num nums]
     (println (* num 10))))
+----
 
 === loop
 
+[source, clojure]
+----
 (loop [x 1]
   (when (<= x 5)
     (println x)
     (recur (inc x))))
-
+----
