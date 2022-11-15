@@ -146,8 +146,6 @@ Other arguments: (true Karthik :coder)
 (count-down 5)
 ----
 
-=== Recursion
-
 [source, clojure]
 ----
 ;; function_recur.clj
