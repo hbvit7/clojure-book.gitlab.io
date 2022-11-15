@@ -1,1 +1,41 @@
 == Sequence
+
+:file-name: sequence.clj
+
+include::use_code_note.adoc[]
+
+[source clojure]
+----
+;; sequence.clj
+
+(seq [])
+
+(seq {})
+
+(seq #{})
+
+(seq [1 2 3])
+
+(seq '(1 2 3))
+
+(seq #{1 2 3})
+
+(seq {1 "one" 2 "two" 3 "three"})
+
+(partition 2 {1 "one" 2 "two" 3 "three" 4 "four"})
+
+(partition 2 (seq {1 "one" 2 "two" 3 "three" 4 "four"}))
+
+(partition 2 '(1 2 3 4))
+
+(partition 2 (seq '(1 2 3 4)))
+
+(partition 2 #{1 2 3 4})
+
+(partition 2 (seq #{1 2 3 4}))
+
+(partition 2 [1 2 3 4])
+
+(partition 2 (seq [1 2 3 4]))
+----
+
