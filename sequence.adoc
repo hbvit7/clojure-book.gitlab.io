@@ -4,38 +4,77 @@
 
 include::use_code_note.adoc[]
 
-[source clojure]
+[source, clojure]
 ----
-;; sequence.clj
-
 (seq [])
+----
 
+[source, clojure]
+----
 (seq {})
+----
 
+[source, clojure]
+----
 (seq #{})
+----
 
+[source, clojure]
+----
 (seq [1 2 3])
+----
 
+[source, clojure]
+----
 (seq '(1 2 3))
+----
 
+[source, clojure]
+----
 (seq #{1 2 3})
+----
 
+[source, clojure]
+----
 (seq {1 "one" 2 "two" 3 "three"})
+----
 
+[source, clojure]
+----
 (partition 2 {1 "one" 2 "two" 3 "three" 4 "four"})
+----
 
+[source, clojure]
+----
 (partition 2 (seq {1 "one" 2 "two" 3 "three" 4 "four"}))
+----
 
+[source, clojure]
+----
 (partition 2 '(1 2 3 4))
+----
 
+[source, clojure]
+----
 (partition 2 (seq '(1 2 3 4)))
+----
 
+[source, clojure]
+----
 (partition 2 #{1 2 3 4})
+----
 
+[source, clojure]
+----
 (partition 2 (seq #{1 2 3 4}))
+----
 
+[source, clojure]
+----
 (partition 2 [1 2 3 4])
+----
 
+[source, clojure]
+----
 (partition 2 (seq [1 2 3 4]))
 ----
-

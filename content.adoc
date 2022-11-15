@@ -28,6 +28,8 @@ include::logic-and-comparison.adoc[]
 
 include::conditions_and_branching.adoc[]
 
+include::loops.adoc[]
+
 include::functions.adoc[]
 
 include::what-is-clojure-code.adoc[]
