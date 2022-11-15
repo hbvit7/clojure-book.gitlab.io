@@ -10,6 +10,8 @@
 (say-hello)
 ----
 
+=== Passing argument
+
 [source, clojure]
 ----
 ;; function_with_arguments.clj
@@ -19,6 +21,8 @@
 
 (say-hello "Karthik")
 ----
+
+== Function with multiple arguments
 
 [source, clojure]
 ----
@@ -40,6 +44,7 @@ One argument passed: 1
 Two argument passed: 1 2
 ----
 
+=== Accepting unlimited arguments
 
 [source, clojure]
 ----
@@ -114,6 +119,7 @@ Second argument: 17
 Other arguments: (true Karthik :coder)
 ----
 
+=== Returning stuff
 
 [source, clojure]
 ----
@@ -140,6 +146,7 @@ Other arguments: (true Karthik :coder)
 (count-down 5)
 ----
 
+=== Recursion
 
 [source, clojure]
 ----
@@ -324,4 +331,47 @@ nil
 ----
 
 image::images/docstring.png[]
+
+=== Anonymous Functions
+
+
+[source, clojure]
+----
+;; anonymous_function.clj
+
+(def print-something
+  (fn [something]
+    (println something))))
+
+(print-something "something is better than nothing")
+----
+
+Output
+
+----
+something is better than nothing
+----
+
+
+=== Functions returning functions
+
+[source, clojure]
+----
+;; function_returning_function.clj
+
+(defn multiplier [multiply-with]
+  (fn [number]
+    (* number multiply-with)))
+
+(def double-it
+  (multiplier 2))
+
+(def triple-it
+  (multiplier 3))
+
+(double-it 21)
+
+(triple-it 14)
+----
+
 
