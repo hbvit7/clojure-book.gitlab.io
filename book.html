@@ -724,39 +724,36 @@ pre.rouge {
 <li><a href="#_functions">8. Functions</a>
 <ul class="sectlevel2">
 <li><a href="#_passing_argument">8.1. Passing argument</a></li>
+<li><a href="#_function_with_multiple_arguments">8.2. Function with multiple arguments</a></li>
+<li><a href="#_accepting_unlimited_arguments">8.3. Accepting unlimited arguments</a></li>
+<li><a href="#_returning_stuff">8.4. Returning stuff</a></li>
+<li><a href="#_recursion">8.5. Recursion</a></li>
+<li><a href="#_multimethods">8.6. Multimethods</a></li>
+<li><a href="#_pre_and_post_condition_checking">8.7. Pre and Post Condition Checking</a></li>
+<li><a href="#_docstring">8.8. Docstring</a></li>
+<li><a href="#_anonymous_functions">8.9. Anonymous Functions</a></li>
+<li><a href="#_functions_returning_functions">8.10. Functions returning functions</a></li>
 </ul>
 </li>
-<li><a href="#_function_with_multiple_arguments">9. Function with multiple arguments</a>
+<li><a href="#_what_is_clojure_code">9. What is Clojure code</a></li>
+<li><a href="#_sequence">10. Sequence</a></li>
+<li><a href="#_lazy_sequence">11. Lazy Sequence</a>
 <ul class="sectlevel2">
-<li><a href="#_accepting_unlimited_arguments">9.1. Accepting unlimited arguments</a></li>
-<li><a href="#_returning_stuff">9.2. Returning stuff</a></li>
-<li><a href="#_recursion">9.3. Recursion</a></li>
-<li><a href="#_multimethods">9.4. Multimethods</a></li>
-<li><a href="#_pre_and_post_condition_checking">9.5. Pre and Post Condition Checking</a></li>
-<li><a href="#_docstring">9.6. Docstring</a></li>
-<li><a href="#_anonymous_functions">9.7. Anonymous Functions</a></li>
-<li><a href="#_functions_returning_functions">9.8. Functions returning functions</a></li>
+<li><a href="#_repeat">11.1. repeat</a></li>
+<li><a href="#_cycle">11.2. cycle</a></li>
+<li><a href="#_iterate">11.3. iterate</a></li>
 </ul>
 </li>
-<li><a href="#_what_is_clojure_code">10. What is Clojure code</a></li>
-<li><a href="#_sequence">11. Sequence</a></li>
-<li><a href="#_lazy_sequence">12. Lazy Sequence</a>
+<li><a href="#_map_filter_reduce">12. map, filter, reduce</a>
 <ul class="sectlevel2">
-<li><a href="#_repeat">12.1. repeat</a></li>
-<li><a href="#_cycle">12.2. cycle</a></li>
-<li><a href="#_iterate">12.3. iterate</a></li>
+<li><a href="#_map">12.1. map</a></li>
+<li><a href="#_filter">12.2. filter</a></li>
+<li><a href="#_reduce">12.3. reduce</a></li>
 </ul>
 </li>
-<li><a href="#_map_filter_reduce">13. map, filter, reduce</a>
-<ul class="sectlevel2">
-<li><a href="#_map">13.1. map</a></li>
-<li><a href="#_filter">13.2. filter</a></li>
-<li><a href="#_reduce">13.3. reduce</a></li>
-</ul>
-</li>
-<li><a href="#_destructuring">14. Destructuring</a></li>
-<li><a href="#_records_and_protocols">15. Records and Protocols</a></li>
-<li><a href="#_namespaces">16. namespaces</a></li>
+<li><a href="#_destructuring">13. Destructuring</a></li>
+<li><a href="#_records_and_protocols">14. Records and Protocols</a></li>
+<li><a href="#_namespaces">15. namespaces</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -4471,11 +4468,8 @@ nil</pre>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_function_with_multiple_arguments">9. Function with multiple arguments</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_function_with_multiple_arguments">8.2. Function with multiple arguments</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function-multiple-arguments.clj</span><span class="w">
@@ -4497,8 +4491,9 @@ nil</pre>
 Two argument passed: 1 2</pre>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_accepting_unlimited_arguments">9.1. Accepting unlimited arguments</h3>
+<h3 id="_accepting_unlimited_arguments">8.3. Accepting unlimited arguments</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_unlimited_arguments.clj</span><span class="w">
@@ -4579,7 +4574,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_returning_stuff">9.2. Returning stuff</h3>
+<h3 id="_returning_stuff">8.4. Returning stuff</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_something.clj</span><span class="w">
@@ -4592,7 +4587,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_recursion">9.3. Recursion</h3>
+<h3 id="_recursion">8.5. Recursion</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_recursion.clj</span><span class="w">
@@ -4646,7 +4641,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multimethods">9.4. Multimethods</h3>
+<h3 id="_multimethods">8.6. Multimethods</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; without_multimethods.clj</span><span class="w">
@@ -4710,7 +4705,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pre_and_post_condition_checking">9.5. Pre and Post Condition Checking</h3>
+<h3 id="_pre_and_post_condition_checking">8.7. Pre and Post Condition Checking</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_pre.clj</span><span class="w">
@@ -4752,7 +4747,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_docstring">9.6. Docstring</h3>
+<h3 id="_docstring">8.8. Docstring</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; docstring.clj</span><span class="w">
@@ -4801,7 +4796,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anonymous_functions">9.7. Anonymous Functions</h3>
+<h3 id="_anonymous_functions">8.9. Anonymous Functions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; anonymous_function.clj</span><span class="w">
@@ -4823,7 +4818,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_functions_returning_functions">9.8. Functions returning functions</h3>
+<h3 id="_functions_returning_functions">8.10. Functions returning functions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_function.clj</span><span class="w">
@@ -4847,7 +4842,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_is_clojure_code">10. What is Clojure code</h2>
+<h2 id="_what_is_clojure_code">9. What is Clojure code</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Clojure is a dialect of Lisp. Lisp stands for list processing. That is almost all Clojure code is a list data structure. In lisp, program is a data structure, and data structure could be treated as a program, which gives it enormous power.</p>
@@ -4904,16 +4899,16 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sequence">11. Sequence</h2>
+<h2 id="_sequence">10. Sequence</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lazy_sequence">12. Lazy Sequence</h2>
+<h2 id="_lazy_sequence">11. Lazy Sequence</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_repeat">12.1. repeat</h3>
+<h3 id="_repeat">11.1. repeat</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
@@ -4951,7 +4946,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cycle">12.2. cycle</h3>
+<h3 id="_cycle">11.2. cycle</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"universe"</span><span class="w"> </span><span class="s">"antiverse"</span><span class="p">]))</span></code></pre>
@@ -5000,7 +4995,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_iterate">12.3. iterate</h3>
+<h3 id="_iterate">11.3. iterate</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="p">(</span><span class="nb">iterate</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
@@ -5020,10 +5015,10 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_map_filter_reduce">13. map, filter, reduce</h2>
+<h2 id="_map_filter_reduce">12. map, filter, reduce</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_map">13.1. map</h3>
+<h3 id="_map">12.1. map</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
@@ -5056,7 +5051,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filter">13.2. filter</h3>
+<h3 id="_filter">12.2. filter</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">odd?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
@@ -5092,7 +5087,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reduce">13.3. reduce</h3>
+<h3 id="_reduce">12.3. reduce</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
@@ -5129,7 +5124,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_destructuring">14. Destructuring</h2>
+<h2 id="_destructuring">13. Destructuring</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -5272,7 +5267,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_records_and_protocols">15. Records and Protocols</h2>
+<h2 id="_records_and_protocols">14. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
@@ -5390,7 +5385,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_namespaces">16. namespaces</h2>
+<h2 id="_namespaces">15. namespaces</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">

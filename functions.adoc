@@ -22,7 +22,7 @@
 (say-hello "Karthik")
 ----
 
-== Function with multiple arguments
+=== Function with multiple arguments
 
 [source, clojure]
 ----
