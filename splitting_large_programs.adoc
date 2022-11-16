@@ -1,0 +1,49 @@
+== Splitting Large Programs
+
+[source, clojure]
+----
+;; calculator.clj
+
+(defn add [a b]
+  (+ a b))
+
+(defn sub [a b]
+  (- a b))
+
+(def a 5)
+(def b 3)
+
+(println a " + " b " = " (add a b))
+(println a " - " b " = " (sub a b))
+----
+
+Output
+
+----
+5  +  3  =  8
+5  -  3  =  2
+----
+
+[source, clojure]
+----
+;; calc_lib.clj
+
+(defn add [a b]
+  (+ a b))
+
+(defn sub [a b]
+  (- a b))
+----
+
+[source, clojure]
+----
+;; calc_ui.clj
+
+(load-file "calc_lib.clj")
+
+(def a 5)
+(def b 3)
+
+(println a " + " b " = " (add a b))
+(println a " - " b " = " (sub a b))
+----

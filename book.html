@@ -759,8 +759,9 @@ pre.rouge {
 </ul>
 </li>
 <li><a href="#_destructuring">14. Destructuring</a></li>
-<li><a href="#_records_and_protocols">15. Records and Protocols</a></li>
-<li><a href="#_namespaces">16. namespaces</a></li>
+<li><a href="#_splitting_large_programs">15. Splitting Large Programs</a></li>
+<li><a href="#_records_and_protocols">16. Records and Protocols</a></li>
+<li><a href="#_namespaces">17. namespaces</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -5426,7 +5427,62 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_records_and_protocols">15. Records and Protocols</h2>
+<h2 id="_splitting_large_programs">15. Splitting Large Programs</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calculator.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">" + "</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="s">" = "</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">" - "</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="s">" = "</span><span class="w"> </span><span class="p">(</span><span class="nf">sub</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5  +  3  =  8
+5  -  3  =  2</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_ui.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">" + "</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="s">" = "</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="s">" - "</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="s">" = "</span><span class="w"> </span><span class="p">(</span><span class="nf">sub</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_records_and_protocols">16. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
@@ -5544,7 +5600,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_namespaces">16. namespaces</h2>
+<h2 id="_namespaces">17. namespaces</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">

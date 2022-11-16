@@ -42,6 +42,8 @@ include::map_filter_reduce.adoc[]
 
 include::destructuring.adoc[]
 
+include::splitting_large_programs.adoc[]
+
 include::records_and_protocols.adoc[]
 
 include::namespaces.adoc[]
