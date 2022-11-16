@@ -5,3 +5,6 @@
 - Getting Clojure https://amzn.to/3ABmVup
 - Programming Clojure https://amzn.to/3c2aAFe
 - Professional Clojure https://amzn.to/3ARddo7
+- Practicalli https://practical.li/
+- Clojure Cookbook: Recipes for Functional Programming https://amzn.to/3TMkuLn
+- The Joy of Clojure https://amzn.to/3hOwJtN

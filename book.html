@@ -762,6 +762,7 @@ pre.rouge {
 <li><a href="#_splitting_large_programs">15. Splitting Large Programs</a></li>
 <li><a href="#_records_and_protocols">16. Records and Protocols</a></li>
 <li><a href="#_namespaces">17. namespaces</a></li>
+<li><a href="#_testing">18. Testing</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -5647,6 +5648,43 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_testing">18. Testing</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"sub"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nf">sub</span><span class="w"> </span><span class="mi">-2</span><span class="w"> </span><span class="mi">-2</span><span class="p">)))</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="p">(</span><span class="nf">sub</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">-4</span><span class="p">))))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">calc_lib_test</span><span class="p">)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_bibliography">Bibliography</h2>
 <div class="sectionbody">
 <div class="ulist bibliography">
@@ -5662,6 +5700,15 @@ I loot the nation.</pre>
 </li>
 <li>
 <p>Professional Clojure <a href="https://amzn.to/3ARddo7" class="bare">https://amzn.to/3ARddo7</a></p>
+</li>
+<li>
+<p>Practicalli <a href="https://practical.li/" class="bare">https://practical.li/</a></p>
+</li>
+<li>
+<p>Clojure Cookbook: Recipes for Functional Programming <a href="https://amzn.to/3TMkuLn" class="bare">https://amzn.to/3TMkuLn</a></p>
+</li>
+<li>
+<p>The Joy of Clojure <a href="https://amzn.to/3hOwJtN" class="bare">https://amzn.to/3hOwJtN</a></p>
 </li>
 </ul>
 </div>

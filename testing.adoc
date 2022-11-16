@@ -1,0 +1,33 @@
+== Testing
+
+[source, clojure]
+----
+;; calc_lib.clj
+
+(defn add [a b]
+  (+ a b))
+
+(defn sub [a b]
+  (- a b))
+----
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add"
+      (is (= 4 (add 2 2)))
+      (is (= 7 (add 3 4))))
+    (testing "sub"
+      (is (= 0 (sub -2 -2)))
+      (is (= 7 (sub 3 -4))))))
+
+(calc_lib_test)
+----

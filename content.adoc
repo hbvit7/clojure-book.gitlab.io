@@ -48,4 +48,6 @@ include::records_and_protocols.adoc[]
 
 include::namespaces.adoc[]
 
+include::testing.adoc[]
+
 include::bibligraphy.adoc[]
