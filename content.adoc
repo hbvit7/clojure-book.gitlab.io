@@ -32,6 +32,8 @@ include::loops.adoc[]
 
 include::functions.adoc[]
 
+include::spec.adoc[]
+
 include::what-is-clojure-code.adoc[]
 
 include::sequence.adoc[]

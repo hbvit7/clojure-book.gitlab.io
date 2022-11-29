@@ -1,0 +1,422 @@
+== Spec
+
+:file-name: spec.clj
+
+include::use_code_note.adoc[]
+
+[source, clojure]
+----
+(require '[clojure.spec.alpha :as s])
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? string? "Hello")
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? string? 42)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? number? 42)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? integer? 123)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? double? 123.45)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? double? 123)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? vector? [1 2 3])
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? map? { 1 "one" 2 "two"})
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? set? #{:apple :orange})
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? keyword? :ubuntu)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(def valid-%? (s/and number? #(>= % 0) #(<= % 100)))
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? valid-%? 85)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? valid-%? 105)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? valid-%? -15)
+----
+
+Output
+
+----
+
+----
+
+
+=== Specing collection
+
+[source, clojure]
+----
+(def string-collection? (s/coll-of string?))
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? string-collection? ["Hi" "Hello"])
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(def number-or-string? (s/or :number number? :string string?))
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? number-or-string? 1)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? number-or-string? "Hi")
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(def number-or-string-collection? (s/coll-of number-or-string?))
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? number-or-string-collection? [1 "Hi" "India" 42])
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(s/valid? number-or-string-collection? [1 "Hi" "India" 42 :symbol])
+----
+
+Output
+
+----
+
+----
+
+=== Inspecting Collections
+
+[source, clojure]
+----
+(def valid-person-vector? (s/cat :name string? :age number? :gender keyword?))
+----
+
+[source, clojure]
+----
+(s/valid? valid-person-vector? ["Karthik" 40 :male])
+----
+
+[source, clojure]
+----
+(def valid-person-map?
+  (s/keys :req-un [::name
+                   ::age
+                   ::gender]))
+----
+
+[source, clojure]
+----
+(s/valid? valid-person-map? {:name "Karthik"
+                             :age 40
+                             :gender :male})
+----
+
+=== Checking Maps
+
+[source, clojure]
+----
+(s/def ::name string?)
+(s/def ::age int?)
+(s/def ::gender keyword?)
+
+(s/def ::person (s/keys :req-un [::name ::age ::gender]))
+
+(s/valid? ::person {:name "Karthik"
+                    :age 40
+                    :gender :male})
+
+(s/valid? ::person {:name "Karthik"
+                    :age "40"
+                    :gender :male})
+----
+
+=== Explaining Spec
+
+[source, clojure]
+----
+(s/explain number? "42")
+----
+
+Output
+----
+
+----
+
+[source, clojure]
+----
+(s/explain number? 42)
+----
+
+Output
+----
+
+----
+
+[source, clojure]
+----
+(s/explain number-or-string? "56")
+----
+
+Output
+----
+
+----
+
+[source, clojure]
+----
+(s/explain number-or-string? :56)
+----
+
+Output
+----
+
+----
+
+[source, clojure]
+----
+(s/conform number? 42)
+----
+
+Output
+----
+
+----
+
+[source, clojure]
+----
+(s/conform number? "42")
+----
+
+Output
+----
+
+----
+
+[source, clojure]
+----
+(s/conform number-or-string? :56)
+----
+
+Output
+----
+
+----
+
+[source, clojure]
+----
+(s/explain number-or-string? 56)
+----
+
+Output
+----
+
+----
+
+
+=== Using Spec In Functions
+
+[source, clojure]
+----
+(defn add-two-numbers [a b]
+  {:pre [(s/valid? number? a)
+         (s/valid? number? b)]}
+  (+ a b))
+----
+
+[source, clojure]
+----
+(add-two-numbers 3 5)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(add-two-numbers 3 "5")
+----
+
+Output
+
+----
+
+----

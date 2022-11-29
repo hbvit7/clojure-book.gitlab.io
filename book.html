@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content="Karthikeyan.A.K">
 <title>Clojure</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -85,10 +85,10 @@ code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;
 ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
 ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
-ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
-ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -742,27 +742,36 @@ pre.rouge {
 <li><a href="#_functions_returning_functions">9.10. Functions returning functions</a></li>
 </ul>
 </li>
-<li><a href="#_what_is_clojure_code">10. What is Clojure code</a></li>
-<li><a href="#_sequence">11. Sequence</a></li>
-<li><a href="#_lazy_sequence">12. Lazy Sequence</a>
+<li><a href="#_spec">10. Spec</a>
 <ul class="sectlevel2">
-<li><a href="#_repeat">12.1. repeat</a></li>
-<li><a href="#_cycle">12.2. cycle</a></li>
-<li><a href="#_iterate">12.3. iterate</a></li>
+<li><a href="#_specing_collection">10.1. Specing collection</a></li>
+<li><a href="#_inspecting_collections">10.2. Inspecting Collections</a></li>
+<li><a href="#_checking_maps">10.3. Checking Maps</a></li>
+<li><a href="#_explaining_spec">10.4. Explaining Spec</a></li>
+<li><a href="#_using_spec_in_functions">10.5. Using Spec In Functions</a></li>
 </ul>
 </li>
-<li><a href="#_map_filter_reduce">13. map, filter, reduce</a>
+<li><a href="#_what_is_clojure_code">11. What is Clojure code</a></li>
+<li><a href="#_sequence">12. Sequence</a></li>
+<li><a href="#_lazy_sequence">13. Lazy Sequence</a>
 <ul class="sectlevel2">
-<li><a href="#_map">13.1. map</a></li>
-<li><a href="#_filter">13.2. filter</a></li>
-<li><a href="#_reduce">13.3. reduce</a></li>
+<li><a href="#_repeat">13.1. repeat</a></li>
+<li><a href="#_cycle">13.2. cycle</a></li>
+<li><a href="#_iterate">13.3. iterate</a></li>
 </ul>
 </li>
-<li><a href="#_destructuring">14. Destructuring</a></li>
-<li><a href="#_splitting_large_programs">15. Splitting Large Programs</a></li>
-<li><a href="#_records_and_protocols">16. Records and Protocols</a></li>
-<li><a href="#_namespaces">17. namespaces</a></li>
-<li><a href="#_testing">18. Testing</a></li>
+<li><a href="#_map_filter_reduce">14. map, filter, reduce</a>
+<ul class="sectlevel2">
+<li><a href="#_map">14.1. map</a></li>
+<li><a href="#_filter">14.2. filter</a></li>
+<li><a href="#_reduce">14.3. reduce</a></li>
+</ul>
+</li>
+<li><a href="#_destructuring">15. Destructuring</a></li>
+<li><a href="#_splitting_large_programs">16. Splitting Large Programs</a></li>
+<li><a href="#_records_and_protocols">17. Records and Protocols</a></li>
+<li><a href="#_namespaces">18. namespaces</a></li>
+<li><a href="#_testing">19. Testing</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -4917,7 +4926,518 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_is_clojure_code">10. What is Clojure code</h2>
+<h2 id="_spec">10. Spec</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/spec.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/spec.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.spec.alpha</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">s</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">integer?</span><span class="w"> </span><span class="mi">123</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">double?</span><span class="w"> </span><span class="mf">123.45</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">double?</span><span class="w"> </span><span class="mi">123</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">vector?</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">map?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"one"</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="s">"two"</span><span class="p">})</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">set?</span><span class="w"> </span><span class="o">#</span><span class="p">{</span><span class="no">:apple</span><span class="w"> </span><span class="no">:orange</span><span class="p">})</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">keyword?</span><span class="w"> </span><span class="no">:ubuntu</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-%?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/and</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">100</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-%?</span><span class="w"> </span><span class="mi">85</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-%?</span><span class="w"> </span><span class="mi">105</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-%?</span><span class="w"> </span><span class="mi">-15</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_specing_collection">10.1. Specing collection</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">string-collection?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/coll-of</span><span class="w"> </span><span class="nb">string?</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">string-collection?</span><span class="w"> </span><span class="p">[</span><span class="s">"Hi"</span><span class="w"> </span><span class="s">"Hello"</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/or</span><span class="w"> </span><span class="no">:number</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:string</span><span class="w"> </span><span class="nb">string?</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="s">"Hi"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">number-or-string-collection?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/coll-of</span><span class="w"> </span><span class="n">number-or-string?</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string-collection?</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="s">"Hi"</span><span class="w"> </span><span class="s">"India"</span><span class="w"> </span><span class="mi">42</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string-collection?</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="s">"Hi"</span><span class="w"> </span><span class="s">"India"</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="no">:symbol</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_inspecting_collections">10.2. Inspecting Collections</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-person-vector?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/cat</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="no">:age</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-person-vector?</span><span class="w"> </span><span class="p">[</span><span class="s">"Karthik"</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="no">:male</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-person-map?</span><span class="w">
+  </span><span class="p">(</span><span class="nf">s/keys</span><span class="w"> </span><span class="no">:req-un</span><span class="w"> </span><span class="p">[</span><span class="no">::name</span><span class="w">
+                   </span><span class="no">::age</span><span class="w">
+                   </span><span class="no">::gender</span><span class="p">]))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-person-map?</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
+                             </span><span class="no">:age</span><span class="w"> </span><span class="mi">40</span><span class="w">
+                             </span><span class="no">:gender</span><span class="w"> </span><span class="no">:male</span><span class="p">})</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_checking_maps">10.3. Checking Maps</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::name</span><span class="w"> </span><span class="nb">string?</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::age</span><span class="w"> </span><span class="n">int?</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">(</span><span class="nf">s/keys</span><span class="w"> </span><span class="no">:req-un</span><span class="w"> </span><span class="p">[</span><span class="no">::name</span><span class="w"> </span><span class="no">::age</span><span class="w"> </span><span class="no">::gender</span><span class="p">]))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
+                    </span><span class="no">:age</span><span class="w"> </span><span class="mi">40</span><span class="w">
+                    </span><span class="no">:gender</span><span class="w"> </span><span class="no">:male</span><span class="p">})</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
+                    </span><span class="no">:age</span><span class="w"> </span><span class="s">"40"</span><span class="w">
+                    </span><span class="no">:gender</span><span class="w"> </span><span class="no">:male</span><span class="p">})</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_explaining_spec">10.4. Explaining Spec</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="s">"42"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="s">"56"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="no">:56</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/conform</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/conform</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="s">"42"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/conform</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="no">:56</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="mi">56</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_spec_in_functions">10.5. Using Spec In Functions</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add-two-numbers</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">{</span><span class="no">:pre</span><span class="w"> </span><span class="p">[(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w">
+         </span><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="n">b</span><span class="p">)]}</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">add-two-numbers</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">add-two-numbers</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="s">"5"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_clojure_code">11. What is Clojure code</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Clojure is a dialect of Lisp. Lisp stands for list processing. That is almost all Clojure code is a list data structure. In lisp, program is a data structure, and data structure could be treated as a program, which gives it enormous power.</p>
@@ -4974,7 +5494,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sequence">11. Sequence</h2>
+<h2 id="_sequence">12. Sequence</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -5066,10 +5586,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lazy_sequence">12. Lazy Sequence</h2>
+<h2 id="_lazy_sequence">13. Lazy Sequence</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_repeat">12.1. repeat</h3>
+<h3 id="_repeat">13.1. repeat</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
@@ -5107,7 +5627,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cycle">12.2. cycle</h3>
+<h3 id="_cycle">13.2. cycle</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"universe"</span><span class="w"> </span><span class="s">"antiverse"</span><span class="p">]))</span></code></pre>
@@ -5156,7 +5676,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_iterate">12.3. iterate</h3>
+<h3 id="_iterate">13.3. iterate</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="p">(</span><span class="nb">iterate</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
@@ -5176,10 +5696,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_map_filter_reduce">13. map, filter, reduce</h2>
+<h2 id="_map_filter_reduce">14. map, filter, reduce</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_map">13.1. map</h3>
+<h3 id="_map">14.1. map</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
@@ -5212,7 +5732,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filter">13.2. filter</h3>
+<h3 id="_filter">14.2. filter</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">odd?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
@@ -5248,7 +5768,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reduce">13.3. reduce</h3>
+<h3 id="_reduce">14.3. reduce</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
@@ -5285,7 +5805,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_destructuring">14. Destructuring</h2>
+<h2 id="_destructuring">15. Destructuring</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -5428,7 +5948,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_splitting_large_programs">15. Splitting Large Programs</h2>
+<h2 id="_splitting_large_programs">16. Splitting Large Programs</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -5483,7 +6003,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_records_and_protocols">16. Records and Protocols</h2>
+<h2 id="_records_and_protocols">17. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
@@ -5601,7 +6121,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_namespaces">17. namespaces</h2>
+<h2 id="_namespaces">18. namespaces</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -5648,7 +6168,7 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_testing">18. Testing</h2>
+<h2 id="_testing">19. Testing</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
