@@ -52,4 +52,6 @@ include::namespaces.adoc[]
 
 include::testing.adoc[]
 
+include::macros.adoc[]
+
 include::bibligraphy.adoc[]

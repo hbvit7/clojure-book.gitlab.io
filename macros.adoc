@@ -1,0 +1,118 @@
+== Macros
+
+Lets say you want to add 2 and 3  and you will write it like this:
+
+```clojure
+(+ 2 3)
+```
+
+Where `+` is a function and `2` and `3` are arguments. But let's say that I am more comfortable writing it as `(2 + 3)` rather than `(+ 2 3)`, how I can do that in Clojure?
+
+When you consider any Clojure code like `(+ 2 3)` its basically a list, you can verify it in REPL as shown
+
+```clojure
+user=> (type '(+ 2 3))
+clojure.lang.PersistentList
+```
+
+The single quote here `'(+ 2 3)` tells to Clojure that not to execute the list. The basic thing is, any program in Clojure is a list. So even `(2 + 3)` is a list. Now all we need to do is convert `(2 + 3)` to `(+ 2 3)` and let it execute.
+
+So let's imagine we capture `(2 + 3)` in  a variable called  `a-list`. We take the first element:
+
+```clojure
+(first a-list) ; This gets the 2
+```
+
+Then after the first we put the last element:
+
+```clojure
+(first a-list) ; This gets the 2
+(last a-list)  ; This gets the 3
+```
+
+We need to grab the plus sign and put it in front, and we see the plus is in the middle of `a-list` which is `(2 + 3)`, that is the `+` is the second element:
+
+```clojure
+(second a-list)
+(first a-list) ; This gets the 2
+(last a-list)  ; This gets the 3
+```
+
+Now we pack it into a list:
+
+```clojure
+(list ; convert (2 + 3) to (+ 2  3)
+  (second a-list)
+  (first a-list)
+  (last a-list))
+```
+
+And we say the above thing is a macro named `calculate` which take a single argument called `a-list` as input:
+
+```clojure
+(defmacro calculate [a-list]
+  (list ; convert (2 + 3) to (+ 2  3)
+    (second a-list)
+    (first a-list)
+    (last a-list)))
+```
+
+Now one can try this code:
+
+```clojure
+;; macro.clj
+
+(defmacro calculate [a-list]
+  (list ; convert (2 + 3) to (+ 2  3)
+    (second a-list)
+    (first a-list)
+    (last a-list)))
+
+(println
+  (calculate (2 + 3)))
+```
+
+This will give 5 as output.
+
+You can also use `macroexpand` keyword to expand a macro, for example the code below:
+
+```clojure
+(println
+  (macroexpand
+    '(calculate (2 + 3))))
+```
+
+Will print out:
+
+```
+(+ 2 3)
+```
+
+Thats what macro `calculate` is supposed to do after you give `(2 + 3)` as input.
+
+The entire `macro.clj` code is listed below:
+
+```clojure
+;; macro.clj
+
+(defmacro calculate [a-list]
+  (list ; convert (2 + 3) to (+ 2  3)
+    (second a-list)
+    (first a-list)
+    (last a-list)))
+
+(println
+  (calculate (2 + 3)))
+
+(println
+  (macroexpand
+    '(calculate (2 + 3))))
+```
+
+Run it and you should get output like this:
+
+```
+5
+(+ 2 3)
+
+```
