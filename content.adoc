@@ -40,7 +40,7 @@ include::sequence.adoc[]
 
 include::lazy_sequence.adoc[]
 
-include::map_filter_reduce.adoc[]
+include::map_filter_reduce_apply.adoc[]
 
 include::destructuring.adoc[]
 

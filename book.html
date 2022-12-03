@@ -760,19 +760,20 @@ pre.rouge {
 <li><a href="#_iterate">13.3. iterate</a></li>
 </ul>
 </li>
-<li><a href="#_map_filter_reduce">14. map, filter, reduce</a>
+<li><a href="#_map_filter_reduce_apply">14. map, filter, reduce, apply</a>
 <ul class="sectlevel2">
 <li><a href="#_map">14.1. map</a></li>
 <li><a href="#_filter">14.2. filter</a></li>
 <li><a href="#_reduce">14.3. reduce</a></li>
 </ul>
 </li>
-<li><a href="#_destructuring">15. Destructuring</a></li>
-<li><a href="#_splitting_large_programs">16. Splitting Large Programs</a></li>
-<li><a href="#_records_and_protocols">17. Records and Protocols</a></li>
-<li><a href="#_namespaces">18. namespaces</a></li>
-<li><a href="#_testing">19. Testing</a></li>
-<li><a href="#_macros">20. Macros</a></li>
+<li><a href="#_apply">15. apply</a></li>
+<li><a href="#_destructuring">16. Destructuring</a></li>
+<li><a href="#_splitting_large_programs">17. Splitting Large Programs</a></li>
+<li><a href="#_records_and_protocols">18. Records and Protocols</a></li>
+<li><a href="#_namespaces">19. namespaces</a></li>
+<li><a href="#_testing">20. Testing</a></li>
+<li><a href="#_macros">21. Macros</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -5697,7 +5698,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_map_filter_reduce">14. map, filter, reduce</h2>
+<h2 id="_map_filter_reduce_apply">14. map, filter, reduce, apply</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_map">14.1. map</h3>
@@ -5806,7 +5807,54 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_destructuring">15. Destructuring</h2>
+<h2 id="_apply">15. apply</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"> </span><span class="c1">;; error</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="o">'</span><span class="p">(</span><span class="nf">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">my-function</span><span class="w"> </span><span class="p">[</span><span class="n">arg1</span><span class="w"> </span><span class="n">arg2</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Argument 1:"</span><span class="w"> </span><span class="n">arg1</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Argument 2:"</span><span class="w"> </span><span class="n">arg2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">my-function</span><span class="w"> </span><span class="s">"one"</span><span class="w"> </span><span class="s">"two"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">my-function</span><span class="w"> </span><span class="p">[</span><span class="s">"one"</span><span class="w"> </span><span class="s">"two"</span><span class="p">])</span><span class="w"> </span><span class="c1">;; error</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">apply</span><span class="w"> </span><span class="n">my-function</span><span class="w"> </span><span class="p">[</span><span class="s">"one"</span><span class="w"> </span><span class="s">"two"</span><span class="p">])</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_destructuring">16. Destructuring</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -5949,7 +5997,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_splitting_large_programs">16. Splitting Large Programs</h2>
+<h2 id="_splitting_large_programs">17. Splitting Large Programs</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6004,7 +6052,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_records_and_protocols">17. Records and Protocols</h2>
+<h2 id="_records_and_protocols">18. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
@@ -6122,7 +6170,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_namespaces">18. namespaces</h2>
+<h2 id="_namespaces">19. namespaces</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6169,7 +6217,7 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_testing">19. Testing</h2>
+<h2 id="_testing">20. Testing</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6206,7 +6254,7 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_macros">20. Macros</h2>
+<h2 id="_macros">21. Macros</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Lets say you want to add 2 and 3  and you will write it like this:</p>

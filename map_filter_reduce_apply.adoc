@@ -1,4 +1,4 @@
-== map, filter, reduce
+== map, filter, reduce, apply
 
 === map
 
@@ -68,8 +68,6 @@
 
 === reduce
 
-
-
 [source, clojure]
 ----
 (reduce + [1 2 3 4])
@@ -101,3 +99,56 @@
 ----
 (reduce multiply [1 2 3 4])
 ----
+
+
+== apply
+
+
+[source, clojure]
+----
+(+ 1 2 3 4)
+----
+
+
+[source, clojure]
+----
+(+ [1 2 3 4]) ;; error
+----
+
+
+[source, clojure]
+----
+(apply + [1 2 3 4])
+----
+
+
+[source, clojure]
+----
+(apply + '(1 2 3 4))
+----
+
+[source, clojure]
+----
+(defn my-function [arg1 arg2]
+  (println "Argument 1:" arg1)
+  (println "Argument 2:" arg2))
+----
+
+[source, clojure]
+----
+(my-function "one" "two")
+----
+
+
+[source, clojure]
+----
+(my-function ["one" "two"]) ;; error
+----
+
+
+[source, clojure]
+----
+(apply my-function ["one" "two"])
+----
+
+
