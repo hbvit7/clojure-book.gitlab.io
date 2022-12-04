@@ -7,7 +7,7 @@ Functions are the way you can abstract away things in Clojure. Whenever a code g
 So let's see how to build our own functions in this chapter.
 
 
-== Saying Hello With Functions
+=== Saying Hello With Functions
 
 So this is the code in Clojure to print Hello World:
 
