@@ -728,52 +728,53 @@ pre.rouge {
 <li><a href="#_loop">8.3. loop</a></li>
 </ul>
 </li>
-<li><a href="#_functions">9. Functions</a>
+<li><a href="#_functions">9. Functions</a></li>
+<li><a href="#_saying_hello_with_functions">10. Saying Hello With Functions</a>
 <ul class="sectlevel2">
-<li><a href="#_passing_argument">9.1. Passing argument</a></li>
-<li><a href="#_function_with_multiple_arguments">9.2. Function with multiple arguments</a></li>
-<li><a href="#_accepting_unlimited_arguments">9.3. Accepting unlimited arguments</a></li>
-<li><a href="#_returning_stuff">9.4. Returning stuff</a></li>
-<li><a href="#_recursion">9.5. Recursion</a></li>
-<li><a href="#_multimethods">9.6. Multimethods</a></li>
-<li><a href="#_pre_and_post_condition_checking">9.7. Pre and Post Condition Checking</a></li>
-<li><a href="#_docstring">9.8. Docstring</a></li>
-<li><a href="#_anonymous_functions">9.9. Anonymous Functions</a></li>
-<li><a href="#_functions_returning_functions">9.10. Functions returning functions</a></li>
+<li><a href="#_passing_argument">10.1. Passing Argument</a></li>
+<li><a href="#_function_with_multiple_arguments">10.2. Function with multiple arguments</a></li>
+<li><a href="#_accepting_unlimited_arguments">10.3. Accepting unlimited arguments</a></li>
+<li><a href="#_returning_stuff">10.4. Returning stuff</a></li>
+<li><a href="#_recursion">10.5. Recursion</a></li>
+<li><a href="#_multimethods">10.6. Multimethods</a></li>
+<li><a href="#_pre_and_post_condition_checking">10.7. Pre and Post Condition Checking</a></li>
+<li><a href="#_docstring">10.8. Docstring</a></li>
+<li><a href="#_anonymous_functions">10.9. Anonymous Functions</a></li>
+<li><a href="#_functions_returning_functions">10.10. Functions returning functions</a></li>
 </ul>
 </li>
-<li><a href="#_spec">10. Spec</a>
+<li><a href="#_spec">11. Spec</a>
 <ul class="sectlevel2">
-<li><a href="#_specing_collection">10.1. Specing collection</a></li>
-<li><a href="#_inspecting_collections">10.2. Inspecting Collections</a></li>
-<li><a href="#_checking_maps">10.3. Checking Maps</a></li>
-<li><a href="#_explaining_spec">10.4. Explaining Spec</a></li>
-<li><a href="#_using_spec_in_functions">10.5. Using Spec In Functions</a></li>
+<li><a href="#_specing_collection">11.1. Specing collection</a></li>
+<li><a href="#_inspecting_collections">11.2. Inspecting Collections</a></li>
+<li><a href="#_checking_maps">11.3. Checking Maps</a></li>
+<li><a href="#_explaining_spec">11.4. Explaining Spec</a></li>
+<li><a href="#_using_spec_in_functions">11.5. Using Spec In Functions</a></li>
 </ul>
 </li>
-<li><a href="#_what_is_clojure_code">11. What is Clojure code</a></li>
-<li><a href="#_sequence">12. Sequence</a></li>
-<li><a href="#_lazy_sequence">13. Lazy Sequence</a>
+<li><a href="#_what_is_clojure_code">12. What is Clojure code</a></li>
+<li><a href="#_sequence">13. Sequence</a></li>
+<li><a href="#_lazy_sequence">14. Lazy Sequence</a>
 <ul class="sectlevel2">
-<li><a href="#_repeat">13.1. repeat</a></li>
-<li><a href="#_cycle">13.2. cycle</a></li>
-<li><a href="#_iterate">13.3. iterate</a></li>
+<li><a href="#_repeat">14.1. repeat</a></li>
+<li><a href="#_cycle">14.2. cycle</a></li>
+<li><a href="#_iterate">14.3. iterate</a></li>
 </ul>
 </li>
-<li><a href="#_map_filter_reduce_apply">14. map, filter, reduce, apply</a>
+<li><a href="#_map_filter_reduce_apply">15. map, filter, reduce, apply</a>
 <ul class="sectlevel2">
-<li><a href="#_map">14.1. map</a></li>
-<li><a href="#_filter">14.2. filter</a></li>
-<li><a href="#_reduce">14.3. reduce</a></li>
-<li><a href="#_apply">14.4. apply</a></li>
+<li><a href="#_map">15.1. map</a></li>
+<li><a href="#_filter">15.2. filter</a></li>
+<li><a href="#_reduce">15.3. reduce</a></li>
+<li><a href="#_apply">15.4. apply</a></li>
 </ul>
 </li>
-<li><a href="#_destructuring">15. Destructuring</a></li>
-<li><a href="#_splitting_large_programs">16. Splitting Large Programs</a></li>
-<li><a href="#_records_and_protocols">17. Records and Protocols</a></li>
-<li><a href="#_namespaces">18. namespaces</a></li>
-<li><a href="#_testing">19. Testing</a></li>
-<li><a href="#_macros">20. Macros</a></li>
+<li><a href="#_destructuring">16. Destructuring</a></li>
+<li><a href="#_splitting_large_programs">17. Splitting Large Programs</a></li>
+<li><a href="#_records_and_protocols">18. Records and Protocols</a></li>
+<li><a href="#_namespaces">19. namespaces</a></li>
+<li><a href="#_testing">20. Testing</a></li>
+<li><a href="#_macros">21. Macros</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -4756,6 +4757,64 @@ nil</pre>
 <div class="sect1">
 <h2 id="_functions">9. Functions</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Abstraction is the key to greatness and progress. Michael Faraday discovered electricity and magnetism have a link, but I don&#8217;t think about it when I drive my car. Everything is abstracted away behind the steering wheel and pedals. Abstraction is so important, that almost every programming language provides a way to abstract away complexity.</p>
+</div>
+<div class="paragraph">
+<p>Functions are the way you can abstract away things in Clojure. Whenever a code gets complex, you can refactor it out as functions, and use those functions as building blocks. In fact, you have been using functions all along, say when you call <code>(+ 1 2)</code> in Clojure, the <code>+</code> is a function, and <code>1</code> and <code>2</code> are the value it receives. Technically we call the values received by the function as arguments. You really not worried or don&#8217;t know what happens in computer when you execute <code>(+ 1 2)</code>, it&#8217;s been neatly abstracted away behind the function <code>+</code>.</p>
+</div>
+<div class="paragraph">
+<p>So let&#8217;s see how to build our own functions in this chapter.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_saying_hello_with_functions">10. Saying Hello With Functions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So this is the code in Clojure to print Hello World:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello world!"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, I want to short it, I want to make this same functionality available by calling just <code>(say-hello)</code>. To do that I first call a function called <code>defn</code> or define function</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To it, as a first argument I pass the function name <code>say-hello</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">say-hello</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now <code>say-hello`</code> is passed to <code>defn</code>, but since <code>say-hello</code> is defined as a function, we can accept arguments for it, but here we need no arguments as we are going to print Hello World!, so lets put empty square braces as no arguments will be accepted by <code>say-hello</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">say-hello</span><span class="w"> </span><span class="p">[])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now all we need to do is to write the function body, in the body we print hello world as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">say-hello</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello world!"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So when ever we call <code>(say-hello)</code>, Hello World! gets printed. Below code shows the final version of say hello:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_say_hello.clj</span><span class="w">
@@ -4766,8 +4825,17 @@ nil</pre>
 </span><span class="p">(</span><span class="nf">say-hello</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Hello world!
+nil</pre>
+</div>
+</div>
 <div class="sect2">
-<h3 id="_passing_argument">9.1. Passing argument</h3>
+<h3 id="_passing_argument">10.1. Passing Argument</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_with_arguments.clj</span><span class="w">
@@ -4778,9 +4846,27 @@ nil</pre>
 </span><span class="p">(</span><span class="nf">say-hello</span><span class="w"> </span><span class="s">"Karthik"</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_circle_area.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">circle-area</span><span class="w"> </span><span class="p">[</span><span class="n">radius</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">Math/PI</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">circle-area</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>153.93804002589985</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_function_with_multiple_arguments">9.2. Function with multiple arguments</h3>
+<h3 id="_function_with_multiple_arguments">10.2. Function with multiple arguments</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function-multiple-arguments.clj</span><span class="w">
@@ -4804,7 +4890,7 @@ Two argument passed: 1 2</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_accepting_unlimited_arguments">9.3. Accepting unlimited arguments</h3>
+<h3 id="_accepting_unlimited_arguments">10.3. Accepting unlimited arguments</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_unlimited_arguments.clj</span><span class="w">
@@ -4885,7 +4971,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_returning_stuff">9.4. Returning stuff</h3>
+<h3 id="_returning_stuff">10.4. Returning stuff</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_something.clj</span><span class="w">
@@ -4898,7 +4984,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_recursion">9.5. Recursion</h3>
+<h3 id="_recursion">10.5. Recursion</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_recursion.clj</span><span class="w">
@@ -4952,7 +5038,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multimethods">9.6. Multimethods</h3>
+<h3 id="_multimethods">10.6. Multimethods</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; without_multimethods.clj</span><span class="w">
@@ -5016,7 +5102,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pre_and_post_condition_checking">9.7. Pre and Post Condition Checking</h3>
+<h3 id="_pre_and_post_condition_checking">10.7. Pre and Post Condition Checking</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_pre.clj</span><span class="w">
@@ -5058,7 +5144,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_docstring">9.8. Docstring</h3>
+<h3 id="_docstring">10.8. Docstring</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; docstring.clj</span><span class="w">
@@ -5107,7 +5193,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anonymous_functions">9.9. Anonymous Functions</h3>
+<h3 id="_anonymous_functions">10.9. Anonymous Functions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; anonymous_function.clj</span><span class="w">
@@ -5129,7 +5215,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_functions_returning_functions">9.10. Functions returning functions</h3>
+<h3 id="_functions_returning_functions">10.10. Functions returning functions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_function.clj</span><span class="w">
@@ -5153,7 +5239,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_spec">10. Spec</h2>
+<h2 id="_spec">11. Spec</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -5363,7 +5449,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_specing_collection">10.1. Specing collection</h3>
+<h3 id="_specing_collection">11.1. Specing collection</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">string-collection?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/coll-of</span><span class="w"> </span><span class="nb">string?</span><span class="p">))</span></code></pre>
@@ -5470,7 +5556,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_inspecting_collections">10.2. Inspecting Collections</h3>
+<h3 id="_inspecting_collections">11.2. Inspecting Collections</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-person-vector?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/cat</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="no">:age</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">))</span></code></pre>
@@ -5498,7 +5584,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_checking_maps">10.3. Checking Maps</h3>
+<h3 id="_checking_maps">11.3. Checking Maps</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::name</span><span class="w"> </span><span class="nb">string?</span><span class="p">)</span><span class="w">
@@ -5518,7 +5604,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_explaining_spec">10.4. Explaining Spec</h3>
+<h3 id="_explaining_spec">11.4. Explaining Spec</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="s">"42"</span><span class="p">)</span></code></pre>
@@ -5625,7 +5711,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_spec_in_functions">10.5. Using Spec In Functions</h3>
+<h3 id="_using_spec_in_functions">11.5. Using Spec In Functions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add-two-numbers</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
@@ -5664,7 +5750,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_what_is_clojure_code">11. What is Clojure code</h2>
+<h2 id="_what_is_clojure_code">12. What is Clojure code</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Clojure is a dialect of Lisp. Lisp stands for list processing. That is almost all Clojure code is a list data structure. In lisp, program is a data structure, and data structure could be treated as a program, which gives it enormous power.</p>
@@ -5721,7 +5807,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sequence">12. Sequence</h2>
+<h2 id="_sequence">13. Sequence</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -5813,10 +5899,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_lazy_sequence">13. Lazy Sequence</h2>
+<h2 id="_lazy_sequence">14. Lazy Sequence</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_repeat">13.1. repeat</h3>
+<h3 id="_repeat">14.1. repeat</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
@@ -5854,7 +5940,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_cycle">13.2. cycle</h3>
+<h3 id="_cycle">14.2. cycle</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"universe"</span><span class="w"> </span><span class="s">"antiverse"</span><span class="p">]))</span></code></pre>
@@ -5903,7 +5989,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_iterate">13.3. iterate</h3>
+<h3 id="_iterate">14.3. iterate</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="p">(</span><span class="nb">iterate</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
@@ -5923,10 +6009,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_map_filter_reduce_apply">14. map, filter, reduce, apply</h2>
+<h2 id="_map_filter_reduce_apply">15. map, filter, reduce, apply</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_map">14.1. map</h3>
+<h3 id="_map">15.1. map</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
@@ -5959,7 +6045,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_filter">14.2. filter</h3>
+<h3 id="_filter">15.2. filter</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">filter</span><span class="w"> </span><span class="n">odd?</span><span class="w"> </span><span class="p">(</span><span class="nb">range</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">11</span><span class="p">))</span></code></pre>
@@ -5995,7 +6081,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reduce">14.3. reduce</h3>
+<h3 id="_reduce">15.3. reduce</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
@@ -6030,7 +6116,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect2">
-<h3 id="_apply">14.4. apply</h3>
+<h3 id="_apply">15.4. apply</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span></code></pre>
@@ -6077,7 +6163,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="sect1">
-<h2 id="_destructuring">15. Destructuring</h2>
+<h2 id="_destructuring">16. Destructuring</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6220,7 +6306,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_splitting_large_programs">16. Splitting Large Programs</h2>
+<h2 id="_splitting_large_programs">17. Splitting Large Programs</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6275,7 +6361,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_records_and_protocols">17. Records and Protocols</h2>
+<h2 id="_records_and_protocols">18. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
@@ -6393,7 +6479,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_namespaces">18. namespaces</h2>
+<h2 id="_namespaces">19. namespaces</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6440,7 +6526,7 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_testing">19. Testing</h2>
+<h2 id="_testing">20. Testing</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6477,7 +6563,7 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_macros">20. Macros</h2>
+<h2 id="_macros">21. Macros</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Lets say you want to add 2 and 3  and you will write it like this:</p>
