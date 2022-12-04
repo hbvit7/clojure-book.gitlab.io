@@ -4,7 +4,11 @@
 
 include::use_code_note.adoc[]
 
+In programming, when you need to do stuff again and again, you use a thing called loops. In this section we will be seeing about it. 
+
 === for
+
+The first loop we are going to see if `for`, type the code below and execute it:
 
 [source, clojure]
 ----
@@ -12,6 +16,44 @@ include::use_code_note.adoc[]
   (for [num nums]
        (* num 10)))
 ----
+
+Output
+
+----
+(10 20 30 40)
+----
+
+Let's see how it works. So,
+
+[source, clojure]
+----
+(let [nums [1 2 3 4]])
+----
+
+Assigns `[1 2 3 4]` to `nums`. Then we invoke the `for` as shown
+
+[source, clojure]
+----
+(let [nums [1 2 3 4]]
+  (for [num nums]
+    ;; loop body
+       ))
+----
+
+In the above code `for [num nums]` is the new addition, so the loop body in the above code will be executed 4 times, the first time it gets executed, the first value in `nums` that is `1` will be loaded into `num`, the second time it will be `2` and so on.
+
+So in the loop body all we do is to multiply `num` by `10`, so let's put `(* num 10)` in the loop body as shown:
+
+[source, clojure]
+----
+(let [nums [1 2 3 4]]
+  (for [num nums]
+       (* num 10)))
+----
+
+So what `for` does is this, first time `num` is `1` and the loop body returns `(* num 10)` which is `10`, so `for` has a list with `(10)`. The next time `num` is `2` and `(* num 10)` is `20` which get returned and `for` now has a list `(10 20)`, and so on it continues till `for` has a list `(10 20 30 40)`, finally for returns it.
+
+Now let's try out a for program with multiple sequences. Type the program below and execute it:
 
 [source, clojure]
 ----
@@ -24,7 +66,65 @@ include::use_code_note.adoc[]
   (str color " " shape))
 ----
 
+Output
+
+----
+("red square" "red circle" "red triangle" "red rectangle" "blue square" "blue circle" "blue triangle" "blue rectangle" "green square" "green circle" "green triangle" "green rectangle" "yellow square" "yellow circle" "yellow triangle" "yellow rectangle")
+----
+
+So in this statement:
+
+[source, clojure]
+----
+(def colors ["red" "blue" "green" "yellow"]))
+----
+
+We assign four colors to a variable named `colors`. Similarly in this statement:
+
+[source, clojure]
+----
+(def shapes ["square" "circle" "triangle" "rectangle"])
+----
+
+We assign four shapes to shapes. Now let's use `for` to combine all `colors` with all `shapes`. Now look at this:
+
+[source, clojure]
+----
+(for [color colors]
+  ;; loop body
+  )
+----
+
+So in the code above we tell the for to execute each time for every item in `colors`, the first time it executes `color` will be the first value of `color`, that is `"red"`, the last time it executes `color` will be the last value of `colors` that is `"yellow"`.
+
+Now we need to mix in `shapes`, so we just load every shape in `shapes` into a variable called `shape` as shown:
+
+[source, clojure]
+----
+(for [color colors
+      shape shapes]
+  ;; loop body
+  )
+----
+
+The way it executes is like this, first `"red"` gets loaded into `color`, then `"square"` gets loaded into `shape`, the loop body gets executed, here the loop body is simply concatenating `colors` and `shape` using `str`, so let's add `(str color " " shape)` to our code below as the body of `for` loop.
+
+[source, clojure]
+----
+(for [color colors
+      shape shapes]
+  (str color " " shape))
+----
+
+So the first time `"red"`, then a space `" "` and `"square"` gets stringed together and `for` has a collection `("red square")`, now the next time, the `shape` takes the next value in `shapes`, that is "circle" and we get `"red circle"` as the output of `(str color " " shape)`, and hence `for` has the collection `("red square" "red circle")`. This goes on till all values in `shapes` are iterated, and now `color` takes on the next color that is `"blue"`, and the process continues. Ultimately for will return this list out:
+
+----
+("red square" "red circle" "red triangle" "red rectangle" "blue square" "blue circle" "blue triangle" "blue rectangle" "green square" "green circle" "green triangle" "green rectangle" "yellow square" "yellow circle" "yellow triangle" "yellow rectangle")
+----
+
 === doseq
+
+`doseq` works just like `for`, but it returns nothing. Checkout the code below, if you think it will return `(10 20 30 40)`, you are wrong. When you want something to be executed, but then nothing should be returned, then `doseq` is the thing to be used.
 
 [source, clojure]
 ----
@@ -33,6 +133,13 @@ include::use_code_note.adoc[]
     (* num 10)))
 ----
 
+Output
+
+----
+nil
+----
+
+Now check out the code below, though `doseq` returns nothing, you can make it do something in the loop body, here we just print numbers multiplied by 10:
 
 [source, clojure]
 ----
@@ -41,7 +148,21 @@ include::use_code_note.adoc[]
     (println (* num 10))))
 ----
 
+Output
+
+----
+10
+20
+30
+40
+nil
+----
+
+In real world it could be a code to send emails to n-number of people or something like that where there is no need to return anything after the loop has run.
+
 === loop
+
+The final loop we are going to see in Clojure is `loop`, type the program below and execute:
 
 [source, clojure]
 ----
@@ -50,3 +171,69 @@ include::use_code_note.adoc[]
     (println x)
     (recur (inc x))))
 ----
+
+Output
+
+----
+1
+2
+3
+4
+5
+nil
+----
+
+It works like this, first you have a function `loop`:
+
+[source, clojure]
+----
+(loop )
+----
+
+now let's initialize a variable named `x` to `1`:
+
+
+[source, clojure]
+----
+(loop [x 1])
+----
+
+We want to print from 1 to 5, then the loop should check the condition if `x` is less than or equal to 5, so let's check the condition `(<= x 5)` using a function called `when`:
+
+[source, clojure]
+----
+(loop [x 1]
+  (when (<= x 5)
+    ))
+----
+
+So the first argument to loop is `[x 1]`, the second one is the condition check:
+
+[source, clojure]
+----
+(when (<= x 5)
+    )
+----
+
+So when ever `x` is less than 5 `(<= x 5)` what ever is put in `(when (<= x 5) ...)` gets executed.
+
+Now let's have a simple loop body to print `x`, so we get:
+
+[source, clojure]
+----
+(loop [x 1]
+  (when (<= x 5)
+    (println x)))
+----
+
+Once we need to the loop to continue once it has printed `x`, so for that we call a function `recur` with updated value of `x`, let's pass `(recur (inc x))` as second argument to when as shown:
+
+[source, clojure]
+----
+(loop [x 1]
+  (when (<= x 5)
+    (println x)
+    (recur (inc x))))
+----
+
+So now once again `loop` is hit, but now `x` is 2 this time, and still `(<= x 5)` passes, now 2 gets printed out, it goes on and on till `x` is 6 and so `(<= x 5)` fails, and the loop stops recurring and execution stops.

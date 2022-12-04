@@ -765,15 +765,15 @@ pre.rouge {
 <li><a href="#_map">14.1. map</a></li>
 <li><a href="#_filter">14.2. filter</a></li>
 <li><a href="#_reduce">14.3. reduce</a></li>
+<li><a href="#_apply">14.4. apply</a></li>
 </ul>
 </li>
-<li><a href="#_apply">15. apply</a></li>
-<li><a href="#_destructuring">16. Destructuring</a></li>
-<li><a href="#_splitting_large_programs">17. Splitting Large Programs</a></li>
-<li><a href="#_records_and_protocols">18. Records and Protocols</a></li>
-<li><a href="#_namespaces">19. namespaces</a></li>
-<li><a href="#_testing">20. Testing</a></li>
-<li><a href="#_macros">21. Macros</a></li>
+<li><a href="#_destructuring">15. Destructuring</a></li>
+<li><a href="#_splitting_large_programs">16. Splitting Large Programs</a></li>
+<li><a href="#_records_and_protocols">17. Records and Protocols</a></li>
+<li><a href="#_namespaces">18. namespaces</a></li>
+<li><a href="#_testing">19. Testing</a></li>
+<li><a href="#_macros">20. Macros</a></li>
 <li><a href="#_bibliography">Bibliography</a></li>
 </ul>
 </div>
@@ -4477,14 +4477,66 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>In programming, when you need to do stuff again and again, you use a thing called loops. In this section we will be seeing about it.</p>
+</div>
 <div class="sect2">
 <h3 id="_for">8.1. for</h3>
+<div class="paragraph">
+<p>The first loop we are going to see if <code>for</code>, type the code below and execute it:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">nums</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
   </span><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">num</span><span class="w"> </span><span class="n">nums</span><span class="p">]</span><span class="w">
        </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="mi">10</span><span class="p">)))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(10 20 30 40)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see how it works. So,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">nums</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Assigns <code>[1 2 3 4]</code> to <code>nums</code>. Then we invoke the <code>for</code> as shown</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">nums</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
+  </span><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">num</span><span class="w"> </span><span class="n">nums</span><span class="p">]</span><span class="w">
+    </span><span class="c1">;; loop body</span><span class="w">
+       </span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code <code>for [num nums]</code> is the new addition, so the loop body in the above code will be executed 4 times, the first time it gets executed, the first value in <code>nums</code> that is <code>1</code> will be loaded into <code>num</code>, the second time it will be <code>2</code> and so on.</p>
+</div>
+<div class="paragraph">
+<p>So in the loop body all we do is to multiply <code>num</code> by <code>10</code>, so let&#8217;s put <code>(* num 10)</code> in the loop body as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">nums</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
+  </span><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">num</span><span class="w"> </span><span class="n">nums</span><span class="p">]</span><span class="w">
+       </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="mi">10</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So what <code>for</code> does is this, first time <code>num</code> is <code>1</code> and the loop body returns <code>(* num 10)</code> which is <code>10</code>, so <code>for</code> has a list with <code>(10)</code>. The next time <code>num</code> is <code>2</code> and <code>(* num 10)</code> is <code>20</code> which get returned and <code>for</code> now has a list <code>(10 20)</code>, and so on it continues till <code>for</code> has a list <code>(10 20 30 40)</code>, finally for returns it.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s try out a for program with multiple sequences. Type the program below and execute it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4497,15 +4549,95 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
   </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="n">shape</span><span class="p">))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>("red square" "red circle" "red triangle" "red rectangle" "blue square" "blue circle" "blue triangle" "blue rectangle" "green square" "green circle" "green triangle" "green rectangle" "yellow square" "yellow circle" "yellow triangle" "yellow rectangle")</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So in this statement:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">colors</span><span class="w"> </span><span class="p">[</span><span class="s">"red"</span><span class="w"> </span><span class="s">"blue"</span><span class="w"> </span><span class="s">"green"</span><span class="w"> </span><span class="s">"yellow"</span><span class="p">]))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We assign four colors to a variable named <code>colors</code>. Similarly in this statement:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">shapes</span><span class="w"> </span><span class="p">[</span><span class="s">"square"</span><span class="w"> </span><span class="s">"circle"</span><span class="w"> </span><span class="s">"triangle"</span><span class="w"> </span><span class="s">"rectangle"</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We assign four shapes to shapes. Now let&#8217;s use <code>for</code> to combine all <code>colors</code> with all <code>shapes</code>. Now look at this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">color</span><span class="w"> </span><span class="n">colors</span><span class="p">]</span><span class="w">
+  </span><span class="c1">;; loop body</span><span class="w">
+  </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So in the code above we tell the for to execute each time for every item in <code>colors</code>, the first time it executes <code>color</code> will be the first value of <code>color</code>, that is <code>"red"</code>, the last time it executes <code>color</code> will be the last value of <code>colors</code> that is <code>"yellow"</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now we need to mix in <code>shapes</code>, so we just load every shape in <code>shapes</code> into a variable called <code>shape</code> as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">color</span><span class="w"> </span><span class="n">colors</span><span class="w">
+      </span><span class="n">shape</span><span class="w"> </span><span class="n">shapes</span><span class="p">]</span><span class="w">
+  </span><span class="c1">;; loop body</span><span class="w">
+  </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The way it executes is like this, first <code>"red"</code> gets loaded into <code>color</code>, then <code>"square"</code> gets loaded into <code>shape</code>, the loop body gets executed, here the loop body is simply concatenating <code>colors</code> and <code>shape</code> using <code>str</code>, so let&#8217;s add <code>(str color " " shape)</code> to our code below as the body of <code>for</code> loop.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">color</span><span class="w"> </span><span class="n">colors</span><span class="w">
+      </span><span class="n">shape</span><span class="w"> </span><span class="n">shapes</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">str</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="n">shape</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the first time <code>"red"</code>, then a space <code>" "</code> and <code>"square"</code> gets stringed together and <code>for</code> has a collection <code>("red square")</code>, now the next time, the <code>shape</code> takes the next value in <code>shapes</code>, that is "circle" and we get <code>"red circle"</code> as the output of <code>(str color " " shape)</code>, and hence <code>for</code> has the collection <code>("red square" "red circle")</code>. This goes on till all values in <code>shapes</code> are iterated, and now <code>color</code> takes on the next color that is <code>"blue"</code>, and the process continues. Ultimately for will return this list out:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>("red square" "red circle" "red triangle" "red rectangle" "blue square" "blue circle" "blue triangle" "blue rectangle" "green square" "green circle" "green triangle" "green rectangle" "yellow square" "yellow circle" "yellow triangle" "yellow rectangle")</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_doseq">8.2. doseq</h3>
+<div class="paragraph">
+<p><code>doseq</code> works just like <code>for</code>, but it returns nothing. Checkout the code below, if you think it will return <code>(10 20 30 40)</code>, you are wrong. When you want something to be executed, but then nothing should be returned, then <code>doseq</code> is the thing to be used.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">nums</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w">
   </span><span class="p">(</span><span class="nb">doseq</span><span class="w"> </span><span class="p">[</span><span class="n">num</span><span class="w"> </span><span class="n">nums</span><span class="p">]</span><span class="w">
     </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="mi">10</span><span class="p">)))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now check out the code below, though <code>doseq</code> returns nothing, you can make it do something in the loop body, here we just print numbers multiplied by 10:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4514,9 +4646,27 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
     </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="mi">10</span><span class="p">))))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>10
+20
+30
+40
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In real world it could be a code to send emails to n-number of people or something like that where there is no need to return anything after the loop has run.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_loop">8.3. loop</h3>
+<div class="paragraph">
+<p>The final loop we are going to see in Clojure is <code>loop</code>, type the program below and execute:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">
@@ -4524,6 +4674,81 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
     </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
     </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">inc</span><span class="w"> </span><span class="n">x</span><span class="p">))))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>1
+2
+3
+4
+5
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It works like this, first you have a function <code>loop</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>now let&#8217;s initialize a variable named <code>x</code> to <code>1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We want to print from 1 to 5, then the loop should check the condition if <code>x</code> is less than or equal to 5, so let&#8217;s check the condition <code>(&#8656; x 5)</code> using a function called <code>when</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+    </span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the first argument to loop is <code>[x 1]</code>, the second one is the condition check:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+    </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So when ever <code>x</code> is less than 5 <code>(&#8656; x 5)</code> what ever is put in <code>(when (&#8656; x 5) &#8230;&#8203;)</code> gets executed.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s have a simple loop body to print <code>x</code>, so we get:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">x</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once we need to the loop to continue once it has printed <code>x</code>, so for that we call a function <code>recur</code> with updated value of <code>x</code>, let&#8217;s pass <code>(recur (inc x))</code> as second argument to when as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">loop</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">when</span><span class="w"> </span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">inc</span><span class="w"> </span><span class="n">x</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So now once again <code>loop</code> is hit, but now <code>x</code> is 2 this time, and still <code>(&#8656; x 5)</code> passes, now 2 gets printed out, it goes on and on till <code>x</code> is 6 and so <code>(&#8656; x 5)</code> fails, and the loop stops recurring and execution stops.</p>
 </div>
 </div>
 </div>
@@ -5804,11 +6029,8 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_apply">15. apply</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_apply">14.4. apply</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span></code></pre>
@@ -5853,8 +6075,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_destructuring">16. Destructuring</h2>
+<h2 id="_destructuring">15. Destructuring</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -5997,7 +6220,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_splitting_large_programs">17. Splitting Large Programs</h2>
+<h2 id="_splitting_large_programs">16. Splitting Large Programs</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6052,7 +6275,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_records_and_protocols">18. Records and Protocols</h2>
+<h2 id="_records_and_protocols">17. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
@@ -6170,7 +6393,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_namespaces">19. namespaces</h2>
+<h2 id="_namespaces">18. namespaces</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6217,7 +6440,7 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_testing">20. Testing</h2>
+<h2 id="_testing">19. Testing</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -6254,7 +6477,7 @@ I loot the nation.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_macros">21. Macros</h2>
+<h2 id="_macros">20. Macros</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Lets say you want to add 2 and 3  and you will write it like this:</p>
