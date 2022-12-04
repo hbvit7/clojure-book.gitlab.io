@@ -101,7 +101,7 @@
 ----
 
 
-== apply
+=== apply
 
 
 [source, clojure]
