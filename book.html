@@ -732,15 +732,17 @@ pre.rouge {
 <ul class="sectlevel2">
 <li><a href="#_saying_hello_with_functions">9.1. Saying Hello With Functions</a></li>
 <li><a href="#_passing_argument">9.2. Passing Argument</a></li>
-<li><a href="#_function_with_multiple_arguments">9.3. Function with multiple arguments</a></li>
-<li><a href="#_accepting_unlimited_arguments">9.4. Accepting unlimited arguments</a></li>
-<li><a href="#_returning_stuff">9.5. Returning stuff</a></li>
-<li><a href="#_recursion">9.6. Recursion</a></li>
-<li><a href="#_multimethods">9.7. Multimethods</a></li>
-<li><a href="#_pre_and_post_condition_checking">9.8. Pre and Post Condition Checking</a></li>
-<li><a href="#_docstring">9.9. Docstring</a></li>
-<li><a href="#_anonymous_functions">9.10. Anonymous Functions</a></li>
-<li><a href="#_functions_returning_functions">9.11. Functions returning functions</a></li>
+<li><a href="#_finding_area_of_circle">9.3. Finding Area Of Circle</a></li>
+<li><a href="#_refactoring">9.4. Refactoring</a></li>
+<li><a href="#_function_with_multiple_arguments">9.5. Function with multiple arguments</a></li>
+<li><a href="#_accepting_unlimited_arguments">9.6. Accepting unlimited arguments</a></li>
+<li><a href="#_returning_stuff">9.7. Returning stuff</a></li>
+<li><a href="#_recursion">9.8. Recursion</a></li>
+<li><a href="#_multimethods">9.9. Multimethods</a></li>
+<li><a href="#_pre_and_post_condition_checking">9.10. Pre and Post Condition Checking</a></li>
+<li><a href="#_docstring">9.11. Docstring</a></li>
+<li><a href="#_anonymous_functions">9.12. Anonymous Functions</a></li>
+<li><a href="#_functions_returning_functions">9.13. Functions returning functions</a></li>
 </ul>
 </li>
 <li><a href="#_spec">10. Spec</a>
@@ -4834,6 +4836,12 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_passing_argument">9.2. Passing Argument</h3>
+<div class="paragraph">
+<p>We can pass arguments to functions, say we have a function \$f(x) = x^2 + 2\$, this function accepts an argument \$x\$, now we plug in 7 to x, then \$f(7) = 27\$. In the same way, a programming function can take in argument and do something with it.</p>
+</div>
+<div class="paragraph">
+<p>Look at the say hello example below, type iit and execute it:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_with_arguments.clj</span><span class="w">
@@ -4843,6 +4851,54 @@ nil</pre>
 
 </span><span class="p">(</span><span class="nf">say-hello</span><span class="w"> </span><span class="s">"Karthik"</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Hello Karthik !
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It prints <code>Hello Karthik !</code>, so how it works? We <code>(defn say-hello &#8230;&#8203;)</code>, where we define a function named <code>say-hello</code>, bu then after that notice the <code>[name]</code> as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">say-hello</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="p">]</span><span class="w">
+  </span><span class="c1">;; function body goes here</span><span class="w">
+  </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>name</code> is an argument you need to pass for the function to run. It an be used as variable in the function. Notice how the function is structured, you have the <code>defn</code>, followed by the function name then there the square bracket containing the sigle argument name <code>[name]</code>. Now let&#8217;s finish off the function by writing its body as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">say-hello</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello"</span><span class="w"> </span><span class="nb">name</span><span class="w"> </span><span class="s">"!"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As function body, we are just printing saying hello to the <code>name</code> passed using <code>println</code> like this: <code>(println "Hello" name "!")</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now calling <code>say-hello</code> with argument <code>Karthik</code> <code>(say-hello "Karthik")</code> prints out <code>Hello Karthik !</code>. Modify the program to say hello to you.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_finding_area_of_circle">9.3. Finding Area Of Circle</h3>
+<div class="paragraph">
+<p>We know that area of circle is \$pi r^2\$, given radius of a circle is stored in a variable <code>radius</code>, we can write a Clojure code to find area as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">Math/PI</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, rather than writing as above, won&#8217;t it be good if we can find area of circle by calling a function <code>circle-area</code>? That&#8217;s what we do in code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4862,12 +4918,70 @@ nil</pre>
 <pre>153.93804002589985</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the above code, rather than dealing with <code>Math/PI</code> and finding power, all we need to do is to call <code>(circle-area 7)</code>, and we get the area of circle whose radius is 7 units. A good function abstracts complexity away and makes us write programs better and better.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_function_with_multiple_arguments">9.3. Function with multiple arguments</h3>
+<h3 id="_refactoring">9.4. Refactoring</h3>
+<div class="paragraph">
+<p>Say your friend is coding a billion dollar startup that let&#8217;s its customers find circle area using an app. Your friend had a successful pitch and investment round where he claimed that 1000s of people wanted to find circle area every day and his app will be useful for it. He knows you area great programmer and you coded the <code>circle-area</code> function for him. The app releases and humanity is saved.</p>
+</div>
+<div class="paragraph">
+<p>You find that rather than finding circle area using  <code>(* Math/PI (Math/pow radius 2))</code>, you can find it by <code>(* Math/PI radius radius)</code>. The later is much simpler and easier to maintain. So all you need to do is to change the code in one place as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function-multiple-arguments.clj</span><span class="w">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_circle_area_refactored.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">circle-area</span><span class="w"> </span><span class="p">[</span><span class="n">radius</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">Math/PI</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="n">radius</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">circle-area</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The rest of the code in the app is totally unaware of this change, and works just fine. Instead of abstracting things away as a function, if you put  <code>(* Math/PI (Math/pow radius 2))</code> everywhere, say in 50 places in app, it would be really difficult to change and test.</p>
+</div>
+<div class="paragraph">
+<p>So functions help in better coding, and even reduces the possibility of bugs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_function_with_multiple_arguments">9.5. Function with multiple arguments</h3>
+<div class="paragraph">
+<p>It&#8217;s not that functions should have only one argument, say you want to find the hypotenuse of a  right angle triable of side lengths \$a\$ and \$b\$, then it can be written as a function \$f(a, b) = sqrt { a^2 + b^2 }\$. So let&#8217;s code this one in Clojure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; hypotenuse.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">hypotenuse</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">Math/sqrt</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">b</span><span class="p">))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">hypotenuse</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the code above, we define a function <code>hypotenuse</code>, and it takes in two arguments <code>a</code> and <code>b</code>, so I think it should be clear to reader now, if a function take no arguments, the function name should be followed by empty square brackets <code>[]</code>, or if it does then the argument names should be included in those square brackets like <code>[a, b]</code> in this case. In the function body we just add the statement <code>(Math/sqrt (+ (* a a) (* b b)))</code>, which computes the hypotenuse and returns the number.</p>
+</div>
+<div class="paragraph">
+<p>When we call <code>(hypotenuse 3 4)</code>, <code>5.0</code> get&#8217;s returned.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say for some reason we need a function where it can accept one argument, and the same function can also accept two arguments. We can do that too Clojure. Look at the code below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_multiple_arguments.clj</span><span class="w">
 
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">multiple-args</span><span class="w">
   </span><span class="p">([</span><span class="n">arg-1</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"One argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="p">))</span><span class="w">
@@ -4886,9 +5000,79 @@ nil</pre>
 Two argument passed: 1 2</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>So we have a function called <code>multiple-args</code>, that&#8217;s defined like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">multiple-args</span><span class="w">
+  </span><span class="c1">;; function body goes here</span><span class="w">
+  </span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So in order to accept one argument, we add a form as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">multiple-args</span><span class="w">
+  </span><span class="p">([</span><span class="n">arg-1</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"One argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">([</span><span class="n">arg-1</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"One argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Receives one argument <code>arg-1</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">([</span><span class="n">arg-1</span><span class="p">]</span><span class="w"> </span><span class="n">...</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And in the body of the function we print it using <code>(println "One argument passed:" arg-1)</code> as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">([</span><span class="n">arg-1</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"One argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So this will respond to a function call like <code>(multiple-args 1)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now in order to have two or more arguments, we add this another form that has two arguments in it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">([</span><span class="n">arg-1</span><span class="w"> </span><span class="n">arg-2</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Two argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="w"> </span><span class="n">arg-2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So now this is our function definition which can accept one argument or two arguments:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">multiple-args</span><span class="w">
+  </span><span class="p">([</span><span class="n">arg-1</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"One argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="p">))</span><span class="w">
+  </span><span class="p">([</span><span class="n">arg-1</span><span class="w"> </span><span class="n">arg-2</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Two argument passed:"</span><span class="w"> </span><span class="n">arg-1</span><span class="w"> </span><span class="n">arg-2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>([arg-1 arg-2] (println "Two argument passed:" arg-1 arg-2))</code> will be called when we call <code>(multiple-args 1 2)</code>.</p>
+</div>
+<div class="paragraph">
+<p>As an exercise try writing code that will let you call <code>(multiple-args)</code>, which will print out <code>No argument passed</code>. If you are finding it difficult refer <code>function_multiple_arguments_exercise.clj</code> in the code examples.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_accepting_unlimited_arguments">9.4. Accepting unlimited arguments</h3>
+<h3 id="_accepting_unlimited_arguments">9.6. Accepting unlimited arguments</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_unlimited_arguments.clj</span><span class="w">
@@ -4969,7 +5153,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_returning_stuff">9.5. Returning stuff</h3>
+<h3 id="_returning_stuff">9.7. Returning stuff</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_something.clj</span><span class="w">
@@ -4982,7 +5166,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_recursion">9.6. Recursion</h3>
+<h3 id="_recursion">9.8. Recursion</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_recursion.clj</span><span class="w">
@@ -5036,7 +5220,7 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multimethods">9.7. Multimethods</h3>
+<h3 id="_multimethods">9.9. Multimethods</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; without_multimethods.clj</span><span class="w">
@@ -5100,7 +5284,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_pre_and_post_condition_checking">9.8. Pre and Post Condition Checking</h3>
+<h3 id="_pre_and_post_condition_checking">9.10. Pre and Post Condition Checking</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_pre.clj</span><span class="w">
@@ -5142,7 +5326,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_docstring">9.9. Docstring</h3>
+<h3 id="_docstring">9.11. Docstring</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; docstring.clj</span><span class="w">
@@ -5191,7 +5375,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anonymous_functions">9.10. Anonymous Functions</h3>
+<h3 id="_anonymous_functions">9.12. Anonymous Functions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; anonymous_function.clj</span><span class="w">
@@ -5213,7 +5397,7 @@ nil</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_functions_returning_functions">9.11. Functions returning functions</h3>
+<h3 id="_functions_returning_functions">9.13. Functions returning functions</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_function.clj</span><span class="w">
