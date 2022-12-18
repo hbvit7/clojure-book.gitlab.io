@@ -395,6 +395,10 @@ The first argument is caught by `first-arg` and the second by `second-arg`, the 
 
 === Returning stuff
 
+If you think about a mathematical function, say stem:[f(x) = x^ + 2], if you plug in a value say stem:[x = 7], it returns 51. So you expect  a function to return something.
+
+In clojure, the last statement executed by a function returns. Take for example the code below:
+
 [source, clojure]
 ----
 ;; function_returning_something.clj
@@ -405,8 +409,72 @@ The first argument is caught by `first-arg` and the second by `second-arg`, the 
 (println (add 2  3))
 ----
 
+Output
+
+----
+5
+nil
+----
+
+In the code above, the result of `(+ a b)` is returned out of the function add. If you see `(+ a b)` is the last statement of the function `add`. This is been captured by `println` and is printed out. You might have noticed a nil in output, thats because `println` after printing `5` returns nothing or `nil` and hence `nil` gets printed in the REPL.
+
+Another good example will be any math function in Clojure. kae for instance `+`
+
+[source, clojure]
+----
+(+ 1 2 3 4 5)
+----
+
+Returns `15`, and hence if you try it out on the repl, you will get 15.
+
+Now let's code something and see what it returns. Code the example below and execute it
+
+[source, clojure]
+----
+;; what_it_returns.clj
+
+(defn do-math [a b]
+  (+ a b)
+  (* a b))
+
+(do-math 5 3)
+----
+
+Output
+
+----
+15
+----
+
+
+In function `do-math`, you see the first form is `(+ a b)`, when `(do-math 5 3)` is called, `(+ a b)` returns `8`, but it gets thrown away and lost, the last statement is `(* a b)`, and it returns 15, this is what gets returned from `do-math` and that's what appears as output.
+
+Now lets code another function swapping the `*` and `+` as shown:
+
+[source, clojure]
+----
+;; what_it_returns_2.clj
+
+(defn do-math [a b]
+  (* a b)
+  (+ a b))
+
+(do-math 5 3)
+----
+
+Output
+
+----
+8
+----
+
+In the above code, since `(+ a b)` ais at the last of the function, it get's returned. What's computed by `(* a b)` is lost.
+
+The moral of the story is the last statement or forms output get's returned from a function.
 
 === Recursion
+
+A function calling itself is known as recursion. For example look at the code below:
 
 [source, clojure]
 ----
@@ -414,11 +482,45 @@ The first argument is caught by `first-arg` and the second by `second-arg`, the 
 
 (defn count-down [number]
   (println number)
-  (if (not (= 0 (dec number)))
+  (if (pos? (dec number))
     (count-down (dec number))))
 
 (count-down 5)
 ----
+
+Output
+
+----
+5
+4
+3
+2
+1
+nil
+----
+
+When executing the function, it prints from 5 to 1 and stops. We called the function like this: `(count-down 5)`. Let's analyze the function body:
+
+[source, clojure]
+----
+(println number)
+(if (pos? (dec number))
+  (count-down (dec number)))
+----
+
+First we have the form / statement `(println number)` which prints out `5`, then it comes to this form:
+
+[source, clojure]
+----
+(if (pos? (dec number))
+  (count-down (dec number)))
+----
+
+So in the above code `(dec number)` is `4` and is positive, and hence `(pos? 4)` is `true`, hence the statement `(count-down (dec number))` gets executed, and so `(count-down 4)` is called. That is the function `count-down`` calls itself again.
+
+This goes on till `number` becomes `0` and `(dec number)` is `-1` and hence `(pos? -1)` is `false` thus `(count-down (dec number))` is never reached and the program exits.
+
+You can call a function from itself using the function name as in the example above, or you can use `recur` as shown below:
 
 [source, clojure]
 ----
@@ -426,11 +528,27 @@ The first argument is caught by `first-arg` and the second by `second-arg`, the 
 
 (defn count-down [number]
   (println number)
-  (if (not (= 0 (dec number)))
+  (if (pos?  (dec number))
     (recur (dec number))))
 
 (count-down 5)
 ----
+
+Output
+
+----
+5
+4
+3
+2
+1
+nil
+----
+
+In th example above, we have replace the function name `count-down` with `recur` when the function needs to call itself. It said that when we use `recur` it more memory efficient and the condition it must satisfy is hat `recur`` should be the last statement executed in the function.
+
+
+In the example below, we use recursion to compute the total of sequence of numbers passed to a function. Type the code below and execute it, we will see how it works soon.
 
 [source, clojure]
 ----
@@ -443,6 +561,107 @@ The first argument is caught by `first-arg` and the second by `second-arg`, the 
 
 (println (sum [1 2 3 4 5], 0))
 ----
+
+Output
+
+----
+15
+nil
+----
+
+In the above example we have tried out `sum` like this `(sum [1 2 3 4 5], 0)`, which returns `15`. to simplyfy it let's try out something as shown:
+
+[source, clojure]
+----
+(sum [1 2] 0)
+----
+
+So when the above form is executed, let's look at the body of `sum`:
+
+[source, clojure]
+----
+ (if (empty? numbers)
+    total
+    (recur (rest numbers) (+ total (first numbers))))
+----
+
+`(empty? [1 2])` become `false`, and  hance this get's executed:
+
+[source, clojure]
+----
+(recur (rest numbers) (+ total (first numbers)))
+----
+
+When substituting values, we get the following:
+
+[source, clojure]
+----
+(recur (rest [1 2]) (+ 0 (first [1 2])))
+----
+
+Which can be reduced to this:
+
+[source, clojure]
+----
+(recur [2] (+ 0 1))
+----
+
+and so we get:
+
+[source, clojure]
+----
+(recur [2] 1)
+----
+
+Since `recur` calls the same function it's in, we can write it as:
+
+[source, clojure]
+----
+(sum [2] 1)
+----
+
+So now a `sum` is called with `numbers` taking tha value `[2]` and `total` taking he value `1`. Once again `(empty [2])` is `false` and we end up with
+
+[source, clojure]
+----
+(recur (rest numbers) (+ total (first numbers)))
+----
+
+Which on substitution we get
+
+
+[source, clojure]
+----
+(recur (rest [2]) (+ 1 (first [2])))
+----
+
+Now reducing it we get:
+
+[source, clojure]
+----
+(recur [] (+ 1 2))
+----
+
+Substituting `recur` with `sum` and reducing `(+ 1 2 )` to `3` we get:
+
+[source, clojure]
+----
+(sum [] 3)
+----
+
+So now `numbers` takes the value `[]` and `total` take the value `3`, now let's plug it into:
+
+[source, clojure]
+----
+ (if (empty? numbers)
+    total
+    (recur (rest numbers) (+ total (first numbers))))
+----
+
+Here `(empty? numbers)` is `true` and hence `total` must be returned, hence `3` get's returned which is the sum of the vector `[1 2]`.
+
+What if you don't want to pass the `total` and want a function that take a sequence and computes its sum. Take a look at the example below:
+
 
 [source, clojure]
 ----
@@ -459,7 +678,19 @@ The first argument is caught by `first-arg` and the second by `second-arg`, the 
 (println (collection-sum [1 2 3 4 5]))
 ----
 
+Output
+
+----
+15
+nil
+----
+
+In the above example we have function `collection-sum` that takes a collection, it abstracts away by passing the collection and initial `total` as `0` to the `sum` function which we coded before. `sum` uses recursion to calculate the sum.
+
+
 === Multimethods
+
+
 
 [source, clojure]
 ----

@@ -5223,6 +5223,12 @@ Other arguments: (true Karthik :coder)</pre>
 </div>
 <div class="sect2">
 <h3 id="_returning_stuff">9.7. Returning stuff</h3>
+<div class="paragraph">
+<p>If you think about a mathematical function, say \$f(x) = x^ + 2\$, if you plug in a value say \$x = 7\$, it returns 51. So you expect  a function to return something.</p>
+</div>
+<div class="paragraph">
+<p>In clojure, the last statement executed by a function returns. Take for example the code below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_something.clj</span><span class="w">
@@ -5233,20 +5239,140 @@ Other arguments: (true Karthik :coder)</pre>
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w">  </span><span class="mi">3</span><span class="p">))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the code above, the result of <code>(+ a b)</code> is returned out of the function add. If you see <code>(+ a b)</code> is the last statement of the function <code>add</code>. This is been captured by <code>println</code> and is printed out. You might have noticed a nil in output, thats because <code>println</code> after printing <code>5</code> returns nothing or <code>nil</code> and hence <code>nil</code> gets printed in the REPL.</p>
+</div>
+<div class="paragraph">
+<p>Another good example will be any math function in Clojure. kae for instance <code>+</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns <code>15</code>, and hence if you try it out on the repl, you will get 15.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s code something and see what it returns. Code the example below and execute it</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; what_it_returns.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">do-math</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">do-math</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>15</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In function <code>do-math</code>, you see the first form is <code>(+ a b)</code>, when <code>(do-math 5 3)</code> is called, <code>(+ a b)</code> returns <code>8</code>, but it gets thrown away and lost, the last statement is <code>(* a b)</code>, and it returns 15, this is what gets returned from <code>do-math</code> and that&#8217;s what appears as output.</p>
+</div>
+<div class="paragraph">
+<p>Now lets code another function swapping the <code>*</code> and <code>+</code> as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; what_it_returns_2.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">do-math</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">do-math</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>8</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above code, since <code>(+ a b)</code> ais at the last of the function, it get&#8217;s returned. What&#8217;s computed by <code>(* a b)</code> is lost.</p>
+</div>
+<div class="paragraph">
+<p>The moral of the story is the last statement or forms output get&#8217;s returned from a function.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_recursion">9.8. Recursion</h3>
+<div class="paragraph">
+<p>A function calling itself is known as recursion. For example look at the code below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_recursion.clj</span><span class="w">
 
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">count-down</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="p">]</span><span class="w">
   </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w">
-  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">not</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">)))</span><span class="w">
+  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">pos?</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">))</span><span class="w">
     </span><span class="p">(</span><span class="nf">count-down</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">))))</span><span class="w">
 
 </span><span class="p">(</span><span class="nf">count-down</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5
+4
+3
+2
+1
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When executing the function, it prints from 5 to 1 and stops. We called the function like this: <code>(count-down 5)</code>. Let&#8217;s analyze the function body:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">pos?</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">))</span><span class="w">
+  </span><span class="p">(</span><span class="nf">count-down</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>First we have the form / statement <code>(println number)</code> which prints out <code>5</code>, then it comes to this form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">pos?</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">))</span><span class="w">
+  </span><span class="p">(</span><span class="nf">count-down</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So in the above code <code>(dec number)</code> is <code>4</code> and is positive, and hence <code>(pos? 4)</code> is <code>true</code>, hence the statement <code>(count-down (dec number))</code> gets executed, and so <code>(count-down 4)</code> is called. That is the function <code>count-down`</code> calls itself again.</p>
+</div>
+<div class="paragraph">
+<p>This goes on till <code>number</code> becomes <code>0</code> and <code>(dec number)</code> is <code>-1</code> and hence <code>(pos? -1)</code> is <code>false</code> thus <code>(count-down (dec number))</code> is never reached and the program exits.</p>
+</div>
+<div class="paragraph">
+<p>You can call a function from itself using the function name as in the example above, or you can use <code>recur</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5254,11 +5380,30 @@ Other arguments: (true Karthik :coder)</pre>
 
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">count-down</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="p">]</span><span class="w">
   </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">number</span><span class="p">)</span><span class="w">
-  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">not</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">)))</span><span class="w">
+  </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">pos?</span><span class="w">  </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">))</span><span class="w">
     </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">dec</span><span class="w"> </span><span class="n">number</span><span class="p">))))</span><span class="w">
 
 </span><span class="p">(</span><span class="nf">count-down</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>5
+4
+3
+2
+1
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In th example above, we have replace the function name <code>count-down</code> with <code>recur</code> when the function needs to call itself. It said that when we use <code>recur</code> it more memory efficient and the condition it must satisfy is hat <code>recur`</code> should be the last statement executed in the function.</p>
+</div>
+<div class="paragraph">
+<p>In the example below, we use recursion to compute the total of sequence of numbers passed to a function. Type the code below and execute it, we will see how it works soon.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5271,6 +5416,121 @@ Other arguments: (true Karthik :coder)</pre>
 
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="n">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>15
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example we have tried out <code>sum</code> like this <code>(sum [1 2 3 4 5], 0)</code>, which returns <code>15</code>. to simplyfy it let&#8217;s try out something as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So when the above form is executed, let&#8217;s look at the body of <code>sum</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">empty?</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w">
+    </span><span class="n">total</span><span class="w">
+    </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>(empty? [1 2])</code> become <code>false</code>, and  hance this get&#8217;s executed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When substituting values, we get the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">])))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which can be reduced to this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and so we get:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since <code>recur</code> calls the same function it&#8217;s in, we can write it as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">sum</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So now a <code>sum</code> is called with <code>numbers</code> taking tha value <code>[2]</code> and <code>total</code> taking he value <code>1</code>. Once again <code>(empty [2])</code> is <code>false</code> and we end up with</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which on substitution we get</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now reducing it we get:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Substituting <code>recur</code> with <code>sum</code> and reducing <code>(+ 1 2 )</code> to <code>3</code> we get:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">sum</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So now <code>numbers</code> takes the value <code>[]</code> and <code>total</code> take the value <code>3</code>, now let&#8217;s plug it into:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">empty?</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w">
+    </span><span class="n">total</span><span class="w">
+    </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here <code>(empty? numbers)</code> is <code>true</code> and hence <code>total</code> must be returned, hence <code>3</code> get&#8217;s returned which is the sum of the vector <code>[1 2]</code>.</p>
+</div>
+<div class="paragraph">
+<p>What if you don&#8217;t want to pass the <code>total</code> and want a function that take a sequence and computes its sum. Take a look at the example below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5286,6 +5546,18 @@ Other arguments: (true Karthik :coder)</pre>
 
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="p">(</span><span class="nf">collection-sum</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="p">]))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>15
+nil</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example we have function <code>collection-sum</code> that takes a collection, it abstracts away by passing the collection and initial <code>total</code> as <code>0</code> to the <code>sum</code> function which we coded before. <code>sum</code> uses recursion to calculate the sum.</p>
 </div>
 </div>
 <div class="sect2">
