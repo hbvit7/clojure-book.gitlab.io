@@ -658,7 +658,7 @@ So now `numbers` takes the value `[]` and `total` take the value `3`, now let's 
     (recur (rest numbers) (+ total (first numbers))))
 ----
 
-Here `(empty? numbers)` is `true` and hence `total` must be returned, hence `3` get's returned which is the sum of the vector `[1 2]`.
+Here `(empty? numbers)` is `true` and hence `total` must be returned, hence `3` gets returned which is the sum of the vector `[1 2]`.
 
 What if you don't want to pass the `total` and want a function that take a sequence and computes its sum. Take a look at the example below:
 
@@ -751,6 +751,8 @@ Welcome Bharathiyaar from Yettaiyapuram
 
 === Pre and Post Condition Checking
 
+Functions need data to operate on (well almost all of them). If the data is not passed in right format, then the function might cease to work. It's a good idea to check the data passed to a function. For that Clojure provides a `pre` hook. Let's learn how it works using an example. Type the code below.
+
 [source, clojure]
 ----
 ;; function_pre.clj
@@ -762,6 +764,19 @@ Welcome Bharathiyaar from Yettaiyapuram
 (println (sum 4 5))
 ;; (println (sum "4" 5)) ;; Thows an error
 ----
+
+When you execute `(println (sum 4 5))`, it works, whereas `(println (sum "4" 5))`  throws an error. This is because of the following code snippet in `sum`:
+
+[source, clojure]
+----
+{:pre [(number? a) (number? b)]}
+----
+
+So this is just a map with a key named `:pre`. This pre can check many things, so we pass many things as an vector to it. The first one being, we check if the first argument `a` is a number using thr condition `(number? a)`, the second one being we check if the second argument `b` is a number using `(number? b)`. The function body is executed ony all both the conditions passed inside the vector are true.
+
+For `(sum 4 5)`, `a` is `4` and `b` is `5`, so the function `sum` executes. For `(sum "4" 5)`, "4" is a string hence `(number? a)` becomes false nd it throws an error.
+
+When it's needed for one to check if returned value has some particular data format / structure, then we could use a post hook as shown below: 
 
 [source, clojure]
 ----
@@ -778,6 +793,17 @@ Welcome Bharathiyaar from Yettaiyapuram
 (println (sum 4 5)) ;; ; Assert failed: (number? %)
 ----
 
+Type the code above and execute. In the above example, both `sum` and `sum-without-post` returns a string `"45"`. If you execute `(sum-without-post 4 5)`, it just runs, but as a human one would expect sum of two numbers to be a number, whereas `(sum 4 5)` throws an error because it returns a string and the post hook:
+
+[source, clojure]
+----
+{:post [(number? %)]}
+----
+
+expects the returned output represented by percent `%` sign to be a number.
+
+Now let's see `pre` and `post` hooks in action:
+
 [source, clojure]
 ----
 ;; function_pre_post.clj
@@ -790,6 +816,7 @@ Welcome Bharathiyaar from Yettaiyapuram
 (println (sum 4 5))
 ----
 
+What do you think will happen if we call `(sum 4 "5")` in above code?
 
 === Docstring
 
