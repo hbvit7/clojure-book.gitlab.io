@@ -5748,7 +5748,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This string is nothing but documentation for the function. Note how I have used  <code><strong>Usage</strong></code>, i have used mark down format. I have also used something like this in the doc string:</p>
+<p>This string is nothing but documentation for the function. Note how I have used <code><strong>Usage</strong></code>, I have used mark down format. I have also used something like this in the doc string:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5798,13 +5798,16 @@ nil</pre>
 </div>
 <div class="sect2">
 <h3 id="_anonymous_functions">9.12. Anonymous Functions</h3>
+<div class="paragraph">
+<p>It is possible to define a function without a name, try out the code below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; anonymous_function.clj</span><span class="w">
 
 </span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">print-something</span><span class="w">
   </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">something</span><span class="p">]</span><span class="w">
-    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">something</span><span class="p">))))</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">something</span><span class="p">)))</span><span class="w">
 
 </span><span class="p">(</span><span class="nf">print-something</span><span class="w"> </span><span class="s">"something is better than nothing"</span><span class="p">)</span></code></pre>
 </div>
@@ -5817,9 +5820,62 @@ nil</pre>
 <pre>something is better than nothing</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Look at this snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">something</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">something</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This actually returns a function that accepts a single argument called <code>something</code>, and when <code>something</code> is passwd it prints it. Note that the function returned in the above snippet of code has no name. It&#8217;s like a newly born baby. It functions but we have no way to identify it.</p>
+</div>
+<div class="paragraph">
+<p>Now this anonymous function can be given a name by attaching it to a variable like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">print-something</span><span class="w">
+  </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">something</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">something</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above snippet of code, the anonymous function that prints <code>something</code> is defined to a name <code>print-something</code>, so from now on we can use it like <code>print-something "something is better than nothing")</code>.</p>
+</div>
+<div class="paragraph">
+<p>In fact, the <code>defn</code> in clojure means <code>fn</code> function, that&#8217;s been <code>def</code> defined or attached to a variable.</p>
+</div>
+<div class="paragraph">
+<p>In short we can write this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">print-something</span><span class="w">
+  </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">something</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">something</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>as this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">print-something</span><span class="w"> </span><span class="p">[</span><span class="n">something</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">something</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and it would work fine.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_functions_returning_functions">9.13. Functions returning functions</h3>
+<div class="paragraph">
+<p>One may be wondering what&#8217;s the use of anonymous functions, well take a look at the example below and and execute it:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; function_returning_function.clj</span><span class="w">
@@ -5838,6 +5894,74 @@ nil</pre>
 
 </span><span class="p">(</span><span class="nf">triple-it</span><span class="w"> </span><span class="mi">14</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>When <code>(double-it 21)</code> is run, it returns <code>42</code>, now let&#8217;s look at the definition of double it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">double-it</span><span class="w">
+  </span><span class="p">(</span><span class="nf">multiplier</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Well, in the above code, <code>double-it</code> is assigned to the output of <code>(multiplier 2)</code>, since <code>double-it</code> acts like a function, then <code>(multiplier 2)</code> should return a function, so let&#8217;s look at the source of <code>multiplier</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">multiplier</span><span class="w"> </span><span class="p">[</span><span class="n">multiply-with</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">multiply-with</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now take a look at what <code>multiplier</code> returns:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="n">multiply-with</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It returns a function as shown above, now if we replace <code>multiply-with</code> with <code>2</code>, we get as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So in the above code, we have a function that takes a <code>number</code> and returns its product with <code>2</code>. Now plug it in:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">double-it</span><span class="w">
+  </span><span class="p">(</span><span class="nf">multiplier</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>we get:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">double-it</span><span class="w">
+  </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In short we can write it as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">double-it</span><span class="w"> </span><span class="p">[</span><span class="n">number</span><span class="p">]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">*</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So what we have done is, in <code>multiplier</code>, we are building functions and returning it, and we are giving a name to it. Don&#8217;t you think its a powerful concept?</p>
 </div>
 </div>
 </div>

@@ -860,7 +860,7 @@ Right after `(def sum` we have this string:
   "
 ----
 
-This string is nothing but documentation for the function. Note how I have used  `**Usage**`, i have used mark down format. I have also used something like this in the doc string:
+This string is nothing but documentation for the function. Note how I have used `**Usage**`, I have used mark down format. I have also used something like this in the doc string:
 
 [source, markdown]
 ----
@@ -897,6 +897,7 @@ image::images/docstring.png[]
 
 === Anonymous Functions
 
+It is possible to define a function without a name, try out the code below:
 
 [source, clojure]
 ----
@@ -904,7 +905,7 @@ image::images/docstring.png[]
 
 (def print-something
   (fn [something]
-    (println something))))
+    (println something)))
 
 (print-something "something is better than nothing")
 ----
@@ -915,8 +916,51 @@ Output
 something is better than nothing
 ----
 
+Look at this snippet:
+
+[source, clojure]
+----
+(fn [something]
+  (println something))
+----
+
+This actually returns a function that accepts a single argument called `something`, and when `something` is passwd it prints it. Note that the function returned in the above snippet of code has no name. It's like a newly born baby. It functions but we have no way to identify it.
+
+Now this anonymous function can be given a name by attaching it to a variable like this:
+
+[source, clojure]
+----
+(def print-something
+  (fn [something]
+    (println something)))
+----
+
+In the above snippet of code, the anonymous function that prints `something` is defined to a name `print-something`, so from now on we can use it like `print-something "something is better than nothing")`.
+
+In fact, the `defn` in clojure means `fn` function, that's been `def` defined or attached to a variable.
+
+In short we can write this:
+
+[source, clojure]
+----
+(def print-something
+  (fn [something]
+    (println something)))
+----
+
+as this:
+
+[source, clojure]
+----
+(defn print-something [something]
+    (println something))
+----
+
+and it would work fine.
 
 === Functions returning functions
+
+One may be wondering what's the use of anonymous functions, well take a look at the example below and and execute it:
 
 [source, clojure]
 ----
@@ -937,4 +981,63 @@ something is better than nothing
 (triple-it 14)
 ----
 
+When `(double-it 21)` is run, it returns `42`, now let's look at the definition of double it:
 
+[source, clojure]
+----
+(def double-it
+  (multiplier 2))
+----
+
+Well, in the above code, `double-it` is assigned to the output of `(multiplier 2)`, since `double-it` acts like a function, then `(multiplier 2)` should return a function, so let's look at the source of `multiplier`:
+
+[source, clojure]
+----
+(defn multiplier [multiply-with]
+  (fn [number]
+    (* number multiply-with)))
+----
+
+Now take a look at what `multiplier` returns:
+
+[source, clojure]
+----
+(fn [number]
+  (* number multiply-with))
+----
+
+It returns a function as shown above, now if we replace `multiply-with` with `2`, we get as shown:
+
+
+[source, clojure]
+----
+(fn [number]
+  (* number 2))
+----
+
+So in the above code, we have a function that takes a `number` and returns its product with `2`. Now plug it in:
+
+[source, clojure]
+----
+(def double-it
+  (multiplier 2))
+----
+
+we get:
+
+[source, clojure]
+----
+(def double-it
+  (fn [number]
+    (* number 2)))
+----
+
+In short we can write it as:
+
+[source, clojure]
+----
+(defn double-it [number]
+    (* number 2))
+----
+
+So what we have done is, in `multiplier`, we are building functions and returning it, and we are giving a name to it. Don't you think its a powerful concept?
