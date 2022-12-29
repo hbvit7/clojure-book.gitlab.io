@@ -1,0 +1,78 @@
+=== Returning stuff
+
+If you think about a mathematical function, say stem:[f(x) = x^ + 2], if you plug in a value say stem:[x = 7], it returns 51. So you expect  a function to return something.
+
+In clojure, the last statement executed by a function returns. Take for example the code below:
+
+[source, clojure]
+----
+;; function_returning_something.clj
+
+(defn add [a b]
+  (+ a b))
+
+(println (add 2  3))
+----
+
+Output
+
+----
+5
+nil
+----
+
+In the code above, the result of `(+ a b)` is returned out of the function add. If you see `(+ a b)` is the last statement of the function `add`. This is been captured by `println` and is printed out. You might have noticed a nil in output, thats because `println` after printing `5` returns nothing or `nil` and hence `nil` gets printed in the REPL.
+
+Another good example will be any math function in Clojure. kae for instance `+`
+
+[source, clojure]
+----
+(+ 1 2 3 4 5)
+----
+
+Returns `15`, and hence if you try it out on the repl, you will get 15.
+
+Now let's code something and see what it returns. Code the example below and execute it
+
+[source, clojure]
+----
+;; what_it_returns.clj
+
+(defn do-math [a b]
+  (+ a b)
+  (* a b))
+
+(do-math 5 3)
+----
+
+Output
+
+----
+15
+----
+
+
+In function `do-math`, you see the first form is `(+ a b)`, when `(do-math 5 3)` is called, `(+ a b)` returns `8`, but it gets thrown away and lost, the last statement is `(* a b)`, and it returns 15, this is what gets returned from `do-math` and that's what appears as output.
+
+Now lets code another function swapping the `*` and `+` as shown:
+
+[source, clojure]
+----
+;; what_it_returns_2.clj
+
+(defn do-math [a b]
+  (* a b)
+  (+ a b))
+
+(do-math 5 3)
+----
+
+Output
+
+----
+8
+----
+
+In the above code, since `(+ a b)` ais at the last of the function, it get's returned. What's computed by `(* a b)` is lost.
+
+The moral of the story is the last statement or forms output get's returned from a function.

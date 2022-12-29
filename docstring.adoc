@@ -1,0 +1,76 @@
+=== Docstring
+
+Documenting stuff is very important in programming. Clojure provides a way to document functions (which are first class citizens in this language). So look at the code below:
+
+[source, clojure]
+----
+;; docstring.clj
+
+(defn sum 
+  "Adds two numbers passed as arguments.
+   
+   The arguments should be numbers.
+
+   **Usage**
+
+   ```clojure
+   (sum 4 5) ;; returns 9
+   ```
+  " 
+  [a b]
+  {:pre [(number? a) (number? b)]}
+  (+ a b))
+
+(println (sum 4 5))
+----
+
+Right after `(def sum` we have this string:
+
+[source, clojure]
+----
+  "Adds two numbers passed as arguments.
+   
+   The arguments should be numbers.
+
+   **Usage**
+
+   ```clojure
+   (sum 4 5) ;; returns 9
+   ```
+  "
+----
+
+This string is nothing but documentation for the function. Note how I have used `**Usage**`, I have used mark down format. I have also used something like this in the doc string:
+
+[source, markdown]
+----
+```clojure
+   (sum 4 5) ;; returns 9
+```
+----
+
+This tells to highlight `(sum 4 5) ;; returns 9` as Clojure code.
+
+One can access documentation for `sum` using the `doc` function as shown:
+
+----
+clj꞉user꞉> (doc sum)
+-------------------------
+user/sum
+([a b])
+  Adds two numbers passed as arguments.
+   
+   The argumets should be numbers.
+
+   **Usage**
+
+   ```clojure
+   (sum 4 5) ;; returns 9
+   ```
+  
+nil
+----
+
+Or better in my VSCodium, all I just need to do is to hover over the function and I get a really neat looking documentation as a popup as shown:
+
+image::images/docstring.png[]

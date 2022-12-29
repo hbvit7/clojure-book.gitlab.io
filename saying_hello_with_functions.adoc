@@ -1,0 +1,56 @@
+=== Saying Hello With Functions
+
+So this is the code in Clojure to print Hello World:
+
+[source, clojure]
+----
+(println "Hello world!")
+----
+
+Now, I want to short it, I want to make this same functionality available by calling just `(say-hello)`. To do that I first call a function called `defn` or define function
+
+[source, clojure]
+----
+(defn )
+----
+
+To it, as a first argument I pass the function name `say-hello`:
+
+[source, clojure]
+----
+(defn say-hello)
+----
+
+Now `say-hello`` is passed to `defn`, but since `say-hello` is defined as a function, we can accept arguments for it, but here we need no arguments as we are going to print Hello World!, so lets put empty square braces as no arguments will be accepted by `say-hello`
+
+[source, clojure]
+----
+(defn say-hello [])
+----
+
+Now all we need to do is to write the function body, in the body we print hello world as shown below:
+
+[source, clojure]
+----
+(defn say-hello []
+  (println "Hello world!"))
+----
+
+So when ever we call `(say-hello)`, Hello World! gets printed. Below code shows the final version of say hello:
+
+[source, clojure]
+----
+;; function_say_hello.clj
+
+(defn say-hello []
+  (println "Hello world!"))
+
+(say-hello)
+----
+
+Output
+
+----
+Hello world!
+nil
+----

@@ -1,0 +1,62 @@
+=== Anonymous Functions
+
+It is possible to define a function without a name, try out the code below:
+
+[source, clojure]
+----
+;; anonymous_function.clj
+
+(def print-something
+  (fn [something]
+    (println something)))
+
+(print-something "something is better than nothing")
+----
+
+Output
+
+----
+something is better than nothing
+----
+
+Look at this snippet:
+
+[source, clojure]
+----
+(fn [something]
+  (println something))
+----
+
+This actually returns a function that accepts a single argument called `something`, and when `something` is passwd it prints it. Note that the function returned in the above snippet of code has no name. It's like a newly born baby. It functions but we have no way to identify it.
+
+Now this anonymous function can be given a name by attaching it to a variable like this:
+
+[source, clojure]
+----
+(def print-something
+  (fn [something]
+    (println something)))
+----
+
+In the above snippet of code, the anonymous function that prints `something` is defined to a name `print-something`, so from now on we can use it like `print-something "something is better than nothing")`.
+
+In fact, the `defn` in clojure means `fn` function, that's been `def` defined or attached to a variable.
+
+In short we can write this:
+
+[source, clojure]
+----
+(def print-something
+  (fn [something]
+    (println something)))
+----
+
+as this:
+
+[source, clojure]
+----
+(defn print-something [something]
+    (println something))
+----
+
+and it would work fine.

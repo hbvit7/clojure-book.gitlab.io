@@ -1,0 +1,106 @@
+=== Function with multiple arguments
+
+It's not that functions should have only one argument, say you want to find the hypotenuse of a  right angle triable of side lengths stem:[a] and stem:[b], then it can be written as a function stem:[f(a, b) = sqrt { a^2 + b^2 }]. So let's code this one in Clojure:
+
+[source, clojure]
+----
+;; hypotenuse.clj
+
+(defn hypotenuse [a b]
+  (Math/sqrt (+ (* a a) (* b b))))
+
+(hypotenuse 3 4)
+----
+
+Output
+
+----
+5.0
+----
+
+In the code above, we define a function `hypotenuse`, and it takes in two arguments `a` and `b`, so I think it should be clear to reader now, if a function take no arguments, the function name should be followed by empty square brackets `[]`, or if it does then the argument names should be included in those square brackets like `[a, b]` in this case. In the function body we just add the statement `(Math/sqrt (+ (* a a) (* b b)))`, which computes the hypotenuse and returns the number.
+
+When we call `(hypotenuse 3 4)`, `5.0` get's returned.
+
+
+Let's say for some reason we need a function where it can accept one argument, and the same function can also accept two arguments. We can do that too Clojure. Look at the code below:
+
+[source, clojure]
+----
+;; function_multiple_arguments.clj
+
+(defn multiple-args
+  ([arg-1] (println "One argument passed:" arg-1))
+  ([arg-1 arg-2] (println "Two argument passed:" arg-1 arg-2)))
+
+(multiple-args 1)
+(multiple-args 1 2)
+----
+
+
+Output
+
+----
+One argument passed: 1
+Two argument passed: 1 2
+----
+
+So we have a function called `multiple-args`, that's defined like this
+
+[source, clojure]
+----
+(defn multiple-args
+  ;; function body goes here
+  )
+----
+
+So in order to accept one argument, we add a form as shown below:
+
+[source, clojure]
+----
+(defn multiple-args
+  ([arg-1] (println "One argument passed:" arg-1)))
+----
+
+This form: 
+
+[source, clojure]
+----
+([arg-1] (println "One argument passed:" arg-1))
+----
+
+Receives one argument `arg-1`: 
+
+[source, clojure]
+----
+([arg-1] ...)
+----
+
+And in the body of the function we print it using `(println "One argument passed:" arg-1)` as shown:
+
+[source, clojure]
+----
+([arg-1] (println "One argument passed:" arg-1))
+----
+
+So this will respond to a function call like `(multiple-args 1)`.
+
+Now in order to have two or more arguments, we add this another form that has two arguments in it:
+
+[source, clojure]
+----
+([arg-1 arg-2] (println "Two argument passed:" arg-1 arg-2))
+----
+
+So now this is our function definition which can accept one argument or two arguments:
+
+[source, clojure]
+----
+(defn multiple-args
+  ([arg-1] (println "One argument passed:" arg-1))
+  ([arg-1 arg-2] (println "Two argument passed:" arg-1 arg-2)))
+----
+
+`([arg-1 arg-2] (println "Two argument passed:" arg-1 arg-2))` will be called when we call `(multiple-args 1 2)`.
+
+As an exercise try writing code that will let you call `(multiple-args)`, which will print out `No argument passed`. If you are finding it difficult refer `function_multiple_arguments_exercise.clj` in the code examples.

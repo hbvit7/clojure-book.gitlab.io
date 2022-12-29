@@ -1,0 +1,83 @@
+=== Functions returning functions
+
+One may be wondering what's the use of anonymous functions, well take a look at the example below and and execute it:
+
+[source, clojure]
+----
+;; function_returning_function.clj
+
+(defn multiplier [multiply-with]
+  (fn [number]
+    (* number multiply-with)))
+
+(def double-it
+  (multiplier 2))
+
+(def triple-it
+  (multiplier 3))
+
+(double-it 21)
+
+(triple-it 14)
+----
+
+When `(double-it 21)` is run, it returns `42`, now let's look at the definition of double it:
+
+[source, clojure]
+----
+(def double-it
+  (multiplier 2))
+----
+
+Well, in the above code, `double-it` is assigned to the output of `(multiplier 2)`, since `double-it` acts like a function, then `(multiplier 2)` should return a function, so let's look at the source of `multiplier`:
+
+[source, clojure]
+----
+(defn multiplier [multiply-with]
+  (fn [number]
+    (* number multiply-with)))
+----
+
+Now take a look at what `multiplier` returns:
+
+[source, clojure]
+----
+(fn [number]
+  (* number multiply-with))
+----
+
+It returns a function as shown above, now if we replace `multiply-with` with `2`, we get as shown:
+
+
+[source, clojure]
+----
+(fn [number]
+  (* number 2))
+----
+
+So in the above code, we have a function that takes a `number` and returns its product with `2`. Now plug it in:
+
+[source, clojure]
+----
+(def double-it
+  (multiplier 2))
+----
+
+we get:
+
+[source, clojure]
+----
+(def double-it
+  (fn [number]
+    (* number 2)))
+----
+
+In short we can write it as:
+
+[source, clojure]
+----
+(defn double-it [number]
+    (* number 2))
+----
+
+So what we have done is, in `multiplier`, we are building functions and returning it, and we are giving a name to it. Don't you think its a powerful concept?
