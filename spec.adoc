@@ -4,16 +4,18 @@
 
 include::use_code_note.adoc[]
 
+Clojure code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the received data is of the right type and format.
+
+So in order to use spec, let's require it:
+
 [source, clojure]
 ----
 (require '[clojure.spec.alpha :as s])
 ----
 
-Output
+Now we have required `spec` as `s`, so  rather than calling functions like `spec/something`, we can call it as `s/something` from now on.
 
-----
-
-----
+Let's now see how to check if something is a string:
 
 [source, clojure]
 ----
@@ -23,7 +25,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -34,7 +36,7 @@ Output
 Output
 
 ----
-
+false
 ----
 
 [source, clojure]
@@ -45,7 +47,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -56,7 +58,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -67,7 +69,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -78,7 +80,7 @@ Output
 Output
 
 ----
-
+false
 ----
 
 [source, clojure]
@@ -89,7 +91,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -100,7 +102,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -111,7 +113,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -122,7 +124,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -133,7 +135,7 @@ Output
 Output
 
 ----
-
+#'user/valid-%?
 ----
 
 [source, clojure]
@@ -144,7 +146,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -155,7 +157,7 @@ Output
 Output
 
 ----
-
+false
 ----
 
 [source, clojure]
@@ -166,7 +168,7 @@ Output
 Output
 
 ----
-
+false
 ----
 
 
