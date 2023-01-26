@@ -5981,18 +5981,22 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Clojure code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the received data is of the right type and format.</p>
+</div>
+<div class="paragraph">
+<p>So in order to use spec, let&#8217;s require it:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.spec.alpha</span><span class="w"> </span><span class="no">:as</span><span class="w"> </span><span class="n">s</span><span class="p">])</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Output</p>
+<p>Now we have required <code>spec</code> as <code>s</code>, so  rather than calling functions like <code>spec/something</code>, we can call it as <code>s/something</code> from now on.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre></pre>
-</div>
+<div class="paragraph">
+<p>Let&#8217;s now see how to check if something is a string:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6004,7 +6008,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6017,7 +6021,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>false</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6030,7 +6034,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6043,7 +6047,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6056,7 +6060,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6069,7 +6073,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>false</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6082,7 +6086,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6095,7 +6099,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6108,7 +6112,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6121,7 +6125,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6134,7 +6138,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/valid-%?</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6147,7 +6151,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6160,7 +6164,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>false</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6173,7 +6177,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>false</pre>
 </div>
 </div>
 <div class="sect2">
@@ -6188,7 +6192,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/string-collection?</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6201,7 +6205,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6214,7 +6218,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/number-or-string?</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6227,7 +6231,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6240,7 +6244,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6253,7 +6257,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/number-or-string-collection?</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6266,7 +6270,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6279,7 +6283,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>false</pre>
 </div>
 </div>
 </div>
@@ -6290,9 +6294,25 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-person-vector?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/cat</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="no">:age</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>user/valid-person-vector?</pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-person-vector?</span><span class="w"> </span><span class="p">[</span><span class="s">"Karthik"</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="no">:male</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6303,6 +6323,14 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
                    </span><span class="no">::gender</span><span class="p">]))</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>#'user/valid-person-map?</pre>
+</div>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-person-map?</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
@@ -6310,24 +6338,97 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
                              </span><span class="no">:gender</span><span class="w"> </span><span class="no">:male</span><span class="p">})</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_checking_maps">10.3. Checking Maps</h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::name</span><span class="w"> </span><span class="nb">string?</span><span class="p">)</span><span class="w">
-</span><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::age</span><span class="w"> </span><span class="n">int?</span><span class="p">)</span><span class="w">
-</span><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">)</span><span class="w">
-
-</span><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">(</span><span class="nf">s/keys</span><span class="w"> </span><span class="no">:req-un</span><span class="w"> </span><span class="p">[</span><span class="no">::name</span><span class="w"> </span><span class="no">::age</span><span class="w"> </span><span class="no">::gender</span><span class="p">]))</span><span class="w">
-
-</span><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::name</span><span class="w"> </span><span class="nb">string?</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>:user/name</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::age</span><span class="w"> </span><span class="n">int?</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>:user/age</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>:user/gender</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">(</span><span class="nf">s/keys</span><span class="w"> </span><span class="no">:req-un</span><span class="w"> </span><span class="p">[</span><span class="no">::name</span><span class="w"> </span><span class="no">::age</span><span class="w"> </span><span class="no">::gender</span><span class="p">]))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>:user/person</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
                     </span><span class="no">:age</span><span class="w"> </span><span class="mi">40</span><span class="w">
-                    </span><span class="no">:gender</span><span class="w"> </span><span class="no">:male</span><span class="p">})</span><span class="w">
-
-</span><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
+                    </span><span class="no">:gender</span><span class="w"> </span><span class="no">:male</span><span class="p">})</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>true</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
                     </span><span class="no">:age</span><span class="w"> </span><span class="s">"40"</span><span class="w">
                     </span><span class="no">:gender</span><span class="w"> </span><span class="no">:male</span><span class="p">})</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>false</pre>
 </div>
 </div>
 </div>
@@ -6343,7 +6444,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"42" - failed: number?</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6356,7 +6457,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>Success!</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6369,7 +6470,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>Success!</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6382,7 +6483,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>:56 - failed: number? at: [:number]
+:56 - failed: string? at: [:string]
+nil</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6395,7 +6498,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>clojure.spec.alpha/invalid</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6408,7 +6511,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>clojure.spec.alpha/invalid</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6421,7 +6524,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>:clojure.spec.alpha/invalid</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6434,7 +6537,8 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>Success!
+nil</pre>
 </div>
 </div>
 </div>
@@ -6458,7 +6562,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>8</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -6471,7 +6575,8 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>; Execution error (AssertionError) at user/add-two-numbers (REPL:100).
+; Assert failed: (s/valid? number? b)</pre>
 </div>
 </div>
 </div>
