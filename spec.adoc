@@ -28,6 +28,10 @@ Output
 true
 ----
 
+So, if you see the above code, we use a function called `s/valid?` and we pass a function called  `string?`, which gives true or false if the passed argument is string or not. Now as a second argument to `s/valid?` we give `"Hello"`. `s/valid?` applies the function `string?` to the argument `"Hello"`, it returns `true` and hence `s/valid?` returns `true`.
+
+Let's say we want to see 42 is a string, we specify it as follows:
+
 [source, clojure]
 ----
 (s/valid? string? 42)
@@ -38,6 +42,10 @@ Output
 ----
 false
 ----
+
+Since `(string? 42)` returns `false`, `(s/valid? string? 42) ` also returns false, thus failing the validation.
+
+Below is the code to check if the passed argument is a number:
 
 [source, clojure]
 ----
@@ -50,6 +58,10 @@ Output
 true
 ----
 
+For that to `s/valid?` we pass the function `number?` as first argument, and `42` as second argument. since 42 is a number, `(number? 42)` returns `true` and `(s/valid? number? 42)` also returns `true`.
+
+Similarly below we check if something is an integer:
+
 [source, clojure]
 ----
 (s/valid? integer? 123)
@@ -60,6 +72,8 @@ Output
 ----
 true
 ----
+
+We check if something is double in the code below:
 
 [source, clojure]
 ----
@@ -72,6 +86,8 @@ Output
 true
 ----
 
+Think of double as a number having a decimal point. in the below code 123 does not have a decimal point, so the check that it's a double fails:
+
 [source, clojure]
 ----
 (s/valid? double? 123)
@@ -82,6 +98,8 @@ Output
 ----
 false
 ----
+
+We can also check for collections or sequences, we check if `[1 2 3]` is a vector, which is true:
 
 [source, clojure]
 ----
@@ -94,6 +112,8 @@ Output
 true
 ----
 
+We check if passed argument is a map:
+
 [source, clojure]
 ----
 (s/valid? map? { 1 "one" 2 "two"})
@@ -104,6 +124,8 @@ Output
 ----
 true
 ----
+
+Below we check for set:
 
 [source, clojure]
 ----
@@ -116,6 +138,8 @@ Output
 true
 ----
 
+We check for keyword:
+
 [source, clojure]
 ----
 (s/valid? keyword? :ubuntu)
@@ -126,6 +150,8 @@ Output
 ----
 true
 ----
+
+Say we want to check if something is a valid percentage, say in a grading system, a student can have grades from 0% to 100%, and he cannot have something negative, or something greater than 100. For that let's write a function:
 
 [source, clojure]
 ----
@@ -138,6 +164,68 @@ Output
 #'user/valid-%?
 ----
 
+So a percentage mark should be a number, so we get a code like this:
+
+[source, clojure]
+----
+(number?)
+----
+
+**and** it should be greater than zero, so for the and, we use spec's `and` function:
+
+[source, clojure]
+----
+(s/and
+  number?
+  ;; something to check if it's greater than zero 
+)
+----
+
+To check if it's greater than or equal to zero, lets write a anonymous function:
+
+[source, clojure]
+----
+(s/and
+  number?
+  #(>= % 0)
+)
+----
+
+Now it should be less than or equal to 100, so for the and, we write a function and add it to and block as shown:
+
+[source, clojure]
+----
+(s/and
+  number?
+  #(>= % 0)
+  #(<= % 100)
+)
+----
+
+Now let's define the entire stuff to some variable, I would call this variable valid percent, and it will be written like `valid-%?`, so tha final code will look like this:
+
+[source, clojure]
+----
+(def valid-%?
+  (s/and
+    number?
+    #(>= % 0)
+    #(<= % 100)))
+----
+
+To show that you are professional Clojure programmer, you will put all in one line like this:
+
+[source, clojure]
+----
+(def [source, clojure]
+----
+(def valid-%? (s/and number? #(>= % 0) #(<= % 100)))
+----
+ (s/and number? #(>= % 0) #(<= % 100)))
+----
+
+So we have got our `valid-%?`, now let's use it.
+
 [source, clojure]
 ----
 (s/valid? valid-%? 85)
@@ -148,6 +236,8 @@ Output
 ----
 true
 ----
+
+In the code above, 85 is a number, and it lies between 0 and 100, so it's a valid percentage and hence we get the output as `true`. In the example below, 105% makes no sense in grading, and hence it returns `false`. 
 
 [source, clojure]
 ----
@@ -160,6 +250,8 @@ Output
 false
 ----
 
+Similarly -15 is less than 0, so the below example returns false.
+
 [source, clojure]
 ----
 (s/valid? valid-%? -15)
@@ -171,6 +263,18 @@ Output
 false
 ----
 
+**Exercise**
+
+Write a spec named `string-or-symbol?`, it must work like this:
+
+[source, clojure]
+----
+(s/valid? string-or-symbol? "abc") ;; true
+(s/valid? string-or-symbol? :abc) ;; true
+(s/valid? string-or-symbol? 42) ;; false
+----
+
+For this exercise, one my take a look at https://clojuredocs.org/clojure.spec.alpha/or
 
 === Specing collection
 

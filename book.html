@@ -6011,6 +6011,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>So, if you see the above code, we use a function called <code>s/valid?</code> and we pass a function called  <code>string?</code>, which gives true or false if the passed argument is string or not. Now as a second argument to <code>s/valid?</code> we give <code>"Hello"</code>. <code>s/valid?</code> applies the function <code>string?</code> to the argument <code>"Hello"</code>, it returns <code>true</code> and hence <code>s/valid?</code> returns <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say we want to see 42 is a string, we specify it as follows:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span></code></pre>
@@ -6023,6 +6029,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>false</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Since <code>(string? 42)</code> returns <code>false</code>, `(s/valid? string? 42) ` also returns false, thus failing the validation.</p>
+</div>
+<div class="paragraph">
+<p>Below is the code to check if the passed argument is a number:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6037,6 +6049,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>For that to <code>s/valid?</code> we pass the function <code>number?</code> as first argument, and <code>42</code> as second argument. since 42 is a number, <code>(number? 42)</code> returns <code>true</code> and <code>(s/valid? number? 42)</code> also returns <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Similarly below we check if something is an integer:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">integer?</span><span class="w"> </span><span class="mi">123</span><span class="p">)</span></code></pre>
@@ -6049,6 +6067,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>true</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>We check if something is double in the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6063,6 +6084,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Think of double as a number having a decimal point. in the below code 123 does not have a decimal point, so the check that it&#8217;s a double fails:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">double?</span><span class="w"> </span><span class="mi">123</span><span class="p">)</span></code></pre>
@@ -6075,6 +6099,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>false</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>We can also check for collections or sequences, we check if <code>[1 2 3]</code> is a vector, which is true:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6089,6 +6116,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>We check if passed argument is a map:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">map?</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="s">"one"</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="s">"two"</span><span class="p">})</span></code></pre>
@@ -6101,6 +6131,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>true</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Below we check for set:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6115,6 +6148,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>We check for keyword:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="nb">keyword?</span><span class="w"> </span><span class="no">:ubuntu</span><span class="p">)</span></code></pre>
@@ -6127,6 +6163,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>true</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Say we want to check if something is a valid percentage, say in a grading system, a student can have grades from 0% to 100%, and he cannot have something negative, or something greater than 100. For that let&#8217;s write a function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6141,6 +6180,79 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>#'user/valid-%?</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>So a percentage mark should be a number, so we get a code like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">number?</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>and</strong> it should be greater than zero, so for the and, we use spec&#8217;s <code>and</code> function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/and</span><span class="w">
+  </span><span class="n">number?</span><span class="w">
+  </span><span class="c1">;; something to check if it's greater than zero</span><span class="w">
+</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To check if it&#8217;s greater than or equal to zero, lets write a anonymous function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/and</span><span class="w">
+  </span><span class="n">number?</span><span class="w">
+  </span><span class="o">#</span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now it should be less than or equal to 100, so for the and, we write a function and add it to and block as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/and</span><span class="w">
+  </span><span class="n">number?</span><span class="w">
+  </span><span class="o">#</span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+  </span><span class="o">#</span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s define the entire stuff to some variable, I would call this variable valid percent, and it will be written like <code>valid-%?</code>, so tha final code will look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-%?</span><span class="w">
+  </span><span class="p">(</span><span class="nf">s/and</span><span class="w">
+    </span><span class="n">number?</span><span class="w">
+    </span><span class="o">#</span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">
+    </span><span class="o">#</span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">100</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To show that you are professional Clojure programmer, you will put all in one line like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="p">[</span><span class="n">source,</span><span class="w"> </span><span class="n">clojure</span><span class="p">]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(def valid-%? (s/and number? #(&gt;= % 0) #(&#8656; % 100)))</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre> (s/and number? #(&gt;= % 0) #(&lt;= % 100)))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So we have got our <code>valid-%?</code>, now let&#8217;s use it.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-%?</span><span class="w"> </span><span class="mi">85</span><span class="p">)</span></code></pre>
@@ -6153,6 +6265,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>true</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the code above, 85 is a number, and it lies between 0 and 100, so it&#8217;s a valid percentage and hence we get the output as <code>true</code>. In the example below, 105% makes no sense in grading, and hence it returns <code>false</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6167,6 +6282,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>false</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Similarly -15 is less than 0, so the below example returns false.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-%?</span><span class="w"> </span><span class="mi">-15</span><span class="p">)</span></code></pre>
@@ -6179,6 +6297,22 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>false</pre>
 </div>
+</div>
+<div class="paragraph">
+<p><strong>Exercise</strong></p>
+</div>
+<div class="paragraph">
+<p>Write a spec named <code>string-or-symbol?</code>, it must work like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">string-or-symbol?</span><span class="w"> </span><span class="s">"abc"</span><span class="p">)</span><span class="w"> </span><span class="c1">;; true</span><span class="w">
+</span><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">string-or-symbol?</span><span class="w"> </span><span class="no">:abc</span><span class="p">)</span><span class="w"> </span><span class="c1">;; true</span><span class="w">
+</span><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">string-or-symbol?</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span><span class="w"> </span><span class="c1">;; false</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For this exercise, one my take a look at <a href="https://clojuredocs.org/clojure.spec.alpha/or" class="bare">https://clojuredocs.org/clojure.spec.alpha/or</a></p>
 </div>
 <div class="sect2">
 <h3 id="_specing_collection">10.1. Specing collection</h3>
