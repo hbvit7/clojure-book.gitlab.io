@@ -182,7 +182,7 @@ false
 Output
 
 ----
-
+#'user/string-collection?
 ----
 
 [source, clojure]
@@ -193,7 +193,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -204,7 +204,7 @@ Output
 Output
 
 ----
-
+#'user/number-or-string?
 ----
 
 [source, clojure]
@@ -215,7 +215,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -226,7 +226,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -237,7 +237,7 @@ Output
 Output
 
 ----
-
+#'user/number-or-string-collection?
 ----
 
 [source, clojure]
@@ -248,7 +248,7 @@ Output
 Output
 
 ----
-
+true
 ----
 
 [source, clojure]
@@ -259,7 +259,7 @@ Output
 Output
 
 ----
-
+false
 ----
 
 === Inspecting Collections
@@ -269,9 +269,21 @@ Output
 (def valid-person-vector? (s/cat :name string? :age number? :gender keyword?))
 ----
 
+Output
+
+----
+user/valid-person-vector?
+----
+
 [source, clojure]
 ----
 (s/valid? valid-person-vector? ["Karthik" 40 :male])
+----
+
+Output
+
+----
+true
 ----
 
 [source, clojure]
@@ -282,6 +294,12 @@ Output
                    ::gender]))
 ----
 
+Output
+
+----
+#'user/valid-person-map?
+----
+
 [source, clojure]
 ----
 (s/valid? valid-person-map? {:name "Karthik"
@@ -289,24 +307,87 @@ Output
                              :gender :male})
 ----
 
+Output
+
+----
+true
+----
+
 === Checking Maps
 
 [source, clojure]
 ----
 (s/def ::name string?)
+----
+
+Output
+
+----
+:user/name
+----
+
+[source, clojure]
+----
 (s/def ::age int?)
+----
+
+Output
+
+----
+:user/age
+----
+
+[source, clojure]
+----
 (s/def ::gender keyword?)
+----
 
+Output
+
+----
+:user/gender
+----
+
+
+[source, clojure]
+----
 (s/def ::person (s/keys :req-un [::name ::age ::gender]))
+----
 
+Output
+
+----
+:user/person
+----
+
+
+[source, clojure]
+----
 (s/valid? ::person {:name "Karthik"
                     :age 40
                     :gender :male})
+----
 
+Output
+
+----
+true
+----
+
+
+[source, clojure]
+----
 (s/valid? ::person {:name "Karthik"
                     :age "40"
                     :gender :male})
 ----
+
+Output
+
+----
+false
+----
+
 
 === Explaining Spec
 
@@ -316,8 +397,9 @@ Output
 ----
 
 Output
-----
 
+----
+"42" - failed: number?
 ----
 
 [source, clojure]
@@ -326,8 +408,9 @@ Output
 ----
 
 Output
-----
 
+----
+Success!
 ----
 
 [source, clojure]
@@ -336,8 +419,9 @@ Output
 ----
 
 Output
-----
 
+----
+Success!
 ----
 
 [source, clojure]
@@ -346,8 +430,11 @@ Output
 ----
 
 Output
-----
 
+----
+:56 - failed: number? at: [:number]
+:56 - failed: string? at: [:string]
+nil
 ----
 
 [source, clojure]
@@ -356,8 +443,9 @@ Output
 ----
 
 Output
-----
 
+----
+clojure.spec.alpha/invalid
 ----
 
 [source, clojure]
@@ -366,8 +454,9 @@ Output
 ----
 
 Output
-----
 
+----
+clojure.spec.alpha/invalid
 ----
 
 [source, clojure]
@@ -376,8 +465,9 @@ Output
 ----
 
 Output
-----
 
+----
+:clojure.spec.alpha/invalid
 ----
 
 [source, clojure]
@@ -386,8 +476,10 @@ Output
 ----
 
 Output
-----
 
+----
+Success!
+nil
 ----
 
 
@@ -409,7 +501,7 @@ Output
 Output
 
 ----
-
+8
 ----
 
 [source, clojure]
@@ -420,5 +512,6 @@ Output
 Output
 
 ----
-
+; Execution error (AssertionError) at user/add-two-numbers (REPL:100).
+; Assert failed: (s/valid? number? b)
 ----
