@@ -6316,6 +6316,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="sect2">
 <h3 id="_specing_collection">10.1. Specing collection</h3>
+<div class="paragraph">
+<p>So let&#8217;s see how to spec collections, in the example below, we define <code>string-collection?</code></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">string-collection?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/coll-of</span><span class="w"> </span><span class="nb">string?</span><span class="p">))</span></code></pre>
@@ -6328,6 +6331,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>#'user/string-collection?</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>So it&#8217;s defined as follows <code>(s/coll-of string?)</code>, so the <code>coll-of</code> is a spec function, and its been told to check if all in a collection are of the the type <code>string?</code>. Now let&#8217;s apply <code>string-collection?</code> on an array of strings:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6342,6 +6348,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>And it passes. Note that we pass <code>string-collection?</code> as an argument to <code>valid?</code>, and as a second argument we pass pass the array of strings <code>["Hi" "Hello"]</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s get bit more complicated and check if a array contains numbers and strings, look at the code below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/or</span><span class="w"> </span><span class="no">:number</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:string</span><span class="w"> </span><span class="nb">string?</span><span class="p">))</span></code></pre>
@@ -6354,6 +6366,20 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>#'user/number-or-string?</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>So in the above code we define <code>number-or-string?</code>, concentrate on this piece of code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/or</span><span class="w"> </span><span class="no">:number</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:string</span><span class="w"> </span><span class="nb">string?</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In t he above code we use <code>or</code> function in spec, and to it we pass four arguments, the first two being <code>:number number?</code>, and the second two being <code>:string string?</code>. Don&#8217;t get confused by the pair of arguments now, you will understand why so soon. So the <code>or</code> receives <code>number?</code> and <code>string?</code> as arguments, prepended by keywords, so it passes when it either encounters a number or a string.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s put it into action, here I am testing it on a number and it passes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6368,6 +6394,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>I test it on string and it passes too:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="s">"Hi"</span><span class="p">)</span></code></pre>
@@ -6380,6 +6409,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>true</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now if I want to check if a a collection only has number or string i write a code as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6394,6 +6426,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>#'user/number-or-string-collection?</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>In the above code we pass <code>number-or-string?</code> to <code>coll-of</code> which turns it into a collection checker, its been defined to <code>number-or-string-collection?</code>, so from now on <code>number-or-string-collection?</code> will check if collection contains numbers and strings, if it contains any thing other than that, it will fail.</p>
+</div>
+<div class="paragraph">
+<p>So the below collection / vector contains numbers and string and so it passes <code>number-or-string-collection?</code>:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string-collection?</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="s">"Hi"</span><span class="w"> </span><span class="s">"India"</span><span class="w"> </span><span class="mi">42</span><span class="p">])</span></code></pre>
@@ -6407,9 +6445,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The below vector contains a keyword and so it fails:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string-collection?</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="s">"Hi"</span><span class="w"> </span><span class="s">"India"</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="no">:symbol</span><span class="p">])</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">number-or-string-collection?</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="s">"Hi"</span><span class="w"> </span><span class="s">"India"</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="no">:keyword</span><span class="p">])</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
