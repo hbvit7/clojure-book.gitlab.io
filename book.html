@@ -751,7 +751,8 @@ pre.rouge {
 <li><a href="#_inspecting_collections">10.2. Inspecting Collections</a></li>
 <li><a href="#_checking_maps">10.3. Checking Maps</a></li>
 <li><a href="#_explaining_spec">10.4. Explaining Spec</a></li>
-<li><a href="#_using_spec_in_functions">10.5. Using Spec In Functions</a></li>
+<li><a href="#_conform">10.5. Conform</a></li>
+<li><a href="#_using_spec_in_functions">10.6. Using Spec In Functions</a></li>
 </ul>
 </li>
 <li><a href="#_what_is_clojure_code">11. What is Clojure code</a></li>
@@ -6697,6 +6698,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="sect2">
 <h3 id="_explaining_spec">10.4. Explaining Spec</h3>
+<div class="paragraph">
+<p>Clojure gives a spec function called <code>explain</code> that tells in somwe what bit human friendly way why something failed a spec validation.</p>
+</div>
+<div class="paragraph">
+<p>See the example below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="s">"42"</span><span class="p">)</span></code></pre>
@@ -6709,6 +6716,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>"42" - failed: number?</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>See the output, see how thr <code>explain</code> explains a bit.</p>
+</div>
+<div class="paragraph">
+<p>For specs that pass, explain give out a <code>Success!</code> as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6736,6 +6749,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>Success!</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>See how explain says <code>:56</code> is a neither a number nor a string below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="no">:56</span><span class="p">)</span></code></pre>
@@ -6751,6 +6767,29 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 nil</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Now let&#8217;s make <code>number-or-string?</code> pass the spec now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="mi">56</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Success!
+nil</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conform">10.5. Conform</h3>
+<div class="paragraph">
+<p>There is also another function called <code>conform</code> which checks if a data conforms to a spec. See the example below what happens when data conforms to a spec:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/conform</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="mi">42</span><span class="p">)</span></code></pre>
@@ -6761,8 +6800,11 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>clojure.spec.alpha/invalid</pre>
+<pre>42</pre>
 </div>
+</div>
+<div class="paragraph">
+<p><code>conform</code> throws an invalid if something is not conforming to a spec:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6790,23 +6832,18 @@ nil</pre>
 <pre>:clojure.spec.alpha/invalid</pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/explain</span><span class="w"> </span><span class="n">number-or-string?</span><span class="w"> </span><span class="mi">56</span><span class="p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Output</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Success!
-nil</pre>
-</div>
-</div>
 </div>
 <div class="sect2">
-<h3 id="_using_spec_in_functions">10.5. Using Spec In Functions</h3>
+<h3 id="_using_spec_in_functions">10.6. Using Spec In Functions</h3>
+<div class="paragraph">
+<p>If one is wondering why these specs, and why so much of functionality is built into the spec library, then this is tha answer:</p>
+</div>
+<div class="paragraph">
+<p>In Clojure we usually don&#8217;t use objects to to passed to functions, we prefer simple data types like vector, maps, sets etc. So when such thing is done, we need to check the integrity and conformity of data, specs are very useful for that.</p>
+</div>
+<div class="paragraph">
+<p>Take a look at the example below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">add-two-numbers</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
@@ -6841,6 +6878,21 @@ nil</pre>
 <pre>; Execution error (AssertionError) at user/add-two-numbers (REPL:100).
 ; Assert failed: (s/valid? number? b)</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>We are checking in <code>:pre</code> hook if the passed arguments to a function <code>a</code> and <code>b</code> are numbers or not, if not the function does not execute as you can see from the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>; Execution error (AssertionError) at user/add-two-numbers (REPL:100).
+; Assert failed: (s/valid? number? b)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for <code>(add-two-numbers 3 "5")</code>.</p>
+</div>
+<div class="paragraph">
+<p>Similarly in the <code>:post</code> hook we can check the integrity of returned data tye so that the data does not break the code down the line.</p>
 </div>
 </div>
 </div>

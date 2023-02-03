@@ -589,6 +589,10 @@ It fails.
 
 === Explaining Spec
 
+Clojure gives a spec function called `explain` that tells in somwe what bit human friendly way why something failed a spec validation.
+
+See the example below:
+
 [source, clojure]
 ----
 (s/explain number? "42")
@@ -599,6 +603,10 @@ Output
 ----
 "42" - failed: number?
 ----
+
+See the output, see how thr `explain` explains a bit.
+
+For specs that pass, explain give out a `Success!` as shown:
 
 [source, clojure]
 ----
@@ -622,6 +630,8 @@ Output
 Success!
 ----
 
+See how explain says `:56` is a neither a number nor a string below:
+
 [source, clojure]
 ----
 (s/explain number-or-string? :56)
@@ -635,6 +645,25 @@ Output
 nil
 ----
 
+Now let's make `number-or-string?` pass the spec now:
+
+[source, clojure]
+----
+(s/explain number-or-string? 56)
+----
+
+Output
+
+----
+Success!
+nil
+----
+
+
+=== Conform
+
+There is also another function called `conform` which checks if a data conforms to a spec. See the example below what happens when data conforms to a spec:
+
 [source, clojure]
 ----
 (s/conform number? 42)
@@ -643,8 +672,10 @@ nil
 Output
 
 ----
-clojure.spec.alpha/invalid
+42
 ----
+
+`conform` throws an invalid if something is not conforming to a spec:
 
 [source, clojure]
 ----
@@ -668,20 +699,13 @@ Output
 :clojure.spec.alpha/invalid
 ----
 
-[source, clojure]
-----
-(s/explain number-or-string? 56)
-----
-
-Output
-
-----
-Success!
-nil
-----
-
-
 === Using Spec In Functions
+
+If one is wondering why these specs, and why so much of functionality is built into the spec library, then this is tha answer:
+
+In Clojure we usually don't use objects to to passed to functions, we prefer simple data types like vector, maps, sets etc. So when such thing is done, we need to check the integrity and conformity of data, specs are very useful for that.
+
+Take a look at the example below:
 
 [source, clojure]
 ----
@@ -713,3 +737,15 @@ Output
 ; Execution error (AssertionError) at user/add-two-numbers (REPL:100).
 ; Assert failed: (s/valid? number? b)
 ----
+
+
+We are checking in `:pre` hook if the passed arguments to a function `a` and `b` are numbers or not, if not the function does not execute as you can see from the output:
+
+----
+; Execution error (AssertionError) at user/add-two-numbers (REPL:100).
+; Assert failed: (s/valid? number? b)
+----
+
+for `(add-two-numbers 3 "5")`.
+
+Similarly in the `:post` hook we can check the integrity of returned data tye so that the data does not break the code down the line.
