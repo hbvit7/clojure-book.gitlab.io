@@ -1,5 +1,9 @@
 == Splitting Large Programs
 
+A very small one line Clojure script could be written in a Clojure REPL, a larger one could be written in a file, but what happens when you have too large script in a file, and it becomes difficult to manage? Well you can split it into multiple files. This section explains how to load scripts in another file into your Clojure code.
+
+So let's say you have program as shown below: 
+
 [source, clojure]
 ----
 ;; calculator.clj
@@ -24,6 +28,30 @@ Output
 5  -  3  =  2
 ----
 
+It works okay, but if you see one file does two things. First there is a definition of calculation functions `add` and `sub`:
+
+[source, clojure]
+----
+(defn add [a b]
+  (+ a b))
+
+(defn sub [a b]
+  (- a b))
+----
+
+Then you are using it to compute something:
+
+[source, clojure]
+----
+(def a 5)
+(def b 3)
+
+(println a " + " b " = " (add a b))
+(println a " - " b " = " (sub a b))
+----
+
+Won't it be better if we can split it into two different programs? So we cut up the function definitions and put it into a file called `calc_lib.clj`:
+
 [source, clojure]
 ----
 ;; calc_lib.clj
@@ -34,6 +62,8 @@ Output
 (defn sub [a b]
   (- a b))
 ----
+
+The in another file called `calc_ui.clj` shown below:
 
 [source, clojure]
 ----
@@ -47,3 +77,8 @@ Output
 (println a " + " b " = " (add a b))
 (println a " - " b " = " (sub a b))
 ----
+
+
+Look at the line `(load-file "calc_lib.clj")`, here we load the `calc_lib.clj` file in `calc_ui.clj`. Now we can find the result of adding and subtracting 3 and 5.
+
+Since we have separated calculation functions and put it as a separate file, you can include it in another where say you want to find the addition and difference of between say 8 and 5. This increases reusability.
