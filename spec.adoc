@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-Clojure code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the received data is of the right type and format.
+Clojure's code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the received data is of the right type and format.
 
 So in order to use spec, let's require it:
 
@@ -28,7 +28,7 @@ Output
 true
 ----
 
-So, if you see the above code, we use a function called `s/valid?` and we pass a function called  `string?`, which gives true or false if the passed argument is string or not. Now as a second argument to `s/valid?` we give `"Hello"`. `s/valid?` applies the function `string?` to the argument `"Hello"`, it returns `true` and hence `s/valid?` returns `true`.
+So, if you see the above code, we use a function called `s/valid?` and we pass a function called `string?`, which gives true or false if the passed argument is string or not. Now as a second argument to `s/valid?` we give `"Hello"`. `s/valid?` applies the function `string?` to the argument `"Hello"`, it returns `true` and hence `s/valid?` returns `true`.
 
 Let's say we want to see 42 is a string, we specify it as follows:
 
@@ -58,7 +58,7 @@ Output
 true
 ----
 
-For that to `s/valid?` we pass the function `number?` as first argument, and `42` as second argument. since 42 is a number, `(number? 42)` returns `true` and `(s/valid? number? 42)` also returns `true`.
+For that to `s/valid?` we pass the function `number?` as first argument, and `42` as second argument. Since 42 is a number, `(number? 42)` returns `true` and `(s/valid? number? 42)` also returns `true`.
 
 Similarly below we check if something is an integer:
 
@@ -86,7 +86,7 @@ Output
 true
 ----
 
-Think of double as a number having a decimal point. in the below code 123 does not have a decimal point, so the check that it's a double fails:
+Think of double as a number having a decimal point. In the below code 123 does not have a decimal point, so the check that it's a double fail's:
 
 [source, clojure]
 ----
@@ -181,7 +181,7 @@ So a percentage mark should be a number, so we get a code like this:
 )
 ----
 
-To check if it's greater than or equal to zero, lets write a anonymous function:
+To check if it's greater than or equal to zero, let's write an anonymous function:
 
 [source, clojure]
 ----
@@ -202,7 +202,7 @@ Now it should be less than or equal to 100, so for the and, we write a function 
 )
 ----
 
-Now let's define the entire stuff to some variable, I would call this variable valid percent, and it will be written like `valid-%?`, so tha final code will look like this:
+Now let's define the entire stuff to some variable, I would call this variable valid percent, and it will be written like `valid-%?`, so the final code will look like this:
 
 [source, clojure]
 ----
@@ -291,7 +291,7 @@ Output
 #'user/string-collection?
 ----
 
-So it's defined as follows `(s/coll-of string?)`, so the `coll-of` is a spec function, and its been told to check if all in a collection are of the the type `string?`. Now let's apply `string-collection?` on an array of strings:
+So it's defined as follows `(s/coll-of string?)`, so the `coll-of` is a spec function, and it's been told to check if all in a collection are of the type `string?`. Now let's apply `string-collection?` on an array of strings:
 
 [source, clojure]
 ----
@@ -304,9 +304,9 @@ Output
 true
 ----
 
-And it passes. Note that we pass `string-collection?` as an argument to `valid?`, and as a second argument we pass pass the array of strings `["Hi" "Hello"]`.
+And it passes. Note that we pass `string-collection?` as an argument to `valid?`, and as a second argument we pass the array of strings `["Hi" "Hello"]`.
 
-Now let's get bit more complicated and check if a array contains numbers and strings, look at the code below:
+Now let's get bit more complicated and check if an array contains numbers and strings, look at the code below:
 
 [source, clojure]
 ----
@@ -326,9 +326,9 @@ So in the above code we define `number-or-string?`, concentrate on this piece of
 (s/or :number number? :string string?)
 ----
 
-In t he above code we use `or` function in spec, and to it we pass four arguments, the first two being `:number number?`, and the second two being `:string string?`. Don't get confused by the pair of arguments now, you will understand why so soon. So the `or` receives `number?` and `string?` as arguments, prepended by keywords, so it passes when it either encounters a number or a string.
+In the above code we use `or` function in spec, and to it, we pass four arguments, the first two being `:number number?`, and the second two being `:string string?`. Don't get confused by the pair of arguments now, you will understand why so soon. So the `or` receives `number?` and `string?` as arguments, prepended by keywords, so it passes when it either encounters a number or a string.
 
-Let's put it into action, here I am testing it on a number and it passes:
+Let's put it into action, here I am testing it on a number, and it passes:
 
 [source, clojure]
 ----
@@ -354,7 +354,7 @@ Output
 true
 ----
 
-Now if I want to check if a a collection only has number or string i write a code as shown:
+Now if I want to check if a collection only has number or string I write a code as shown:
 
 [source, clojure]
 ----
@@ -367,7 +367,7 @@ Output
 #'user/number-or-string-collection?
 ----
 
-In the above code we pass `number-or-string?` to `coll-of` which turns it into a collection checker, its been defined to `number-or-string-collection?`, so from now on `number-or-string-collection?` will check if collection contains numbers and strings, if it contains any thing other than that, it will fail.
+In the above code we pass `number-or-string?` to `coll-of` which turns it into a collection checker, it's been defined to `number-or-string-collection?`, so from now on `number-or-string-collection?` will check if collection contains numbers and strings, if it contains anything other than that, it will fail.
 
 So the below collection / vector contains numbers and string and so it passes `number-or-string-collection?`:
 
@@ -440,7 +440,7 @@ Output
 user/valid-person-vector?
 ----
 
-So now if you pass a vector to to `valid-person-vector?` which has a string, number and a keyword it passes:
+So now if you pass a vector to `valid-person-vector?` which has a string, number and a keyword it passes:
 
 [source, clojure]
 ----
@@ -471,7 +471,7 @@ Output
 #'user/valid-person-map?
 ----
 
-I am not sure what's the full form of `:req-un` passed to the `keys`, but after the `:req-un`, we pass a vector which contains all the keys that a map should have and so we get `(s/keys :req-un [::name ::age ::gender])`. I think the double colon in the keywords is to indicate that they belong to this name space. I don't understand it well, if you don't, don't worry much now. So we assign a name to it, and call it ` valid-person-map?`, and hence we finally get this code:
+I am not sure what's the full form of `:req-un` passed to the `keys`, but after the `:req-un`, we pass a vector which contains all the keys that a map should have, and so we get `(s/keys :req-un [::name ::age ::gender])`. I think the double colon in the keywords is to indicate that they belong to this name space. I don't understand it well, if you don't, don't worry much now. So we assign a name to it, and call it ` valid-person-map?`, and hence we finally get this code:
 
 [source, clojure]
 ----
@@ -500,7 +500,7 @@ The map in the code above passes because it contains the keys `:name`, `:age`, a
 
 === Checking Maps
 
-Let say we want to check maps. A map has keys, so we need to check if the keys exists. The kwy will be mapped to data, so we need to check if the data conforms to some rules. Let's say the map needs to have a key named ':name' and it should map to a string value, then we can spec it as shown:
+Let say we want to check maps. A map has keys, so we need to check if the required keys exist. The key will be mapped to data, so we need to check if the data conforms to some rules. Let's say the map needs to have a key named ':name' and it should map to a string value, then we can spec it as shown:
 
 [source, clojure]
 ----
@@ -513,7 +513,7 @@ Output
 :user/name
 ----
 
-Let's say the map needs to have a key named ':age' and it should map to a integer value, then we can spec it as shown:
+Let's say the map needs to have a key named ':age' and it should map to an integer value, then we can spec it as shown:
 
 [source, clojure]
 ----
@@ -552,7 +552,7 @@ Output
 :user/person
 ----
 
-Note how we use `(s/keys :req-un [::name ::age ::gender])` , which means, in the code above `::person` will check for map that has key called `:name` which maps to a string value, the map must contain `:age` which must map to  a integer value, and it must contain a key, which is a keyword `:gender` and it must map to another keyword.
+Note how we use `(s/keys :req-un [::name ::age ::gender])`, which means, in the code above `::person` will check for map that has key called `:name` which maps to a string value, the map must contain `:age` which must map to an integer value, and it must contain a key, which is a keyword `:gender` and it must map to another keyword.
 
 Now let's test it out:
 
@@ -701,9 +701,9 @@ Output
 
 === Using Spec In Functions
 
-If one is wondering why these specs, and why so much of functionality is built into the spec library, then this is tha answer:
+If one is wondering why these specs, and why so much of functionality is built into the spec library, then this is the answer:
 
-In Clojure we usually don't use objects to to passed to functions, we prefer simple data types like vector, maps, sets etc. So when such thing is done, we need to check the integrity and conformity of data, specs are very useful for that.
+In Clojure we usually don't use objects to passed to functions, we prefer simple data types like vector, maps, sets etc. So when such thing is done, we need to check the integrity and conformity of data, specs are very useful for that.
 
 Take a look at the example below:
 
@@ -748,4 +748,4 @@ We are checking in `:pre` hook if the passed arguments to a function `a` and `b`
 
 for `(add-two-numbers 3 "5")`.
 
-Similarly in the `:post` hook we can check the integrity of returned data tye so that the data does not break the code down the line.
+Similarly, in the `:post` hook we can check the integrity of returned data so that the data does not break the code down the line.
