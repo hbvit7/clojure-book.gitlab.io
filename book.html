@@ -7718,6 +7718,18 @@ I loot the nation.</pre>
 <div class="sect1">
 <h2 id="_testing">19. Testing</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Testing is a very integral part of coding. Let&#8217;s say you write a piece of code, its been used millions of times somewhere else, let&#8217;s say your colleague modifies it and it fails some conditions. Being a human how can he identify it fails in some cases? Well, when you write code, you also write some code that tests your code, so that when some one modifies your code, they can run corresponding test files and check if all is right.</p>
+</div>
+<div class="paragraph">
+<p>Since code test code, test is automating stuff, and since computers can test your code they are really fast and would save you time.</p>
+</div>
+<div class="paragraph">
+<p>Having a robust test suite means you can refactor your code with confidence and run it against the test so that you know it works fine.</p>
+</div>
+<div class="paragraph">
+<p>So let&#8217;s take a piece of code shown below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib.clj</span><span class="w">
@@ -7728,6 +7740,271 @@ I loot the nation.</pre>
 </span><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">sub</span><span class="w"> </span><span class="p">[</span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">]</span><span class="w">
   </span><span class="p">(</span><span class="nb">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">b</span><span class="p">))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>This code is present in a file called <code>calc_lib.clj</code>, it contains two functions which adds and subtracts two numbers. So let&#8217;s now write a tests for it.</p>
+</div>
+<div class="paragraph">
+<p>First Let me create a Clojure file called <code>calc_lib_test.clj</code>, note the file we are going to test is <code>calc_lib.clj</code>, the corresponding test file called <code>calc_lib_test.clj</code>, all we do is to append <code>_test</code> to the name of the file to indicate its a test. So we now have:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now from the Clojure test library <sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnotedef_7" title="View footnote.">7</a>]</sup>, let&#8217;s require three methods, namely <code>deftest</code> which is a function thats used to define a test, <code>testing</code> which is a function that is used to add a subspace in <code>deftest</code> and <code>is</code> that is kind of used to throw out a message when an assertion fails. So we have a file like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>now let&#8217;s load the <code>calc_lib.clj</code>, that&#8217;s the file whose code we would like to get it tested:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>now let&#8217;s define a test function called <code>calc_lib_test</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you see above it defined using <code>(deftest calc_lib_test)</code>. Now let&#8217;s put an string that we are testing <code>"calc_lib"</code>, using the code <code>(testing "calc_lib")</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Inside the <code>calc_lib.clj</code>, let&#8217;s first test <code>add</code> function, so let&#8217;s put a string that we are testing <code>add</code> using (testing "add"):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we want to see if <code>(add 2 2)</code> equals <code>4</code>, so we get the code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s pass it to the <code>is</code> function, so the code now becomes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now lets pass it as a second argument to the <code>testing</code> function which has first argument as string <code>"add"</code>, so the code now becomes like shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">))))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s call <code>calc_lib_test</code> to run the test:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">))))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">calc_lib_test</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s run the file using <code>clj</code> as shown</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj calc_lib_test.clj</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nothing happens as the test passes.</p>
+</div>
+<div class="paragraph">
+<p>Now change <code>4</code> to <code>5</code> in the code below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">))))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">calc_lib_test</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s run the file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj calc_lib_test.clj
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+
+FAIL in (calc_lib_test) (calc_lib_test.clj:11)
+calc_lib add
+expected: (= 5 (add 2 2))
+  actual: (not (= 5 4))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see from above, since the assertion fails, the code days in <code>cal_lib</code> and in add inside it, an assertion is failing, it says what is expected and what we actually get.</p>
+</div>
+<div class="paragraph">
+<p>So as you can see, the more detailed description you can pass to <code>testing</code>, the more easy it will be for you to know what&#8217;s happening. The line number where the code fails is printed out too.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="s">"adding 2 and two should give right output"</span><span class="p">))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">calc_lib_test</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we have added a second argument to <code>is</code> function where we describe what test is going on, now let&#8217;s run the file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ clj calc_lib_test.clj
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+
+FAIL in (calc_lib_test) (calc_lib_test.clj:11)
+calc_lib add
+adding 2 and two should give right output
+expected: (= 5 (add 2 2))
+  actual: (not (= 5 4))</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So if the test fails, the second argument passed to <code>is</code> is printed too, thus aiding us with more clues.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s get back to the passing code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">))))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">calc_lib_test</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s add our second assertion where we check if <code>3</code> and <code>4</code> when added gives <code>7</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; calc_lib_test.clj</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">require</span><span class="w"> </span><span class="o">'</span><span class="p">[</span><span class="n">clojure.test</span><span class="w"> </span><span class="no">:refer</span><span class="w"> </span><span class="p">[</span><span class="n">deftest</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">testing</span><span class="p">]])</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">load-file</span><span class="w"> </span><span class="s">"calc_lib.clj"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">; nest within `deftest` in source file</span><span class="w">
+</span><span class="p">(</span><span class="nf">deftest</span><span class="w"> </span><span class="n">calc_lib_test</span><span class="w">
+  </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"calc_lib"</span><span class="w">
+    </span><span class="p">(</span><span class="nf">testing</span><span class="w"> </span><span class="s">"add"</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w">
+      </span><span class="p">(</span><span class="nf">is</span><span class="w"> </span><span class="p">(</span><span class="nb">=</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">))))))</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">calc_lib_test</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now in the code below I am also testing the <code>sub</code> function by adding another <code>testing</code> block:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7951,6 +8228,9 @@ I loot the nation.</pre>
 </div>
 <div class="footnote" id="_footnotedef_6">
 <a href="#_footnoteref_6">6</a>. <a href="https://clojuredocs.org/clojure.spec.alpha/keys" class="bare">https://clojuredocs.org/clojure.spec.alpha/keys</a>
+</div>
+<div class="footnote" id="_footnotedef_7">
+<a href="#_footnoteref_7">7</a>. <a href="https://clojuredocs.org/clojure.test" class="bare">https://clojuredocs.org/clojure.test</a>
 </div>
 </div>
 <div id="footer">

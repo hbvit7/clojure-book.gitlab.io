@@ -1,5 +1,13 @@
 == Testing
 
+Testing is a very integral part of coding. Let's say you write a piece of code, its been used millions of times somewhere else, let's say your colleague modifies it and it fails some conditions. Being a human how can he identify it fails in some cases? Well, when you write code, you also write some code that tests your code, so that when some one modifies your code, they can run corresponding test files and check if all is right.
+
+Since code test code, test is automating stuff, and since computers can test your code they are really fast and would save you time.
+
+Having a robust test suite means you can refactor your code with confidence and run it against the test so that you know it works fine.
+
+So let's take a piece of code shown below:
+
 [source, clojure]
 ----
 ;; calc_lib.clj
@@ -10,6 +18,252 @@
 (defn sub [a b]
   (- a b))
 ----
+
+This code is present in a file called `calc_lib.clj`, it contains two functions which adds and subtracts two numbers. So let's now write a tests for it.
+
+First Let me create a Clojure file called `calc_lib_test.clj`, note the file we are going to test is `calc_lib.clj`, the corresponding test file called `calc_lib_test.clj`, all we do is to append `_test` to the name of the file to indicate its a test. So we now have:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+----
+
+Now from the Clojure test library footnote:[https://clojuredocs.org/clojure.test], let's require three methods, namely `deftest` which is a function thats used to define a test, `testing` which is a function that is used to add a subspace in `deftest` and `is` that is kind of used to throw out a message when an assertion fails. So we have a file like this:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+----
+
+
+now let's load the `calc_lib.clj`, that's the file whose code we would like to get it tested:
+
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+----
+
+now let's define a test function called `calc_lib_test`:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test)
+----
+
+As you see above it defined using `(deftest calc_lib_test)`. Now let's put an string that we are testing `"calc_lib"`, using the code `(testing "calc_lib")`:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"))
+----
+
+Inside the `calc_lib.clj`, let's first test `add` function, so let's put a string that we are testing `add` using (testing "add"):
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add")))
+----
+
+Now we want to see if `(add 2 2)` equals `4`, so we get the code:
+
+[source, clojure]
+----
+(= 4 (add 2 2))
+----
+
+Now let's pass it to the `is` function, so the code now becomes:
+
+[source, clojure]
+----
+(is (= 4 (add 2 2)))
+----
+
+Now lets pass it as a second argument to the `testing` function which has first argument as string `"add"`, so the code now becomes like shown:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add"
+      (is (= 4 (add 2 2))))))
+----
+
+
+Now let's call `calc_lib_test` to run the test:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add"
+      (is (= 4 (add 2 2))))))
+
+(calc_lib_test)
+----
+
+Now let's run the file using `clj` as shown
+
+----
+$ clj calc_lib_test.clj
+----
+
+Nothing happens as the test passes.
+
+Now change `4` to `5` in the code below:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add"
+      (is (= 5 (add 2 2))))))
+
+(calc_lib_test)
+----
+
+Let's run the file
+
+----
+$ clj calc_lib_test.clj
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+
+FAIL in (calc_lib_test) (calc_lib_test.clj:11)
+calc_lib add
+expected: (= 5 (add 2 2))
+  actual: (not (= 5 4))
+----
+
+As you can see from above, since the assertion fails, the code days in `cal_lib` and in add inside it, an assertion is failing, it says what is expected and what we actually get.
+
+So as you can see, the more detailed description you can pass to `testing`, the more easy it will be for you to know what's happening. The line number where the code fails is printed out too.
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add"
+      (is (= 5 (add 2 2)) "adding 2 and two should give right output"))))
+
+(calc_lib_test)
+----
+
+
+Now we have added a second argument to `is` function where we describe what test is going on, now let's run the file:
+
+----
+$ clj calc_lib_test.clj
+WARNING: Implicit use of clojure.main with options is deprecated, use -M
+
+FAIL in (calc_lib_test) (calc_lib_test.clj:11)
+calc_lib add
+adding 2 and two should give right output
+expected: (= 5 (add 2 2))
+  actual: (not (= 5 4))
+----
+
+So if the test fails, the second argument passed to `is` is printed too, thus aiding us with more clues.
+
+Now let's get back to the passing code:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add"
+      (is (= 4 (add 2 2))))))
+
+(calc_lib_test)
+----
+
+
+Now let's add our second assertion where we check if `3` and `4` when added gives `7`:
+
+[source, clojure]
+----
+;; calc_lib_test.clj
+
+(require '[clojure.test :refer [deftest is testing]])
+
+(load-file "calc_lib.clj")
+
+; nest within `deftest` in source file
+(deftest calc_lib_test
+  (testing "calc_lib"
+    (testing "add"
+      (is (= 4 (add 2 2)))
+      (is (= 7 (add 3 4))))))
+
+(calc_lib_test)
+----
+
+Now in the code below I am also testing the `sub` function by adding another `testing` block: 
+
 
 [source, clojure]
 ----
@@ -31,3 +285,4 @@
 
 (calc_lib_test)
 ----
+
