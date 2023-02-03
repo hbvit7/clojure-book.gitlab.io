@@ -397,6 +397,38 @@ false
 
 === Inspecting Collections
 
+Now let's see how to inspect data in collection, say we have a vector that contains details of a person, say name, age and gender, let's see how to do it.
+
+So the name will be a string, so we have something like this:
+
+[source, clojure]
+----
+:name string?
+----
+
+The age will be a number, so let's add it too:
+
+[source, clojure]
+----
+:name string? :age number?
+----
+
+Since I am in India, we have only three genders here, so I safely assume we can represent it with few keywords, so the cod becomes like this:
+
+[source, clojure]
+----
+:name string? :age number? :gender keyword?
+----
+
+Now I pass these six things above to a function called `cat` footnote:[https://clojuredocs.org/clojure.spec.alpha/cat] in Clojure spec and we gt a code as shown:
+
+[source, clojuredocs]
+----
+(s/cat :name string? :age number? :gender keyword?)
+----
+
+Now let's give the chunk of code above a name, let's name it as `valid-person-vector?`
+
 [source, clojure]
 ----
 (def valid-person-vector? (s/cat :name string? :age number? :gender keyword?))
@@ -408,6 +440,8 @@ Output
 user/valid-person-vector?
 ----
 
+So now if you pass a vector to to `valid-person-vector?` which has a string, number and a keyword it passes:
+
 [source, clojure]
 ----
 (s/valid? valid-person-vector? ["Karthik" 40 :male])
@@ -418,6 +452,10 @@ Output
 ----
 true
 ----
+
+Else it would fail.
+
+Now let's look at checking maps, let's say the maps should have certain keys, for that we can use the `keys` footnote:[https://clojuredocs.org/clojure.spec.alpha/keys] function in spec.
 
 [source, clojure]
 ----
@@ -433,6 +471,18 @@ Output
 #'user/valid-person-map?
 ----
 
+I am not sure what's the full form of `:req-un` passed to the `keys`, but after the `:req-un`, we pass a vector which contains all the keys that a map should have and so we get `(s/keys :req-un [::name ::age ::gender])`. I think the double colon in the keywords is to indicate that they belong to this name space. I don't understand it well, if you don't, don't worry much now. So we assign a name to it, and call it ` valid-person-map?`, and hence we finally get this code:
+
+[source, clojure]
+----
+(def valid-person-map?
+  (s/keys :req-un [::name
+                   ::age
+                   ::gender]))
+----
+
+Now let's use it to check a map:
+
 [source, clojure]
 ----
 (s/valid? valid-person-map? {:name "Karthik"
@@ -446,7 +496,11 @@ Output
 true
 ----
 
+The map in the code above passes because it contains the keys `:name`, `:age`, and `:gender`.
+
 === Checking Maps
+
+Let say we want to check maps. A map has keys, so we need to check if the keys exists. The kwy will be mapped to data, so we need to check if the data conforms to some rules. Let's say the map needs to have a key named ':name' and it should map to a string value, then we can spec it as shown:
 
 [source, clojure]
 ----
@@ -459,6 +513,8 @@ Output
 :user/name
 ----
 
+Let's say the map needs to have a key named ':age' and it should map to a integer value, then we can spec it as shown:
+
 [source, clojure]
 ----
 (s/def ::age int?)
@@ -469,6 +525,8 @@ Output
 ----
 :user/age
 ----
+
+Let's say the map needs to have a key named ':gender' and it should map to a keyword value, then we can spec it as shown:
 
 [source, clojure]
 ----
@@ -481,6 +539,7 @@ Output
 :user/gender
 ----
 
+So now let's combine the above three specs and name it into a spec called `::person`
 
 [source, clojure]
 ----
@@ -493,6 +552,9 @@ Output
 :user/person
 ----
 
+Note how we use `(s/keys :req-un [::name ::age ::gender])` , which means, in the code above `::person` will check for map that has key called `:name` which maps to a string value, the map must contain `:age` which must map to  a integer value, and it must contain a key, which is a keyword `:gender` and it must map to another keyword.
+
+Now let's test it out:
 
 [source, clojure]
 ----
@@ -507,6 +569,7 @@ Output
 true
 ----
 
+And it passed. Now let's change `:age` to `"40"` and test it out:
 
 [source, clojure]
 ----
@@ -520,6 +583,8 @@ Output
 ----
 false
 ----
+
+It fails.
 
 
 === Explaining Spec

@@ -6464,6 +6464,44 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="sect2">
 <h3 id="_inspecting_collections">10.2. Inspecting Collections</h3>
+<div class="paragraph">
+<p>Now let&#8217;s see how to inspect data in collection, say we have a vector that contains details of a person, say name, age and gender, let&#8217;s see how to do it.</p>
+</div>
+<div class="paragraph">
+<p>So the name will be a string, so we have something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="no">:name</span><span class="w"> </span><span class="nb">string?</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The age will be a number, so let&#8217;s add it too:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="no">:name</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="no">:age</span><span class="w"> </span><span class="n">number?</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since I am in India, we have only three genders here, so I safely assume we can represent it with few keywords, so the cod becomes like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="no">:name</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="no">:age</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:gender</span><span class="w"> </span><span class="nb">keyword?</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now I pass these six things above to a function called <code>cat</code> <sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnotedef_5" title="View footnote.">5</a>]</sup> in Clojure spec and we gt a code as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojuredocs">(s/cat :name string? :age number? :gender keyword?)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s give the chunk of code above a name, let&#8217;s name it as <code>valid-person-vector?</code></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-person-vector?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/cat</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="nb">string?</span><span class="w"> </span><span class="no">:age</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="no">:gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">))</span></code></pre>
@@ -6477,6 +6515,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>user/valid-person-vector?</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>So now if you pass a vector to to <code>valid-person-vector?</code> which has a string, number and a keyword it passes:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-person-vector?</span><span class="w"> </span><span class="p">[</span><span class="s">"Karthik"</span><span class="w"> </span><span class="mi">40</span><span class="w"> </span><span class="no">:male</span><span class="p">])</span></code></pre>
@@ -6489,6 +6530,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>true</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Else it would fail.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s look at checking maps, let&#8217;s say the maps should have certain keys, for that we can use the <code>keys</code> <sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnotedef_6" title="View footnote.">6</a>]</sup> function in spec.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6506,6 +6553,20 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>#'user/valid-person-map?</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>I am not sure what&#8217;s the full form of <code>:req-un</code> passed to the <code>keys</code>, but after the <code>:req-un</code>, we pass a vector which contains all the keys that a map should have and so we get <code>(s/keys :req-un [::name ::age ::gender])</code>. I think the double colon in the keywords is to indicate that they belong to this name space. I don&#8217;t understand it well, if you don&#8217;t, don&#8217;t worry much now. So we assign a name to it, and call it ` valid-person-map?`, and hence we finally get this code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-person-map?</span><span class="w">
+  </span><span class="p">(</span><span class="nf">s/keys</span><span class="w"> </span><span class="no">:req-un</span><span class="w"> </span><span class="p">[</span><span class="no">::name</span><span class="w">
+                   </span><span class="no">::age</span><span class="w">
+                   </span><span class="no">::gender</span><span class="p">]))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s use it to check a map:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="n">valid-person-map?</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
@@ -6521,9 +6582,15 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The map in the code above passes because it contains the keys <code>:name</code>, <code>:age</code>, and <code>:gender</code>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_checking_maps">10.3. Checking Maps</h3>
+<div class="paragraph">
+<p>Let say we want to check maps. A map has keys, so we need to check if the keys exists. The kwy will be mapped to data, so we need to check if the data conforms to some rules. Let&#8217;s say the map needs to have a key named ':name' and it should map to a string value, then we can spec it as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::name</span><span class="w"> </span><span class="nb">string?</span><span class="p">)</span></code></pre>
@@ -6536,6 +6603,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>:user/name</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say the map needs to have a key named ':age' and it should map to a integer value, then we can spec it as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6550,6 +6620,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>:user/age</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Let&#8217;s say the map needs to have a key named ':gender' and it should map to a keyword value, then we can spec it as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::gender</span><span class="w"> </span><span class="nb">keyword?</span><span class="p">)</span></code></pre>
@@ -6563,6 +6636,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>:user/gender</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>So now let&#8217;s combine the above three specs and name it into a spec called <code>::person</code></p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/def</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">(</span><span class="nf">s/keys</span><span class="w"> </span><span class="no">:req-un</span><span class="w"> </span><span class="p">[</span><span class="no">::name</span><span class="w"> </span><span class="no">::age</span><span class="w"> </span><span class="no">::gender</span><span class="p">]))</span></code></pre>
@@ -6575,6 +6651,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>:user/person</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Note how we use <code>(s/keys :req-un [::name ::age ::gender])</code> , which means, in the code above <code>::person</code> will check for map that has key called <code>:name</code> which maps to a string value, the map must contain <code>:age</code> which must map to  a integer value, and it must contain a key, which is a keyword <code>:gender</code> and it must map to another keyword.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s test it out:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6591,6 +6673,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>true</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>And it passed. Now let&#8217;s change <code>:age</code> to <code>"40"</code> and test it out:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">s/valid?</span><span class="w"> </span><span class="no">::person</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Karthik"</span><span class="w">
@@ -6605,6 +6690,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>false</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>It fails.</p>
 </div>
 </div>
 <div class="sect2">
@@ -7763,6 +7851,12 @@ I loot the nation.</pre>
 </div>
 <div class="footnote" id="_footnotedef_4">
 <a href="#_footnoteref_4">4</a>. <a href="https://en.wikipedia.org/wiki/Immutable_object" class="bare">https://en.wikipedia.org/wiki/Immutable_object</a>
+</div>
+<div class="footnote" id="_footnotedef_5">
+<a href="#_footnoteref_5">5</a>. <a href="https://clojuredocs.org/clojure.spec.alpha/cat" class="bare">https://clojuredocs.org/clojure.spec.alpha/cat</a>
+</div>
+<div class="footnote" id="_footnotedef_6">
+<a href="#_footnoteref_6">6</a>. <a href="https://clojuredocs.org/clojure.spec.alpha/keys" class="bare">https://clojuredocs.org/clojure.spec.alpha/keys</a>
 </div>
 </div>
 <div id="footer">
