@@ -4,24 +4,145 @@
 
 include::use_code_note.adoc[]
 
+In Clojure count counts the number of elements in a list.
+
 [source, clojure]
 ----
-(seq [])
+(count '(1 2 3 4))
+----
+
+Output
+
+----
+4
+----
+
+It counts the number of elements in a vector.
+
+[source, clojure]
+----
+(count [1 2 3 4])
+----
+
+Output
+
+----
+4
+----
+
+It also works for set.
+
+[source, clojure]
+----
+(count #{1 2 3 4})
+----
+
+Output
+
+----
+4
+----
+
+And, for maps too.
+
+[source, clojure]
+----
+(count {:one 1 :two 2 :three 3 :four 4})
+----
+
+Output
+
+----
+4
+----
+
+Now one has to think if `count` looks at the type of argument passed to it and for each type calls a different algorithm, or does it work smart by converting the passed argument into a common data type and counting it.
+
+Well, there is a function called `seq` footnote:[https://clojuredocs.org/clojure.core/seq], which converts all the above data types to a list:
+
+[source, clojure]
+----
+(seq '(1 2 3 4))
+----
+
+Output
+
+----
+(1 2 3 4)
+----
+
+
+[source, clojure]
+----
+(seq [1 2 3 4])
+----
+
+Output
+
+----
+(1 2 3 4)
+----
+
+
+[source, clojure]
+----
+(seq #{1 2 3 4})
+----
+
+Output
+
+----
+(1 4 3 2)
+----
+
+
+[source, clojure]
+----
+(seq {:one 1 :two 2 :three 3 :four 4})
+----
+
+Output
+
+----
+([:one 1] [:two 2] [:three 3] [:four 4])
+----
+
+Now all count needs to do is to count elements in a list as shown:
+
+
+[source, clojure]
+----
+(count '(1 2 3 4))
+----
+
+Output
+
+----
+4
 ----
 
 [source, clojure]
 ----
-(seq {})
+(count '([:one 1] [:two 2] [:three 3] [:four 4]))
 ----
 
-[source, clojure]
+Output
+
 ----
-(seq #{})
+4
 ----
+
+Now think about `partition` and other functions that that work on collections and try it for yourself:
 
 [source, clojure]
 ----
 (seq [1 2 3])
+----
+
+Output
+
+----
+
 ----
 
 [source, clojure]
@@ -29,9 +150,21 @@ include::use_code_note.adoc[]
 (seq '(1 2 3))
 ----
 
+Output
+
+----
+
+----
+
 [source, clojure]
 ----
 (seq #{1 2 3})
+----
+
+Output
+
+----
+
 ----
 
 [source, clojure]
@@ -39,9 +172,21 @@ include::use_code_note.adoc[]
 (seq {1 "one" 2 "two" 3 "three"})
 ----
 
+Output
+
+----
+
+----
+
 [source, clojure]
 ----
 (partition 2 {1 "one" 2 "two" 3 "three" 4 "four"})
+----
+
+Output
+
+----
+
 ----
 
 [source, clojure]
@@ -49,9 +194,21 @@ include::use_code_note.adoc[]
 (partition 2 (seq {1 "one" 2 "two" 3 "three" 4 "four"}))
 ----
 
+Output
+
+----
+
+----
+
 [source, clojure]
 ----
 (partition 2 '(1 2 3 4))
+----
+
+Output
+
+----
+
 ----
 
 [source, clojure]
@@ -59,9 +216,21 @@ include::use_code_note.adoc[]
 (partition 2 (seq '(1 2 3 4)))
 ----
 
+Output
+
+----
+
+----
+
 [source, clojure]
 ----
 (partition 2 #{1 2 3 4})
+----
+
+Output
+
+----
+
 ----
 
 [source, clojure]
@@ -69,12 +238,30 @@ include::use_code_note.adoc[]
 (partition 2 (seq #{1 2 3 4}))
 ----
 
+Output
+
+----
+
+----
+
 [source, clojure]
 ----
 (partition 2 [1 2 3 4])
 ----
 
+Output
+
+----
+
+----
+
 [source, clojure]
 ----
 (partition 2 (seq [1 2 3 4]))
+----
+
+Output
+
+----
+
 ----

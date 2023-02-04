@@ -44,3 +44,65 @@ clj꞉user꞉> 
 ; Evaluating file: calc_lib_partial_test.clj
 nil
 clj꞉user꞉> 
+4
+clj꞉user꞉> 
+; Syntax error reading source at (REPL:5:18).
+; Unmatched delimiter: ]
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
+nil
+clj꞉user꞉> 
+nil
+clj꞉user꞉> 
+(1 2 3 4)
+clj꞉user꞉> 
+(1 2 3 4)
+clj꞉user꞉> 
+(1 4 3 2)
+clj꞉user꞉> 
+([:one 1] [:two 2] [:three 3] [:four 4])
+clj꞉user꞉> 
+clojure.lang.PersistentList
+clj꞉user꞉> 
+clojure.lang.PersistentVector$ChunkedSeq
+clj꞉user꞉> 
+clojure.lang.APersistentMap$KeySeq
+clj꞉user꞉> 
+clojure.lang.PersistentArrayMap$Seq
+clj꞉user꞉> 
+nil
+clj꞉user꞉> 
+nil
+clj꞉user꞉> 
+nil
+clj꞉user꞉> 
+nil
+clj꞉user꞉> 
+(1 2 3 4)
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
+(1 2 3 4)
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
+(1 4 3 2)
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
+([:one 1] [:two 2] [:three 3] [:four 4])
+clj꞉user꞉> 
+([:one 1] [:two 2] [:three 3] [:four 4])
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
+; Execution error (ArityException) at user/eval2116 (REPL:21).
+; Wrong number of args (3) passed to: clojure.lang.PersistentVector
+clj꞉user꞉> 
+4
+clj꞉user꞉> 
