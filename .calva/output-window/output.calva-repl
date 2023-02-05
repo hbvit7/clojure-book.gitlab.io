@@ -106,3 +106,49 @@ clj꞉user꞉> 
 clj꞉user꞉> 
 4
 clj꞉user꞉> 
+; Syntax error compiling def at (lazy_sequence_iterate.clj:9:1).
+; Too many arguments to def
+clj꞉user꞉> 
+; Syntax error (IllegalArgumentException) compiling . at (lazy_sequence_iterate.clj:10:3).
+; No matching method pow found taking 1 args for class java.lang.Math
+clj꞉user꞉> 
+#'user/squared
+clj꞉user꞉> 
+(squared 3)
+9.0
+clj꞉user꞉> 
+#'user/all-squares
+clj꞉user꞉> 
+; Error printing return value (IllegalArgumentException) at clojure.lang.RT/seqFrom (RT.java:557).
+; Don't know how to create ISeq from: java.lang.Double
+clj꞉user꞉> 
+; Syntax error macroexpanding clojure.core/defn at (lazy_sequence_iterate.clj:12:1).
+; squared - failed: vector? at: [:fn-tail :arity-n :bodies :params] spec: :clojure.core.specs.alpha/param-list
+; (squared 5) - failed: vector? at: [:fn-tail :arity-1 :params] spec: :clojure.core.specs.alpha/param-list
+clj꞉user꞉> 
+#'user/all-squares
+clj꞉user꞉> 
+(5 25.0 625.0)
+clj꞉user꞉> 
+#'user/multiply-by-5
+clj꞉user꞉> 
+('user/multiply-by-5 10)
+nil
+clj꞉user꞉> 
+#'user/multiply-by-5
+clj꞉user꞉> 
+nil
+clj꞉user꞉> 
+(multiply-by-5 10)
+50
+clj꞉user꞉> 
+#'user/multiples-of-5
+clj꞉user꞉> 
+(5 25 125 625 3125)
+clj꞉user꞉> 
+#'user/squared
+clj꞉user꞉> 
+#'user/squares
+clj꞉user꞉> 
+(5 25.0 625.0)
+clj꞉user꞉> 

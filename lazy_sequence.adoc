@@ -1,6 +1,16 @@
 == Lazy Sequence
 
+Some sequences are evaluated only when they need to be evaluated, these are called lazy sequence. For example you can very easily create a lazy sequence of infinite numbers, or any other thing and your computer won't crash.
+
+It's like this, when I say infinite, your brain doesn't crash, it just knows the concept of infinity and how it would fit into mathematics, when you need to use it in mathematics say in calculus, you still are able to apply and use it.
+
 === repeat
+
+:file-name: lazy_sequence_repeat.clj
+
+include::use_code_note.adoc[]
+
+So let's take a look at `repeat` function
 
 [source, clojure]
 ----
@@ -38,6 +48,10 @@
 ----
 
 === cycle
+
+:file-name: lazy_sequence_cycle.clj
+
+include::use_code_note.adoc[]
 
 [source, clojure]
 ----
@@ -86,6 +100,10 @@
 ----
 
 === iterate
+
+:file-name: lazy_sequence_iterate.clj
+
+include::use_code_note.adoc[]
 
 [source, clojure]
 ----
