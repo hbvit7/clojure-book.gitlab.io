@@ -7284,46 +7284,213 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="sect1">
 <h2 id="_lazy_sequence">13. Lazy Sequence</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Some sequences are evaluated only when they need to be evaluated, these are called lazy sequence. For example you can very easily create a lazy sequence of infinite numbers, or any other thing and your computer won&#8217;t crash.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s like this, when I say infinite, your brain doesn&#8217;t crash, it just knows the concept of infinity and how it would fit into mathematics, when you need to use it in mathematics say in calculus, you still are able to apply and use it.</p>
+</div>
 <div class="sect2">
 <h3 id="_repeat">13.1. repeat</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/lazy_sequence_repeat.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/lazy_sequence_repeat.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>So let&#8217;s take a look at <code>repeat</code> function. Take a look at the code below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In the above code, we are creating a variable named <code>multiverse</code> which has many <code>"universe"</code> in it, theoretically it is infinite. So treating it as a sequence, let&#8217;s take the first element from it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">multiverse</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"universe"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And we get <code>"universe"</code>. Now let&#8217;s take 5 elements from it:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">take</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="n">multiverse</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>("universe" "universe" "universe" "universe" "universe")</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We get 5 universes. Let&#8217;s take the <code>rest</code> from it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; (rest multiverse) ;; doesn't seem to work</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>And it throws an error, how can you get get rest of infinite universes any way?</p>
+</div>
+<div class="paragraph">
+<p>Similarly <code>last</code> too throws error, how can you get the last element of infinite sequence?:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; (last multiverse) ;; doesn't seem to work</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s get the 10,000<sup>th</sup> multiverse:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="mi">10</span><span class="n">,000</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"universe"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s get the 100<sup>th</sup> multiverse:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"universe"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s not that repeat creates just infinite sequence, we can create finite sequence by telling Clojure how many times to repeat. the code below only creates 5 <code>"universe"</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">"universe"</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>("universe" "universe" "universe" "universe" "universe")</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If we try to access the 7<sup>th</sup> element, it throws an exception:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">"universe"</span><span class="p">)</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>; Execution error (IndexOutOfBoundsException) at user/eval2056 (REPL:11).
+; null</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Whereas, since there are only 5 elements in <code>(repeat 5 `"unoverse")</code>, the code below only retrieves the 4<sup>th</sup> element, so it works.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">nth</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">"universe"</span><span class="p">)</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"universe"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since <code>(repeat 5 "universe")</code> has finite elements <code>rest</code> works on it without raising any exceptions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>("universe" "universe" "universe" "universe"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>similarly <code>last</code> too works on it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">last</span><span class="w"> </span><span class="p">(</span><span class="nb">repeat</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="s">"universe"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>"universe"</pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_cycle">13.2. cycle</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/lazy_sequence_cycle.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/lazy_sequence_cycle.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">multiverse</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle</span><span class="w"> </span><span class="p">[</span><span class="s">"universe"</span><span class="w"> </span><span class="s">"antiverse"</span><span class="p">]))</span></code></pre>
@@ -7373,6 +7540,18 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="sect2">
 <h3 id="_iterate">13.3. iterate</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this section you can use this code <a href="https://gitlab.com/clojure-book/code/-/raw/master/lazy_sequence_iterate.clj" class="bare">https://gitlab.com/clojure-book/code/-/raw/master/lazy_sequence_iterate.clj</a>, copy and paste lines in it one by one in your REPL that either runs in your terminal or the ones that is integrated with your IDE.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">all-numbers</span><span class="w"> </span><span class="p">(</span><span class="nb">iterate</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span></code></pre>
