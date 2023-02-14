@@ -9,12 +9,65 @@ include::use_code_note.adoc[]
 (def all-numbers (iterate inc 1))
 ----
 
+Output
+
+----
+#'user/all-numbers
+----
+
 [source, clojure]
 ----
 (nth all-numbers 24)
+----
+
+Output
+
+----
+25
 ----
 
 [source, clojure]
 ----
 (take 10 all-numbers)
 ----
+
+Output
+
+----
+(1 2 3 4 5 6 7 8 9 10)
+----
+
+[source, clojure]
+----
+(defn squared [num]
+  (Math/pow num, 2))
+----
+
+Output
+
+----
+#'user/squared
+----
+
+[source, clojure]
+----
+(def squares (iterate squared 5))
+----
+
+Output
+
+----
+#'user/squares
+----
+
+[source, clojure]
+----
+(take 3 squares)
+----
+
+Output
+
+----
+(5 25.0 625.0)
+----
+
