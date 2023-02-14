@@ -1,0 +1,20 @@
+=== iterate
+
+:file-name: lazy_sequence_iterate.clj
+
+include::use_code_note.adoc[]
+
+[source, clojure]
+----
+(def all-numbers (iterate inc 1))
+----
+
+[source, clojure]
+----
+(nth all-numbers 24)
+----
+
+[source, clojure]
+----
+(take 10 all-numbers)
+----

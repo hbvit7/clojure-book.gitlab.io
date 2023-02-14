@@ -1,0 +1,105 @@
+=== cycle
+
+:file-name: lazy_sequence_cycle.clj
+
+include::use_code_note.adoc[]
+
+[source, clojure]
+----
+(def multiverse (cycle ["universe" "antiverse"]))
+----
+
+Output
+
+----
+#'user/multiverse
+----
+
+[source, clojure]
+----
+(first multiverse)
+----
+
+Output
+
+----
+"universe"
+----
+
+[source, clojure]
+----
+(second multiverse)
+----
+
+Output
+
+----
+"antiverse"
+----
+
+[source, clojure]
+----
+(take 5 multiverse)
+----
+
+Output
+
+----
+("universe" "antiverse" "universe" "antiverse" "universe")
+----
+
+[source, clojure]
+----
+(nth multiverse 2000)
+----
+
+Output
+
+----
+"universe"
+----
+
+[source, clojure]
+----
+(nth multiverse 1783)
+----
+
+Output
+
+----
+"antiverse"
+----
+
+[source, clojure]
+----
+(def tiffin-items
+  (cycle ["idli", "vadai", "dosai", "sambar"]))
+----
+
+Output
+
+----
+#'user/tiffin-items
+----
+
+[source, clojure]
+----
+(nth tiffin-items 5)
+----
+
+Output
+
+----
+"vadai"
+----
+
+[source, clojure]
+----
+(take 10 tiffin-items)
+----
+
+Output
+
+----
+("idli" "vadai" "dosai" "sambar" "idli" "vadai" "dosai" "sambar" "idli" "vadai")
+----
