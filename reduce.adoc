@@ -1,0 +1,33 @@
+=== reduce
+
+[source, clojure]
+----
+(reduce + [1 2 3 4])
+----
+
+[source, clojure]
+----
+(reduce * [1 2 3 4])
+----
+
+[source, clojure]
+----
+(defn add [a b]
+  (+ a b))
+----
+
+[source, clojure]
+----
+(reduce add [1 2 3 4])
+----
+
+[source, clojure]
+----
+(defn multiply [a b]
+  (* a b))
+----
+
+[source, clojure]
+----
+(reduce multiply [1 2 3 4])
+----

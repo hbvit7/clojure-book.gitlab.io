@@ -1,0 +1,34 @@
+=== filter
+
+[source, clojure]
+----
+(filter odd? (range 1 11))
+----
+
+[source, clojure]
+----
+(filter even? (range 1 11))
+----
+
+[source, clojure]
+----
+(filter #(> % 5) (range 1 11))
+----
+
+[source, clojure]
+----
+(filter #(> 5 %) (range 1 11))
+----
+
+[source, clojure]
+----
+(filter (fn [x] (> x 5)) (range 1 11))
+----
+
+[source, clojure]
+----
+(defn greater-than-5 [x]
+  (> x 5))
+
+(filter greater-than-5 (range 1 11))
+----
