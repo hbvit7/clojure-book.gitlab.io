@@ -34,3 +34,15 @@ clj꞉user꞉> 
 clj꞉user꞉> 
 ("idli" "vadai" "dosai" "sambar" "idli" "vadai" "dosai" "sambar" "idli" "vadai")
 clj꞉user꞉> 
+#'user/all-numbers
+clj꞉user꞉> 
+25
+clj꞉user꞉> 
+(1 2 3 4 5 6 7 8 9 10)
+clj꞉user꞉> 
+#'user/squared
+clj꞉user꞉> 
+#'user/squares
+clj꞉user꞉> 
+(5 25.0 625.0)
+clj꞉user꞉> 
