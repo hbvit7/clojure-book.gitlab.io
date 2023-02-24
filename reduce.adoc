@@ -5,9 +5,21 @@
 (reduce + [1 2 3 4])
 ----
 
+Output
+
+----
+10
+----
+
 [source, clojure]
 ----
 (reduce * [1 2 3 4])
+----
+
+Output
+
+----
+24
 ----
 
 [source, clojure]
@@ -16,9 +28,21 @@
   (+ a b))
 ----
 
+Output
+
+----
+#'user/add
+----
+
 [source, clojure]
 ----
 (reduce add [1 2 3 4])
+----
+
+Output
+
+----
+10
 ----
 
 [source, clojure]
@@ -27,7 +51,19 @@
   (* a b))
 ----
 
+Output
+
+----
+#'user/multiply
+----
+
 [source, clojure]
 ----
 (reduce multiply [1 2 3 4])
+----
+
+Output
+
+----
+24
 ----

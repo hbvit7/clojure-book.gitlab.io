@@ -4,14 +4,35 @@
 ----
 (map inc [1 2 3])
 ----
+
+Output
+
+----
+(2 3 4)
+----
+
 [source, clojure]
 ----
 (map (fn [x] (+ x 1)) [1 2 3])
 ----
+
+Output
+
+----
+(2 3 4)
+----
+
 [source, clojure]
 ----
 (map #(+ % 1) [1 2 3])
 ----
+
+Output
+
+----
+(2 3 4)
+----
+
 
 [source, clojure]
 ----
@@ -20,10 +41,34 @@
           (Math/pow y 2))) [1 2 3] [2 3 4])
 ----
 
+Output
+
+----
+(5.0 13.0 25.0)
+----
+
+
 [source, clojure]
 ----
 (defn double-it [x]
   (* x 2))
+----
 
+Output
+
+----
+#'user/double-it
+----
+
+
+[source, clojure]
+----
 (map double-it [1 2 3])
 ----
+
+Output
+
+----
+(2 4 6)
+----
+

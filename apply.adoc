@@ -6,10 +6,23 @@
 (+ 1 2 3 4)
 ----
 
+Output
+
+----
+10
+----
+
 
 [source, clojure]
 ----
 (+ [1 2 3 4]) ;; error
+----
+
+Output
+
+----
+; Execution error (ClassCastException) at java.lang.Class/cast (Class.java:3921).
+; Cannot cast clojure.lang.PersistentVector to java.lang.Number
 ----
 
 
@@ -18,10 +31,22 @@
 (apply + [1 2 3 4])
 ----
 
+Output
+
+----
+10
+----
+
 
 [source, clojure]
 ----
 (apply + '(1 2 3 4))
+----
+
+Output
+
+----
+10
 ----
 
 [source, clojure]
@@ -31,9 +56,23 @@
   (println "Argument 2:" arg2))
 ----
 
+Output
+
+----
+#'user/my-function
+----
+
 [source, clojure]
 ----
 (my-function "one" "two")
+----
+
+Output
+
+----
+Argument 1: one
+Argument 2: two
+nil
 ----
 
 
@@ -42,9 +81,24 @@
 (my-function ["one" "two"]) ;; error
 ----
 
+Output
+
+----
+; Execution error (ArityException) at user/eval2061 (REPL:17).
+; Wrong number of args (1) passed to: user/my-function
+----
+
 
 [source, clojure]
 ----
 (apply my-function ["one" "two"])
+----
+
+Output
+
+----
+Argument 1: one
+Argument 2: two
+nil
 ----
 
