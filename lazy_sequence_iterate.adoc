@@ -4,6 +4,8 @@
 
 include::use_code_note.adoc[]
 
+`iterate` is a very interesting function I found in Clojure, let's see an example:
+
 [source, clojure]
 ----
 (def all-numbers (iterate inc 1))
@@ -14,6 +16,8 @@ Output
 ----
 #'user/all-numbers
 ----
+
+In the above code we have `(iterate inc 1)`, that is `iterate` takes `inc` as first argument and as a second takes a value. This is been assigned to `all-numbers`. Now let's look what will happen if we take the 25th element:
 
 [source, clojure]
 ----
@@ -26,6 +30,10 @@ Output
 25
 ----
 
+Doesn't the output look like we are applying increment `inc` on 1 24 times?
+
+Now let's take first 10 elements:
+
 [source, clojure]
 ----
 (take 10 all-numbers)
@@ -36,6 +44,10 @@ Output
 ----
 (1 2 3 4 5 6 7 8 9 10)
 ----
+
+Look's like the first element 1 is the value we passed to iterate, and looks like 2 is `(inc 1)`, 3 is `(inc (inc 1))`. This is the thing that iterate documentation says https://clojuredocs.org/clojure.core/iterate.
+
+Now let's create a function that squares a number:
 
 [source, clojure]
 ----
@@ -49,6 +61,8 @@ Output
 #'user/squared
 ----
 
+Now let's iterate through squares of 5:
+
 [source, clojure]
 ----
 (def squares (iterate squared 5))
@@ -60,6 +74,8 @@ Output
 #'user/squares
 ----
 
+Now let's take the first three squares.
+
 [source, clojure]
 ----
 (take 3 squares)
@@ -70,4 +86,12 @@ Output
 ----
 (5 25.0 625.0)
 ----
+
+This is the explanation:
+
+First `5` in `(5 25.0 625.0)` is the second argument we pass to `iterate` in `(def squares (iterate squared 5))`, its returned as it is.
+
+The second `25` is nothing but the first iteration `(square 5)`.
+
+The third `625` is the second iteration `(square (square 5))`. 
 
