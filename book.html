@@ -8089,6 +8089,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="sect2">
 <h3 id="_reduce">14.3. reduce</h3>
+<div class="paragraph">
+<p><code>reduce</code> reduces a sequence to a single value, or object depending on the function you pass. Take the example below:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">+</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
@@ -8102,6 +8105,20 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>10</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>To <code>reduce</code> we pass function <code>+</code> and as a second argument a sequence <code>[1 2 3 4]</code>. You can think <code>reduce</code> rewrites the code as follows</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This reduces the sequence to a single number 10.</p>
+</div>
+<div class="paragraph">
+<p>Here is a way to multiply a sequence using reduce:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="nb">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
@@ -8114,6 +8131,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>24</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s define our own function <code>add</code> which accepts two numbers and returns the result:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8129,6 +8149,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>#'user/add</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>We can use it in reduce, just as we used <code>+</code> before:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">reduce</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
@@ -8141,6 +8164,17 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>10</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>We can imaging reduce rewrites the above code as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">(</span><span class="nf">add</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Similarly I wrote my own <code>multiply</code> function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8155,6 +8189,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>#'user/multiply</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>and used it with <code>reduce</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">

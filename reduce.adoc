@@ -1,5 +1,7 @@
 === reduce
 
+`reduce` reduces a sequence to a single value, or object depending on the function you pass. Take the example below:
+
 [source, clojure]
 ----
 (reduce + [1 2 3 4])
@@ -11,6 +13,17 @@ Output
 10
 ----
 
+To `reduce` we pass function `+` and as a second argument a sequence `[1 2 3 4]`. You can think `reduce` rewrites the code as follows
+
+[source, clojure]
+----
+(+ 4 (+ 3 (+ 1 2)))
+----
+
+This reduces the sequence to a single number 10.
+
+Here is a way to multiply a sequence using reduce:
+
 [source, clojure]
 ----
 (reduce * [1 2 3 4])
@@ -21,6 +34,8 @@ Output
 ----
 24
 ----
+
+Let's define our own function `add` which accepts two numbers and returns the result:
 
 [source, clojure]
 ----
@@ -34,6 +49,8 @@ Output
 #'user/add
 ----
 
+We can use it in reduce, just as we used `+` before:
+
 [source, clojure]
 ----
 (reduce add [1 2 3 4])
@@ -44,6 +61,15 @@ Output
 ----
 10
 ----
+
+We can imaging reduce rewrites the above code as shown:
+
+[source, clojure]
+----
+(add 4 (add 3 (add 1 2)))
+----
+
+Similarly I wrote my own `multiply` function:
 
 [source, clojure]
 ----
@@ -56,6 +82,8 @@ Output
 ----
 #'user/multiply
 ----
+
+and used it with `reduce`:
 
 [source, clojure]
 ----
