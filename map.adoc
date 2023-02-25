@@ -147,7 +147,7 @@ Output
 #'user/double-it
 ----
 
-I ise it in map to double the numbers in a vector:
+Let's use it in map to double the numbers in a vector:
 
 [source, clojure]
 ----
