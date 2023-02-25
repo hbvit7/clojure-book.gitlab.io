@@ -1,5 +1,6 @@
 === apply
 
+Let's teke the `+` function, it can add numbers like this:
 
 [source, clojure]
 ----
@@ -11,6 +12,8 @@ Output
 ----
 10
 ----
+
+But if you give it a sequence, it would fail:
 
 
 [source, clojure]
@@ -25,6 +28,8 @@ Output
 ; Cannot cast clojure.lang.PersistentVector to java.lang.Number
 ----
 
+Now let's pass this `+` and the sequence to `apply` function:
+
 
 [source, clojure]
 ----
@@ -37,6 +42,14 @@ Output
 10
 ----
 
+And it works. That's because uou can imagine apply rewrites the code as shown:
+
+[source, clojure]
+----
+(+ 1 2 3 4)
+----
+
+A sequence could be avector, list or map, so below we are using it on a list of numbers:
 
 [source, clojure]
 ----
@@ -48,6 +61,8 @@ Output
 ----
 10
 ----
+
+Let me write a function that receives two arguments and all it does is to print it:
 
 [source, clojure]
 ----
@@ -62,6 +77,8 @@ Output
 #'user/my-function
 ----
 
+I can use this function by giving two arguments to it:
+
 [source, clojure]
 ----
 (my-function "one" "two")
@@ -75,6 +92,7 @@ Argument 2: two
 nil
 ----
 
+If the argument is a vecor / sequence containing two elements, this would fail:
 
 [source, clojure]
 ----
@@ -88,6 +106,7 @@ Output
 ; Wrong number of args (1) passed to: user/my-function
 ----
 
+All we need to do is to pass the function and sequence to `apply` for it to work:
 
 [source, clojure]
 ----
