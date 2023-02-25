@@ -7777,6 +7777,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_map">14.1. map</h3>
+<div class="paragraph">
+<p>Let&#8217;s say you have a function that acts on an argument, say <code>inc</code>, <code>(inc 1)</code> gives 2. Now if I want to make the <code>inc</code> work on a collection or sequence, how do I do it? Simple, pass it to the <code>map</code>, then followed by collection as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="nb">inc</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
@@ -7789,6 +7792,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>(2 3 4)</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>As you can see in the above case <code>map</code> makes each element in <code>[1 2 3]</code> be acted on by the inc method, collects the output in a  list and returns it. So you get <code>(2 3 4)</code> as output.</p>
+</div>
+<div class="paragraph">
+<p>In the case below I pass an anonymous function <code>(fn [x] (+ x 1))</code> to <code>map</code> and make it act upon <code>[1 2 3]</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7803,6 +7812,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>(2 3 4)</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>It works just fine, it&#8217;s just to show that you need not have a predefined function and in Clojure you can build small functions just like that.</p>
+</div>
+<div class="paragraph">
+<p>Execute the code below, it works same as the previous examples above:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
@@ -7815,6 +7830,42 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>(2 3 4)</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>There is another way to write anonymous function <code>(fn [x] (+ x 1))</code>, it can be written as <code>#(+ % 1)</code>. You can define the function content between <code>#()</code>, the <code>%</code> signifies the argument been passed to the function, and we want to add 1 to it, so it becomes <code>#(+ % 1)</code>. Isn&#8217;t this more better than <code>(fn [x] (+ x 1))</code>?</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say we have a function that takes two arguments as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In tha above case the function takes two arguments and returns it&#8217;s sun of squares. Now how to make this function work with sequence? Simple pass it to map as shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+          </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="mi">2</span><span class="p">))))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next pass the sequence for the first argument, in this case it&#8217;s <code>x</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+       </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+          </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next pass the sequence for the second argument, in this case its <code>y</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7831,6 +7882,61 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <pre>(5.0 13.0 25.0)</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>So the above code works as follows, <code>map</code> takes the first element from <code>[1 2 3]</code>, it&#8217;s <code>1</code> in this case and the first element from <code>[2 3 4]</code>, it&#8217;s <code>2</code> in this case and passes it to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So this function suns and squares it and returns it as <code>5.0</code>, the map collects it in a list and it becomes <code>(5.0)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Then <code>map</code> take the second argument from <code>[1 2 3]</code> which is <code>2</code>, and <code>[2 3 4]</code> which is <code>3</code> and passes it to the function, and the function returns <code>13.0</code>, which is appended to the list making it <code>(5.0 13.0)</code>, similarly the same is performed on third arguments of the passed sequences and the result <code>25.0</code> is appended to the list and it becomes <code>(5.0 13.0 25.0)</code>, this final list is returned out.</p>
+</div>
+<div class="paragraph">
+<p>In the esample below I have a function called sum-of-squares:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">sum-of-squares</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+     </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Which is nothing but giving a name to this anonymous function:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">fn</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+    </span><span class="p">(</span><span class="nf">Math/pow</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="mi">2</span><span class="p">)))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>we had used previously. We use the name <code>sum-of-squares</code> with map and pass two sequences for <code>x</code> and <code>y</code> and get the same result as shown below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">map</span><span class="w"> </span><span class="n">sum-of-squares</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(5.0 13.0 25.0)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Below I have defined a function called <code>double-it</code>, which doubles the number passed:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">defn</span><span class="w"> </span><span class="n">double-it</span><span class="w"> </span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="w">
@@ -7844,6 +7950,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="content">
 <pre>#'user/double-it</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>I ise it in map to double the numbers in a vector:</p>
 </div>
 <div class="listingblock">
 <div class="content">
