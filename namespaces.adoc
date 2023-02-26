@@ -1,5 +1,9 @@
 == namespaces
 
+A same word could mean different things, for example if you say book in a hotel it means one  thing, the same bok in a library means another, and in a police complaint a book means something else. Same word different meaning. A page in  a book is different, from a page in Operating System, which is different from Page the last name of a person.
+
+In order to separate these differences in coding, Clojure provides a a thing called namespace. Look at the program `name_space.clj` below, type it and execute it.
+
 [source, clojure]
 ----
 ;; name_space.clj
@@ -14,7 +18,7 @@
 
 (ns engineer)
 
-(def about-me "I apply acience.")
+(def about-me "I apply science.")
 
 (println lawyer/about-me)
 (println politician/about-me)
@@ -25,6 +29,8 @@
 (println about-me)
 ----
 
+Execute it using the `clj` as shown: 
+
 ----
 $ clj name_space.clj
 ----
@@ -32,9 +38,131 @@ $ clj name_space.clj
 Output
 
 ----
-WARNING: Implicit use of clojure.main with options is deprecated, use -M
 I never speak truth.
 I loot the nation.
-I apply acience.
+I apply science.
 I loot the nation.
 ----
+
+Now let's see how the above program works. Look at this code:
+
+[source, clojure]
+----
+(ns lawyer)
+
+(def about-me "I never speak truth.")
+
+(ns politician)
+
+(def about-me "I loot the nation.")
+
+(ns engineer)
+
+(def about-me "I apply science.")
+----
+
+First we create a namespace called `lawyer`
+
+[source, clojure]
+----
+(ns lawyer)
+----
+
+In it we define a variable called `about-me` having some value:
+
+[source, clojure]
+----
+(ns lawyer)
+
+(def about-me "I never speak truth.")
+----
+
+Next we define a name space called `politician` with a variable called about me:
+
+[source, clojure]
+----
+(ns lawyer)
+
+(def about-me "I never speak truth.")
+
+(ns politician)
+
+(def about-me "I loot the nation.")
+----
+
+One must not think the `about-me` in `lawyer` namespaces is overwritten by the `(def about-me "I loot the nation.")`, since these are different name spaces, the lawyer still does not speak the truth.
+
+Now we create another name space called `engineer` and we define another `about-me` under that name space:
+
+[source, clojure]
+----
+(ns lawyer)
+
+(def about-me "I never speak truth.")
+
+(ns politician)
+
+(def about-me "I loot the nation.")
+
+(ns engineer)
+
+(def about-me "I apply science.")
+----
+
+Now let's see how to access these three different `about-me`'s in different namespaces.
+
+We are in `engineer` namespace now, so in order to access `about-me` in lawyer we need to use `lawyer/about-me` as shown below in the last line of the code snippet:
+
+[source, clojure]
+----
+(ns engineer)
+
+(def about-me "I apply science.")
+
+(println lawyer/about-me)
+----
+
+This would print out `I never speak truth.`. Similarly look at the last line in code snippet below:
+
+[source, clojure]
+----
+(ns engineer)
+
+(def about-me "I apply science.")
+
+(println lawyer/about-me)
+(println politician/about-me)
+----
+
+We are printing `politician/about-me`, this would print out value of `about-me` in `politician` name space, and hence we will get `I loot the nation.` as output on terminal.
+
+Since we are in `engineer` namespace, there is no need for using `engineer/about`, though using that way will make the code more clear. Look at the last line below snippet:
+
+[source, clojure]
+----
+(ns engineer)
+
+(def about-me "I apply science.")
+
+(println lawyer/about-me)
+(println politician/about-me)
+(println about-me)
+----
+
+This `about-me` since its been called in `engineer` namespace, prints out `I apply science.`.
+
+Let's now switch namespace, to politicians using the following line:
+
+[source, clojure]
+----
+(ns politician)
+----
+
+Now since we have switched to `politician` name space, when we print out `about-me`
+
+[source, clojure]
+----
+(println about-me)
+----
+
+It prints out `I loot the nation.` once again.

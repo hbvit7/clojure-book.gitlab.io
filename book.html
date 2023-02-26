@@ -9226,6 +9226,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="sect1">
 <h2 id="_namespaces">18. namespaces</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>A same word could mean different things, for example if you say book in a hotel it means one  thing, the same bok in a library means another, and in a police complaint a book means something else. Same word different meaning. A page in  a book is different, from a page in Operating System, which is different from Page the last name of a person.</p>
+</div>
+<div class="paragraph">
+<p>In order to separate these differences in coding, Clojure provides a a thing called namespace. Look at the program <code>name_space.clj</code> below, type it and execute it.</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; name_space.clj</span><span class="w">
@@ -9240,7 +9246,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 
 </span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">engineer</span><span class="p">)</span><span class="w">
 
-</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply acience."</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply science."</span><span class="p">)</span><span class="w">
 
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">lawyer/about-me</span><span class="p">)</span><span class="w">
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">politician/about-me</span><span class="p">)</span><span class="w">
@@ -9250,6 +9256,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">about-me</span><span class="p">)</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Execute it using the <code>clj</code> as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9261,12 +9270,149 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>WARNING: Implicit use of clojure.main with options is deprecated, use -M
-I never speak truth.
+<pre>I never speak truth.
 I loot the nation.
-I apply acience.
+I apply science.
 I loot the nation.</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s see how the above program works. Look at this code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">lawyer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I never speak truth."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">politician</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I loot the nation."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">engineer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply science."</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>First we create a namespace called <code>lawyer</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">lawyer</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In it we define a variable called <code>about-me</code> having some value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">lawyer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I never speak truth."</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next we define a name space called <code>politician</code> with a variable called about me:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">lawyer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I never speak truth."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">politician</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I loot the nation."</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One must not think the <code>about-me</code> in <code>lawyer</code> namespaces is overwritten by the <code>(def about-me "I loot the nation.")</code>, since these are different name spaces, the lawyer still does not speak the truth.</p>
+</div>
+<div class="paragraph">
+<p>Now we create another name space called <code>engineer</code> and we define another <code>about-me</code> under that name space:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">lawyer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I never speak truth."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">politician</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I loot the nation."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">engineer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply science."</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s see how to access these three different `about-me&#8217;s in different namespaces.</p>
+</div>
+<div class="paragraph">
+<p>We are in <code>engineer</code> namespace now, so in order to access <code>about-me</code> in lawyer we need to use <code>lawyer/about-me</code> as shown below in the last line of the code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">engineer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply science."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">lawyer/about-me</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This would print out <code>I never speak truth.</code>. Similarly look at the last line in code snippet below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">engineer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply science."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">lawyer/about-me</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">politician/about-me</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We are printing <code>politician/about-me</code>, this would print out value of <code>about-me</code> in <code>politician</code> name space, and hence we will get <code>I loot the nation.</code> as output on terminal.</p>
+</div>
+<div class="paragraph">
+<p>Since we are in <code>engineer</code> namespace, there is no need for using <code>engineer/about</code>, though using that way will make the code more clear. Look at the last line below snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">engineer</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">about-me</span><span class="w"> </span><span class="s">"I apply science."</span><span class="p">)</span><span class="w">
+
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">lawyer/about-me</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">politician/about-me</span><span class="p">)</span><span class="w">
+</span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">about-me</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <code>about-me</code> since its been called in <code>engineer</code> namespace, prints out <code>I apply science.</code>.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s now switch namespace, to politicians using the following line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="n">politician</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now since we have switched to <code>politician</code> name space, when we print out <code>about-me</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="n">about-me</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It prints out <code>I loot the nation.</code> once again.</p>
 </div>
 </div>
 </div>
