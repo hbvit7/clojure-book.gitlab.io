@@ -197,11 +197,13 @@ Output
 240
 ----
 
-=== Using objects with functions
+=== Using Records with functions
 
 :file-name: record_2.clj
 
 include::use_code_note.adoc[]
+
+Records can be passed to functions that knows how to handle it. Below we create a record called `Car`.
 
 [source, clojure]
 ----
@@ -214,6 +216,8 @@ Output
 user.Car
 ----
 
+We create a variable named `tata-nano` which is an instance of `Car`:
+
 [source, clojure]
 ----
 (def tata-nano (->Car "Tata Nano" 120))
@@ -224,6 +228,8 @@ Output
 ----
 #'user/tata-nano
 ----
+
+We have now code a function that can work with the record, let's nae it as `describe`:
 
 [source, clojure]
 ----
@@ -238,6 +244,18 @@ Output
 #'user/describe
 ----
 
+If you see `describe`, it accepts a argument named `vehicle`, let's look at the body of the function:
+
+[source, clojure]
+----
+(let [{name :name top-speed :top-speed} vehicle]
+    (str name " has a top speed of " top-speed "Km/hr."))
+----
+
+If you see we are destructing car in `let [{name :name top-speed :top-speed} vehicle]`, in this code snippet, `:name` of the passed `Car` record is assigned to variable named `name` and `:top-speed` is assigned to variable named `top-speed`. All we have to do now is to return out a beautifully formatted string that describes the car, which is done using this `(str name " has a top speed of " top-speed "Km/hr.")` piece of coe, which embeds `name` and `top-speed` into a description string.
+
+Now let's use the `describe` on instance of `Car`:
+
 [source, clojure]
 ----
 (describe tata-nano)
@@ -248,6 +266,8 @@ Output
 ----
 "Tata Nano has a top speed of 120Km/hr."
 ----
+
+now let's create a new record called `Ship`
 
 [source, clojure]
 ----
@@ -260,6 +280,8 @@ Output
 user.Ship
 ----
 
+Let's create a new ship instance called `artic-explorer`:
+
 [source, clojure]
 ----
 (def artic-explorer (->Ship "Artic Explorer" 10))
@@ -270,6 +292,8 @@ Output
 ----
 #'user/artic-explorer
 ----
+
+Let's write a function called `describe-ship`, that describes a ship:
 
 [source, clojure]
 ----
@@ -284,6 +308,8 @@ Output
 #'user/describe-ship
 ----
 
+Let's use `describe-ship` on `artic-explorer`
+
 [source, clojure]
 ----
 (describe-ship artic-explorer)
@@ -295,11 +321,18 @@ Output
 "Artic Explorer has a top speed of 10 knots."
 ----
 
+It works!
+
 === Protocols
 
 :file-name: protocol.clj
 
 include::use_code_note.adoc[]
+
+In last section we saw a way to describe about a `Car` using `describe`, and describe a ship using `describe-ship` function. Won't it be great for a programmer if he could just use one `describe` function to describe about a `Ship` and a `Car`? We will see how to do this with protocols here.
+
+
+So let's create a protocol called `Describe` as shown:
 
 [source, clojure]
 ----
@@ -312,6 +345,8 @@ Output
 ----
 Describe
 ----
+
+Now look at the code below:
 
 [source, clojure]
 ----
@@ -327,6 +362,38 @@ Output
 ----
 user.Car
 ----
+
+In it we create a record called car:
+
+[source, clojure]
+----
+(defrecord Car [name top-speed])
+----
+
+Next we specify the `Describe` protocol in it:
+
+[source, clojure]
+----
+(defrecord Car [name top-speed]
+  Describe)
+----
+
+Then we write the definition of `describe` function for the `Car`:
+
+[source, clojure]
+----
+(defrecord Car [name top-speed]
+  Describe
+  (describe [this]
+    (let [{name :name top-speed :top-speed} this]
+      (str name " has a top speed of " top-speed "Km/hr."))))
+----
+
+Note how there is no `defn` above. It just has the function name `describe`, followed by argument `this`, and in the body of describe we destructure `this` and return a sting description.
+
+The `this` in examples in this section is not a special keyword that needs to be used in Clojure, it is just name given to a variable, that's it.
+
+Similar to car to `Car`, we write a `describe` function for `Ship` record as shown:
 
 [source, clojure]
 ----
@@ -343,6 +410,97 @@ Output
 user.Ship
 ----
 
+Now let's create a instance of `Car` called `tata-nano`:
+
+[source, clojure]
+----
+(def tata-nano (->Car "Tata Nano" 120))
+----
+
+Output
+
+----
+#'user/tata-nano
+----
+
+Let's create instance of `Ship` called `artic-explorer`:
+
+[source, clojure]
+----
+(def artic-explorer (->Ship "Artic Explorer" 10))
+----
+
+Output
+
+----
+#'user/artic-explorer
+----
+
+When we pass `tata-nano` to the `describe`, it knows its of type `Car` and the `describe` defined in `Car` is called:
+
+[source, clojure]
+----
+(describe tata-nano)
+----
+
+Output
+
+----
+"Tata Nano has a top speed of 120Km/hr."
+----
+
+Similarly it knows `artic-explorer` is a ship and it's own `describe` is called in the code below:
+
+[source, clojure]
+----
+(describe artic-explorer)
+----
+
+Output
+
+----
+"Artic Explorer has a top speed of 10 knots."
+----
+
+==== Extend Protocol
+
+:file-name: extend-protocol.clj
+
+include::use_code_note.adoc[]
+
+So we have a protocol `Describe`
+
+[source, clojure]
+----
+(defprotocol Describe
+  (describe [this]))
+----
+
+Output
+
+----
+Describe
+----
+
+We use it to write a function called `describe` for record `Car``
+
+[source, clojure]
+----
+(defrecord Car [name top-speed]
+  Describe
+  (describe [this]
+    (let [{name :name top-speed :top-speed} this]
+      (str name " has a top speed of " top-speed "Km/hr."))))
+----
+
+Output
+
+----
+user.Car
+----
+
+And it works:
+
 [source, clojure]
 ----
 (def tata-nano (->Car "Tata Nano" 120))
@@ -356,85 +514,15 @@ Output
 
 [source, clojure]
 ----
-(def artic-explorer (->Ship "Artic Explorer" 10))
-----
-
-Output
-
-----
-#'user/artic-explorer
-----
-
-[source, clojure]
-----
-(describe tata-nano)
-----
-
-Output
-
-----
-"Tata Nano has a top speed of 120Km/hr."
-----
-
-[source, clojure]
-----
-(describe artic-explorer)
-----
-
-Output
-
-----
-"Artic Explorer has a top speed of 10 knots."
-----
-
-:file-name: extend-protocol.clj
-
-include::use_code_note.adoc[]
-
-[source, clojure]
-----
-(defprotocol Describe
-  (describe [this]))
-----
-
-Output
-----
-
-----
-
-[source, clojure]
-----
-(defrecord Car [name top-speed]
-  Describe
-  (describe [this]
-    (let [{name :name top-speed :top-speed} this]
-      (str name " has a top speed of " top-speed "Km/hr."))))
-----
-
-Output
-----
-
-----
-
-[source, clojure]
-----
-(def tata-nano (->Car "Tata Nano" 120))
-----
-
-Output
-----
-
-----
-
-[source, clojure]
-----
 (describe tata-nano)
 ----
 
 Output
 ----
-
+"Tata Nano has a top speed of 120Km/hr.
 ----
+
+Let's say we have code written by some one else and it's about `Rocket`, and we don't want to mess up the code with our describe, but we want to extend the protocol `Describe` for it.
 
 [source, clojure]
 ----
@@ -442,9 +530,12 @@ Output
 ----
 
 Output
-----
 
 ----
+user.Rocket
+----
+
+Well, for that Clojure provides a function called `extend-protocol` that can used to extend the protocol `Describe` ash shown below:
 
 [source, clojure]
 ----
@@ -454,9 +545,43 @@ Output
 ----
 
 Output
-----
 
 ----
+nil
+----
+
+In the code above we say we want to extend protocol
+
+[source, clojure]
+----
+(extend-protocol)
+----
+
+We say that we want to extend `Describe` and we pass it as first argument:
+
+[source, clojure]
+----
+(extend-protocol Describe)
+----
+
+As a second argument we say we want to extend describe for record `Rocket`
+
+[source, clojure]
+----
+(extend-protocol Describe
+  Rocket)
+----
+
+and finally we define the `describe` function
+
+[source, clojure]
+----
+(extend-protocol Describe
+  Rocket
+   (describe [this] (str (:name this) " reaches " (:orbit this) " orbit.")))
+----
+
+Now let's create a `Rocket` called `pslv`
 
 [source, clojure]
 ----
@@ -464,9 +589,12 @@ Output
 ----
 
 Output
-----
 
 ----
+#'user/pslv
+----
+
+Let's pass it to `describe`:
 
 [source, clojure]
 ----
@@ -474,7 +602,9 @@ Output
 ----
 
 Output
-----
 
 ----
+"PSLV reaches Low Earth orbit."
+----
 
+It works!
