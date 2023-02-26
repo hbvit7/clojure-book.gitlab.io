@@ -1,5 +1,9 @@
 == Destructuring
 
+Clojure provides rich variety of data types to pack your data like list, vector, maps, set and so on. To make computations with it, you need to unpack it, put the necessary values in variables, and use thise variables for computation. This section tells you how to do it.
+
+Take a look at the program `vector_destructuring.clj` which is shown below, type it and execute it:
+
 [source, clojure]
 ----
 ;; vector_destructuring.clj
@@ -18,6 +22,26 @@ Musician is Rehmaan
 Scientist is Kalaam
 nil
 ----
+
+In the line `(def people ["Rehmaan" "Kalaam"])` we pack `"Rehmaan"` and `"Kalaam"` into vector and assign it a name `people`. Now here:
+
+[source, clojure]
+----
+(let [[musician scientist] people]
+  ;; other code goes here
+ )
+----
+
+in `let`, take a look at `[[musician scientist] people]`. Variables `musician` and `scientist` points to `people`. Clojure finds out that `people` contains `"Rehmaan"` and `"Kalaam"` and unpacks `"Rehmaan"` to `musician` and `"Kalaam"` to `scientist. Finally we print out `musician` and `scientist` using the `println` function as shown below:
+
+[source, clojure]
+----
+(let [[musician scientist] people]
+  (println "Musician is" musician)
+  (println "Scientist is" scientist))
+----
+
+Take a look at the code `vector_destructuring_2.clj` below, type it and execute it.
 
 [source, clojure]
 ----
@@ -40,6 +64,19 @@ Artist is nil
 nil
 ----
 
+In the above code we see variable `people` is assigned to a vector that contains only 2 values `["Rehmaan" "Kalaam"]`. Whereas in the let block we are trying to destructure it into three variables namely `musician`, `scientist`, and `artist` as shown:
+
+[source, clojure]
+----
+(let [[musician scientist artist] people]
+  ;; other stuff goes here
+  )
+----
+
+In this cse the first two variables, `musician` gets populated with `"Rehmaan"` and `scientist` gets populated with `"Kalaam"`, but `artist` gets `nil`. so when you print them, we get `nil` getting printed for `artist`.
+
+Now look at the code `vector_destructuring_3.clj` shown below, type it and execute it.
+
 [source, clojure]
 ----
 ;; vector_destructuring_3.clj
@@ -60,6 +97,20 @@ Scientist is Kalaam
 Artist is Hussein
 nil
 ----
+
+In th above code we see there are 4 values in `people`, while you are destructuring it into three variables as shown:
+
+
+[source, clojure]
+----
+(let [[musician scientist artist] people]
+  ;; other code goes here
+  )
+----
+
+We see that `musician` gets populated with `"Rehmaan"`, `scientist` gets populated with `"Kalaam"`, and `artist` gets populated with `"Hussein"`, but the last value in `people` that is `"Madhavan"` gets let out.
+
+in the code below:
 
 [source, clojure]
 ----
@@ -84,6 +135,10 @@ Actor is Madhavan
 nil
 ----
 
+All values in `people` gets unpacked properly into the variables `musician`, `scientist`, `artist` and `actor`.
+
+Its a convention to use underscore `_` for values we won't use, in code below we need only to use `scientist` and `actor`, for other unused values we capture it into a variable named `_`.
+
 [source, clojure]
 ----
 ;; vector_destructuring_5.clj
@@ -103,9 +158,15 @@ Actor is Madhavan
 nil
 ----
 
+This is just to denote to the humans reading code that we are not using it.
+
+Though in the above program we have destructured vector, it would work perfectly okay with list too, it's left to the reader to practice it out.
+
+Clojure also provides a way to destructure maps, look at the code `map_destructuring.clj` below. type it and execute it.
+
 [source, clojure]
 ----
-;; map_destructuring_4.clj
+;; map_destructuring.clj
 
 (def people
   {:musician "Rehmaan"
@@ -126,3 +187,29 @@ Actor is Madhavan
 nil
 ----
 
+
+So if you look at:
+
+[source, clojure]
+----
+(def people
+  {:musician "Rehmaan"
+   :scientist "Kalaam"
+   :artist "Hussein"
+   :actor "Madhavan"})
+----
+
+We have got a map of people with their profession as key word and name as string. We can destructure this map using key words as shown:
+
+[source, clojure]
+----
+(let [{scientist :scientist actor :actor} people]
+    ;; other stuff here
+  )
+----
+
+In the code above look at `[{scientist :scientist actor :actor} people]` see how `{scientist :scientist actor :actor}` points at `people`.
+
+Now take a look at `{scientist :scientist actor :actor}`, that kind of looks like a map in reverse. You have got variable `scientist` followed by keyword `:scientist`, this pulls out `(:scientist people)` and assigns it to the variable `scientist`. Similarly variable `actor` get assigned in the same way, and they are been used in the code respectively.
+
+It becomes super easy to selectively pick values from a map, put it into variable and use it in Clojure.

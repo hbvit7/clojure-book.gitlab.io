@@ -2,116 +2,407 @@
 
 https://www.youtube.com/watch?v=xpH6RGjZwNg
 
+:file-name: record.clj
+
+include::use_code_note.adoc[]
 
 [source, clojure]
 ----
-;; record.clj
-
 (defrecord Car [name top-speed])
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (def tata-nano (->Car "Tata Nano" 120))
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (:name tata-nano)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (get tata-nano :name)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (:top-speed tata-nano)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (get tata-nano :top-speed)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (def ambassador (map->Car {
                            :name "Ambassador",
                            :top-speed 240 }))
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (:name ambassador)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (get ambassador :name)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (:top-speed ambassador)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (get ambassador :top-speed)
 ----
 
+Output
+
+----
+
+----
+
+:file-name: record_2.clj
+
+include::use_code_note.adoc[]
 
 [source, clojure]
 ----
-;; record_2.clj
-
 (defrecord Car [name top-speed])
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (def tata-nano (->Car "Tata Nano" 120))
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (defn describe [vehicle]
   (let [{name :name top-speed :top-speed} vehicle]
     (str name " has a top speed of " top-speed "Km/hr.")))
+----
 
-(describe tata-nano)
+Output
 
-(defrecord Ship [name top-speed])
+----
 
-(def artic-explorer (->Ship "Artic Explorer" 10))
-
-(defn describe-ship [vehicle]
-  (let [{name :name top-speed :top-speed} vehicle]
-    (str name " has a top speed of " top-speed " knots.")))
-
-(describe-ship artic-explorer)
 ----
 
 [source, clojure]
 ----
-;; protocol.clj
+(describe tata-nano)
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(defrecord Ship [name top-speed])
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(def artic-explorer (->Ship "Artic Explorer" 10))
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(defn describe-ship [vehicle]
+  (let [{name :name top-speed :top-speed} vehicle]
+    (str name " has a top speed of " top-speed " knots.")))
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(describe-ship artic-explorer)
+----
+
+Output
+
+----
+
+----
+
+:file-name: protocol.clj
+
+include::use_code_note.adoc[]
+
+[source, clojure]
+----
 (defprotocol Describe
   (describe [this]))
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (defrecord Car [name top-speed]
   Describe
   (describe [this]
     (let [{name :name top-speed :top-speed} this]
       (str name " has a top speed of " top-speed "Km/hr."))))
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
 (defrecord Ship [name top-speed]
   Describe
   (describe [this]
     (let [{name :name top-speed :top-speed} this]
       (str name " has a top speed of " top-speed " knots."))))
+----
 
-(def tata-nano (->Car "Tata Nano" 120))
+Output
 
-(def artic-explorer (->Ship "Artic Explorer" 10))
+----
 
-(describe tata-nano)
-
-(describe artic-explorer)
 ----
 
 [source, clojure]
 ----
-;; extend-protocol.clj
+(def tata-nano (->Car "Tata Nano" 120))
+----
 
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(def artic-explorer (->Ship "Artic Explorer" 10))
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(describe tata-nano)
+----
+
+Output
+
+----
+
+----
+
+[source, clojure]
+----
+(describe artic-explorer)
+----
+
+Output
+
+----
+
+----
+
+:file-name: extend-protocol.clj
+
+include::use_code_note.adoc[]
+
+[source, clojure]
+----
 (defprotocol Describe
   (describe [this]))
+----
 
+Output
+----
+
+----
+
+[source, clojure]
+----
 (defrecord Car [name top-speed]
   Describe
   (describe [this]
     (let [{name :name top-speed :top-speed} this]
       (str name " has a top speed of " top-speed "Km/hr."))))
+----
 
+Output
+----
+
+----
+
+[source, clojure]
+----
 (def tata-nano (->Car "Tata Nano" 120))
+----
 
+Output
+----
+
+----
+
+[source, clojure]
+----
 (describe tata-nano)
+----
 
+Output
+----
+
+----
+
+[source, clojure]
+----
 (defrecord Rocket [name orbit])
+----
 
+Output
+----
+
+----
+
+[source, clojure]
+----
 (extend-protocol Describe
   Rocket
    (describe [this] (str (:name this) " reaches " (:orbit this) " orbit.")))
+----
 
+Output
+----
+
+----
+
+[source, clojure]
+----
 (def pslv (->Rocket "PSLV" "Low Earth"))
+----
 
+Output
+----
+
+----
+
+[source, clojure]
+----
 (describe pslv)
 ----
 
+Output
+----
+
+----
 
