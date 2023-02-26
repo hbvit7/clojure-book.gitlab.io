@@ -1,10 +1,19 @@
-## Records and Protocols
+== Records and Protocols
 
-https://www.youtube.com/watch?v=xpH6RGjZwNg
+If you want to learn records and protocols watching video's here is one https://www.youtube.com/watch?v=xpH6RGjZwNg.
+
+Clojure came during an era when Object Oriented Programming (OOP) was at a peak, then, due to large code bases OOP started to failed and people started looking into functional programming. So I find it not surprising that Clojure gives some ways to create objects and do stuff with them.
+
+In Clojure Object is nothing but a glorified map, and nothing more. You may not use it, but you can.
+
+
+=== Creating objects
 
 :file-name: record.clj
 
 include::use_code_note.adoc[]
+
+Objects are called Records in Clojure, so let's create our first record called `Car` which would hold the `name` and `top-speed` of the car as shown: 
 
 [source, clojure]
 ----
@@ -14,8 +23,40 @@ include::use_code_note.adoc[]
 Output
 
 ----
-
+user.Car
 ----
+
+As you see from the output this creates something called `user.Car`. User is the default namespace, and I think `.Car` represents the record. If `Car` was just a variable, we would have got an output like `user/Car`.
+
+Now let's define a variable called `tata-nano`:
+
+[source, clojure]
+----
+(def tata-nano)
+----
+
+Of the the type car:
+
+[source, clojure]
+----
+(def tata-nano (->Car))
+----
+
+While we created record `Car`, the first thing we specified was `name` and then `top-speed`, so in that same order, let's give a name for `tata-nano`
+
+[source, clojure]
+----
+(def tata-nano (->Car "Tata Nano"))
+----
+
+And specify it's top speed as `120`:
+
+[source, clojure]
+----
+(def tata-nano (->Car "Tata Nano" 120))
+----
+
+Let's now execute the code above:
 
 [source, clojure]
 ----
@@ -25,8 +66,12 @@ Output
 Output
 
 ----
-
+#'user/tata-nano
 ----
+
+So a variable `tata-nano` is created in `user` namespace, this is not a simple value, but an object containing two values.
+
+Object is a glorified hash in Clojure, so you can access `:name` of `tata-nano` just like you do with a has as shown:
 
 [source, clojure]
 ----
@@ -36,7 +81,7 @@ Output
 Output
 
 ----
-
+"Tata Nano"
 ----
 
 [source, clojure]
@@ -47,8 +92,10 @@ Output
 Output
 
 ----
-
+"Tata Nano"
 ----
+
+Similarly you can access it's top speed:
 
 [source, clojure]
 ----
@@ -58,7 +105,7 @@ Output
 Output
 
 ----
-
+120
 ----
 
 [source, clojure]
@@ -69,21 +116,42 @@ Output
 Output
 
 ----
-
+120
 ----
+
+Similarly let me create another record instance of `Car` called `ambassador`, but there is difference in code below: 
 
 [source, clojure]
 ----
-(def ambassador (map->Car {
-                           :name "Ambassador",
+(def ambassador (map->Car {:name "Ambassador",
                            :top-speed 240 }))
 ----
 
 Output
 
 ----
-
+#'user/ambassador
 ----
+
+While creating `tata-nano`, we gave values it must hold in a positional way, but look at `map->Car`, instead of `->Car` in the code above, here we saying we want to pass a map so we pass this map:
+
+[source, clojure]
+----
+{ :name "Ambassador",
+  :top-speed 240 }
+----
+
+And Clojure is smart enough to un-bundle it, and put the right values in right variables of `ambassador`. You can also vary the position like shown:
+
+[source, clojure]
+----
+{ :top-speed 240
+  :name "Ambassador" }
+----
+
+It will still work the same. 
+
+Let's now get the `:name` and `:top-speed` of ambassador:
 
 [source, clojure]
 ----
@@ -93,7 +161,7 @@ Output
 Output
 
 ----
-
+"Ambassador"
 ----
 
 [source, clojure]
@@ -104,7 +172,7 @@ Output
 Output
 
 ----
-
+"Ambassador"
 ----
 
 [source, clojure]
@@ -115,7 +183,7 @@ Output
 Output
 
 ----
-
+240
 ----
 
 [source, clojure]
@@ -126,8 +194,10 @@ Output
 Output
 
 ----
-
+240
 ----
+
+=== Using objects with functions
 
 :file-name: record_2.clj
 
@@ -141,7 +211,7 @@ include::use_code_note.adoc[]
 Output
 
 ----
-
+user.Car
 ----
 
 [source, clojure]
@@ -152,7 +222,7 @@ Output
 Output
 
 ----
-
+#'user/tata-nano
 ----
 
 [source, clojure]
@@ -165,7 +235,7 @@ Output
 Output
 
 ----
-
+#'user/describe
 ----
 
 [source, clojure]
@@ -176,7 +246,7 @@ Output
 Output
 
 ----
-
+"Tata Nano has a top speed of 120Km/hr."
 ----
 
 [source, clojure]
@@ -187,7 +257,7 @@ Output
 Output
 
 ----
-
+user.Ship
 ----
 
 [source, clojure]
@@ -198,7 +268,7 @@ Output
 Output
 
 ----
-
+#'user/artic-explorer
 ----
 
 [source, clojure]
@@ -211,7 +281,7 @@ Output
 Output
 
 ----
-
+#'user/describe-ship
 ----
 
 [source, clojure]
@@ -222,8 +292,10 @@ Output
 Output
 
 ----
-
+"Artic Explorer has a top speed of 10 knots."
 ----
+
+=== Protocols
 
 :file-name: protocol.clj
 
@@ -238,7 +310,7 @@ include::use_code_note.adoc[]
 Output
 
 ----
-
+Describe
 ----
 
 [source, clojure]
@@ -253,7 +325,7 @@ Output
 Output
 
 ----
-
+user.Car
 ----
 
 [source, clojure]
@@ -268,7 +340,7 @@ Output
 Output
 
 ----
-
+user.Ship
 ----
 
 [source, clojure]
@@ -279,7 +351,7 @@ Output
 Output
 
 ----
-
+#'user/tata-nano
 ----
 
 [source, clojure]
@@ -290,7 +362,7 @@ Output
 Output
 
 ----
-
+#'user/artic-explorer
 ----
 
 [source, clojure]
@@ -301,7 +373,7 @@ Output
 Output
 
 ----
-
+"Tata Nano has a top speed of 120Km/hr."
 ----
 
 [source, clojure]
@@ -312,7 +384,7 @@ Output
 Output
 
 ----
-
+"Artic Explorer has a top speed of 10 knots."
 ----
 
 :file-name: extend-protocol.clj

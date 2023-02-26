@@ -774,7 +774,13 @@ pre.rouge {
 </li>
 <li><a href="#_destructuring">15. Destructuring</a></li>
 <li><a href="#_splitting_large_programs">16. Splitting Large Programs</a></li>
-<li><a href="#_records_and_protocols">17. Records and Protocols</a></li>
+<li><a href="#_records_and_protocols">17. Records and Protocols</a>
+<ul class="sectlevel2">
+<li><a href="#_creating_objects">17.1. Creating objects</a></li>
+<li><a href="#_using_objects_with_functions">17.2. Using objects with functions</a></li>
+<li><a href="#_protocols">17.3. Protocols</a></li>
+</ul>
+</li>
 <li><a href="#_namespaces">18. namespaces</a></li>
 <li><a href="#_testing">19. Testing</a></li>
 <li><a href="#_macros">20. Macros</a></li>
@@ -8707,8 +8713,16 @@ nil</pre>
 <h2 id="_records_and_protocols">17. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a></p>
+<p>If you want to learn records and protocols watching video&#8217;s here is one <a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a>.</p>
 </div>
+<div class="paragraph">
+<p>Clojure came during an era when Object Oriented Programming (OOP) was at a peak, then, due to large code bases OOP started to failed and people started looking into functional programming. So I find it not surprising that Clojure gives some ways to create objects and do stuff with them.</p>
+</div>
+<div class="paragraph">
+<p>In Clojure Object is nothing but a glorified map, and nothing more. You may not use it, but you can.</p>
+</div>
+<div class="sect2">
+<h3 id="_creating_objects">17.1. Creating objects</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -8721,6 +8735,9 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Objects are called Records in Clojure, so let&#8217;s create our first record called <code>Car</code> which would hold the <code>name</code> and <code>top-speed</code> of the car as shown:</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">defrecord</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="p">[</span><span class="nb">name</span><span class="w"> </span><span class="n">top-speed</span><span class="p">])</span></code></pre>
@@ -8731,8 +8748,46 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>user.Car</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>As you see from the output this creates something called <code>user.Car</code>. User is the default namespace, and I think <code>.Car</code> represents the record. If <code>Car</code> was just a variable, we would have got an output like <code>user/Car</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s define a variable called <code>tata-nano</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Of the the type car:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Car</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While we created record <code>Car</code>, the first thing we specified was <code>name</code> and then <code>top-speed</code>, so in that same order, let&#8217;s give a name for <code>tata-nano</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Car</span><span class="w"> </span><span class="s">"Tata Nano"</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And specify it&#8217;s top speed as <code>120</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">tata-nano</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Car</span><span class="w"> </span><span class="s">"Tata Nano"</span><span class="w"> </span><span class="mi">120</span><span class="p">))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s now execute the code above:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8744,8 +8799,14 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/tata-nano</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>So a variable <code>tata-nano</code> is created in <code>user</code> namespace, this is not a simple value, but an object containing two values.</p>
+</div>
+<div class="paragraph">
+<p>Object is a glorified hash in Clojure, so you can access <code>:name</code> of <code>tata-nano</code> just like you do with a has as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8757,7 +8818,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Tata Nano"</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8770,8 +8831,11 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Tata Nano"</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Similarly you can access it&#8217;s top speed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8783,7 +8847,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>120</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8796,13 +8860,15 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>120</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Similarly let me create another record instance of <code>Car</code> called <code>ambassador</code>, but there is difference in code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">ambassador</span><span class="w"> </span><span class="p">(</span><span class="nf">map-&gt;Car</span><span class="w"> </span><span class="p">{</span><span class="w">
-                           </span><span class="no">:name</span><span class="w"> </span><span class="s">"Ambassador"</span><span class="n">,</span><span class="w">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">ambassador</span><span class="w"> </span><span class="p">(</span><span class="nf">map-&gt;Car</span><span class="w"> </span><span class="p">{</span><span class="no">:name</span><span class="w"> </span><span class="s">"Ambassador"</span><span class="n">,</span><span class="w">
                            </span><span class="no">:top-speed</span><span class="w"> </span><span class="mi">240</span><span class="w"> </span><span class="p">}))</span></code></pre>
 </div>
 </div>
@@ -8811,8 +8877,32 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/ambassador</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>While creating <code>tata-nano</code>, we gave values it must hold in a positional way, but look at <code>map&#8594;Car</code>, instead of <code>&#8594;Car</code> in the code above, here we saying we want to pass a map so we pass this map:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">{</span><span class="w"> </span><span class="no">:name</span><span class="w"> </span><span class="s">"Ambassador"</span><span class="n">,</span><span class="w">
+  </span><span class="no">:top-speed</span><span class="w"> </span><span class="mi">240</span><span class="w"> </span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And Clojure is smart enough to un-bundle it, and put the right values in right variables of <code>ambassador</code>. You can also vary the position like shown:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">{</span><span class="w"> </span><span class="no">:top-speed</span><span class="w"> </span><span class="mi">240</span><span class="w">
+  </span><span class="no">:name</span><span class="w"> </span><span class="s">"Ambassador"</span><span class="w"> </span><span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will still work the same.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s now get the <code>:name</code> and <code>:top-speed</code> of ambassador:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8824,7 +8914,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Ambassador"</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8837,7 +8927,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Ambassador"</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8850,7 +8940,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>240</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8863,9 +8953,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>240</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_using_objects_with_functions">17.2. Using objects with functions</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -8888,7 +8981,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>user.Car</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8901,7 +8994,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/tata-nano</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8916,7 +9009,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/describe</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8929,7 +9022,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Tata Nano has a top speed of 120Km/hr."</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8942,7 +9035,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>user.Ship</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8955,7 +9048,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/artic-explorer</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8970,7 +9063,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/describe-ship</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -8983,9 +9076,12 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Artic Explorer has a top speed of 10 knots."</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_protocols">17.3. Protocols</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -9009,7 +9105,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>Describe</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9026,7 +9122,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>user.Car</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9043,7 +9139,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>user.Ship</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9056,7 +9152,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/tata-nano</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9069,7 +9165,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>#'user/artic-explorer</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9082,7 +9178,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Tata Nano has a top speed of 120Km/hr."</pre>
 </div>
 </div>
 <div class="listingblock">
@@ -9095,7 +9191,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre>"Artic Explorer has a top speed of 10 knots."</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -9219,6 +9315,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="listingblock">
 <div class="content">
 <pre></pre>
+</div>
 </div>
 </div>
 </div>
