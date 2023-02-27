@@ -27,7 +27,7 @@ Look at this snippet:
   (println something))
 ----
 
-This actually returns a function that accepts a single argument called `something`, and when `something` is passwd it prints it. Note that the function returned in the above snippet of code has no name. It's like a newly born baby. It functions but we have no way to identify it.
+This actually returns a function that accepts a single argument called `something`, and when `something` is passed with a value it prints it. Note that the function returned in above snippet of code has no name. It's like a newly born baby. It's a function, but we have no way to identify it.
 
 Now this anonymous function can be given a name by attaching it to a variable like this:
 
@@ -38,9 +38,9 @@ Now this anonymous function can be given a name by attaching it to a variable li
     (println something)))
 ----
 
-In the above snippet of code, the anonymous function that prints `something` is defined to a name `print-something`, so from now on we can use it like `print-something "something is better than nothing")`.
+In the above snippet of code, the anonymous function that prints `something` is defined to a name `print-something`, so from now on we can use it like `(print-something "something is better than nothing")`.
 
-In fact, the `defn` in clojure means `fn` function, that's been `def` defined or attached to a variable.
+In fact, the `defn` in Clojure means `fn` function that's been `def` defined or attached to a variable.
 
 In short we can write this:
 
@@ -51,7 +51,7 @@ In short we can write this:
     (println something)))
 ----
 
-as this:
+like this:
 
 [source, clojure]
 ----

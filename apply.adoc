@@ -1,6 +1,6 @@
 === apply
 
-Let's teke the `+` function, it can add numbers like this:
+Let's take the `+` function, it can add numbers like this:
 
 [source, clojure]
 ----
@@ -42,14 +42,14 @@ Output
 10
 ----
 
-And it works. That's because uou can imagine apply rewrites the code as shown:
+And it works. That's because you can imagine apply rewrites the code as shown:
 
 [source, clojure]
 ----
 (+ 1 2 3 4)
 ----
 
-A sequence could be avector, list or map, so below we are using it on a list of numbers:
+A sequence could be a vector, list or map, so below we are using it on a list of numbers:
 
 [source, clojure]
 ----
@@ -92,7 +92,7 @@ Argument 2: two
 nil
 ----
 
-If the argument is a vecor / sequence containing two elements, this would fail:
+If the argument is a vector / sequence containing two elements, this would fail:
 
 [source, clojure]
 ----
