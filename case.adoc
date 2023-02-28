@@ -30,7 +30,7 @@ We get `"I don't know"`, so what happens. We have set `num` to `20 in `let [num 
   ........)
 ----
 
-So case check the value of `num`, nu, is not `1`, so the statement `1 "one"` is not touched.
+So case check the value of `num`, `num` is not `1`, so the statement `1 "one"` is not touched.
 
 [source, clojure]
 ----

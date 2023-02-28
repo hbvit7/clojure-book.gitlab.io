@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-In this section let's see about Math in Clojure. First let's add two numbers 40 and 2, it been done as shown:
+In this section let's see about Math in Clojure. First let's add two numbers 40 and 2, it's been done as shown:
 
 [source, clojure]
 ----
@@ -17,7 +17,7 @@ Output
 42
 ----
 
-In the above thing we have the plus `+` sign, and we pass 40 and 2 to it for it to add and return 42. Similarly let's see what will happen when we pass 44 and 2 to minus `-` sign:
+In the above thing we have the plus `+` sign (it's actually a function in Clojure), and we pass 40 and 2 to it for it to add and return 42. Similarly let's see what will happen when we pass 44 and 2 to minus `-` sign:
 
 [source, clojure]
 ----
@@ -32,7 +32,7 @@ Output
 
 It seems to subtract the second argument 2 from 44 and returns 42.
 
-Now let's see what happens when we pass 6 and 7 to asterisk `*` or a a star:
+Now let's see what happens when we pass 6 and 7 to asterisk `*` or a star:
 
 [source, clojure]
 ----
@@ -60,7 +60,7 @@ Output
 42
 ----
 
-Looks like 210 is divided by 5 and we get 42.
+Looks like 210 is divided by 5, and we get 42.
 
 Now let's see what will happen if we pass more than 2 numbers to plus `+`:
 
@@ -77,7 +77,7 @@ Output
 
 All are added and the result of addition is got.
 
-Now look at the code below and can you figure out how it works?
+Now look at the code below, can you figure out how it works?
 
 [source, clojure]
 ----
@@ -90,7 +90,7 @@ Output
 3
 ----
 
-Let's take the code `(/ (+ 1 2 3 4 5) 5)`, concentrate on the inner most braces `(+ 1 2 3 4 5)`, here a bunch of numbers are been passed to `+` and we should get the sum of 1 to 5, that is 15 returned. So in place of `(+ 1 2 3 4 5)` let's substitute `15`, so we get a expression like this `(/ 15 5)`, which is nothing but 15 and 5 are passed to `/`, which means 15 divided by 5, and hence we get 3.
+Let's take the code `(/ (+ 1 2 3 4 5) 5)`, concentrate on the innermost braces `(+ 1 2 3 4 5)`, here a bunch of numbers are passed to `+` and we should get the sum of 1 to 5, that is 15 returned. So in place of `(+ 1 2 3 4 5)` let's substitute `15`, so we get an expression like this `(/ 15 5)`, which is nothing but 15 and 5 are passed to `/`, which means 15 divided by 5, and hence we get 3.
 
 Now let's pass one or more argument to `/`, passing 1, 2 and 3 to it, we get stem:[1/6] as output as shown below:
 
@@ -105,7 +105,7 @@ Output
 1/6
 ----
 
-This is a fraction, to get a decimal output of a division, append a `.0` to the number when passing to `/`
+The above output is a fraction, to get a decimal output of a division, append a `.0` to the number when passing to `/`
 
 [source, clojure]
 ----
@@ -120,7 +120,7 @@ Output
 
 NOTE: If you don't understand it now, don't worry, as you read this book it will get clarified.
 
-It's enough that any one number that's been passed to `/` has a decimal value that is point `.` something appended to it, we will still get decimal rather than an fraction as output as shown below: 
+It's enough to know that any one number that's been passed to `/` has a decimal value that is point `.` something appended to it, we will still get decimal rather than a fraction as output as shown below: 
 
 [source, clojure]
 ----
@@ -133,7 +133,7 @@ Output
 0.16666666666666666
 ----
 
-Sme is the case below too:
+Same is the case below too:
 
 [source, clojure]
 ----
@@ -172,7 +172,7 @@ Output
 4
 ----
 
-Let's now try to find out area of a circle using clojure. We know the area is stem:[pi r^2], where stem:[pi] is roughly stem:[22/7]. So let's see how to code it. Look at the code below:
+Let's now try to find out area of a circle using Clojure. We know the area is stem:[pi r^2], where stem:[pi] is roughly stem:[22/7]. So let's see how to code it. Look at the code below:
 
 [source, clojure]
 ----
@@ -186,9 +186,11 @@ Output
 154N
 ----
 
-Here we represent stem:[pi] by `(/ 22 7)` the stem:[r^2] where stem:[r] 7 is `(* 7 7)`, this is multiplied with `(/ 22 7)` and we get `(* (/ 22 7) (* 7 7))`. Now the output we got is `154N`, I have no idea what the `N` is.
+Here we represent stem:[pi] by `(/ 22 7)` the stem:[r^2] where stem:[r] 7 is `(* 7 7)`, this is multiplied with `(/ 22 7)` and we get `(* (/ 22 7) (* 7 7))`. Now the output we got is `154N`.
 
-If I add a `.0` to any number below, the annoying `N` disappears:
+NOTE: I suspect N stands for big int (a way to store very large integers in computer memory), executing `(type 10N)` in REPL gives `clojure.lang.BigInt`, whereas executing `(type 10)` gives java.lang.Long
+
+If I add a `.0` to any number below, the `N` disappears:
 
 [source, clojure]
 ----
@@ -201,7 +203,7 @@ Output
 154.0
 ----
 
-Rather than coding our own stem:[pi] as `(/ 22 7)`, since Clojure is built on Java, we can tap into Java `Math` library (https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html), and use it's methods. This is one advantage of Clojure, since it's a hosted language, it can take advange of libraries provided by the host platform. So we replace `(/ 22 7)` with `Math/PI` as shown below:
+Rather than coding our own stem:[pi] as `(/ 22 7)`, since Clojure is built on Java, we can tap into Java `Math` library (https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html), and use its methods. This is one advantage of Clojure, since it's a hosted language, it can take advantage of libraries provided by the host platform. So we replace `(/ 22 7)` with `Math/PI` as shown below:
 
 [source, clojure]
 ----
