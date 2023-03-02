@@ -28,16 +28,16 @@ Right after `(def sum` we have this string:
 
 [source, clojure]
 ----
-  "Adds two numbers passed as arguments.
-   
-   The arguments should be numbers.
+"Adds two numbers passed as arguments.
+  
+  The arguments should be numbers.
 
-   **Usage**
+  **Usage**
 
-   ```clojure
-   (sum 4 5) ;; returns 9
-   ```
-  "
+  ```clojure
+  (sum 4 5) ;; returns 9
+  ```
+"
 ----
 
 This string is nothing but documentation for the function. Note how I have used `**Usage**`, I have used mark down format. I have also used something like this in the doc string:
@@ -45,7 +45,7 @@ This string is nothing but documentation for the function. Note how I have used 
 [source, markdown]
 ----
 ```clojure
-   (sum 4 5) ;; returns 9
+(sum 4 5) ;; returns 9
 ```
 ----
 
