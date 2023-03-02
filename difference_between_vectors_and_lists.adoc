@@ -6,7 +6,7 @@ Imagine vector is a rack. Each compartment of the rack is named 0, 1, 2 and so o
 
 image::images/vector.png[]
 
-You can put any thing in the compartment that's after the last filled one. See the example below:
+You can put anything in the compartment that's after the last filled one. See the example below:
 
 [source, clojure]
 ----
@@ -27,7 +27,7 @@ So if speed of random access with index is not important, and you need only sequ
 
 image::images/list_element.png[]
 
-A element in a list has two parts. One is the value, and another one is a pointer to the next element. So elements of a list can be anywhere in your computer memory as shown below.
+An element in a list has two parts. One is the value, and another one is a pointer to the next element. So elements of a list can be anywhere in your computer memory as shown below.
 
 image::images/list.png[]
 
