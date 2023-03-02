@@ -2070,10 +2070,10 @@ Hello World</pre>
 <h2 id="_data_structures">4. Data Structures</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Almost every programming language offers some way to pack, organize and access data in computer&#8217;s RAM <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, this eases the burden out of programmers from writing lot of code to manage data stored in computer&#8217;s temporary memory.</p>
+<p>Almost every programming language offers some way to pack, organize and access data in computer&#8217;s RAM <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnotedef_3" title="View footnote.">3</a>]</sup>, this eases the burden of programmers from writing lots of code to manage data stored in computer&#8217;s temporary memory.</p>
 </div>
 <div class="paragraph">
-<p>String according to me is a data structure too. It enables us to represent any written language in computers memory, and helps us perform operations with it. In this section we are going to see about other data structures Clojure provides which you can use it out of the box.</p>
+<p>String according to me is a data structure too. It enables us to represent any written language in computers memory, and helps us perform operations with it. In this section we are going to see about other data structures Clojure provides, which you can use it out of the box.</p>
 </div>
 <div class="sect2">
 <h3 id="_vectors">4.1. Vectors</h3>
@@ -8378,7 +8378,7 @@ nil</pre>
 <h2 id="_destructuring">15. Destructuring</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Clojure provides rich variety of data types to pack your data like list, vector, maps, set and so on. To make computations with it, you need to unpack it, put the necessary values in variables, and use thise variables for computation. This section tells you how to do it.</p>
+<p>Clojure provides rich variety of data types to pack your data like list, vector, maps, set and so on. To make computations with it, you need to unpack it, put the necessary values in variables, and use those variables for computation. This section tells you how to do it.</p>
 </div>
 <div class="paragraph">
 <p>Take a look at the program <code>vector_destructuring.clj</code> which is shown below, type it and execute it:</p>
@@ -8415,7 +8415,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>in <code>let</code>, take a look at <code>[[musician scientist] people]</code>. Variables <code>musician</code> and <code>scientist</code> points to <code>people</code>. Clojure finds out that <code>people</code> contains <code>"Rehmaan"</code> and <code>"Kalaam"</code> and unpacks <code>"Rehmaan"</code> to <code>musician</code> and <code>"Kalaam"</code> to <code>scientist. Finally we print out `musician</code> and <code>scientist</code> using the <code>println</code> function as shown below:</p>
+<p>in <code>let</code>, take a look at <code>[[musician scientist] people]</code>. Variables <code>musician</code> and <code>scientist</code> points to <code>people</code>. Clojure finds out that <code>people</code> contains <code>"Rehmaan"</code> and <code>"Kalaam"</code> and unpacks <code>"Rehmaan"</code> to <code>musician</code> and <code>"Kalaam"</code> to <code>scientist</code>. Finally, we print out <code>musician</code> and <code>scientist</code> using the <code>println</code> function as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8461,7 +8461,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this cse the first two variables, <code>musician</code> gets populated with <code>"Rehmaan"</code> and <code>scientist</code> gets populated with <code>"Kalaam"</code>, but <code>artist</code> gets <code>nil</code>. so when you print them, we get <code>nil</code> getting printed for <code>artist</code>.</p>
+<p>In this case the first two variables, <code>musician</code> gets populated with <code>"Rehmaan"</code> and <code>scientist</code> gets populated with <code>"Kalaam"</code>, but <code>artist</code> gets <code>nil</code>. So when you print them, we get <code>nil</code> getting printed for <code>artist</code>.</p>
 </div>
 <div class="paragraph">
 <p>Now look at the code <code>vector_destructuring_3.clj</code> shown below, type it and execute it.</p>
@@ -8490,7 +8490,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In th above code we see there are 4 values in <code>people</code>, while you are destructuring it into three variables as shown:</p>
+<p>In the above code we see there are 4 values in <code>people</code>, while you are destructuring it into three variables as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8500,10 +8500,10 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We see that <code>musician</code> gets populated with <code>"Rehmaan"</code>, <code>scientist</code> gets populated with <code>"Kalaam"</code>, and <code>artist</code> gets populated with <code>"Hussein"</code>, but the last value in <code>people</code> that is <code>"Madhavan"</code> gets let out.</p>
+<p>We see that <code>musician</code> gets populated with <code>"Rehmaan"</code>, <code>scientist</code> gets populated with <code>"Kalaam"</code>, and <code>artist</code> gets populated with <code>"Hussein"</code>, but the last value in <code>people</code> that is <code>"Madhavan"</code> gets left out.</p>
 </div>
 <div class="paragraph">
-<p>in the code below:</p>
+<p>In the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8534,7 +8534,7 @@ nil</pre>
 <p>All values in <code>people</code> gets unpacked properly into the variables <code>musician</code>, <code>scientist</code>, <code>artist</code> and <code>actor</code>.</p>
 </div>
 <div class="paragraph">
-<p>Its a convention to use underscore <code><em></code> for values we won&#8217;t use, in code below we need only to use <code>scientist</code> and <code>actor</code>, for other unused values we capture it into a variable named <code></em></code>.</p>
+<p>It&#8217;s a convention to use underscore <code><em></code> for values we won&#8217;t use, in code below we need only to use <code>scientist</code> and <code>actor</code>, for other unused values we capture it into a variable named <code></em></code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8561,7 +8561,7 @@ nil</pre>
 <p>This is just to denote to the humans reading code that we are not using it.</p>
 </div>
 <div class="paragraph">
-<p>Though in the above program we have destructured vector, it would work perfectly okay with list too, it&#8217;s left to the reader to practice it out.</p>
+<p>Though in the above programs we have destructured vectors, it would work perfectly okay with list too, it&#8217;s left to the reader to practice it out.</p>
 </div>
 <div class="paragraph">
 <p>Clojure also provides a way to destructure maps, look at the code <code>map_destructuring.clj</code> below. type it and execute it.</p>
@@ -8604,7 +8604,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We have got a map of people with their profession as key word and name as string. We can destructure this map using key words as shown:</p>
+<p>We have got a map of people with their profession as keyword and name as string. We can destructure this map using keywords as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8617,7 +8617,7 @@ nil</pre>
 <p>In the code above look at <code>[{scientist :scientist actor :actor} people]</code> see how <code>{scientist :scientist actor :actor}</code> points at <code>people</code>.</p>
 </div>
 <div class="paragraph">
-<p>Now take a look at <code>{scientist :scientist actor :actor}</code>, that kind of looks like a map in reverse. You have got variable <code>scientist</code> followed by keyword <code>:scientist</code>, this pulls out <code>(:scientist people)</code> and assigns it to the variable <code>scientist</code>. Similarly variable <code>actor</code> get assigned in the same way, and they are been used in the code respectively.</p>
+<p>Now take a look at <code>{scientist :scientist actor :actor}</code>, that kind of looks like a map in reverse. You have got variable <code>scientist</code> followed by keyword <code>:scientist</code>, this pulls out <code>(:scientist people)</code> and assigns it to the variable <code>scientist</code>, similarly variable <code>actor</code> get assigned in the same way, and they are used in the code respectively.</p>
 </div>
 <div class="paragraph">
 <p>It becomes super easy to selectively pick values from a map, put it into variable and use it in Clojure.</p>
