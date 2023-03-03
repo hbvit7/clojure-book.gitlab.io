@@ -1,6 +1,6 @@
 === Functions returning functions
 
-One may be wondering what's the use of anonymous functions, well take a look at the example below and and execute it:
+One may be wondering what's the use of anonymous functions, well take a look at the example below and execute it:
 
 [source, clojure]
 ----
@@ -55,7 +55,7 @@ It returns a function as shown above, now if we replace `multiply-with` with `2`
   (* number 2))
 ----
 
-So in the above code, we have a function that takes a `number` and returns its product with `2`. Now plug it in:
+So in the above code, we have a function that takes a `number` and returns its product with `2`. Now plug it in `double-it`:
 
 [source, clojure]
 ----
@@ -80,4 +80,4 @@ In short we can write it as:
     (* number 2))
 ----
 
-So what we have done is, in `multiplier`, we are building functions and returning it, and we are giving a name to it. Don't you think its a powerful concept?
+So what we have done is, in `multiplier`, we are building functions and returning it, and we are giving a name to it. Don't you think it's a powerful concept?
