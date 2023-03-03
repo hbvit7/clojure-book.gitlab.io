@@ -18,7 +18,7 @@ Output
 nil
 ----
 
-We get the result `5 is positive` as shown above. So we get the following to an `if` the first argument is condition check, over here its `(> a 0)`, if the condition check returns `true`, then the second argument passed `(println a "is positive")` is executed.
+We get the result `5 is positive` as shown above. So we get the following, to an `if` the first argument is condition check, over here its `(> a 0)`, if the condition check returns `true`, then the second argument passed `(println a "is positive")` is executed.
 
 Now modify the program as shown:
 
@@ -145,7 +145,7 @@ Output
 nil
 ----
 
-`if` function can accept only 3 arguments, the first one is a condition, the second argument will get executed when the condition passes, the third will get executed when condition fails. So what if we want to execute more than one statement if a condition passes or fails, well wrap them in `do` as shown: 
+`if` function can accept only 3 arguments, the first one is a condition, the second argument will get executed when the condition passes, the third will get executed when condition fails. So what if we want to execute more than one statement if a condition passes or fails, well, wrap them in `do` as shown: 
 
 [source, clojure]
 ----
