@@ -2,7 +2,7 @@
 
 Abstraction is the key to greatness and progress. Michael Faraday discovered electricity and magnetism have a link, but I don't think about it when I drive my car. Everything is abstracted away behind the steering wheel and pedals. Abstraction is so important, that almost every programming language provides a way to abstract away complexity.
 
-Functions are the way you can abstract away things in Clojure. Whenever a code gets complex, you can refactor it out as functions, and use those functions as building blocks. In fact, you have been using functions all along, say when you call `(+ 1 2)` in Clojure, the `+` is a function, and `1` and `2` are the value it receives. Technically we call the values received by the function as arguments. You really not worried or don't know what happens in computer when you execute `(+ 1 2)`, it's been neatly abstracted away behind the function `+`.
+Functions are the way you can abstract away things in Clojure. Whenever a code gets complex, you can refactor it out as functions, and use those functions as building blocks. In fact, you have been using functions all along, say when you call `(+ 1 2)` in Clojure, the `+` is a function, and `1` and `2` are the value it receives. Technically we call the values received by the function as arguments. You don't know what happens in computer when you execute `(+ 1 2)`, it's been neatly abstracted away behind the function `+`.
 
 So let's see how to build our own functions in this chapter.
 
