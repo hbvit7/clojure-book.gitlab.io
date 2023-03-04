@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-Let's say  you want to go through a sequence in a cyclical manner, then `cycle`is the function to use. Take alook at the code below:
+Let's say you want to go through a sequence in a cyclical manner, then `cycle`is the function to use. Take a look at the code below:
 
 [source, clojure]
 ----
@@ -17,7 +17,7 @@ Output
 #'user/multiverse
 ----
 
-The above code theoretically creates an infinite list, attaches it to a variable `multiverse` where every odd element is  `"universe"` and every even element is `"antiverse"`. So the first element would be `"universe"`:
+The above code theoretically creates an infinite list, attaches it to a variable `multiverse` where every odd element is `"universe"` and every even element is `"antiverse"`. So the first element would be `"universe"`:
 
 [source, clojure]
 ----
@@ -56,7 +56,7 @@ Output
 ("universe" "antiverse" "universe" "antiverse" "universe")
 ----
 
-We can take any `nth` odd element and it's going to be `"universe"`:
+We can take any `nth` odd element, and it's going to be `"universe"`:
 
 [source, clojure]
 ----
@@ -69,7 +69,7 @@ Output
 "universe"
 ----
 
-Similarly any `nth` even element is going to be `"antiverse"`:
+Similarly, any `nth` even element is going to be `"antiverse"`:
 
 [source, clojure]
 ----
@@ -96,7 +96,7 @@ Output
 #'user/tiffin-items
 ----
 
-Let's take the 5th element:
+Let's take the 6th element:
 
 [source, clojure]
 ----
@@ -109,7 +109,7 @@ Output
 "vadai"
 ----
 
-So the last element `"sambar"` is indexed 3, and hence the 0^th^ element behaves like 4^th^ and the 1^st^ element behaves like 5^th^, like a never ending loop. 
+So the last element `"sambar"` is indexed 3, and hence the 0^th^ element behaves like 5^th^ and the 1^st^ element behaves like 6^th^, like a never ending loop. 
 
 
 Now let's take 10 `tiffin-items`, see ow it repeats again and again:
