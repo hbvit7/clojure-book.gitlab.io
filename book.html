@@ -7689,7 +7689,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>In the above code we have <code>(iterate inc 1)</code>, that is <code>iterate</code> takes <code>inc</code> as first argument and as a second takes a value. This is been assigned to <code>all-numbers</code>. Now let&#8217;s look what will happen if we take the 25th element:</p>
+<p>In the above code we have <code>(iterate inc 1)</code>, that is <code>iterate</code> takes <code>inc</code> as first argument and as a second takes a value. This is assigned to <code>all-numbers</code>. Now let&#8217;s look what will happen if we take the 25th element:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7724,7 +7724,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Look&#8217;s like the first element 1 is the value we passed to iterate, and looks like 2 is <code>(inc 1)</code>, 3 is <code>(inc (inc 1))</code>. This is the thing that iterate documentation says <a href="https://clojuredocs.org/clojure.core/iterate" class="bare">https://clojuredocs.org/clojure.core/iterate</a>.</p>
+<p>Look&#8217;s like the first element 1 is the value we passed to iterate, and looks like 2 is <code>(inc 1)</code>, 3 is <code>(inc (inc 1))</code>. This is what <code>iterate</code> documentation says <a href="https://clojuredocs.org/clojure.core/iterate" class="bare">https://clojuredocs.org/clojure.core/iterate</a>.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s create a function that squares a number:</p>
@@ -7776,10 +7776,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>This is the explanation:</p>
+<p>Here is the explanation:</p>
 </div>
 <div class="paragraph">
-<p>First <code>5</code> in <code>(5 25.0 625.0)</code> is the second argument we pass to <code>iterate</code> in <code>(def squares (iterate squared 5))</code>, its returned as it is.</p>
+<p>First <code>5</code> in <code>(5 25.0 625.0)</code> is the second argument we pass to <code>iterate</code> in <code>(def squares (iterate squared 5))</code>, it&#8217;s returned as it is.</p>
 </div>
 <div class="paragraph">
 <p>The second <code>25</code> is nothing but the first iteration <code>(square 5)</code>.</p>
