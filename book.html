@@ -679,7 +679,7 @@ pre.rouge {
 <li><a href="#_installing_stuff">1. Installing Stuff</a>
 <ul class="sectlevel2">
 <li><a href="#_clojure">1.1. Clojure</a></li>
-<li><a href="#_leningen">1.2. Leningen</a></li>
+<li><a href="#_leiningen">1.2. Leiningen</a></li>
 <li><a href="#_configuring_ide">1.3. Configuring IDE</a></li>
 </ul>
 </li>
@@ -922,7 +922,7 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_leningen">1.2. Leningen</h3>
+<h3 id="_leiningen">1.2. Leiningen</h3>
 <div class="imageblock">
 <div class="content">
 <img src="https://leiningen.org/img/leiningen.jpg" alt="leiningen">
@@ -949,7 +949,7 @@ user=&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Press <span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span> and it should stop. All is well, and you have installed Leningen.</p>
+<p>Press <span class="keyseq"><kbd>CTRL</kbd>+<kbd>D</kbd></span> and it should stop. All is well, and you have installed Leiningen.</p>
 </div>
 </div>
 <div class="sect2">
@@ -4502,6 +4502,18 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="paragraph">
 <p>In programming, when you need to do stuff again and again, you use a thing called loops. In this section we will be seeing about it.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+There are no real loops in Clojure <a href="https://www.reddit.com/r/Clojure/comments/11d4jo2/comment/ja7luoz/?context=3" class="bare">https://www.reddit.com/r/Clojure/comments/11d4jo2/comment/ja7luoz/?context=3</a>. This section will get a better explanation once I understand about it. Till then bear with me.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="_for">8.1. for</h3>
 <div class="paragraph">
@@ -4531,7 +4543,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Assigns <code>[1 2 3 4]</code> to <code>nums</code>. Then we invoke the <code>for</code> as shown</p>
+<p>assigns <code>[1 2 3 4]</code> to <code>nums</code>. Then we invoke the <code>for</code> as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4555,10 +4567,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>So what <code>for</code> does is this, first time <code>num</code> is <code>1</code> and the loop body returns <code>(* num 10)</code> which is <code>10</code>, so <code>for</code> has a list with <code>(10)</code>. The next time <code>num</code> is <code>2</code> and <code>(* num 10)</code> is <code>20</code> which get returned and <code>for</code> now has a list <code>(10 20)</code>, and so on it continues till <code>for</code> has a list <code>(10 20 30 40)</code>, finally for returns it.</p>
+<p>So what <code>for</code> does is this, first time <code>num</code> is <code>1</code> and the loop body returns <code>(* num 10)</code> which is <code>10</code>, so <code>for</code> creates a list with <code>(10)</code>. The next time <code>num</code> is <code>2</code> and <code>(* num 10)</code> is <code>20</code> which get returned and <code>for</code> now has a list <code>(10 20)</code> (imagine like <code>20</code> is appended to <code>'(10)</code>), and so on it continues till <code>for</code> has a list <code>(10 20 30 40)</code>, finally <code>for</code> returns it.</p>
 </div>
 <div class="paragraph">
-<p>Now let&#8217;s try out a for program with multiple sequences. Type the program below and execute it:</p>
+<p>Now let&#8217;s try out a <code>for</code> program with multiple sequences. Type the program below and execute it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4588,7 +4600,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>We assign four colors to a variable named <code>colors</code>. Similarly in this statement:</p>
+<p>We assign four colors to a variable named <code>colors</code>. Similarly, in this statement:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4606,7 +4618,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>So in the code above we tell the for to execute each time for every item in <code>colors</code>, the first time it executes <code>color</code> will be the first value of <code>color</code>, that is <code>"red"</code>, the last time it executes <code>color</code> will be the last value of <code>colors</code> that is <code>"yellow"</code>.</p>
+<p>So in the code above we tell the for to execute each time for every item in <code>colors</code>, the first time it executes <code>color</code> will be the first value of <code>colors</code>, that is <code>"red"</code>, the last time it executes <code>color</code> will be the last value of <code>colors</code> that is <code>"yellow"</code>.</p>
 </div>
 <div class="paragraph">
 <p>Now we need to mix in <code>shapes</code>, so we just load every shape in <code>shapes</code> into a variable called <code>shape</code> as shown:</p>
@@ -4620,7 +4632,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>The way it executes is like this, first <code>"red"</code> gets loaded into <code>color</code>, then <code>"square"</code> gets loaded into <code>shape</code>, the loop body gets executed, here the loop body is simply concatenating <code>colors</code> and <code>shape</code> using <code>str</code>, so let&#8217;s add <code>(str color " " shape)</code> to our code below as the body of <code>for</code> loop.</p>
+<p>The way it executes is like this, first <code>"red"</code> gets loaded into <code>color</code>, then <code>"square"</code> gets loaded into <code>shape</code>, the loop body gets executed, here the loop body is simply concatenating <code>color</code> and <code>shape</code> using <code>str</code>, so let&#8217;s add <code>(str color " " shape)</code> to our code below as the body of <code>for</code> loop.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4630,7 +4642,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>So the first time <code>"red"</code>, then a space <code>" "</code> and <code>"square"</code> gets stringed together and <code>for</code> has a collection <code>("red square")</code>, now the next time, the <code>shape</code> takes the next value in <code>shapes</code>, that is "circle" and we get <code>"red circle"</code> as the output of <code>(str color " " shape)</code>, and hence <code>for</code> has the collection <code>("red square" "red circle")</code>. This goes on till all values in <code>shapes</code> are iterated, and now <code>color</code> takes on the next color that is <code>"blue"</code>, and the process continues. Ultimately for will return this list out:</p>
+<p>So the first time <code>"red"</code>, then a space <code>" "</code> and <code>"square"</code> gets stringed together and <code>for</code> has a collection <code>("red square")</code>, now the next time, the <code>shape</code> takes the next value in <code>shapes</code>, that is <code>"circle"</code>, and we get <code>"red circle"</code> as the output of <code>(str color " " shape)</code>, and hence <code>for</code> has the collection <code>("red square" "red circle")</code>. This goes on till all values in <code>shapes</code> are iterated, and now <code>color</code> takes on the next color that is <code>"blue"</code>, and the process continues. Ultimately <code>for</code> will return this list out:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4642,6 +4654,18 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <h3 id="_doseq">8.2. doseq</h3>
 <div class="paragraph">
 <p><code>doseq</code> works just like <code>for</code>, but it returns nothing. Checkout the code below, if you think it will return <code>(10 20 30 40)</code>, you are wrong. When you want something to be executed, but then nothing should be returned, then <code>doseq</code> is the thing to be used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>doseq</code> is used for doing repetitive actions with side effects, like printing out stuff, writing into a file, sending emails, writing into databases If you can&#8217;t understand what&#8217;s in this note, don&#8217;t worry. Just forget it. It doesn&#8217;t matter much now.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4759,7 +4783,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Once we need to the loop to continue once it has printed <code>x</code>, so for that we call a function <code>recur</code> with updated value of <code>x</code>, let&#8217;s pass <code>(recur (inc x))</code> as second argument to when as shown:</p>
+<p>We need to the loop to continue once it has printed <code>x</code>, so for that we call a function <code>recur</code> with updated value of <code>x</code>, let&#8217;s pass <code>(recur (inc x))</code> as second argument to when as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">

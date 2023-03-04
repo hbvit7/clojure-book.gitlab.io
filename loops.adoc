@@ -4,7 +4,9 @@
 
 include::use_code_note.adoc[]
 
-In programming, when you need to do stuff again and again, you use a thing called loops. In this section we will be seeing about it. 
+In programming, when you need to do stuff again and again, you use a thing called loops. In this section we will be seeing about it.
+
+NOTE: There are no real loops in Clojure https://www.reddit.com/r/Clojure/comments/11d4jo2/comment/ja7luoz/?context=3. This section will get a better explanation once I understand about it. Till then bear with me.
 
 === for
 
@@ -30,7 +32,7 @@ Let's see how it works. So,
 (let [nums [1 2 3 4]])
 ----
 
-Assigns `[1 2 3 4]` to `nums`. Then we invoke the `for` as shown
+assigns `[1 2 3 4]` to `nums`. Then we invoke the `for` as shown:
 
 [source, clojure]
 ----
@@ -51,9 +53,9 @@ So in the loop body all we do is to multiply `num` by `10`, so let's put `(* num
        (* num 10)))
 ----
 
-So what `for` does is this, first time `num` is `1` and the loop body returns `(* num 10)` which is `10`, so `for` has a list with `(10)`. The next time `num` is `2` and `(* num 10)` is `20` which get returned and `for` now has a list `(10 20)`, and so on it continues till `for` has a list `(10 20 30 40)`, finally for returns it.
+So what `for` does is this, first time `num` is `1` and the loop body returns `(* num 10)` which is `10`, so `for` creates a list with `(10)`. The next time `num` is `2` and `(* num 10)` is `20` which get returned and `for` now has a list `(10 20)` (imagine like `20` is appended to `'(10)`), and so on it continues till `for` has a list `(10 20 30 40)`, finally `for` returns it.
 
-Now let's try out a for program with multiple sequences. Type the program below and execute it:
+Now let's try out a `for` program with multiple sequences. Type the program below and execute it:
 
 [source, clojure]
 ----
@@ -79,7 +81,7 @@ So in this statement:
 (def colors ["red" "blue" "green" "yellow"]))
 ----
 
-We assign four colors to a variable named `colors`. Similarly in this statement:
+We assign four colors to a variable named `colors`. Similarly, in this statement:
 
 [source, clojure]
 ----
@@ -95,7 +97,7 @@ We assign four shapes to shapes. Now let's use `for` to combine all `colors` wit
   )
 ----
 
-So in the code above we tell the for to execute each time for every item in `colors`, the first time it executes `color` will be the first value of `color`, that is `"red"`, the last time it executes `color` will be the last value of `colors` that is `"yellow"`.
+So in the code above we tell the for to execute each time for every item in `colors`, the first time it executes `color` will be the first value of `colors`, that is `"red"`, the last time it executes `color` will be the last value of `colors` that is `"yellow"`.
 
 Now we need to mix in `shapes`, so we just load every shape in `shapes` into a variable called `shape` as shown:
 
@@ -107,7 +109,7 @@ Now we need to mix in `shapes`, so we just load every shape in `shapes` into a v
   )
 ----
 
-The way it executes is like this, first `"red"` gets loaded into `color`, then `"square"` gets loaded into `shape`, the loop body gets executed, here the loop body is simply concatenating `colors` and `shape` using `str`, so let's add `(str color " " shape)` to our code below as the body of `for` loop.
+The way it executes is like this, first `"red"` gets loaded into `color`, then `"square"` gets loaded into `shape`, the loop body gets executed, here the loop body is simply concatenating `color` and `shape` using `str`, so let's add `(str color " " shape)` to our code below as the body of `for` loop.
 
 [source, clojure]
 ----
@@ -116,7 +118,7 @@ The way it executes is like this, first `"red"` gets loaded into `color`, then `
   (str color " " shape))
 ----
 
-So the first time `"red"`, then a space `" "` and `"square"` gets stringed together and `for` has a collection `("red square")`, now the next time, the `shape` takes the next value in `shapes`, that is "circle" and we get `"red circle"` as the output of `(str color " " shape)`, and hence `for` has the collection `("red square" "red circle")`. This goes on till all values in `shapes` are iterated, and now `color` takes on the next color that is `"blue"`, and the process continues. Ultimately for will return this list out:
+So the first time `"red"`, then a space `" "` and `"square"` gets stringed together and `for` has a collection `("red square")`, now the next time, the `shape` takes the next value in `shapes`, that is `"circle"`, and we get `"red circle"` as the output of `(str color " " shape)`, and hence `for` has the collection `("red square" "red circle")`. This goes on till all values in `shapes` are iterated, and now `color` takes on the next color that is `"blue"`, and the process continues. Ultimately `for` will return this list out:
 
 ----
 ("red square" "red circle" "red triangle" "red rectangle" "blue square" "blue circle" "blue triangle" "blue rectangle" "green square" "green circle" "green triangle" "green rectangle" "yellow square" "yellow circle" "yellow triangle" "yellow rectangle")
@@ -125,6 +127,8 @@ So the first time `"red"`, then a space `" "` and `"square"` gets stringed toget
 === doseq
 
 `doseq` works just like `for`, but it returns nothing. Checkout the code below, if you think it will return `(10 20 30 40)`, you are wrong. When you want something to be executed, but then nothing should be returned, then `doseq` is the thing to be used.
+
+NOTE: `doseq` is used for doing repetitive actions with side effects, like printing out stuff, writing into a file, sending emails, writing into databases If you can't understand what's in this note, don't worry. Just forget it. It doesn't matter much now.
 
 [source, clojure]
 ----
@@ -226,7 +230,7 @@ Now let's have a simple loop body to print `x`, so we get:
     (println x)))
 ----
 
-Once we need to the loop to continue once it has printed `x`, so for that we call a function `recur` with updated value of `x`, let's pass `(recur (inc x))` as second argument to when as shown:
+We need to the loop to continue once it has printed `x`, so for that we call a function `recur` with updated value of `x`, let's pass `(recur (inc x))` as second argument to when as shown:
 
 [source, clojure]
 ----
