@@ -2364,7 +2364,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <p>Lists are just like vectors, now all you need to remember is a vector is set of things wrapped between square brackets <code>[</code> and <code>]</code>, a list is wrapped between round brackets <code>(</code> and <code>)</code>. In fact entire Clojure program is a list. Remember how we calculate \$3 + 5\$ in Clojure, it&#8217;s like this <code>(+ 3 5)</code>, it&#8217;s wrapped in round braces, and hence it&#8217;s a list.</p>
 </div>
 <div class="paragraph">
-<p>Entire Cloujre code is nothing but a list. It has a open braces <code>(</code>, and a function to call. To add we use the <code>+</code> function, and so we have <code>(+</code>, this is followed by arguments that are passed to the function, so to add 3 with 5, we pass the arguments to function like this <code>(+ 3 5</code>, then this is followed by closing round braces <code>(+ 3 5)</code>, thus completing the list, which could be executed by the Clojure interpreter.</p>
+<p>Entire Clojure code is nothing but a list. It has an open braces <code>(</code>, and a function to call. To add we use the <code>+</code> function, and so we have <code>(+</code>, this is followed by arguments that are passed to the function, so to add 3 with 5, we pass the arguments to function like this <code>(+ 3 5</code>, then this is followed by closing round braces <code>(+ 3 5)</code>, thus completing the list, which could be executed by the Clojure interpreter.</p>
 </div>
 <div class="paragraph">
 <p>Take a look at the example below:</p>
@@ -2442,7 +2442,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Note how I am using the apostrophe in the above <code>'("Ram" "Bashir" "Antony" "Buddha")</code>, to tell the Clojure interpreter, not to execute the list.</p>
+<p>Note how I am using the apostrophe in <code>'("Ram" "Bashir" "Antony" "Buddha")</code>, to tell the Clojure interpreter, not to execute the list.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s see how many elements are there in <code>friends-list</code>. For that we use <code>count</code> as shown below and pass <code>friends-list</code> to it.</p>
@@ -2496,7 +2496,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Now let&#8217;s get the third element in <code>friends-list</code>. For that we use the function <code>nth</code>, which takes list as the first argument and the index to be fetched as the second argument.</p>
+<p>Now let&#8217;s get the fourth element in <code>friends-list</code>. For that we use the function <code>nth</code>, which takes list as the first argument and the index to be fetched as the second argument.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2551,10 +2551,10 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="paragraph">
-<p>and it fails.</p>
+<p>and, it fails.</p>
 </div>
 <div class="paragraph">
-<p>Now let&#8217;s add an element to the list. For that we use method called <code>conj</code>, to it, we will pass the list to which the element should be appended, followed by the element which needs to appended to the list as shown below:</p>
+<p>Now, let&#8217;s add an element to the list. For that we use method called <code>conj</code>, to <code>conj</code>, we will pass the list to which the element should be appended, followed by the element which needs to appended to the list as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">

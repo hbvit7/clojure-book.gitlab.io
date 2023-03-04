@@ -7,7 +7,7 @@ include::use_code_note.adoc[]
 
 Lists are just like vectors, now all you need to remember is a vector is set of things wrapped between square brackets `[` and `]`, a list is wrapped between round brackets `(` and `)`. In fact entire Clojure program is a list. Remember how we calculate stem:[3 + 5] in Clojure, it's like this `(+ 3 5)`, it's wrapped in round braces, and hence it's a list.
 
-Entire Cloujre code is nothing but a list. It has a open braces `(`, and a function to call. To add we use the `+` function, and so we have `(+`, this is followed by arguments that are passed to the function, so to add 3 with 5, we pass the arguments to function like this `(+ 3 5`, then this is followed by closing round braces `(+ 3 5)`, thus completing the list, which could be executed by the Clojure interpreter.
+Entire Clojure code is nothing but a list. It has an open braces `(`, and a function to call. To add we use the `+` function, and so we have `(+`, this is followed by arguments that are passed to the function, so to add 3 with 5, we pass the arguments to function like this `(+ 3 5`, then this is followed by closing round braces `(+ 3 5)`, thus completing the list, which could be executed by the Clojure interpreter.
 
 Take a look at the example below:
 
@@ -42,7 +42,6 @@ So the apostrophe before the round brackets is to tell the Clojure not to execut
 
 You can also create a list using the `list` method as shown below:
 
-
 [source, clojure]
 ----
 (list 1 2 3)
@@ -70,7 +69,7 @@ Output
 #'user/friends-list
 ----
 
-Note how I am using the apostrophe in the above `'("Ram" "Bashir" "Antony" "Buddha")`, to tell the Clojure interpreter, not to execute the list.
+Note how I am using the apostrophe in `'("Ram" "Bashir" "Antony" "Buddha")`, to tell the Clojure interpreter, not to execute the list.
 
 Now let's see how many elements are there in `friends-list`. For that we use `count` as shown below and pass `friends-list` to it.
 
@@ -113,7 +112,7 @@ Output
 ("Bashir" "Antony" "Buddha")
 ----
 
-Now let's get the third element in `friends-list`. For that we use the function `nth`, which takes list as the first argument and the index to be fetched as the second argument.
+Now let's get the fourth element in `friends-list`. For that we use the function `nth`, which takes list as the first argument and the index to be fetched as the second argument.
 
 [source, clojure]
 ----
@@ -129,7 +128,6 @@ Output
 Note that list indexing starts from zero. That is the first element is indexed 0, second is 1 and so on.
 
 In the example below, Let's try to get the fourth element in `friends-list` by passing number 3 to it:
-
 
 [source, clojure]
 ----
@@ -163,9 +161,9 @@ clojure.lang.PersistentList cannot be cast to clojure.lang.IFn
 
 ----
 
-and it fails.
+and, it fails.
 
-Now let's add an element to the list. For that we use method called `conj`, to it, we will pass the list to which the element should be appended, followed by the element which needs to appended to the list as shown below:
+Now, let's add an element to the list. For that we use method called `conj`, to `conj`, we will pass the list to which the element should be appended, followed by the element which needs to appended to the list as shown below:
 
 [source, clojure]
 ----
