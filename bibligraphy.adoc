@@ -8,3 +8,5 @@
 - Practicalli https://practical.li/
 - Clojure Cookbook: Recipes for Functional Programming https://amzn.to/3TMkuLn
 - The Joy of Clojure https://amzn.to/3hOwJtN
+- Mastering Clojure Macros https://amzn.to/3KWoXdF
+- Clojure Script Unravelled https://funcool.github.io/clojurescript-unraveled/

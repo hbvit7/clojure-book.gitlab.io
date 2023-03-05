@@ -8,7 +8,7 @@ Lets say you want to add 2 and 3  and you will write it like this:
 
 Where `+` is a function and `2` and `3` are arguments. But let's say that I am more comfortable writing it as `(2 + 3)` rather than `(+ 2 3)`, how I can do that in Clojure?
 
-When you consider any Clojure code like `(+ 2 3)` its basically a list, you can verify it in REPL as shown
+When you consider any Clojure code like `(+ 2 3)` it's basically a list, you can verify it in REPL as shown
 
 ```clojure
 user=> (type '(+ 2 3))
@@ -17,13 +17,13 @@ clojure.lang.PersistentList
 
 The single quote here `'(+ 2 3)` tells to Clojure that not to execute the list. The basic thing is, any program in Clojure is a list. So even `(2 + 3)` is a list. Now all we need to do is convert `(2 + 3)` to `(+ 2 3)` and let it execute.
 
-So let's imagine we capture `(2 + 3)` in  a variable called  `a-list`. We take the first element:
+So let's imagine we capture `(2 + 3)` in a variable called `a-list`. We take the first element:
 
 ```clojure
 (first a-list) ; This gets the 2
 ```
 
-Then after the first we put the last element:
+Then after the first we get the last element:
 
 ```clojure
 (first a-list) ; This gets the 2
@@ -74,7 +74,7 @@ Now one can try this code:
 
 This will give 5 as output.
 
-You can also use `macroexpand` keyword to expand a macro, for example the code below:
+You can also use `macroexpand` keyword to expand a macro, see the code below:
 
 ```clojure
 (println
@@ -88,7 +88,7 @@ Will print out:
 (+ 2 3)
 ```
 
-Thats what macro `calculate` is supposed to do after you give `(2 + 3)` as input.
+That's what macro `calculate` is supposed to do after you give `(2 + 3)` as input.
 
 The entire `macro.clj` code is listed below:
 

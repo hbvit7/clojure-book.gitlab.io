@@ -10030,7 +10030,7 @@ expected: (= 5 (add 2 2))
 <p>Where <code>+</code> is a function and <code>2</code> and <code>3</code> are arguments. But let&#8217;s say that I am more comfortable writing it as <code>(2 + 3)</code> rather than <code>(+ 2 3)</code>, how I can do that in Clojure?</p>
 </div>
 <div class="paragraph">
-<p>When you consider any Clojure code like <code>(+ 2 3)</code> its basically a list, you can verify it in REPL as shown</p>
+<p>When you consider any Clojure code like <code>(+ 2 3)</code> it&#8217;s basically a list, you can verify it in REPL as shown</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10042,7 +10042,7 @@ expected: (= 5 (add 2 2))
 <p>The single quote here <code>'(+ 2 3)</code> tells to Clojure that not to execute the list. The basic thing is, any program in Clojure is a list. So even <code>(2 + 3)</code> is a list. Now all we need to do is convert <code>(2 + 3)</code> to <code>(+ 2 3)</code> and let it execute.</p>
 </div>
 <div class="paragraph">
-<p>So let&#8217;s imagine we capture <code>(2 + 3)</code> in  a variable called  <code>a-list</code>. We take the first element:</p>
+<p>So let&#8217;s imagine we capture <code>(2 + 3)</code> in a variable called <code>a-list</code>. We take the first element:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10050,7 +10050,7 @@ expected: (= 5 (add 2 2))
 </div>
 </div>
 <div class="paragraph">
-<p>Then after the first we put the last element:</p>
+<p>Then after the first we get the last element:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10112,7 +10112,7 @@ expected: (= 5 (add 2 2))
 <p>This will give 5 as output.</p>
 </div>
 <div class="paragraph">
-<p>You can also use <code>macroexpand</code> keyword to expand a macro, for example the code below:</p>
+<p>You can also use <code>macroexpand</code> keyword to expand a macro, see the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10130,7 +10130,7 @@ expected: (= 5 (add 2 2))
 </div>
 </div>
 <div class="paragraph">
-<p>Thats what macro <code>calculate</code> is supposed to do after you give <code>(2 + 3)</code> as input.</p>
+<p>That&#8217;s what macro <code>calculate</code> is supposed to do after you give <code>(2 + 3)</code> as input.</p>
 </div>
 <div class="paragraph">
 <p>The entire <code>macro.clj</code> code is listed below:</p>
@@ -10189,6 +10189,12 @@ expected: (= 5 (add 2 2))
 </li>
 <li>
 <p>The Joy of Clojure <a href="https://amzn.to/3hOwJtN" class="bare">https://amzn.to/3hOwJtN</a></p>
+</li>
+<li>
+<p>Mastering Clojure Macros <a href="https://amzn.to/3KWoXdF" class="bare">https://amzn.to/3KWoXdF</a></p>
+</li>
+<li>
+<p>Clojure Script Unravelled <a href="https://funcool.github.io/clojurescript-unraveled/" class="bare">https://funcool.github.io/clojurescript-unraveled/</a></p>
 </li>
 </ul>
 </div>
