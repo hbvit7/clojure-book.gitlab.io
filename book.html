@@ -7836,7 +7836,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see in the above case <code>map</code> makes each element in <code>[1 2 3]</code> be acted on by the inc method, collects the output in a  list and returns it. So you get <code>(2 3 4)</code> as output.</p>
+<p>As you can see in the above case <code>map</code> makes each element in <code>[1 2 3]</code> be acted on by the <code>inc</code> method, collects the output in a list and returns it. So you get <code>(2 3 4)</code> as output.</p>
 </div>
 <div class="paragraph">
 <p>In the case below I pass an anonymous function <code>(fn [x] (+ x 1))</code> to <code>map</code> and make it act upon <code>[1 2 3]</code>:</p>
@@ -7874,7 +7874,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>There is another way to write anonymous function <code>(fn [x] (+ x 1))</code>, it can be written as <code>#(+ % 1)</code>. You can define the function content between <code>#()</code>, the <code>%</code> signifies the argument been passed to the function, and we want to add 1 to it, so it becomes <code>#(+ % 1)</code>. Isn&#8217;t this more better than <code>(fn [x] (+ x 1))</code>?</p>
+<p>There is another way to write anonymous function <code>(fn [x] (+ x 1))</code>, it can be written as <code>#(+ % 1)</code>. You can define the function content between <code>#()</code>, the <code>%</code> signifies the argument been passed to the function, and we want to add 1 to it, so it becomes <code>#(+ % 1)</code>. Isn&#8217;t this better than <code>(fn [x] (+ x 1))</code>?</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s say we have a function that takes two arguments as shown:</p>
@@ -7887,7 +7887,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>In tha above case the function takes two arguments and returns it&#8217;s sun of squares. Now how to make this function work with sequence? Simple pass it to map as shown:</p>
+<p>In the above case the function takes two arguments and returns its sum of squares. Now how to make this function work with sequence? Simple pass it to map as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7935,13 +7935,13 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>So this function suns and squares it and returns it as <code>5.0</code>, the map collects it in a list and it becomes <code>(5.0)</code>.</p>
+<p>So this function sums and squares, and returns <code>5.0</code>, the map collects it in a list, and it becomes <code>(5.0)</code>.</p>
 </div>
 <div class="paragraph">
-<p>Then <code>map</code> take the second argument from <code>[1 2 3]</code> which is <code>2</code>, and <code>[2 3 4]</code> which is <code>3</code> and passes it to the function, and the function returns <code>13.0</code>, which is appended to the list making it <code>(5.0 13.0)</code>, similarly the same is performed on third arguments of the passed sequences and the result <code>25.0</code> is appended to the list and it becomes <code>(5.0 13.0 25.0)</code>, this final list is returned out.</p>
+<p>Then <code>map</code> take the second argument from <code>[1 2 3]</code> which is <code>2</code>, and second in <code>[2 3 4]</code> which is <code>3</code> and passes it to the function, and the function returns <code>13.0</code>, which is appended to the list making it <code>(5.0 13.0)</code>, similarly the same is performed on third arguments of the passed sequences and the result <code>25.0</code> is appended to list, and it becomes <code>(5.0 13.0 25.0)</code>, this final list is returned out.</p>
 </div>
 <div class="paragraph">
-<p>In the esample below I have a function called sum-of-squares:</p>
+<p>In the sample below I have a function called sum-of-squares:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7961,7 +7961,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>we had used previously. We use the name <code>sum-of-squares</code> with map and pass two sequences for <code>x</code> and <code>y</code> and get the same result as shown below:</p>
+<p>we had used previously. We use the name <code>sum-of-squares</code> with <code>map</code> and pass two sequences for <code>x</code> and <code>y</code> and get the same result as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
