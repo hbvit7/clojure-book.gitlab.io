@@ -14,18 +14,18 @@ Functions need data to operate on (well almost all of them). If the data is not 
 ;; (println (sum "4" 5)) ;; Thows an error
 ----
 
-When you execute `(println (sum 4 5))`, it works, whereas `(println (sum "4" 5))`  throws an error. This is because of the following code snippet in `sum`:
+When you execute `(println (sum 4 5))`, it works, whereas `(println (sum "4" 5))` throws an error. This is because of the following code snippet in `sum`:
 
 [source, clojure]
 ----
 {:pre [(number? a) (number? b)]}
 ----
 
-So this is just a map with a key named `:pre`. This pre can check many things, so we pass many things as an vector to it. The first one being, we check if the first argument `a` is a number using thr condition `(number? a)`, the second one being we check if the second argument `b` is a number using `(number? b)`. The function body is executed ony all both the conditions passed inside the vector are true.
+So this is just a map with a key named `:pre`. This pre can check many things, so we pass many things as a vector to it. The first one being, we check if the first argument `a` is a number using the condition `(number? a)`, the second one we check if the second argument `b` is a number using `(number? b)`. The function body is executed only if all the conditions passed inside the vector are true.
 
-For `(sum 4 5)`, `a` is `4` and `b` is `5`, so the function `sum` executes. For `(sum "4" 5)`, "4" is a string hence `(number? a)` becomes false nd it throws an error.
+For `(sum 4 5)`, `a` is `4` and `b` is `5`, so the function `sum` executes. For `(sum "4" 5)`, "4" is a string hence `(number? a)` becomes false, and it throws an error.
 
-When it's needed for one to check if returned value has some particular data format / structure, then we could use a post hook as shown below: 
+When it's needed for one to check if returned value has some particular data format / structure, then we could use a `post` hook as shown below: 
 
 [source, clojure]
 ----
@@ -42,14 +42,14 @@ When it's needed for one to check if returned value has some particular data for
 (println (sum 4 5)) ;; ; Assert failed: (number? %)
 ----
 
-Type the code above and execute. In the above example, both `sum` and `sum-without-post` returns a string `"45"`. If you execute `(sum-without-post 4 5)`, it just runs, but as a human one would expect sum of two numbers to be a number, whereas `(sum 4 5)` throws an error because it returns a string and the post hook:
+Type the code above and execute. In the above example, both `sum` and `sum-without-post` returns a string `"45"`. If you execute `(sum-without-post 4 5)`, it just runs, but as a human one would expect sum of two numbers to be a number, whereas `(sum 4 5)` throws an error because it returns a string and the `post` hook:
 
 [source, clojure]
 ----
 {:post [(number? %)]}
 ----
 
-expects the returned output represented by percent `%` sign to be a number.
+Expects the returned output (represented by percent `%` sign) to be a number.
 
 Now let's see `pre` and `post` hooks in action:
 
