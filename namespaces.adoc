@@ -1,8 +1,8 @@
 == namespaces
 
-A same word could mean different things, for example if you say book in a hotel it means one  thing, the same bok in a library means another, and in a police complaint a book means something else. Same word different meaning. A page in  a book is different, from a page in Operating System, which is different from Page the last name of a person.
+A same word could mean different things, for example if you say book in a hotel it means one thing, the same book in a library means another, and in a police complaint a book means something else. Same word different meaning. A page in a book is different, from a page in Operating System, which is different from Page the last name of a person.
 
-In order to separate these differences in coding, Clojure provides a a thing called namespace. Look at the program `name_space.clj` below, type it and execute it.
+In order to separate these differences in coding, Clojure provides a thing called namespace. Look at the program `name_space.clj` below, type it and execute it.
 
 [source, clojure]
 ----
@@ -77,7 +77,7 @@ In it we define a variable called `about-me` having some value:
 (def about-me "I never speak truth.")
 ----
 
-Next we define a name space called `politician` with a variable called about me:
+Next we define a name space called `politician` with a variable called `about-me`:
 
 [source, clojure]
 ----
@@ -134,7 +134,7 @@ This would print out `I never speak truth.`. Similarly look at the last line in 
 (println politician/about-me)
 ----
 
-We are printing `politician/about-me`, this would print out value of `about-me` in `politician` name space, and hence we will get `I loot the nation.` as output on terminal.
+We are printing `politician/about-me`, this would print out value of `about-me` in `politician` name space, and hence we will get `I loot the nation.` as output on the terminal.
 
 Since we are in `engineer` namespace, there is no need for using `engineer/about`, though using that way will make the code more clear. Look at the last line below snippet:
 
@@ -149,7 +149,7 @@ Since we are in `engineer` namespace, there is no need for using `engineer/about
 (println about-me)
 ----
 
-This `about-me` since its been called in `engineer` namespace, prints out `I apply science.`.
+This `about-me` since it's been called in `engineer` namespace, prints out `I apply science.`.
 
 Let's now switch namespace, to politicians using the following line:
 
