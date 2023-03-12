@@ -20,7 +20,7 @@ nil
 
 So you get `Hello World!` as well as a `nil` printed in the next line. Forget about the `nil`, we will look into it when we see functions, but our mission is accomplished.
 
-Commenting is very essential in coding. Comments are nothing but notes for the developer who is reading the code, while executing the code, the computer will ignore comments. In clojure everything that follows after semicolon `;` is a comment. So in the code below:
+Commenting is very essential in coding. Comments are nothing but notes for the developer who is reading the code, while executing the code, the computer will ignore comments. In Clojure everything that follows after semicolon `;` is a comment. So in the code below:
 
 [source, clojure]
 ----
@@ -34,11 +34,11 @@ Hello World!
 nil
 ----
 
-`; Says Hello to this world` is a comment which the Clojure interpreter will ignore. In the code above, we are commenting in the same line as there is code, usually its a convention to use just one semicolon `;` for such things. IF you want an entire line dedicated for comment, we use two semicolons `;;` as shown below: 
+`; Says Hello to this world` is a comment which the Clojure interpreter will ignore. In the code above, we are commenting in the same line as there is code, usually it's a convention to use just one semicolon `;` for such things. If you want an entire line dedicated for comment, we use two semicolons `;;` as shown below: 
 
 [source, clojure]
 ----
-;; This program says helo to this world
+;; This program says hello to this world
 (println "Hello World!")
 ----
 
@@ -49,9 +49,9 @@ Hello World!
 nil
 ----
 
-Both single and double semicolons makes no difference, but that the way conventions have evolved in Clojure.
+Both single and double semicolons makes no difference, but that's the way conventions have evolved in Clojure for commenting after a piece of code and dedicating a whole line for comment.
 
-We have printed `Hello World`, but then wht if we ant to print something else with it. With `println` its simple, just give other stuff too and it will print as shown:
+We have printed `Hello World`, but then what if we want to print something else with it. With `println` its simple, just give other stuff too, and it will print as shown:
 
 [source, clojure]
 ----
@@ -66,4 +66,3 @@ nil
 ----
 
 So you have successfully printed something in Clojure.
-
