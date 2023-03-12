@@ -1,8 +1,8 @@
 === Passing Argument
 
-We can pass arguments to functions, say we have a function stem:[f(x) = x^2 + 2], this function accepts an argument stem:[x], now we plug in 7 to x, then stem:[f(7) = 51]. In the same way, a programming function can take in argument and do something with it.
+We can pass arguments to functions, say we have a function stem:[f(x) = x^2 + 2], this function accepts an argument stem:[x], now we plug in 7 to x, then stem:[f(7) = 51]. In the same way, a function in Clojure can take in argument and do something with it.
 
-Look at the say hello example below, type iit and execute it:
+Look at the say hello example below, type it, and execute it:
 
 [source, clojure]
 ----
@@ -21,7 +21,7 @@ Hello Karthik !
 nil
 ----
 
-It prints `Hello Karthik !`, so how it works? We `(defn say-hello ...)`, where we define a function named `say-hello`, bu then after that notice the `[name]` as shown below:
+It prints `Hello Karthik !`, so how it works? By typing `(defn say-hello ...)`, where we define a function named `say-hello`, after that notice the `[name]` as shown below:
 
 [source, clojure]
 ----
@@ -30,7 +30,7 @@ It prints `Hello Karthik !`, so how it works? We `(defn say-hello ...)`, where w
   )
 ----
 
-The `name` is an argument you need to pass for the function to run. It an be used as variable in the function. Notice how the function is structured, you have the `defn`, followed by the function name then there the square bracket containing the sigle argument name `[name]`. Now let's finish off the function by writing its body as shown:
+The `name` is an argument you need to pass for the function to run. It can be used as variable in the function. Notice how the function is structured, you have the `defn`, followed by the function name `say-hello`, then there the square bracket containing the single argument name `[name]`. Now let's finish off the function by writing its body as shown:
 
 [source, clojure]
 ----
@@ -38,9 +38,9 @@ The `name` is an argument you need to pass for the function to run. It an be use
   (println "Hello" name "!"))
 ----
 
-As function body, we are just printing saying hello to the `name` passed using `println` like this: `(println "Hello" name "!")`.
+In the function body, we are just printing saying hello to the `name`, we pass `name` to `println` like this: `(println "Hello" name "!")`.
 
-Now calling `say-hello` with argument `Karthik` `(say-hello "Karthik")` prints out `Hello Karthik !`. Modify the program to say hello to you.
+Now calling `say-hello` with argument `Karthik`: `(say-hello "Karthik")` prints out `Hello Karthik !`. Modify the program to say hello to you.
 
 === Finding Area Of Circle
 
@@ -70,4 +70,4 @@ Output
 153.93804002589985
 ----
 
-In the above code, rather than dealing with `Math/PI` and finding power, all we need to do is to call `(circle-area 7)`, and we get the area of circle whose radius is 7 units. A good function abstracts complexity away and makes us write programs better and better.
+In the above code, rather than dealing with `Math/PI` and finding power, all we need to do is to call `(circle-area 7)`, and we get the area of circle whose radius is 7 units. A good function abstracts complexity away and makes us write programs better.
