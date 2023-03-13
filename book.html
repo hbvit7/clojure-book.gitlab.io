@@ -1164,7 +1164,7 @@ nil</pre>
 <p>So you get <code>Hello World!</code> as well as a <code>nil</code> printed in the next line. Forget about the <code>nil</code>, we will look into it when we see functions, but our mission is accomplished.</p>
 </div>
 <div class="paragraph">
-<p>Commenting is very essential in coding. Comments are nothing but notes for the developer who is reading the code, while executing the code, the computer will ignore comments. In clojure everything that follows after semicolon <code>;</code> is a comment. So in the code below:</p>
+<p>Commenting is very essential in coding. Comments are nothing but notes for the developer who is reading the code, while executing the code, the computer will ignore comments. In Clojure everything that follows after semicolon <code>;</code> is a comment. So in the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1181,11 +1181,11 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>; Says Hello to this world</code> is a comment which the Clojure interpreter will ignore. In the code above, we are commenting in the same line as there is code, usually its a convention to use just one semicolon <code>;</code> for such things. IF you want an entire line dedicated for comment, we use two semicolons <code>;;</code> as shown below:</p>
+<p><code>; Says Hello to this world</code> is a comment which the Clojure interpreter will ignore. In the code above, we are commenting in the same line as there is code, usually it&#8217;s a convention to use just one semicolon <code>;</code> for such things. If you want an entire line dedicated for comment, we use two semicolons <code>;;</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; This program says helo to this world</span><span class="w">
+<pre class="rouge highlight"><code data-lang="clojure"><span class="c1">;; This program says hello to this world</span><span class="w">
 </span><span class="p">(</span><span class="nb">println</span><span class="w"> </span><span class="s">"Hello World!"</span><span class="p">)</span></code></pre>
 </div>
 </div>
@@ -1199,10 +1199,10 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Both single and double semicolons makes no difference, but that the way conventions have evolved in Clojure.</p>
+<p>Both single and double semicolons makes no difference, but that&#8217;s the way conventions have evolved in Clojure for commenting after a piece of code and dedicating a whole line for comment.</p>
 </div>
 <div class="paragraph">
-<p>We have printed <code>Hello World</code>, but then wht if we ant to print something else with it. With <code>println</code> its simple, just give other stuff too and it will print as shown:</p>
+<p>We have printed <code>Hello World</code>, but then what if we want to print something else with it. With <code>println</code> its simple, just give other stuff too, and it will print as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3439,7 +3439,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="sect2">
 <h3 id="_doc">5.1. doc</h3>
 <div class="paragraph">
-<p>Clojure has a function named <code>doc</code>, to it, you pass any valid function name, in the below we pass <code>+</code> to <code>doc</code> and its documentation gets printed:</p>
+<p>Clojure has a function named <code>doc</code>, to it, you pass any valid function name. Below we pass <code>+</code> to <code>doc</code> and its documentation gets printed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3559,7 +3559,7 @@ clojure.core/+'
 </div>
 </div>
 <div class="paragraph">
-<p>Above I have found functions whose documentation contains the string sum of nums.</p>
+<p>Above I have found functions whose documentation contains the string "sum of nums".</p>
 </div>
 </div>
 <div class="sect2">
@@ -3581,7 +3581,7 @@ clojure.core/+'
 </div>
 </div>
 <div class="paragraph">
-<p>Above, I have use the <code>apropos</code> function to find all functions whose name contains the string <code>"replace"</code>. Now below I check the documentation of the function <code>replace</code> to reveal what it does:</p>
+<p>Above, I have used the <code>apropos</code> function to find all functions whose name contains the string <code>"replace"</code>. Now below I check the documentation of the function <code>replace</code> to reveal what it does:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5701,7 +5701,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When you execute <code>(println (sum 4 5))</code>, it works, whereas <code>(println (sum "4" 5))</code>  throws an error. This is because of the following code snippet in <code>sum</code>:</p>
+<p>When you execute <code>(println (sum 4 5))</code>, it works, whereas <code>(println (sum "4" 5))</code> throws an error. This is because of the following code snippet in <code>sum</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5709,13 +5709,13 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So this is just a map with a key named <code>:pre</code>. This pre can check many things, so we pass many things as an vector to it. The first one being, we check if the first argument <code>a</code> is a number using thr condition <code>(number? a)</code>, the second one being we check if the second argument <code>b</code> is a number using <code>(number? b)</code>. The function body is executed ony all both the conditions passed inside the vector are true.</p>
+<p>So this is just a map with a key named <code>:pre</code>. This pre can check many things, so we pass many things as a vector to it. The first one being, we check if the first argument <code>a</code> is a number using the condition <code>(number? a)</code>, the second one we check if the second argument <code>b</code> is a number using <code>(number? b)</code>. The function body is executed only if all the conditions passed inside the vector are true.</p>
 </div>
 <div class="paragraph">
-<p>For <code>(sum 4 5)</code>, <code>a</code> is <code>4</code> and <code>b</code> is <code>5</code>, so the function <code>sum</code> executes. For <code>(sum "4" 5)</code>, "4" is a string hence <code>(number? a)</code> becomes false nd it throws an error.</p>
+<p>For <code>(sum 4 5)</code>, <code>a</code> is <code>4</code> and <code>b</code> is <code>5</code>, so the function <code>sum</code> executes. For <code>(sum "4" 5)</code>, "4" is a string hence <code>(number? a)</code> becomes false, and it throws an error.</p>
 </div>
 <div class="paragraph">
-<p>When it&#8217;s needed for one to check if returned value has some particular data format / structure, then we could use a post hook as shown below:</p>
+<p>When it&#8217;s needed for one to check if returned value has some particular data format / structure, then we could use a <code>post</code> hook as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5733,7 +5733,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Type the code above and execute. In the above example, both <code>sum</code> and <code>sum-without-post</code> returns a string <code>"45"</code>. If you execute <code>(sum-without-post 4 5)</code>, it just runs, but as a human one would expect sum of two numbers to be a number, whereas <code>(sum 4 5)</code> throws an error because it returns a string and the post hook:</p>
+<p>Type the code above and execute. In the above example, both <code>sum</code> and <code>sum-without-post</code> returns a string <code>"45"</code>. If you execute <code>(sum-without-post 4 5)</code>, it just runs, but as a human one would expect sum of two numbers to be a number, whereas <code>(sum 4 5)</code> throws an error because it returns a string and the <code>post</code> hook:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5741,7 +5741,7 @@ Welcome Bharathiyaar from Yettaiyapuram</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>expects the returned output represented by percent <code>%</code> sign to be a number.</p>
+<p>Expects the returned output (represented by percent <code>%</code> sign) to be a number.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s see <code>pre</code> and <code>post</code> hooks in action:</p>

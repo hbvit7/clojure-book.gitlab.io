@@ -4,7 +4,7 @@ The fact that you are reading this book is because, this book documents somethin
 
 === doc
 
-Clojure has a function named `doc`, to it, you pass any valid function name, in the below we pass `+` to `doc` and its documentation gets printed:
+Clojure has a function named `doc`, to it, you pass any valid function name. Below we pass `+` to `doc` and its documentation gets printed:
 
 [source, clojure]
 ----
@@ -107,7 +107,7 @@ clojure.core/+'
   See also: +
 ----
 
-Above I have found functions whose documentation contains the string sum of nums.
+Above I have found functions whose documentation contains the string "sum of nums".
 
 === apropos
 
@@ -124,7 +124,7 @@ Output
 (clojure.core/replace clojure.string/re-quote-replacement clojure.string/replace clojure.string/replace-first clojure.walk/postwalk-replace clojure.walk/prewalk-replace clojure.zip/replace)
 ----
 
-Above, I have use the `apropos` function to find all functions whose name contains the string `"replace"`. Now below I check the documentation of the function `replace` to reveal what it does: 
+Above, I have used the `apropos` function to find all functions whose name contains the string `"replace"`. Now below I check the documentation of the function `replace` to reveal what it does: 
 
 [source, clojure]
 ----
