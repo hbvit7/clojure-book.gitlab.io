@@ -1,11 +1,10 @@
 == Records and Protocols
 
-If you want to learn records and protocols watching video's here is one https://www.youtube.com/watch?v=xpH6RGjZwNg.
+If you want to learn records and protocols watching video's, here is one https://www.youtube.com/watch?v=xpH6RGjZwNg.
 
-Clojure came during an era when Object Oriented Programming (OOP) was at a peak, then, due to large code bases OOP started to failed and people started looking into functional programming. So I find it not surprising that Clojure gives some ways to create objects and do stuff with them.
+Clojure came during an era when Object-Oriented Programming (OOP) was at a peak, then, due to large code bases OOP started to fail and people started looking into functional programming. So I find it not surprising that Clojure gives some ways to create objects and do stuff with them.
 
 In Clojure Object is nothing but a glorified map, and nothing more. You may not use it, but you can.
-
 
 === Creating objects
 
@@ -26,7 +25,7 @@ Output
 user.Car
 ----
 
-As you see from the output this creates something called `user.Car`. User is the default namespace, and I think `.Car` represents the record. If `Car` was just a variable, we would have got an output like `user/Car`.
+As you see from the output this creates something called `user.Car`. `user` is the default namespace, and I think `.Car` represents the record. If `Car` was just a variable, we would have got an output like `user/Car`.
 
 Now let's define a variable called `tata-nano`:
 
@@ -35,7 +34,7 @@ Now let's define a variable called `tata-nano`:
 (def tata-nano)
 ----
 
-Of the the type car:
+Of the type `Car`:
 
 [source, clojure]
 ----
@@ -71,7 +70,7 @@ Output
 
 So a variable `tata-nano` is created in `user` namespace, this is not a simple value, but an object containing two values.
 
-Object is a glorified hash in Clojure, so you can access `:name` of `tata-nano` just like you do with a has as shown:
+Object is a glorified map in Clojure, so you can access `:name` of `tata-nano` just like you do with a map as shown:
 
 [source, clojure]
 ----
@@ -95,7 +94,7 @@ Output
 "Tata Nano"
 ----
 
-Similarly you can access it's top speed:
+Similarly, you can access it's top speed:
 
 [source, clojure]
 ----
@@ -119,7 +118,7 @@ Output
 120
 ----
 
-Similarly let me create another record instance of `Car` called `ambassador`, but there is difference in code below: 
+Similarly, let me create another record instance of `Car` called `ambassador`, but there is difference in code below: 
 
 [source, clojure]
 ----
@@ -133,7 +132,7 @@ Output
 #'user/ambassador
 ----
 
-While creating `tata-nano`, we gave values it must hold in a positional way, but look at `map->Car`, instead of `->Car` in the code above, here we saying we want to pass a map so we pass this map:
+While creating `tata-nano`, we gave values it must hold in a positional way, but look at `map->Car`, instead of `->Car` in the code above, here we are saying we want to pass a map, so we pass this map:
 
 [source, clojure]
 ----
@@ -141,7 +140,7 @@ While creating `tata-nano`, we gave values it must hold in a positional way, but
   :top-speed 240 }
 ----
 
-And Clojure is smart enough to un-bundle it, and put the right values in right variables of `ambassador`. You can also vary the position like shown:
+And Clojure is smart enough to unpack it, and put the right values in right variables of `ambassador`. You can also vary the position like shown:
 
 [source, clojure]
 ----
@@ -149,7 +148,7 @@ And Clojure is smart enough to un-bundle it, and put the right values in right v
   :name "Ambassador" }
 ----
 
-It will still work the same. 
+It still works the same. 
 
 Let's now get the `:name` and `:top-speed` of ambassador:
 
@@ -229,7 +228,7 @@ Output
 #'user/tata-nano
 ----
 
-We have now code a function that can work with the record, let's nae it as `describe`:
+We now code a function that can work with the record, let's name it as `describe`:
 
 [source, clojure]
 ----
@@ -244,7 +243,7 @@ Output
 #'user/describe
 ----
 
-If you see `describe`, it accepts a argument named `vehicle`, let's look at the body of the function:
+If you see `describe`, it accepts an argument named `vehicle`, let's look at the body of the function:
 
 [source, clojure]
 ----
@@ -252,7 +251,7 @@ If you see `describe`, it accepts a argument named `vehicle`, let's look at the 
     (str name " has a top speed of " top-speed "Km/hr."))
 ----
 
-If you see we are destructing car in `let [{name :name top-speed :top-speed} vehicle]`, in this code snippet, `:name` of the passed `Car` record is assigned to variable named `name` and `:top-speed` is assigned to variable named `top-speed`. All we have to do now is to return out a beautifully formatted string that describes the car, which is done using this `(str name " has a top speed of " top-speed "Km/hr.")` piece of coe, which embeds `name` and `top-speed` into a description string.
+If you see we are destructing car in `let [{name :name top-speed :top-speed} vehicle]`, in this code snippet, `:name` of the passed `Car` record is assigned to variable `name` and `:top-speed` is assigned to variable `top-speed`. All we have to do now is to return out a beautifully formatted string that describes the car, which is done using this `(str name " has a top speed of " top-speed "Km/hr.")` piece of code, which embeds `name` and `top-speed` into a description string.
 
 Now let's use the `describe` on instance of `Car`:
 
@@ -280,17 +279,17 @@ Output
 user.Ship
 ----
 
-Let's create a new ship instance called `artic-explorer`:
+Let's create a new ship instance called `arctic-explorer`:
 
 [source, clojure]
 ----
-(def artic-explorer (->Ship "Artic Explorer" 10))
+(def arctic-explorer (->Ship "Arctic Explorer" 10))
 ----
 
 Output
 
 ----
-#'user/artic-explorer
+#'user/arctic-explorer
 ----
 
 Let's write a function called `describe-ship`, that describes a ship:
@@ -308,17 +307,17 @@ Output
 #'user/describe-ship
 ----
 
-Let's use `describe-ship` on `artic-explorer`
+Let's use `describe-ship` on `arctic-explorer`
 
 [source, clojure]
 ----
-(describe-ship artic-explorer)
+(describe-ship arctic-explorer)
 ----
 
 Output
 
 ----
-"Artic Explorer has a top speed of 10 knots."
+"Arctic Explorer has a top speed of 10 knots."
 ----
 
 It works!
@@ -330,7 +329,6 @@ It works!
 include::use_code_note.adoc[]
 
 In last section we saw a way to describe about a `Car` using `describe`, and describe a ship using `describe-ship` function. Won't it be great for a programmer if he could just use one `describe` function to describe about a `Ship` and a `Car`? We will see how to do this with protocols here.
-
 
 So let's create a protocol called `Describe` as shown:
 
@@ -389,11 +387,11 @@ Then we write the definition of `describe` function for the `Car`:
       (str name " has a top speed of " top-speed "Km/hr."))))
 ----
 
-Note how there is no `defn` above. It just has the function name `describe`, followed by argument `this`, and in the body of describe we destructure `this` and return a sting description.
+Note how there is no `defn` above. It just has the function name `describe`, followed by argument `this`, and in the body of describe we destructure `this` and return a string description.
 
 The `this` in examples in this section is not a special keyword that needs to be used in Clojure, it is just name given to a variable, that's it.
 
-Similar to car to `Car`, we write a `describe` function for `Ship` record as shown:
+Similar for `Ship`, we write a `describe` function as shown:
 
 [source, clojure]
 ----
@@ -423,17 +421,17 @@ Output
 #'user/tata-nano
 ----
 
-Let's create instance of `Ship` called `artic-explorer`:
+Let's create instance of `Ship` called `arctic-explorer`:
 
 [source, clojure]
 ----
-(def artic-explorer (->Ship "Artic Explorer" 10))
+(def arctic-explorer (->Ship "Arctic Explorer" 10))
 ----
 
 Output
 
 ----
-#'user/artic-explorer
+#'user/arctic-explorer
 ----
 
 When we pass `tata-nano` to the `describe`, it knows its of type `Car` and the `describe` defined in `Car` is called:
@@ -449,17 +447,17 @@ Output
 "Tata Nano has a top speed of 120Km/hr."
 ----
 
-Similarly it knows `artic-explorer` is a ship and it's own `describe` is called in the code below:
+Similarly it knows `arctic-explorer` is a ship, and `Ship`'s own `describe` is called in the code below:
 
 [source, clojure]
 ----
-(describe artic-explorer)
+(describe arctic-explorer)
 ----
 
 Output
 
 ----
-"Artic Explorer has a top speed of 10 knots."
+"Arctic Explorer has a top speed of 10 knots."
 ----
 
 ==== Extend Protocol
@@ -535,7 +533,7 @@ Output
 user.Rocket
 ----
 
-Well, for that Clojure provides a function called `extend-protocol` that can used to extend the protocol `Describe` ash shown below:
+Well, for that Clojure provides a function called `extend-protocol` that can used to extend the protocol `Describe` as shown below:
 
 [source, clojure]
 ----
