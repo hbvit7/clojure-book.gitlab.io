@@ -13,7 +13,7 @@ Output
 10
 ----
 
-To `reduce` we pass function `+` and as a second argument a sequence `[1 2 3 4]`. You can think `reduce` rewrites the code as follows
+To `reduce` we pass function `+` and as a second argument a sequence `[1 2 3 4]`. You can think `reduce` rewrites the code as follows:
 
 [source, clojure]
 ----
@@ -62,14 +62,14 @@ Output
 10
 ----
 
-We can imaging reduce rewrites the above code as shown:
+We can imagine reduce rewrites the above code as shown:
 
 [source, clojure]
 ----
 (add 4 (add 3 (add 1 2)))
 ----
 
-Similarly I wrote my own `multiply` function:
+Similarly, I wrote my own `multiply` function:
 
 [source, clojure]
 ----
