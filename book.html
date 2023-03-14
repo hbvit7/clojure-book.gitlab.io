@@ -5400,7 +5400,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>First we have the form / statement <code>(println number)</code> which prints out <code>5</code>, then it comes to this form:</p>
+<p>First we have the form <code>(println number)</code> which prints out <code>5</code>, then it comes to this form:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5409,7 +5409,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So in the above code <code>(dec number)</code> is <code>4</code> and is positive, and hence <code>(pos? 4)</code> is <code>true</code>, hence the statement <code>(count-down (dec number))</code> gets executed, and so <code>(count-down 4)</code> is called. That is the function <code>count-down`</code> calls itself again.</p>
+<p>So in the above code <code>(dec number)</code> is <code>4</code> and is positive, and hence <code>(pos? 4)</code> is <code>true</code>, hence the statement <code>(count-down (dec number))</code> gets executed, and so <code>(count-down 4)</code> is called. That is the function <code>count-down</code> calls itself again.</p>
 </div>
 <div class="paragraph">
 <p>This goes on till <code>number</code> becomes <code>0</code> and <code>(dec number)</code> is <code>-1</code> and hence <code>(pos? -1)</code> is <code>false</code> thus <code>(count-down (dec number))</code> is never reached and the program exits.</p>
@@ -5443,7 +5443,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In th example above, we have replace the function name <code>count-down</code> with <code>recur</code> when the function needs to call itself. It said that when we use <code>recur</code> it more memory efficient and the condition it must satisfy is hat <code>recur`</code> should be the last statement executed in the function.</p>
+<p>In the example above, we have replaced the function name <code>count-down</code> with <code>recur</code> when the function needs to call itself. It said that when we use <code>recur</code> it more memory efficient and the condition it must satisfy is hat <code>recur</code> should be the last statement executed in the function.</p>
 </div>
 <div class="paragraph">
 <p>In the example below, we use recursion to compute the total of sequence of numbers passed to a function. Type the code below and execute it, we will see how it works soon.</p>
@@ -5470,7 +5470,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the above example we have tried out <code>sum</code> like this <code>(sum [1 2 3 4 5], 0)</code>, which returns <code>15</code>. to simplyfy it let&#8217;s try out something as shown:</p>
+<p>In the above example we have tried out <code>sum</code> like this <code>(sum [1 2 3 4 5], 0)</code>, which returns <code>15</code>. to simplify it let&#8217;s try out something as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5482,9 +5482,9 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">empty?</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w">
-    </span><span class="n">total</span><span class="w">
-    </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">))))</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">empty?</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w">
+  </span><span class="n">total</span><span class="w">
+  </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">))))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5528,7 +5528,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So now a <code>sum</code> is called with <code>numbers</code> taking tha value <code>[2]</code> and <code>total</code> taking he value <code>1</code>. Once again <code>(empty [2])</code> is <code>false</code> and we end up with</p>
+<p>So now a <code>sum</code> is called with <code>numbers</code> taking tha value <code>[2]</code> and <code>total</code> taking the value <code>1</code>. Once again <code>(empty [2])</code> is <code>false</code> and we end up with</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5564,9 +5564,9 @@ nil</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="w"> </span><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">empty?</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w">
-    </span><span class="n">total</span><span class="w">
-    </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">))))</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">empty?</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w">
+  </span><span class="n">total</span><span class="w">
+  </span><span class="p">(</span><span class="nf">recur</span><span class="w"> </span><span class="p">(</span><span class="nb">rest</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">+</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="p">(</span><span class="nb">first</span><span class="w"> </span><span class="n">numbers</span><span class="p">))))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8757,10 +8757,10 @@ nil</pre>
 <h2 id="_records_and_protocols">17. Records and Protocols</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you want to learn records and protocols watching video&#8217;s here is one <a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a>.</p>
+<p>If you want to learn records and protocols watching video&#8217;s, here is one <a href="https://www.youtube.com/watch?v=xpH6RGjZwNg" class="bare">https://www.youtube.com/watch?v=xpH6RGjZwNg</a>.</p>
 </div>
 <div class="paragraph">
-<p>Clojure came during an era when Object Oriented Programming (OOP) was at a peak, then, due to large code bases OOP started to failed and people started looking into functional programming. So I find it not surprising that Clojure gives some ways to create objects and do stuff with them.</p>
+<p>Clojure came during an era when Object-Oriented Programming (OOP) was at a peak, then, due to large code bases OOP started to fail and people started looking into functional programming. So I find it not surprising that Clojure gives some ways to create objects and do stuff with them.</p>
 </div>
 <div class="paragraph">
 <p>In Clojure Object is nothing but a glorified map, and nothing more. You may not use it, but you can.</p>
@@ -8796,7 +8796,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>As you see from the output this creates something called <code>user.Car</code>. User is the default namespace, and I think <code>.Car</code> represents the record. If <code>Car</code> was just a variable, we would have got an output like <code>user/Car</code>.</p>
+<p>As you see from the output this creates something called <code>user.Car</code>. <code>user</code> is the default namespace, and I think <code>.Car</code> represents the record. If <code>Car</code> was just a variable, we would have got an output like <code>user/Car</code>.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s define a variable called <code>tata-nano</code>:</p>
@@ -8807,7 +8807,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Of the the type car:</p>
+<p>Of the type <code>Car</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8850,7 +8850,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <p>So a variable <code>tata-nano</code> is created in <code>user</code> namespace, this is not a simple value, but an object containing two values.</p>
 </div>
 <div class="paragraph">
-<p>Object is a glorified hash in Clojure, so you can access <code>:name</code> of <code>tata-nano</code> just like you do with a has as shown:</p>
+<p>Object is a glorified map in Clojure, so you can access <code>:name</code> of <code>tata-nano</code> just like you do with a map as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8879,7 +8879,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly you can access it&#8217;s top speed:</p>
+<p>Similarly, you can access it&#8217;s top speed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8908,7 +8908,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly let me create another record instance of <code>Car</code> called <code>ambassador</code>, but there is difference in code below:</p>
+<p>Similarly, let me create another record instance of <code>Car</code> called <code>ambassador</code>, but there is difference in code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8925,7 +8925,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>While creating <code>tata-nano</code>, we gave values it must hold in a positional way, but look at <code>map&#8594;Car</code>, instead of <code>&#8594;Car</code> in the code above, here we saying we want to pass a map so we pass this map:</p>
+<p>While creating <code>tata-nano</code>, we gave values it must hold in a positional way, but look at <code>map&#8594;Car</code>, instead of <code>&#8594;Car</code> in the code above, here we are saying we want to pass a map, so we pass this map:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8934,7 +8934,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>And Clojure is smart enough to un-bundle it, and put the right values in right variables of <code>ambassador</code>. You can also vary the position like shown:</p>
+<p>And Clojure is smart enough to unpack it, and put the right values in right variables of <code>ambassador</code>. You can also vary the position like shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8943,7 +8943,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>It will still work the same.</p>
+<p>It still works the same.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s now get the <code>:name</code> and <code>:top-speed</code> of ambassador:</p>
@@ -9048,7 +9048,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>We have now code a function that can work with the record, let&#8217;s nae it as <code>describe</code>:</p>
+<p>We now code a function that can work with the record, let&#8217;s name it as <code>describe</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9066,7 +9066,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>If you see <code>describe</code>, it accepts a argument named <code>vehicle</code>, let&#8217;s look at the body of the function:</p>
+<p>If you see <code>describe</code>, it accepts an argument named <code>vehicle</code>, let&#8217;s look at the body of the function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9075,7 +9075,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>If you see we are destructing car in <code>let [{name :name top-speed :top-speed} vehicle]</code>, in this code snippet, <code>:name</code> of the passed <code>Car</code> record is assigned to variable named <code>name</code> and <code>:top-speed</code> is assigned to variable named <code>top-speed</code>. All we have to do now is to return out a beautifully formatted string that describes the car, which is done using this <code>(str name " has a top speed of " top-speed "Km/hr.")</code> piece of coe, which embeds <code>name</code> and <code>top-speed</code> into a description string.</p>
+<p>If you see we are destructing car in <code>let [{name :name top-speed :top-speed} vehicle]</code>, in this code snippet, <code>:name</code> of the passed <code>Car</code> record is assigned to variable <code>name</code> and <code>:top-speed</code> is assigned to variable <code>top-speed</code>. All we have to do now is to return out a beautifully formatted string that describes the car, which is done using this <code>(str name " has a top speed of " top-speed "Km/hr.")</code> piece of code, which embeds <code>name</code> and <code>top-speed</code> into a description string.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s use the <code>describe</code> on instance of <code>Car</code>:</p>
@@ -9110,11 +9110,11 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s create a new ship instance called <code>artic-explorer</code>:</p>
+<p>Let&#8217;s create a new ship instance called <code>arctic-explorer</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">artic-explorer</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Ship</span><span class="w"> </span><span class="s">"Artic Explorer"</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">arctic-explorer</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Ship</span><span class="w"> </span><span class="s">"Arctic Explorer"</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9122,7 +9122,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>#'user/artic-explorer</pre>
+<pre>#'user/arctic-explorer</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9144,11 +9144,11 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s use <code>describe-ship</code> on <code>artic-explorer</code></p>
+<p>Let&#8217;s use <code>describe-ship</code> on <code>arctic-explorer</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">describe-ship</span><span class="w"> </span><span class="n">artic-explorer</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">describe-ship</span><span class="w"> </span><span class="n">arctic-explorer</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9156,7 +9156,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>"Artic Explorer has a top speed of 10 knots."</pre>
+<pre>"Arctic Explorer has a top speed of 10 knots."</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9247,13 +9247,13 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Note how there is no <code>defn</code> above. It just has the function name <code>describe</code>, followed by argument <code>this</code>, and in the body of describe we destructure <code>this</code> and return a sting description.</p>
+<p>Note how there is no <code>defn</code> above. It just has the function name <code>describe</code>, followed by argument <code>this</code>, and in the body of describe we destructure <code>this</code> and return a string description.</p>
 </div>
 <div class="paragraph">
 <p>The <code>this</code> in examples in this section is not a special keyword that needs to be used in Clojure, it is just name given to a variable, that&#8217;s it.</p>
 </div>
 <div class="paragraph">
-<p>Similar to car to <code>Car</code>, we write a <code>describe</code> function for <code>Ship</code> record as shown:</p>
+<p>Similar for <code>Ship</code>, we write a <code>describe</code> function as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9289,11 +9289,11 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s create instance of <code>Ship</code> called <code>artic-explorer</code>:</p>
+<p>Let&#8217;s create instance of <code>Ship</code> called <code>arctic-explorer</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">artic-explorer</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Ship</span><span class="w"> </span><span class="s">"Artic Explorer"</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">arctic-explorer</span><span class="w"> </span><span class="p">(</span><span class="nf">-&gt;Ship</span><span class="w"> </span><span class="s">"Arctic Explorer"</span><span class="w"> </span><span class="mi">10</span><span class="p">))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9301,7 +9301,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>#'user/artic-explorer</pre>
+<pre>#'user/arctic-explorer</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9321,11 +9321,11 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly it knows <code>artic-explorer</code> is a ship and it&#8217;s own <code>describe</code> is called in the code below:</p>
+<p>Similarly it knows <code>arctic-explorer</code> is a ship, and <code>Ship&#8217;s own `describe</code> is called in the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">artic-explorer</span><span class="p">)</span></code></pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="nf">describe</span><span class="w"> </span><span class="n">arctic-explorer</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9333,7 +9333,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>"Artic Explorer has a top speed of 10 knots."</pre>
+<pre>"Arctic Explorer has a top speed of 10 knots."</pre>
 </div>
 </div>
 <div class="sect3">
@@ -9433,7 +9433,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Well, for that Clojure provides a function called <code>extend-protocol</code> that can used to extend the protocol <code>Describe</code> ash shown below:</p>
+<p>Well, for that Clojure provides a function called <code>extend-protocol</code> that can used to extend the protocol <code>Describe</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">

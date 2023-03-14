@@ -34,7 +34,7 @@ When executing the function, it prints from 5 to 1 and stops. We called the func
   (count-down (dec number)))
 ----
 
-First we have the form / statement `(println number)` which prints out `5`, then it comes to this form:
+First we have the form `(println number)` which prints out `5`, then it comes to this form:
 
 [source, clojure]
 ----
@@ -42,7 +42,7 @@ First we have the form / statement `(println number)` which prints out `5`, then
   (count-down (dec number)))
 ----
 
-So in the above code `(dec number)` is `4` and is positive, and hence `(pos? 4)` is `true`, hence the statement `(count-down (dec number))` gets executed, and so `(count-down 4)` is called. That is the function `count-down`` calls itself again.
+So in the above code `(dec number)` is `4` and is positive, and hence `(pos? 4)` is `true`, hence the statement `(count-down (dec number))` gets executed, and so `(count-down 4)` is called. That is the function `count-down` calls itself again.
 
 This goes on till `number` becomes `0` and `(dec number)` is `-1` and hence `(pos? -1)` is `false` thus `(count-down (dec number))` is never reached and the program exits.
 
@@ -71,8 +71,7 @@ Output
 nil
 ----
 
-In th example above, we have replace the function name `count-down` with `recur` when the function needs to call itself. It said that when we use `recur` it more memory efficient and the condition it must satisfy is hat `recur`` should be the last statement executed in the function.
-
+In the example above, we have replaced the function name `count-down` with `recur` when the function needs to call itself. It said that when we use `recur` it more memory efficient and the condition it must satisfy is hat `recur` should be the last statement executed in the function.
 
 In the example below, we use recursion to compute the total of sequence of numbers passed to a function. Type the code below and execute it, we will see how it works soon.
 
@@ -95,7 +94,7 @@ Output
 nil
 ----
 
-In the above example we have tried out `sum` like this `(sum [1 2 3 4 5], 0)`, which returns `15`. to simplyfy it let's try out something as shown:
+In the above example we have tried out `sum` like this `(sum [1 2 3 4 5], 0)`, which returns `15`. to simplify it let's try out something as shown:
 
 [source, clojure]
 ----
@@ -106,9 +105,9 @@ So when the above form is executed, let's look at the body of `sum`:
 
 [source, clojure]
 ----
- (if (empty? numbers)
-    total
-    (recur (rest numbers) (+ total (first numbers))))
+(if (empty? numbers)
+  total
+  (recur (rest numbers) (+ total (first numbers))))
 ----
 
 `(empty? [1 2])` become `false`, and  hance this get's executed:
@@ -146,7 +145,7 @@ Since `recur` calls the same function it's in, we can write it as:
 (sum [2] 1)
 ----
 
-So now a `sum` is called with `numbers` taking tha value `[2]` and `total` taking he value `1`. Once again `(empty [2])` is `false` and we end up with
+So now a `sum` is called with `numbers` taking tha value `[2]` and `total` taking the value `1`. Once again `(empty [2])` is `false` and we end up with
 
 [source, clojure]
 ----
@@ -179,15 +178,14 @@ So now `numbers` takes the value `[]` and `total` take the value `3`, now let's 
 
 [source, clojure]
 ----
- (if (empty? numbers)
-    total
-    (recur (rest numbers) (+ total (first numbers))))
+(if (empty? numbers)
+  total
+  (recur (rest numbers) (+ total (first numbers))))
 ----
 
 Here `(empty? numbers)` is `true` and hence `total` must be returned, hence `3` gets returned which is the sum of the vector `[1 2]`.
 
 What if you don't want to pass the `total` and want a function that take a sequence and computes its sum. Take a look at the example below:
-
 
 [source, clojure]
 ----
