@@ -1,8 +1,8 @@
 === Refactoring
 
-Say your friend is coding a billion dollar startup that let's its customers find circle area using an app. Your friend had a successful pitch and investment round where he claimed that 1000s of people wanted to find circle area every day and his app will be useful for it. He knows you area great programmer and you coded the `circle-area` function for him. The app releases and humanity is saved.
+Say your friend is coding a billion-dollar startup that lets its customers find circle area using an app. Your friend had a successful pitch and investment round where he claimed that 1000s of people wanted to find circle area every day and his app will be useful for it. He knows you area great programmer, and you coded the `circle-area` function for him. The app releases and humanity is saved.
 
-You find that rather than finding circle area using  `(* Math/PI (Math/pow radius 2))`, you can find it by `(* Math/PI radius radius)`. The later is much simpler and easier to maintain. So all you need to do is to change the code in one place as shown:
+You find that rather than finding circle area using `(* Math/PI (Math/pow radius 2))`, you can find it by `(* Math/PI radius radius)`. The later is much simpler and easier to maintain. So all you need to do is to change the code in one place as shown:
 
 [source, clojure]
 ----
@@ -14,6 +14,6 @@ You find that rather than finding circle area using  `(* Math/PI (Math/pow radiu
 (circle-area 7)
 ----
 
-The rest of the code in the app is totally unaware of this change, and works just fine. Instead of abstracting things away as a function, if you put  `(* Math/PI (Math/pow radius 2))` everywhere, say in 50 places in app, it would be really difficult to change and test.
+The rest of the code in the app is totally unaware of this change, and works just fine. Instead of abstracting things away as a function, if you put `(* Math/PI (Math/pow radius 2))` everywhere, say in 50 places in app, it would be really difficult to change and test.
 
 So functions help in better coding, and even reduces the possibility of bugs.

@@ -4968,10 +4968,10 @@ nil</pre>
 <div class="sect2">
 <h3 id="_refactoring">9.4. Refactoring</h3>
 <div class="paragraph">
-<p>Say your friend is coding a billion dollar startup that let&#8217;s its customers find circle area using an app. Your friend had a successful pitch and investment round where he claimed that 1000s of people wanted to find circle area every day and his app will be useful for it. He knows you area great programmer and you coded the <code>circle-area</code> function for him. The app releases and humanity is saved.</p>
+<p>Say your friend is coding a billion-dollar startup that lets its customers find circle area using an app. Your friend had a successful pitch and investment round where he claimed that 1000s of people wanted to find circle area every day and his app will be useful for it. He knows you area great programmer, and you coded the <code>circle-area</code> function for him. The app releases and humanity is saved.</p>
 </div>
 <div class="paragraph">
-<p>You find that rather than finding circle area using  <code>(* Math/PI (Math/pow radius 2))</code>, you can find it by <code>(* Math/PI radius radius)</code>. The later is much simpler and easier to maintain. So all you need to do is to change the code in one place as shown:</p>
+<p>You find that rather than finding circle area using <code>(* Math/PI (Math/pow radius 2))</code>, you can find it by <code>(* Math/PI radius radius)</code>. The later is much simpler and easier to maintain. So all you need to do is to change the code in one place as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4984,7 +4984,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The rest of the code in the app is totally unaware of this change, and works just fine. Instead of abstracting things away as a function, if you put  <code>(* Math/PI (Math/pow radius 2))</code> everywhere, say in 50 places in app, it would be really difficult to change and test.</p>
+<p>The rest of the code in the app is totally unaware of this change, and works just fine. Instead of abstracting things away as a function, if you put <code>(* Math/PI (Math/pow radius 2))</code> everywhere, say in 50 places in app, it would be really difficult to change and test.</p>
 </div>
 <div class="paragraph">
 <p>So functions help in better coding, and even reduces the possibility of bugs.</p>
