@@ -23,11 +23,11 @@ nil
 user=>
 ----
 
-You get the output `Hello World` printed out, and a strange thing `nil` in a line after that and once again you have been prompted to enter something at `user=>`
+You get the output `Hello World` printed out, and a strange thing `nil` in the line after that, and once again you have been prompted to enter something at `user=>`
 
 You can now press kbd:[CTRL+ D] to exit the REPL.
 
-So what really happened when you typed `clj`. The first thing was Clojure prompted you with `user=>`. You typed in something into the prompt, and pressed entered, Clojure REPL **R**ead it and **E**valuated it, understood that you want to print `Hello World`, next Clojure printed out the `Hello World`, then it also **P**rint a thing called `nil`, then it **L**ooped back again and prompted you with `user=>`.
+So what really happened when you typed `clj`. The first thing was Clojure prompted you with `user=>`. You typed in something into the prompt, and pressed entered, Clojure REPL **R**ead it and **E**valuated it, understood that you want to print `Hello World`, next Clojure **P**rinted out the `Hello World`, then it also printed a thing called `nil`, then it **L**ooped back again and prompted you with `user=>`.
 
 ==== REPL in VSCodium
 
@@ -59,11 +59,11 @@ OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12
 user=>
 ----
 
-The lein is short for Leningen, if you might remember installing it and checking if it launched. `repl` tells `lein` to start a REPL. You will see a output as shown. Note `nrepl://127.0.0.1:52897` in the above output, it means that there is a REPL server running at IP 127.0.0.1 footnote:[https://en.wikipedia.org/wiki/Localhost] and at port number footnote:[https://en.wikipedia.org/wiki/Port_(computer_networking)] 52897. Note down `127.0.0.1:52897`. May be the port number could vary in your case.
+The lein is short for Leiningen, you might remember installing it and checking if it launched. `repl` tells `lein` to start a REPL. You will see a output as shown above. Note `nrepl://127.0.0.1:52897` in the above output, it means that there is a REPL server running at IP 127.0.0.1 footnote:[https://en.wikipedia.org/wiki/Localhost] and at port number footnote:[https://en.wikipedia.org/wiki/Port_(computer_networking)] 52897. Note down `127.0.0.1:52897`. Maybe the port number could vary in your case.
 
 image::images/connect-to-repl-1.png[]
 
-In VSCodium type kbd:[CTRL+P] or kbd:[command+P] and type `>`, now you can  type in some commands for VSCodium to execute. In it try typing `Calva: Start or connect to a Clojure REPL`, before you finish typing it, VSCodium would have selected that option for you, press kbd:[ENTER] or click on it.
+In VSCodium type kbd:[CTRL+P] or kbd:[command+P] and type `>`, now you can type in some commands for VSCodium to execute. In it try typing `Calva: Start or connect to a Clojure REPL`, before you finish typing it, VSCodium would have selected that option for you, press kbd:[ENTER] or click on it.
 
 image::images/connect-to-repl-2.png[]
 
