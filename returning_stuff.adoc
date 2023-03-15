@@ -1,8 +1,8 @@
 === Returning stuff
 
-If you think about a mathematical function, say stem:[f(x) = x^ + 2], if you plug in a value say stem:[x = 7], it returns 51. So you expect  a function to return something.
+If you think about a mathematical function, say stem:[f(x) = x^ + 2], if you plug in a value say stem:[x = 7], it returns 51. So you expect a function to return something.
 
-In clojure, the last statement executed by a function returns. Take for example the code below:
+In Clojure, the last statement executed by a function returns. Take for example the code below:
 
 [source, clojure]
 ----
@@ -21,16 +21,16 @@ Output
 nil
 ----
 
-In the code above, the result of `(+ a b)` is returned out of the function add. If you see `(+ a b)` is the last statement of the function `add`. This is been captured by `println` and is printed out. You might have noticed a nil in output, thats because `println` after printing `5` returns nothing or `nil` and hence `nil` gets printed in the REPL.
+In the code above, the result of `(+ a b)` is returned out of the function add. If you see `(+ a b)` is the last statement of the function `add`. This is captured by `println` and is printed out. You might have noticed a nil in output, That's because `println` after printing `5` returns nothing or `nil` and hence `nil` gets printed in the REPL.
 
-Another good example will be any math function in Clojure. kae for instance `+`
+Another good example will be any math function in Clojure. Take for instance the `+`
 
 [source, clojure]
 ----
 (+ 1 2 3 4 5)
 ----
 
-Returns `15`, and hence if you try it out on the repl, you will get 15.
+Returns `15`, and hence if you try it out on the repl, you will get 15 and not `nil`, there is no `nil` here because it returns something. Think of `nil` as equivalent to nothing or emptiness in Clojure.
 
 Now let's code something and see what it returns. Code the example below and execute it
 
@@ -50,7 +50,6 @@ Output
 ----
 15
 ----
-
 
 In function `do-math`, you see the first form is `(+ a b)`, when `(do-math 5 3)` is called, `(+ a b)` returns `8`, but it gets thrown away and lost, the last statement is `(* a b)`, and it returns 15, this is what gets returned from `do-math` and that's what appears as output.
 
@@ -73,6 +72,6 @@ Output
 8
 ----
 
-In the above code, since `(+ a b)` ais at the last of the function, it get's returned. What's computed by `(* a b)` is lost.
+In the above code, since `(+ a b)` is at the last, it gets returned. What is computed by `(* a b)` is lost.
 
-The moral of the story is the last statement or forms output get's returned from a function.
+The moral of the story is the last statement or forms output gets returned from a function.
