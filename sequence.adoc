@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-In Clojure count counts the number of elements in a list.
+In Clojure, `count` counts the number of elements in a list.
 
 [source, clojure]
 ----
@@ -265,3 +265,5 @@ Output
 ----
 
 ----
+
+Do you think `partition` implements several algorithms, say one for list, one for vector and so on? Or it has a smarter implementation?
