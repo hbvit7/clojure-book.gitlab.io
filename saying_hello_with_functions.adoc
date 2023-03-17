@@ -1,13 +1,13 @@
 === Saying Hello With Functions
 
-So this is the code in Clojure to print Hello World:
+So this is the code in Clojure is to print Hello World:
 
 [source, clojure]
 ----
 (println "Hello world!")
 ----
 
-Now, I want to short it, I want to make this same functionality available by calling just `(say-hello)`. To do that I first call a function called `defn` or define function
+Now I want to make this same functionality available by calling just `(say-hello)`. To do that I first call a function called `defn` or define function
 
 [source, clojure]
 ----
@@ -36,7 +36,7 @@ Now all we need to do is to write the function body, in the body we print hello 
   (println "Hello world!"))
 ----
 
-So when ever we call `(say-hello)`, Hello World! gets printed. Below code shows the final version of say hello:
+So when ever we call `(say-hello)`,` Hello World!` gets printed. Below code shows the final version of `say-hello`:
 
 [source, clojure]
 ----
