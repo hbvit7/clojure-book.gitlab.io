@@ -2601,7 +2601,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>A set starts a hash and curly braces <code><mark>{</code> followed by set items <code></mark>{1 2 3 4</code>, then it closes with a curly brace <code>#{1 2 3 4}</code>.</p>
+<p>A set starts with a hash and curly braces <code><mark>{</code> followed by set items <code></mark>{1 2 3 4</code>, then it closes with a curly brace <code>#{1 2 3 4}</code>.</p>
 </div>
 <div class="paragraph">
 <p>Below we query the type of set:</p>
@@ -2620,7 +2620,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>It returns something <code>clojure.lang.PersistentHashSet</code> that might be confusing to the beginner. Instead one can use the <code>set?</code> function to check if something is a set or not as shown below:</p>
+<p>It returns something <code>clojure.lang.PersistentHashSet</code> that might be confusing to the beginner. Instead, one can use the <code>set?</code> function to check if something is a set or not as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2779,7 +2779,7 @@ Duplicate key: Apple
 </div>
 </div>
 <div class="paragraph">
-<p>It returns true since <code>fruits</code> does contain <code>"Banana"</code>.</p>
+<p>It returns <code>true</code> since <code>fruits</code> does contain <code>"Banana"</code>.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s check if <code>fruits</code> contains "Jack Fruit":</p>
@@ -2835,8 +2835,20 @@ Duplicate key: Apple
 <pre>nil</pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Food for thought, if <code>(fruits "Banana")</code> works, then don&#8217;t you think Clojure has created a function called <code>fruits</code> without you realizing it?
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>Now let&#8217;s try to see if <code>fruits</code> contains <code>"Banana"</code> by passing <code>fruits</code> to <code>"Banana"</code> as shown below:</p>
+<p>Now let&#8217;s see if <code>fruits</code> contains <code>"Banana"</code> by passing <code>fruits</code> to <code>"Banana"</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2932,7 +2944,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <p>It does not.</p>
 </div>
 <div class="paragraph">
-<p>You can also see if a element exists in <code>programming-languages</code> by passing that element to it:</p>
+<p>You can also see if an element exists in <code>programming-languages</code> by passing that element to it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2951,7 +2963,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 <p>Since <code>:ruby</code> is in <code>programming-languages</code>, it gets returned.</p>
 </div>
 <div class="paragraph">
-<p><code>:ruby</code> is a keyword. So has some special properties compared to string. If you remember checking if <code>"Banana"</code> exists in <code>fruits</code> using the code <code>("Banana" fruits)</code> fails, but checking if <code>:ruby</code> exists in <code>programming-languages</code> will work as shown below:</p>
+<p><code>:ruby</code> is a keyword, so it has some special properties compared to string. If you remember checking if <code>"Banana"</code> exists in <code>fruits</code> using the code <code>("Banana" fruits)</code> fails, but checking if <code>:ruby</code> exists in <code>programming-languages</code> will work as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2967,7 +2979,7 @@ java.lang.String cannot be cast to clojure.lang.IFn
 </div>
 </div>
 <div class="paragraph">
-<p>We can add a element to a set using the function <code>conj</code>, followed by the set <code>programming-languages</code> in this case and let&#8217;s add <code>:perl</code> to it:</p>
+<p>We can add an element to a set using the function <code>conj</code>, followed by the set <code>programming-languages</code> in this case and let&#8217;s add <code>:perl</code> to it:</p>
 </div>
 <div class="listingblock">
 <div class="content">

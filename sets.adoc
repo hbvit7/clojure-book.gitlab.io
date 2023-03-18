@@ -17,7 +17,7 @@ Output
 #{1 4 3 2}
 ----
 
-A set starts a hash and curly braces `#{` followed by set items `#{1 2 3 4`, then it closes with a curly brace `#{1 2 3 4}`.
+A set starts with a hash and curly braces `#{` followed by set items `#{1 2 3 4`, then it closes with a curly brace `#{1 2 3 4}`.
 
 Below we query the type of set:
 
@@ -32,7 +32,7 @@ Output
 clojure.lang.PersistentHashSet
 ----
 
-It returns something `clojure.lang.PersistentHashSet` that might be confusing to the beginner. Instead one can use the `set?` function to check if something is a set or not as shown below:
+It returns something `clojure.lang.PersistentHashSet` that might be confusing to the beginner. Instead, one can use the `set?` function to check if something is a set or not as shown below:
 
 [source, clojure]
 ----
@@ -175,7 +175,7 @@ Output
 true
 ----
 
-It returns true since `fruits` does contain `"Banana"`.
+It returns `true` since `fruits` does contain `"Banana"`.
 
 
 Now let's check if `fruits` contains "Jack Fruit":
@@ -222,7 +222,9 @@ Output
 nil
 ----
 
-Now let's try to see if `fruits` contains `"Banana"` by passing `fruits` to `"Banana"` as shown below:
+NOTE: Food for thought, if `(fruits "Banana")` works, then don't you think Clojure has created a function called `fruits` without you realizing it?
+
+Now let's see if `fruits` contains `"Banana"` by passing `fruits` to `"Banana"` as shown below:
 
 [source, clojure]
 ----
@@ -303,7 +305,7 @@ false
 
 It does not.
 
-You can also see if a element exists in `programming-languages` by passing that element to it:
+You can also see if an element exists in `programming-languages` by passing that element to it:
 
 [source, clojure]
 ----
@@ -318,7 +320,7 @@ Output
 
 Since `:ruby` is in `programming-languages`, it gets returned.
 
-`:ruby` is a keyword. So has some special properties compared to string. If you remember checking if `"Banana"` exists in `fruits` using the code `("Banana" fruits)` fails, but checking if `:ruby` exists in `programming-languages` will work as shown below:
+`:ruby` is a keyword, so it has some special properties compared to string. If you remember checking if `"Banana"` exists in `fruits` using the code `("Banana" fruits)` fails, but checking if `:ruby` exists in `programming-languages` will work as shown below:
 
 
 [source, clojure]
@@ -332,7 +334,7 @@ Output
 :ruby
 ----
 
-We can add a element to a set using the function `conj`, followed by the set `programming-languages` in this case and let's add `:perl` to it:
+We can add an element to a set using the function `conj`, followed by the set `programming-languages` in this case and let's add `:perl` to it:
 
 [source, clojure]
 ----
