@@ -63,7 +63,7 @@ Won't it be better if we can split it into two different programs? So we cut up 
   (- a b))
 ----
 
-The in another file called `calc_ui.clj` shown below:
+The in another file called `calc_ui.clj` we type in code as shown below:
 
 [source, clojure]
 ----
@@ -79,6 +79,6 @@ The in another file called `calc_ui.clj` shown below:
 ----
 
 
-Look at the line `(load-file "calc_lib.clj")`, here we load the `calc_lib.clj` file in `calc_ui.clj`. Now we can find the result of adding and subtracting 3 and 5.
+Look at the line `(load-file "calc_lib.clj")`, here we load the `calc_lib.clj` file in `calc_ui.clj`. Now we can find the result of adding and subtracting 5 and 3.
 
 Since we have separated calculation functions and put it as a separate file, you can include it in another where say you want to find the addition and difference of between say 8 and 5. This increases reusability.
