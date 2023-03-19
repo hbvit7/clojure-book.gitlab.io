@@ -6053,7 +6053,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </table>
 </div>
 <div class="paragraph">
-<p>Clojure&#8217;s code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the received data is of the right type and format.</p>
+<p>Clojure&#8217;s code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the returned data is of the right type and format.</p>
 </div>
 <div class="paragraph">
 <p>So in order to use spec, let&#8217;s require it:</p>
@@ -6064,7 +6064,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Now we have required <code>spec</code> as <code>s</code>, so  rather than calling functions like <code>spec/something</code>, we can call it as <code>s/something</code> from now on.</p>
+<p>Now we have required <code>spec</code> as <code>s</code>, so rather than calling functions like <code>spec/something</code>, we can call it as <code>s/something</code> from now on.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s now see how to check if something is a string:</p>
@@ -6124,7 +6124,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <p>For that to <code>s/valid?</code> we pass the function <code>number?</code> as first argument, and <code>42</code> as second argument. Since 42 is a number, <code>(number? 42)</code> returns <code>true</code> and <code>(s/valid? number? 42)</code> also returns <code>true</code>.</p>
 </div>
 <div class="paragraph">
-<p>Similarly below we check if something is an integer:</p>
+<p>Similarly, below we check if <code>123</code> is an integer:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6140,7 +6140,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>We check if something is double in the code below:</p>
+<p>We check if <code>123.45</code> is double in the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6260,7 +6260,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p><strong>and</strong> it should be greater than zero, so for the and, we use spec&#8217;s <code>and</code> function:</p>
+<p><strong>and</strong> it should be greater than zero, so for the <strong>and</strong>, we use spec&#8217;s <code>and</code> function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6282,7 +6282,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Now it should be less than or equal to 100, so for the and, we write a function and add it to and block as shown:</p>
+<p>Now it should be less than or equal to 100, so for the and, we write a function and add it to the form as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6310,15 +6310,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="p">[</span><span class="n">source,</span><span class="w"> </span><span class="n">clojure</span><span class="p">]</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>(def valid-%? (s/and number? #(&gt;= % 0) #(&#8656; % 100)))</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre> (s/and number? #(&gt;= % 0) #(&lt;= % 100)))</pre>
+<pre class="rouge highlight"><code data-lang="clojure"><span class="p">(</span><span class="k">def</span><span class="w"> </span><span class="n">valid-%?</span><span class="w"> </span><span class="p">(</span><span class="nf">s/and</span><span class="w"> </span><span class="n">number?</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">&gt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">#</span><span class="p">(</span><span class="nb">&lt;=</span><span class="w"> </span><span class="n">%</span><span class="w"> </span><span class="mi">100</span><span class="p">)))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6354,7 +6346,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly -15 is less than 0, so the below example returns false.</p>
+<p>Similarly -15 is less than 0, so the below example returns <code>false</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6404,7 +6396,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>So it&#8217;s defined as follows <code>(s/coll-of string?)</code>, so the <code>coll-of</code> is a spec function, and it&#8217;s been told to check if all in a collection are of the type <code>string?</code>. Now let&#8217;s apply <code>string-collection?</code> on an array of strings:</p>
+<p>So it&#8217;s defined as follows <code>(s/coll-of string?)</code>, so the <code>coll-of</code> is a spec function, and it&#8217;s been told to check if all in a collection are of the type <code>string?</code>. Now let&#8217;s apply <code>string-collection?</code> on vector of strings:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6447,7 +6439,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>In the above code we use <code>or</code> function in spec, and to it, we pass four arguments, the first two being <code>:number number?</code>, and the second two being <code>:string string?</code>. Don&#8217;t get confused by the pair of arguments now, you will understand why so soon. So the <code>or</code> receives <code>number?</code> and <code>string?</code> as arguments, prepended by keywords, so it passes when it either encounters a number or a string.</p>
+<p>In the above code we use <code>or</code> function in spec, and to it, we pass four arguments, the first two being <code>:number number?</code>, and the second two being <code>:string string?</code>. Don&#8217;t get confused by the pair of keyword and function being passed as arguments now, you will understand why so soon. So the <code>or</code> receives <code>number?</code> and <code>string?</code> as arguments, prepended by keywords, so it passes when it either encounters a number or a string.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s put it into action, here I am testing it on a number, and it passes:</p>
@@ -6724,7 +6716,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Note how we use <code>(s/keys :req-un [::name ::age ::gender])</code>, which means, in the code above <code>::person</code> will check for map that has key called <code>:name</code> which maps to a string value, the map must contain <code>:age</code> which must map to an integer value, and it must contain a key, which is a keyword <code>:gender</code> and it must map to another keyword.</p>
+<p>Note how we use <code>(s/keys :req-un [::name ::age ::gender])</code>, which means, in the code above <code>::person</code> will check for map that has key called <code>:name</code> which maps to a string value, the map must contain <code>:age</code> which must map to an integer value, and it must contain a key which is a keyword <code>:gender</code> and it must map to another keyword.</p>
 </div>
 <div class="paragraph">
 <p>Now let&#8217;s test it out:</p>
@@ -6769,7 +6761,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <div class="sect2">
 <h3 id="_explaining_spec">10.4. Explaining Spec</h3>
 <div class="paragraph">
-<p>Clojure gives a spec function called <code>explain</code> that tells in somwe what bit human friendly way why something failed a spec validation.</p>
+<p>Clojure gives a spec function called <code>explain</code> that tells in somewhat human friendly way why something failed a spec validation.</p>
 </div>
 <div class="paragraph">
 <p>See the example below:</p>
@@ -6788,7 +6780,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>See the output, see how thr <code>explain</code> explains a bit.</p>
+<p>See the output, see how the <code>explain</code> explains a bit.</p>
 </div>
 <div class="paragraph">
 <p>For specs that pass, explain give out a <code>Success!</code> as shown:</p>
@@ -6912,7 +6904,7 @@ nil</pre>
 <p>In Clojure we usually don&#8217;t use objects to passed to functions, we prefer simple data types like vector, maps, sets etc. So when such thing is done, we need to check the integrity and conformity of data, specs are very useful for that.</p>
 </div>
 <div class="paragraph">
-<p>Take a look at the example below:</p>
+<p>Take a look at the examples below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6950,7 +6942,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>We are checking in <code>:pre</code> hook if the passed arguments to a function <code>a</code> and <code>b</code> are numbers or not, if not the function does not execute as you can see from the output:</p>
+<p>We are checking in <code>:pre</code> hook if the passed arguments to function <code>a</code> and <code>b</code> are numbers or not, if not the function does not execute as you can see from the output:</p>
 </div>
 <div class="listingblock">
 <div class="content">

@@ -4,7 +4,7 @@
 
 include::use_code_note.adoc[]
 
-Clojure's code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the received data is of the right type and format.
+Clojure's code is nothing but functions manipulating data. Data can be of any type like String, Number, Map, Vector, Set and so on. When data of the right type and format is not given to a function, the function might not work properly. So Clojure has inbuilt libraries that help you to check the data type, these are called spec. May be one could you them in pre-condition checking to see if the received data is of the right type and format, and you can use it in post condition checking to see if the returned data is of the right type and format.
 
 So in order to use spec, let's require it:
 
@@ -13,7 +13,7 @@ So in order to use spec, let's require it:
 (require '[clojure.spec.alpha :as s])
 ----
 
-Now we have required `spec` as `s`, so  rather than calling functions like `spec/something`, we can call it as `s/something` from now on.
+Now we have required `spec` as `s`, so rather than calling functions like `spec/something`, we can call it as `s/something` from now on.
 
 Let's now see how to check if something is a string:
 
@@ -60,7 +60,7 @@ true
 
 For that to `s/valid?` we pass the function `number?` as first argument, and `42` as second argument. Since 42 is a number, `(number? 42)` returns `true` and `(s/valid? number? 42)` also returns `true`.
 
-Similarly below we check if something is an integer:
+Similarly, below we check if `123` is an integer:
 
 [source, clojure]
 ----
@@ -73,7 +73,7 @@ Output
 true
 ----
 
-We check if something is double in the code below:
+We check if `123.45` is double in the code below:
 
 [source, clojure]
 ----
@@ -171,7 +171,7 @@ So a percentage mark should be a number, so we get a code like this:
 (number?)
 ----
 
-**and** it should be greater than zero, so for the and, we use spec's `and` function:
+**and** it should be greater than zero, so for the **and**, we use spec's `and` function:
 
 [source, clojure]
 ----
@@ -191,7 +191,7 @@ To check if it's greater than or equal to zero, let's write an anonymous functio
 )
 ----
 
-Now it should be less than or equal to 100, so for the and, we write a function and add it to and block as shown:
+Now it should be less than or equal to 100, so for the and, we write a function and add it to the form as shown:
 
 [source, clojure]
 ----
@@ -217,11 +217,7 @@ To show that you are professional Clojure programmer, you will put all in one li
 
 [source, clojure]
 ----
-(def [source, clojure]
-----
 (def valid-%? (s/and number? #(>= % 0) #(<= % 100)))
-----
- (s/and number? #(>= % 0) #(<= % 100)))
 ----
 
 So we have got our `valid-%?`, now let's use it.
@@ -250,7 +246,7 @@ Output
 false
 ----
 
-Similarly -15 is less than 0, so the below example returns false.
+Similarly -15 is less than 0, so the below example returns `false`.
 
 [source, clojure]
 ----
@@ -291,7 +287,7 @@ Output
 #'user/string-collection?
 ----
 
-So it's defined as follows `(s/coll-of string?)`, so the `coll-of` is a spec function, and it's been told to check if all in a collection are of the type `string?`. Now let's apply `string-collection?` on an array of strings:
+So it's defined as follows `(s/coll-of string?)`, so the `coll-of` is a spec function, and it's been told to check if all in a collection are of the type `string?`. Now let's apply `string-collection?` on vector of strings:
 
 [source, clojure]
 ----
@@ -326,7 +322,7 @@ So in the above code we define `number-or-string?`, concentrate on this piece of
 (s/or :number number? :string string?)
 ----
 
-In the above code we use `or` function in spec, and to it, we pass four arguments, the first two being `:number number?`, and the second two being `:string string?`. Don't get confused by the pair of arguments now, you will understand why so soon. So the `or` receives `number?` and `string?` as arguments, prepended by keywords, so it passes when it either encounters a number or a string.
+In the above code we use `or` function in spec, and to it, we pass four arguments, the first two being `:number number?`, and the second two being `:string string?`. Don't get confused by the pair of keyword and function being passed as arguments now, you will understand why so soon. So the `or` receives `number?` and `string?` as arguments, prepended by keywords, so it passes when it either encounters a number or a string.
 
 Let's put it into action, here I am testing it on a number, and it passes:
 
@@ -552,7 +548,7 @@ Output
 :user/person
 ----
 
-Note how we use `(s/keys :req-un [::name ::age ::gender])`, which means, in the code above `::person` will check for map that has key called `:name` which maps to a string value, the map must contain `:age` which must map to an integer value, and it must contain a key, which is a keyword `:gender` and it must map to another keyword.
+Note how we use `(s/keys :req-un [::name ::age ::gender])`, which means, in the code above `::person` will check for map that has key called `:name` which maps to a string value, the map must contain `:age` which must map to an integer value, and it must contain a key which is a keyword `:gender` and it must map to another keyword.
 
 Now let's test it out:
 
@@ -589,7 +585,7 @@ It fails.
 
 === Explaining Spec
 
-Clojure gives a spec function called `explain` that tells in somwe what bit human friendly way why something failed a spec validation.
+Clojure gives a spec function called `explain` that tells in somewhat human friendly way why something failed a spec validation.
 
 See the example below:
 
@@ -604,7 +600,7 @@ Output
 "42" - failed: number?
 ----
 
-See the output, see how thr `explain` explains a bit.
+See the output, see how the `explain` explains a bit.
 
 For specs that pass, explain give out a `Success!` as shown:
 
@@ -705,7 +701,7 @@ If one is wondering why these specs, and why so much of functionality is built i
 
 In Clojure we usually don't use objects to passed to functions, we prefer simple data types like vector, maps, sets etc. So when such thing is done, we need to check the integrity and conformity of data, specs are very useful for that.
 
-Take a look at the example below:
+Take a look at the examples below:
 
 [source, clojure]
 ----
@@ -739,7 +735,7 @@ Output
 ----
 
 
-We are checking in `:pre` hook if the passed arguments to a function `a` and `b` are numbers or not, if not the function does not execute as you can see from the output:
+We are checking in `:pre` hook if the passed arguments to function `a` and `b` are numbers or not, if not the function does not execute as you can see from the output:
 
 ----
 ; Execution error (AssertionError) at user/add-two-numbers (REPL:100).
