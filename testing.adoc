@@ -1,8 +1,8 @@
 == Testing
 
-Testing is a very integral part of coding. Let's say you write a piece of code, its been used millions of times somewhere else, let's say your colleague modifies it and it fails some conditions. Being a human how can he identify it fails in some cases? Well, when you write code, you also write some code that tests your code, so that when some one modifies your code, they can run corresponding test files and check if all is right.
+Testing is a very integral part of coding. Let's say you write a piece of code, its been used millions of times somewhere else, let's say your colleague modifies it and it fails in cases. Being a human how can he identify it fails in some cases? Well, when you write code, you also write some code that tests your code, so that when some one modifies your code, they can run corresponding test files and check if all is right.
 
-Since code test code, test is automating stuff, and since computers can test your code they are really fast and would save you time.
+Since code tests code, test is automating stuff, and since computers can test your code, and they are really fast, so it will save you time.
 
 Having a robust test suite means you can refactor your code with confidence and run it against the test so that you know it works fine.
 
@@ -38,7 +38,7 @@ Now from the Clojure test library footnote:[https://clojuredocs.org/clojure.test
 ----
 
 
-now let's load the `calc_lib.clj`, that's the file whose code we would like to get it tested:
+Now let's load the `calc_lib.clj`, that's the file whose code we would like to get it tested:
 
 
 [source, clojure]
@@ -185,9 +185,9 @@ expected: (= 5 (add 2 2))
   actual: (not (= 5 4))
 ----
 
-As you can see from above, since the assertion fails, the code days in `cal_lib` and in add inside it, an assertion is failing, it says what is expected and what we actually get.
+As you can see from above, since the assertion fails, the code says in `cal_lib` and in `add`, inside it, an assertion is failing, it says what is expected and what we actually get.
 
-So as you can see, the more detailed description you can pass to `testing`, the more easy it will be for you to know what's happening. The line number where the code fails is printed out too.
+So as you can see, the more detailed description you can pass to `testing`, the easier it will be for you to know what's happening. The line number where the code fails is printed out too.
 
 [source, clojure]
 ----
@@ -285,4 +285,3 @@ Now in the code below I am also testing the `sub` function by adding another `te
 
 (calc_lib_test)
 ----
-
