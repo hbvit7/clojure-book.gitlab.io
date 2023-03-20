@@ -17,7 +17,7 @@ Output
 java.lang.Long
 ----
 
-The numbers with decimal value are called as Double in clojure as you can see below:
+The numbers with decimal value are called as Double in Clojure as you can see below:
 
 [source, clojure]
 ----
@@ -95,7 +95,7 @@ Output
 32.0
 ----
 
-When querying about it's type, it does say Double:
+When querying about its type, it does say Double:
 
 [source, clojure]
 ----
@@ -108,7 +108,7 @@ Output
 java.lang.Double
 ----
 
-Say you don't want a division of two Long's to give you a Ratio as output, to prevent it, convert any one of the number thats been passed to `/` function into a Double as shown below:
+Say you don't want a division of two Long's to give you a Ratio as output, to prevent it, convert any one of the number that's been passed to `/` function into a Double as shown below:
 
 [source, clojure]
 ----
@@ -134,7 +134,7 @@ Output
 java.lang.Double
 ----
 
-If you wan to just get a non decimal part of a Double, pass that double to long function as shown:
+If you want to just get a non-decimal part of a Double, pass that double to long function as shown:
 
 [source, clojure]
 ----
@@ -147,7 +147,7 @@ Output
 42
 ----
 
-As you see, when a Double is passed to `long` function, it gets type casted to Long: 
+As you see, when a Double is passed to `long` function, it gets type cast to Long: 
 
 [source, clojure]
 ----

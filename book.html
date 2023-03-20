@@ -1567,7 +1567,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>The numbers with decimal value are called as Double in clojure as you can see below:</p>
+<p>The numbers with decimal value are called as Double in Clojure as you can see below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1663,7 +1663,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>When querying about it&#8217;s type, it does say Double:</p>
+<p>When querying about its type, it does say Double:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1679,7 +1679,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Say you don&#8217;t want a division of two Long&#8217;s to give you a Ratio as output, to prevent it, convert any one of the number thats been passed to <code>/</code> function into a Double as shown below:</p>
+<p>Say you don&#8217;t want a division of two Long&#8217;s to give you a Ratio as output, to prevent it, convert any one of the number that&#8217;s been passed to <code>/</code> function into a Double as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1711,7 +1711,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>If you wan to just get a non decimal part of a Double, pass that double to long function as shown:</p>
+<p>If you want to just get a non-decimal part of a Double, pass that double to long function as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1727,7 +1727,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>As you see, when a Double is passed to <code>long</code> function, it gets type casted to Long:</p>
+<p>As you see, when a Double is passed to <code>long</code> function, it gets type cast to Long:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1905,7 +1905,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>I have assigned String "Karthik" to a variable named <code>my-name</code>, now I can use this <code>my-name</code> any where in the file. If you look at creation of a variable, you can see these three things, first is of course empty braces:</p>
+<p>I have assigned String "Karthik" to a variable named <code>my-name</code>, now I can use this <code>my-name</code> any where in the Clojure code. If you look at creation of a variable, you can see these three things, first is of course empty braces:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1937,7 +1937,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>So that is how we define a variable. Usually the variable defined with <code>def</code> is called a global variable, that is it&#8217;s available any where in the program. If it doesn&#8217;t make sense now, don&#8217;t worry.</p>
+<p>So that is how we define a variable. Usually the variable defined with <code>def</code> is called a global variable, that it is available anywhere in the program. If it doesn&#8217;t make sense now, don&#8217;t worry.</p>
 </div>
 <div class="paragraph">
 <p>Now we can print this variable as shown:</p>
@@ -1957,7 +1957,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Over here I am adding <code>"Hello"</code> before the variable <code>my-name</code> and its as equivalent of using string <code>"Karthik"</code> instead of <code>my-name</code>:</p>
+<p>Over here I am adding <code>"Hello"</code> before the variable <code>my-name</code> and its as equivalent as using string <code>"Karthik"</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1992,10 +1992,10 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I am having a variable called <code>greeting</code> defined above and its been assigned the result of <code>(str "Hello " my-name "!")</code>. That is three strings  <code>"Hello "</code>, <code>my-name</code> and <code>"!"</code> are joined together and the result is stored in <code>greeting</code>. Finally we print it using <code>(println greeting)</code>.</p>
+<p>I am having a variable called <code>greeting</code> defined above, and it&#8217;s been assigned the result of <code>(str "Hello " my-name "!")</code>. That is three strings <code>"Hello "</code>, <code>my-name</code> and <code>"!"</code> are joined together, and the result is stored in <code>greeting</code>. Finally, we print it using <code>(println greeting)</code>.</p>
 </div>
 <div class="paragraph">
-<p>Variables like <code>my-name</code> and <code>greeting</code> can be used any where in code, because they are defined using <code>def</code> keyword. If you want a localized variable inside a code block <code>()</code>, you can use <code>let</code> to define it as shown:</p>
+<p>Variables like <code>my-name</code> and <code>greeting</code> can be used anywhere in code, because they are defined using <code>def</code> keyword. If you want a localized variable inside a code block <code>()</code>, you can use <code>let</code> to define it as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2012,7 +2012,7 @@ nil</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the above code, we define a variable named <code>local-variable</code> to be <code>"something"</code>,  and we successfully print it, but outside the bounding braces <code>(let &#8230;&#8203;)</code>, this local variable fails to exist as you can see from the code below:</p>
+<p>In the above code, we define a variable named <code>local-variable</code> to be <code>"something"</code>, and we successfully print it, but outside the bounding braces <code>(let &#8230;&#8203;)</code>, this local variable fails to exist as you can see from the code below:</p>
 </div>
 <div class="listingblock">
 <div class="content">

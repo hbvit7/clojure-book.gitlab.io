@@ -17,7 +17,7 @@ Output
 #'user/my-name
 ----
 
-I have assigned String "Karthik" to a variable named `my-name`, now I can use this `my-name` any where in the file. If you look at creation of a variable, you can see these three things, first is of course empty braces:
+I have assigned String "Karthik" to a variable named `my-name`, now I can use this `my-name` any where in the Clojure code. If you look at creation of a variable, you can see these three things, first is of course empty braces:
 
 [source, clojure]
 ----
@@ -45,7 +45,7 @@ As a second argument to `def`, we give the value that needs to be stored in `my-
 (def my-name "Karthik")
 ----
 
-So that is how we define a variable. Usually the variable defined with `def` is called a global variable, that is it's available any where in the program. If it doesn't make sense now, don't worry.
+So that is how we define a variable. Usually the variable defined with `def` is called a global variable, that it is available anywhere in the program. If it doesn't make sense now, don't worry.
 
 Now we can print this variable as shown:
 
@@ -61,7 +61,7 @@ Karthik
 nil
 ----
 
-Over here I am adding `"Hello"` before the variable `my-name` and its as equivalent of using string `"Karthik"` instead of `my-name`:
+Over here I am adding `"Hello"` before the variable `my-name` and its as equivalent as using string `"Karthik"`:
 
 [source, clojure]
 ----
@@ -90,9 +90,9 @@ Hello Karthik!
 nil
 ----
 
-I am having a variable called `greeting` defined above and its been assigned the result of `(str "Hello " my-name "!")`. That is three strings  `"Hello "`, `my-name` and `"!"` are joined together and the result is stored in `greeting`. Finally we print it using `(println greeting)`.
+I am having a variable called `greeting` defined above, and it's been assigned the result of `(str "Hello " my-name "!")`. That is three strings `"Hello "`, `my-name` and `"!"` are joined together, and the result is stored in `greeting`. Finally, we print it using `(println greeting)`.
 
-Variables like `my-name` and `greeting` can be used any where in code, because they are defined using `def` keyword. If you want a localized variable inside a code block `()`, you can use `let` to define it as shown:
+Variables like `my-name` and `greeting` can be used anywhere in code, because they are defined using `def` keyword. If you want a localized variable inside a code block `()`, you can use `let` to define it as shown:
 
 [source, clojure]
 ----
