@@ -105,7 +105,7 @@ Output
 something
 ----
 
-In the above code, we define a variable named `local-variable` to be `"something"`,  and we successfully print it, but outside the bounding braces `(let ...)`, this local variable fails to exist as you can see from the code below:
+In the above code, we define a variable named `local-variable` to be `"something"`, and we successfully print it, but outside the bounding braces `(let ...)`, this local variable fails to exist as you can see from the code below:
 
 [source, clojure]
 ----
