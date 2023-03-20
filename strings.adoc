@@ -4,16 +4,16 @@
 
 include::use_code_note.adoc[]
 
-In this book I think your very first clojure program would have been this:
+In this book I think your very first Clojure program would have been this:
 
 [source, clojure]
 ----
 (println "Hello World!")
 ----
 
-It prints `Hello World` on the screen. The `"Hello World!"` which is enclosed by double quoted `"` is nothing but a string of characters and hence its called a string.
+It prints `Hello World` on the screen. The `"Hello World!"` which is enclosed by double quotes `"` is nothing but a string of characters and hence it's called a string.
 
-anything that's enclosed by double quotes in Clojure is a String as you can see below:
+Anything that's enclosed by double quotes in Clojure is a String as you can see below:
 
 [source, clojure]
 ----
@@ -39,9 +39,9 @@ Output
 "1 + 2 is 3"
 ----
 
-In the above code `(+ 1 2)` returns Long, but it can be joined with a string `"1 + 2 is "` by passing them both to  `str` function.
+In the above code `(+ 1 2)` returns Long, but it can be joined with a string `"1 + 2 is "` by passing them both to `str` function.
 
-You can get the character count in a string using using the `count` function as shown below:
+You can get the character count in a string using the `count` function as shown below:
 
 [source, clojure]
 ----
@@ -54,7 +54,7 @@ Output
 5
 ----
 
-In the code below, to `str` function we are passing 6 arguments. the first five are numbers , and the last one is a string `" and so on..."`:
+In the code below, to `str` function we are passing 6 arguments. The first five are numbers, and the last one is a string `" and so on..."`:
 
 [source, clojure]
 ----
@@ -69,7 +69,7 @@ Output
 
 You can see how Clojure neatly concatenates them and returns out a string.
 
-Clojure has a inbuilt String library, you can read it's documentation here https://clojuredocs.org/clojure.string. From it let's use the function `reverse` to reverse a String:
+Clojure has an inbuilt String library, you can read its documentation here https://clojuredocs.org/clojure.string. From it let's use the function `reverse` to reverse a String:
 
 [source, clojure]
 ----
@@ -82,7 +82,7 @@ Output
 "olleH"
 ----
 
-Now let's covert all characters to upper case: 
+Now lets covert all characters to upper case: 
 
 [source, clojure]
 ----
@@ -95,4 +95,4 @@ Output
 "HELLO"
 ----
 
-I hope this section has briefly explained something about strings. You wil learn more as you go by. Hang on....
+I hope this section has briefly explained something about strings. You will learn more as you go by. Hang on....
