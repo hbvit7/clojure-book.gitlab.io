@@ -1,6 +1,6 @@
 === when
 
-`if` accepts a condition as first argument, as second it accepts what should be done if the condition is `true`, and third is what should be done if the condition is `false`. `if` does work when the third argument is left out, but if we want to execute a bunch of statements when condition is `true`, then we can use `when` as shown below:
+`if` accepts a condition as first argument, as second it accepts what should be done if the condition is `true`, and third is what should be done if the condition is `false`. `if` does work when the third argument is left out, but if we want to execute a bunch of statements when a condition is `true`, then we can use `when` as shown below:
 
 [source, clojure]
 ----
@@ -37,7 +37,7 @@ in the form
     (println "I print other things too."))
 ----
 
-gets executed and we get the output shown above.
+get's executed, and we get the output shown above.
 
 Now let's set `print-something` to `false` as shown below and execute the code:
 
@@ -57,4 +57,4 @@ Output
 nil
 ----
 
-Nothing gets printed. So if the first argument passed to `when` is true, all statements enclosed in its form gets executed, else nothing happens.
+Nothing gets printed. So if the first argument passed to `when` is `true`, all statements enclosed in its form gets executed, else nothing happens.
