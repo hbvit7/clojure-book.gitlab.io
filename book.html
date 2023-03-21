@@ -2090,7 +2090,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </table>
 </div>
 <div class="paragraph">
-<p>Imagine racks with lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.</p>
+<p>Imagine racks with a lot of compartments in it, the first compartment is labelled 0, the second 1 and so on. You can put something into this rack and get it back if you know the rack number aka the index. This is a kind of real world analog to vectors.</p>
 </div>
 <div class="paragraph">
 <p>Look at the code below:</p>
@@ -2109,7 +2109,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>This is how you represent a vector in Clojure. It start&#8217;s with a opening square braces <code>[</code> and ends with a closing one <code>]</code>, and any thing in between are the elements of the vector. In the above code you got 4 elements namely <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code>.</p>
+<p>This is how you represent a vector in Clojure. It starts with an opening square braces <code>[</code> and ends with a closing one <code>]</code>, and anything in between are the elements of the vector. In the above code you got 4 elements namely <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code>.</p>
 </div>
 <div class="paragraph">
 <p>Another way to create a vector is to pass stuff to a function called <code>vector</code> as shown below:</p>
@@ -2128,10 +2128,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>In the above code we have passed <code>1</code>, <code>2</code> and <code>3</code> to a the function vector and we have got out a vector <code>[1 2 3]</code>.</p>
+<p>In the above code we have passed <code>1</code>, <code>2</code> and <code>3</code> to the function <code>vector</code>, and we have got out a vector <code>[1 2 3]</code>.</p>
 </div>
 <div class="paragraph">
-<p>Till now we have seen creating vectors with numbers, in reality you can create vector with any type of value:</p>
+<p>Till now, we have seen creating vectors with numbers, in reality you can create vector with any type of value:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2183,10 +2183,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>and we get the first element in the vector.</p>
+<p>And we get the first element in the vector.</p>
 </div>
 <div class="paragraph">
-<p>There is a function called <code>rest</code> which when given a vector, omits the first element and returns the rest of the elements in the vector as shown belo:</p>
+<p>There is a function called <code>rest</code> which when given a vector, omits the first element and returns the rest of the elements in the vector as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2205,7 +2205,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <p>As you see <code>"Ram"</code> is ignored as it&#8217;s the first element and the rest is returned.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s check the tyoe of <code>friends</code></p>
+<p>Let&#8217;s check the type of <code>friends</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2221,7 +2221,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Fro the output it seems clear that it&#8217;s a vector, but then let&#8217;s checkout what type the <code>rest</code> returns:</p>
+<p>From the output it seems clear that it&#8217;s a vector, but then let&#8217;s check what type the <code>rest</code> returns:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2240,7 +2240,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 <p>Though it seems to return <code>("Bashir" "Antony" "Buddha")</code>, which are not enclosed in square braces, on querying the type, it seems to be a chunk of the passed in vector.</p>
 </div>
 <div class="paragraph">
-<p>We can access any element by it&#8217;s index in a vector using the <code>nth</code> function who&#8217;s first argument should be a vector and second should be the index number as shown:</p>
+<p>We can access any element by its index in the vector using the <code>nth</code> function whose first argument should be a vector and second should be the index number as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2275,10 +2275,10 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>Doesn&#8217;t it look like when you did <code>(def friends &lt;a vector&gt;)</code>, clojure seems to have constructed a function called <code>friends</code> which can take a number, and the value at the index gets returned?</p>
+<p>Doesn&#8217;t it look like when you did <code>(def friends &lt;a vector&gt;)</code>, Clojure seems to have constructed a function called <code>friends</code> which can take a number, and the value at the index gets returned?</p>
 </div>
 <div class="paragraph">
-<p>To add an element at the end of vector, use the function <code>conj</code> whcih takes in vector as first argument and the value to be added as the second:</p>
+<p>To add an element at the end of vector, use the function <code>conj</code> which takes in vector as first argument and the value to be added as the second:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2294,7 +2294,7 @@ For this section you can use this code <a href="https://gitlab.com/clojure-book/
 </div>
 </div>
 <div class="paragraph">
-<p>In the above code we have added <code>"Periyaar"</code> to friends, but this does not mean <code>friends</code> as been modified, we can print <code>friends</code>:</p>
+<p>In the above code we have added <code>"Periyaar"</code> to friends, but this does not mean <code>friends</code> has been modified, we can print <code>friends</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2314,7 +2314,7 @@ nil</pre>
 <p>and it still shows the old values without <code>"Periyaar"</code>, in reality Clojure constructs a new vector when we say <code>(conj friends "Periyaar")</code> and returns it out.</p>
 </div>
 <div class="paragraph">
-<p>To add a element before a vector, use <code>cons</code> as shown below:</p>
+<p>To add an element before a vector, use <code>cons</code> as shown below:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2337,7 +2337,7 @@ nil</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>How to get total number of elements in a vector?</p>
+<p>How to get the total number of elements in a vector?</p>
 </li>
 <li>
 <p>What will happen if I give <code>(friends 42)</code>?</p>
