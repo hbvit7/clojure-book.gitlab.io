@@ -8,7 +8,7 @@ Its better to search for local Clojure and GNU/Linux communities and become frie
 
 === Clojure website
 
-The Clojure website may be a good starting point to browse for help if you have the time and patience. One may visit it here https://clojure.org/. I am mentioning this because it is very possible that one may find some good piece of help I have left out.
+The Clojure website may be a good starting point to browse for help if you have the time and patience. One may visit it here https://clojure.org/.
 
 === Clojure forum
 
