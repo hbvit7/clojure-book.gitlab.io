@@ -28,7 +28,7 @@ image::images/what-is-clojure-code-2.png[]
 
 This can be written as shown:
 
-(* 5 6) in lisp. That is `5` and `6` get's fed into `*` function which multiplies it and we get `30` as output.
+(* 5 6) in lisp. That is `5` and `6` gets fed into `*` function which multiplies it, and we get `30` as output.
 
 image::images/what-is-clojure-code-3.png[]
 
