@@ -2,6 +2,10 @@
 
 // https://dev.to/kelvinmai/understanding-clojure-multimethods-2cd0
 
+Let's say you pass an argument(s) to a function, based on the passed value, it's determined which function or method is to be called. This technique is called multimethods.
+
+Take a look at the code below, type it and execute it:
+
 [source, clojure]
 ----
 ;; multimethod_factorial.clj
@@ -9,6 +13,7 @@
 (defmulti factorial identity)
 
 (defmethod factorial 0 [_]  1)
+
 (defmethod factorial :default [num]
   (* num (factorial (dec num))))
 
@@ -18,7 +23,52 @@
 (factorial 7) ; => 5040
 ----
 
+In the line `(defmulti factorial identity)`, we tell Clojure that we are having a multimethod called `factorial`, the kind of execution path that factorial will take is defined by the `identity` passed to it. Now in the code below, we say if the identity is `0`:
 
+[source, clojure]
+----
+(defmethod factorial 0)
+----
+
+Then take in the argument:
+
+[source, clojure]
+----
+(defmethod factorial 0 [_])
+----
+
+We are not going to use the argument anywhere, so it's a convention to use underscore `_` for that, and we tell it to return `1`:
+
+[source, clojure]
+----
+(defmethod factorial 0 [_] 1)
+----
+
+For any other argument, we use the `:default` keyword:
+
+[source, clojure]
+----
+(defmethod factorial :default)
+----
+
+We take in the argument as `num`
+
+[source, clojure]
+----
+(defmethod factorial :default [num])
+----
+
+We return stem:[n um * (n um - 1)!] as show below:
+
+[source, clojure]
+----
+(defmethod factorial :default [num]
+  (* num (factorial (dec num))))
+----
+
+This does the trick, and we have clean and elegant code to find factorial of any number.
+
+Now consider the code below:
 
 [source, clojure]
 ----
@@ -42,6 +92,18 @@ Welcome Karthik from Chennai
 Welcome Kalam from Ramanthapuram
 Welcome Bharathiyaar from Yettaiyapuram
 ----
+
+The function `print-welcome-message` accepts `person` as argument, the `person` could be a string, a vector or map, depending on it, the program extracts data and prints it as shown in the below form:
+
+[source, clojure]
+----
+ (cond
+    (string? person) (println "Welcome" person)
+    (vector? person) (println  "Welcome" (first person) "from" (last person))
+    (map? person)    (println "Welcome" (person "name") "from" (person "from")))
+----
+
+The same thing is done using multimenthods in the code below. Type it and execute it and I will explain:
 
 [source, clojure]
 ----
@@ -76,3 +138,85 @@ Welcome Karthik from Chennai
 Welcome Kalam from Ramanthapuram
 Welcome Bharathiyaar from Yettaiyapuram
 ----
+
+First you have a multimethod definition:
+
+[source, clojure]
+----
+(defmulti print-welcome-message welcome-person)
+----
+
+The above statement means, the multimethod name is `print-welcome-message`, and what method / execution path should be called will be decided by the function `welcome-person`. So here we are having a function that decides what method must be called.
+
+Now let's see what's there in `welcome-person`:
+
+[source, clojure]
+----
+(defn welcome-person [person]
+  (cond
+    (string? person) :welcome-person-string
+    (vector? person) :welcome-person-vector
+    (map? person)    :welcome-person-map))
+----
+
+So `welcome-person` accepts `person` as argument, and it tells what code should be executed by returning keyword that points to the execution.
+
+Now let's look at the definition of methods:
+
+[source, clojure]
+----
+(defmethod print-welcome-message :welcome-person-string [person]
+  (println "Welcome" person))
+
+(defmethod print-welcome-message :welcome-person-vector [person]
+  (println  "Welcome" (first person) "from" (last person)))
+
+(defmethod print-welcome-message :welcome-person-map [person]
+  (println "Welcome" (person "name") "from" (person "from")))
+----
+
+Let's take fist one
+
+[source, clojure]
+----
+(defmethod print-welcome-message :welcome-person-string [person]
+  (println "Welcome" person))
+----
+
+So in `welcome-person`, if `person` is of type string then it returns `:welcome-person-string`, the code for this is written above. First we have `defmethod`:
+
+[source, clojure]
+----
+(defmethod)
+----
+
+Followed by the multimethod name:
+
+[source, clojure]
+----
+(defmethod print-welcome-message)
+----
+
+Then we have the keyword that's been determined by `welcome-person`, in this case if `person` is a string this particular code is called:
+
+[source, clojure]
+----
+(defmethod print-welcome-message :welcome-person-string)
+----
+
+Followed by the passed argument `person`:
+
+[source, clojure]
+----
+(defmethod print-welcome-message :welcome-person-string [person])
+----
+
+then finally we have the body of the function `(println "Welcome" person)`:
+
+[source, clojure]
+----
+(defmethod print-welcome-message :welcome-person-string [person]
+  (println "Welcome" person))
+----
+
+So depending on the data type `welcome-person` returns different keywords thus triggering execution of different `defmethods`. We neatly tick away different executions in different methods thus keeping our code simple and manageable.
