@@ -60,7 +60,7 @@ user/sum
 ([a b])
   Adds two numbers passed as arguments.
    
-   The argumets should be numbers.
+   The arguments should be numbers.
 
    **Usage**
 
